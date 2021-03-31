@@ -80,6 +80,7 @@ public class PizzaOrderService {
                     COOK.pizzaFourCheese();
                     CHECK.add(PIZZA_ORDER_VIEW.orderPizzaFourCheese());
                     ORDER.add(PizzaPriceUtil.pricePizzaFourCheeseIncludingVAT());
+                    showOrderInfo();
                     PIZZA_ORDER_VIEW.addSupplementIngredients();
                     ChoiceUtil.addChoiceQuestion();
                     break;
@@ -89,6 +90,7 @@ public class PizzaOrderService {
                     COOK.pizzaMargherita();
                     CHECK.add(PIZZA_ORDER_VIEW.orderPizzaMargherita());
                     ORDER.add(PizzaPriceUtil.pricePizzaMargheritaIncludingVAT());
+                    showOrderInfo();
                     PIZZA_ORDER_VIEW.addSupplementIngredients();
                     ChoiceUtil.addChoiceQuestion();
                     break;
@@ -98,6 +100,7 @@ public class PizzaOrderService {
                     COOK.pizzaMeatDelight();
                     CHECK.add(PIZZA_ORDER_VIEW.orderPizzaMeatDelight());
                     ORDER.add(PizzaPriceUtil.pricePizzaMeatDelightIncludingVAT());
+                    showOrderInfo();
                     PIZZA_ORDER_VIEW.addSupplementIngredients();
                     ChoiceUtil.addChoiceQuestion();
                     break;
@@ -107,6 +110,7 @@ public class PizzaOrderService {
                     COOK.pizzaPepperoni();
                     CHECK.add(PIZZA_ORDER_VIEW.orderPizzaPepperoni());
                     ORDER.add(PizzaPriceUtil.pricePizzaPepperoniIncludingVAT());
+                    showOrderInfo();
                     PIZZA_ORDER_VIEW.addSupplementIngredients();
                     ChoiceUtil.addChoiceQuestion();
                     break;
@@ -116,6 +120,7 @@ public class PizzaOrderService {
                     COOK.pizzaVegetarian();
                     CHECK.add(PIZZA_ORDER_VIEW.orderPizzaVegetarian());
                     ORDER.add(PizzaPriceUtil.pricePizzaVegetarianIncludingVAT());
+                    showOrderInfo();
                     PIZZA_ORDER_VIEW.addSupplementIngredients();
                     ChoiceUtil.addChoiceQuestion();
                     break;
@@ -127,6 +132,9 @@ public class PizzaOrderService {
                 PIZZA_ORDER_VIEW.pizzaNumberException();
             }
         }
+    }
+
+    public void showOrderInfo() {
         totalOrder();
         discountForTwoItems();
         discountForThreeAndMoreItems();

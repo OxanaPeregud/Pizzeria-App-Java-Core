@@ -1,6 +1,6 @@
 package com.peregud.pizza.util;
 
-import com.peregud.pizza.service.IngredientSupplement;
+import com.peregud.pizza.service.IngredientSupplementService;
 import com.peregud.pizza.service.PizzaOrderService;
 
 import java.io.IOException;
@@ -8,11 +8,11 @@ import java.util.Scanner;
 
 public class ChoiceUtil {
     private static final PizzaOrderService PIZZA_ORDER;
-    private static final IngredientSupplement INGREDIENT_SUPPLEMENT;
+    private static final IngredientSupplementService INGREDIENT_SUPPLEMENT;
 
     static {
         PIZZA_ORDER = new PizzaOrderService();
-        INGREDIENT_SUPPLEMENT = new IngredientSupplement();
+        INGREDIENT_SUPPLEMENT = new IngredientSupplementService();
     }
 
     public static void addChoiceQuestion() throws IOException {
@@ -25,7 +25,8 @@ public class ChoiceUtil {
         } else if (choice == 3) {
             PIZZA_ORDER.paymentChoice();
         } else {
-            System.out.println("wrong number");;
+            System.out.println("You need to enter a number from 1 to 3");
+            addChoiceQuestion();
         }
     }
 }

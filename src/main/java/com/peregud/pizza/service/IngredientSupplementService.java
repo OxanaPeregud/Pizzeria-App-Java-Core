@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class IngredientSupplement {
+public class IngredientSupplementService {
     private static final CreatePizzaViewConsole CREATE_PIZZA_VIEW;
     private static final Map<Integer, Ingredient> INGREDIENTS;
     private static final CookService COOK;
