@@ -1,0 +1,31 @@
+package com.peregud.pizza.view;
+
+public interface OrderStatisticsView {
+
+    void enterFourCheese();
+
+    void enterMargherita();
+
+    void enterMeatDelight();
+
+    void enterPepperoni();
+
+    void enterVegetarian();
+
+    void orderStatisticsException();
+
+    void pizzasSold();
+
+    void totalPizzasSold();
+
+    void pizzasRevenue();
+
+    void totalRevenue();
+
+    void averageCheck();
+
+    void totalProfit();
+
+    void profitMargin();
+
+}

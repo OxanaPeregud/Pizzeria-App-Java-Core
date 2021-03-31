@@ -1,0 +1,36 @@
+package com.peregud.pizza.view;
+
+import com.peregud.pizza.exceptions.CardException;
+import com.peregud.pizza.model.Customer;
+
+public class OnlinePaymentViewConsole implements OnlinePaymentView {
+    private static final CardException CARD_EXCEPTION;
+
+    static {
+        CARD_EXCEPTION = new CardException();
+    }
+
+    public void firstName() {
+        System.out.println("Enter your First Name:");
+    }
+
+    public void lastName() {
+        System.out.println("Enter your Last Name:");
+    }
+
+    public void cardNumber() {
+        System.out.println("Enter your Card Number:");
+    }
+
+    public void invalidInput() {
+        System.out.println("Card Number must contain 16 digits");
+    }
+
+    public void displayPayment() {
+        System.out.println(Customer.firstName + " " + Customer.lastName + " paid total amount");
+    }
+
+    public void cardException() {
+        System.out.println(CARD_EXCEPTION.toString());
+    }
+}
