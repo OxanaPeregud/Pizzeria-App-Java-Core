@@ -44,4 +44,6 @@ public interface PizzaOrderView {
 
     void paymentChoiceException();
 
+    void addSupplementIngredients();
+
 }

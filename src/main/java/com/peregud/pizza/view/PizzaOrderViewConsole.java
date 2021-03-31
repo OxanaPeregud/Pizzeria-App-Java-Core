@@ -111,7 +111,7 @@ public class PizzaOrderViewConsole implements PizzaOrderView {
     }
 
     public void addPizzaQuestion() {
-        System.out.println("\nDo you want to order anything else (Type y or n)");
+        System.out.println("\nDo you want to order any other pizza (Type y or n)");
     }
 
     public void paymentChoice() {
@@ -127,5 +127,11 @@ public class PizzaOrderViewConsole implements PizzaOrderView {
 
     public void paymentChoiceException() {
         System.out.println(PAYMENT_CHOICE_EXCEPTION.toString());
+    }
+
+    public void addSupplementIngredients() {
+        System.out.println("Press 1 - If you want to add more ingredients to your pizza");
+        System.out.println("Press 2 - Continue with original order");
+        System.out.println("Press 3 - Pay for the order");
     }
 }

@@ -7,6 +7,7 @@ import com.peregud.pizza.model.PaymentMethod;
 import com.peregud.pizza.model.Pizza;
 import com.peregud.pizza.repository.OrderRepository;
 import com.peregud.pizza.util.CheckUtil;
+import com.peregud.pizza.util.ChoiceUtil;
 import com.peregud.pizza.util.DiscountUtil;
 import com.peregud.pizza.util.PizzaPriceUtil;
 import com.peregud.pizza.view.CashPaymentViewConsole;
@@ -25,7 +26,7 @@ public class PizzaOrderService {
     private static final Map<Integer, Pizza> PIZZAS;
     private static final PizzaOrderViewConsole PIZZA_ORDER_VIEW;
     private static final CookService COOK;
-    private static final OrderRepository ORDER;
+    public static final OrderRepository ORDER;
     private static final CashPaymentService CASH_PAYMENT;
     private static final CashPaymentViewConsole CASH_PAYMENT_VIEW;
     public static final Check CHECK;
@@ -79,6 +80,8 @@ public class PizzaOrderService {
                     COOK.pizzaFourCheese();
                     CHECK.add(PIZZA_ORDER_VIEW.orderPizzaFourCheese());
                     ORDER.add(PizzaPriceUtil.pricePizzaFourCheeseIncludingVAT());
+                    PIZZA_ORDER_VIEW.addSupplementIngredients();
+                    ChoiceUtil.addChoiceQuestion();
                     break;
                 case MARGHERITA:
                     PIZZA_ORDER_VIEW.orderPizzaMargherita();
@@ -86,6 +89,8 @@ public class PizzaOrderService {
                     COOK.pizzaMargherita();
                     CHECK.add(PIZZA_ORDER_VIEW.orderPizzaMargherita());
                     ORDER.add(PizzaPriceUtil.pricePizzaMargheritaIncludingVAT());
+                    PIZZA_ORDER_VIEW.addSupplementIngredients();
+                    ChoiceUtil.addChoiceQuestion();
                     break;
                 case MEAT_DELIGHT:
                     PIZZA_ORDER_VIEW.orderPizzaMeatDelight();
@@ -93,6 +98,8 @@ public class PizzaOrderService {
                     COOK.pizzaMeatDelight();
                     CHECK.add(PIZZA_ORDER_VIEW.orderPizzaMeatDelight());
                     ORDER.add(PizzaPriceUtil.pricePizzaMeatDelightIncludingVAT());
+                    PIZZA_ORDER_VIEW.addSupplementIngredients();
+                    ChoiceUtil.addChoiceQuestion();
                     break;
                 case PEPPERONI:
                     PIZZA_ORDER_VIEW.orderPizzaPepperoni();
@@ -100,6 +107,8 @@ public class PizzaOrderService {
                     COOK.pizzaPepperoni();
                     CHECK.add(PIZZA_ORDER_VIEW.orderPizzaPepperoni());
                     ORDER.add(PizzaPriceUtil.pricePizzaPepperoniIncludingVAT());
+                    PIZZA_ORDER_VIEW.addSupplementIngredients();
+                    ChoiceUtil.addChoiceQuestion();
                     break;
                 case VEGETARIAN:
                     PIZZA_ORDER_VIEW.orderPizzaVegetarian();
@@ -107,9 +116,11 @@ public class PizzaOrderService {
                     COOK.pizzaVegetarian();
                     CHECK.add(PIZZA_ORDER_VIEW.orderPizzaVegetarian());
                     ORDER.add(PizzaPriceUtil.pricePizzaVegetarianIncludingVAT());
+                    PIZZA_ORDER_VIEW.addSupplementIngredients();
+                    ChoiceUtil.addChoiceQuestion();
                     break;
             }
-        } catch (NullPointerException e) {
+        } catch (NullPointerException | IOException e) {
             try {
                 throw new PizzaNumberException();
             } catch (PizzaNumberException ex) {
