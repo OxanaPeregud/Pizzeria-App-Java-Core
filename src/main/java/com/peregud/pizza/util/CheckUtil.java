@@ -1,8 +1,15 @@
 package com.peregud.pizza.util;
 
+import com.peregud.pizza.view.UtilViewConsole;
+
 import java.util.Scanner;
 
 public final class CheckUtil {
+    private static final UtilViewConsole UTIL_VIEW;
+
+    static {
+        UTIL_VIEW = new UtilViewConsole();
+    }
 
     private CheckUtil() {
     }
@@ -32,6 +39,6 @@ public final class CheckUtil {
     }
 
     public static void invalidInput() {
-        System.out.println("Your input is invalid. You must enter a digit");
+        UTIL_VIEW.checkUtilView();
     }
 }

@@ -41,47 +41,47 @@ public class IngredientSupplementService {
             int choice = CheckUtil.checkInt();
             switch (INGREDIENTS.get(choice)) {
                 case CHEESE:
-                    PizzaOrderService.ORDER.add(IngredientPriceUtil.priceCheeseIncludingVAT());
+                    PizzaOrderService.INGREDIENT_ORDER.add(IngredientPriceUtil.priceCheeseIncludingVAT());
                     COOK.cheese();
                     PizzaOrderService.CHECK.add(CREATE_PIZZA_VIEW.orderCheese());
                     break;
                 case MEAT:
-                    PizzaOrderService.ORDER.add(IngredientPriceUtil.priceMeatIncludingVAT());
+                    PizzaOrderService.INGREDIENT_ORDER.add(IngredientPriceUtil.priceMeatIncludingVAT());
                     COOK.meat();
                     PizzaOrderService.CHECK.add(CREATE_PIZZA_VIEW.orderMeat());
                     break;
                 case SAUSAGES:
-                    PizzaOrderService.ORDER.add(IngredientPriceUtil.priceSausagesIncludingVAT());
+                    PizzaOrderService.INGREDIENT_ORDER.add(IngredientPriceUtil.priceSausagesIncludingVAT());
                     COOK.sausages();
                     PizzaOrderService.CHECK.add(CREATE_PIZZA_VIEW.orderSausages());
                     break;
                 case OLIVES:
-                    PizzaOrderService.ORDER.add(IngredientPriceUtil.priceOlivesIncludingVAT());
+                    PizzaOrderService.INGREDIENT_ORDER.add(IngredientPriceUtil.priceOlivesIncludingVAT());
                     COOK.olives();
                     PizzaOrderService.CHECK.add(CREATE_PIZZA_VIEW.orderOlives());
                     break;
                 case TOMATOES:
-                    PizzaOrderService.ORDER.add(IngredientPriceUtil.priceTomatoesIncludingVAT());
+                    PizzaOrderService.INGREDIENT_ORDER.add(IngredientPriceUtil.priceTomatoesIncludingVAT());
                     COOK.tomatoes();
                     PizzaOrderService.CHECK.add(CREATE_PIZZA_VIEW.orderTomatoes());
                     break;
                 case PEPPER:
-                    PizzaOrderService.ORDER.add(IngredientPriceUtil.pricePepperIncludingVAT());
+                    PizzaOrderService.INGREDIENT_ORDER.add(IngredientPriceUtil.pricePepperIncludingVAT());
                     COOK.pepper();
                     PizzaOrderService.CHECK.add(CREATE_PIZZA_VIEW.orderPepper());
                     break;
                 case OREGANO:
-                    PizzaOrderService.ORDER.add(IngredientPriceUtil.priceOreganoIncludingVAT());
+                    PizzaOrderService.INGREDIENT_ORDER.add(IngredientPriceUtil.priceOreganoIncludingVAT());
                     COOK.oregano();
                     PizzaOrderService.CHECK.add(CREATE_PIZZA_VIEW.orderOregano());
                     break;
                 case SAUCE:
-                    PizzaOrderService.ORDER.add(IngredientPriceUtil.priceSauceIncludingVAT());
+                    PizzaOrderService.INGREDIENT_ORDER.add(IngredientPriceUtil.priceSauceIncludingVAT());
                     COOK.sauce();
                     PizzaOrderService.CHECK.add(CREATE_PIZZA_VIEW.orderSauce());
                     break;
                 case CRUST:
-                    PizzaOrderService.ORDER.add(IngredientPriceUtil.priceCrustIncludingVAT());
+                    PizzaOrderService.INGREDIENT_ORDER.add(IngredientPriceUtil.priceCrustIncludingVAT());
                     PizzaOrderService.CHECK.add(CREATE_PIZZA_VIEW.orderCrust());
                     break;
             }

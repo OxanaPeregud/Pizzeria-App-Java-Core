@@ -2,22 +2,26 @@ package com.peregud.pizza.util;
 
 import com.peregud.pizza.service.IngredientSupplementService;
 import com.peregud.pizza.service.PizzaOrderService;
+import com.peregud.pizza.view.UtilViewConsole;
 
 import java.io.IOException;
-import java.util.Scanner;
 
-public class ChoiceUtil {
+public final class ChoiceUtil {
     private static final PizzaOrderService PIZZA_ORDER;
     private static final IngredientSupplementService INGREDIENT_SUPPLEMENT;
+    private static final UtilViewConsole UTIL_VIEW;
 
     static {
         PIZZA_ORDER = new PizzaOrderService();
         INGREDIENT_SUPPLEMENT = new IngredientSupplementService();
+        UTIL_VIEW = new UtilViewConsole();
+    }
+
+    private ChoiceUtil() {
     }
 
     public static void addChoiceQuestion() throws IOException {
-        Scanner scan = new Scanner(System.in);
-        int choice = scan.nextInt();
+        int choice = CheckUtil.checkInt();
         if (choice == 1) {
             INGREDIENT_SUPPLEMENT.chooseIngredients();
         } else if (choice == 2) {
@@ -25,7 +29,7 @@ public class ChoiceUtil {
         } else if (choice == 3) {
             PIZZA_ORDER.paymentChoice();
         } else {
-            System.out.println("You need to enter a number from 1 to 3");
+            UTIL_VIEW.choiceUtilView();
             addChoiceQuestion();
         }
     }
