@@ -167,31 +167,31 @@ public class PizzaOrderService {
 
     public void discountForOrderOnSpecificDay() {
         if (PIZZA_ORDER.size() == 1 && LocalDateTime.now().getDayOfWeek() == DayOfWeek.FRIDAY) {
-            double totalOrder = DiscountUtil.discountForOrderOnSpecificDay(PIZZA_ORDER.totalOrder() +
-                    INGREDIENT_ORDER.totalOrder());
+            double totalOrder = DiscountUtil.discountForOrderOnSpecificDay(PIZZA_ORDER.totalOrder()) +
+                    INGREDIENT_ORDER.totalOrder();
             PIZZA_ORDER_VIEW.discountForOrderOnSpecificDay(totalOrder);
             PIZZA_ORDER_VIEW.amountToPay(DiscountUtil.discountForOrderOnSpecificDay(
                     PIZZA_ORDER.totalOrder()) + INGREDIENT_ORDER.totalOrder());
         } else if (LocalDateTime.now().getDayOfWeek() == DayOfWeek.FRIDAY) {
-            double totalOrder = DiscountUtil.discountForOrderOnSpecificDay(PIZZA_ORDER.totalOrder() +
-                    INGREDIENT_ORDER.totalOrder());
+            double totalOrder = DiscountUtil.discountForOrderOnSpecificDay(PIZZA_ORDER.totalOrder()) +
+                    INGREDIENT_ORDER.totalOrder();
             PIZZA_ORDER_VIEW.discountForOrderOnSpecificDay(totalOrder);
         }
     }
 
     public double amountToPay(double amountToPay) {
         if (PIZZA_ORDER.size() == 2 && LocalDateTime.now().getDayOfWeek() != DayOfWeek.FRIDAY) {
-            amountToPay = DiscountUtil.discountForTwoItems(PIZZA_ORDER.totalOrder() +
-                    INGREDIENT_ORDER.totalOrder());
+            amountToPay = DiscountUtil.discountForTwoItems(PIZZA_ORDER.totalOrder()) +
+                    INGREDIENT_ORDER.totalOrder();
         } else if (PIZZA_ORDER.size() == 2 && LocalDateTime.now().getDayOfWeek() == DayOfWeek.FRIDAY) {
             amountToPay = DiscountUtil.amountToPayFor2PizzasOnSpecificDay(
-                    PIZZA_ORDER.totalOrder() + INGREDIENT_ORDER.totalOrder());
+                    PIZZA_ORDER.totalOrder()) + INGREDIENT_ORDER.totalOrder();
         } else if (PIZZA_ORDER.size() >= 3 && LocalDateTime.now().getDayOfWeek() != DayOfWeek.FRIDAY) {
             amountToPay = DiscountUtil.discountForThreeAndMoreItems(
-                    PIZZA_ORDER.totalOrder() + INGREDIENT_ORDER.totalOrder());
+                    PIZZA_ORDER.totalOrder()) + INGREDIENT_ORDER.totalOrder();
         } else if (PIZZA_ORDER.size() >= 3 && LocalDateTime.now().getDayOfWeek() == DayOfWeek.FRIDAY) {
             amountToPay = DiscountUtil.amountToPayFor3AndMorePizzasOnSpecificDay(
-                    PIZZA_ORDER.totalOrder() + INGREDIENT_ORDER.totalOrder());
+                    PIZZA_ORDER.totalOrder()) + INGREDIENT_ORDER.totalOrder();
         }
         return amountToPay;
     }
@@ -199,16 +199,16 @@ public class PizzaOrderService {
     public void createCheck() {
         if (PIZZA_ORDER.size() == 2 && LocalDateTime.now().getDayOfWeek() != DayOfWeek.FRIDAY) {
             PIZZA_ORDER_VIEW.amountToPay(DiscountUtil.discountForTwoItems(PIZZA_ORDER.totalOrder()) +
-                    +INGREDIENT_ORDER.totalOrder());
+                    INGREDIENT_ORDER.totalOrder());
         } else if (PIZZA_ORDER.size() == 2 && LocalDateTime.now().getDayOfWeek() == DayOfWeek.FRIDAY) {
             PIZZA_ORDER_VIEW.amountToPay(DiscountUtil.amountToPayFor2PizzasOnSpecificDay(
-                    PIZZA_ORDER.totalOrder()) + +INGREDIENT_ORDER.totalOrder());
+                    PIZZA_ORDER.totalOrder()) + INGREDIENT_ORDER.totalOrder());
         } else if (PIZZA_ORDER.size() >= 3 && LocalDateTime.now().getDayOfWeek() != DayOfWeek.FRIDAY) {
             PIZZA_ORDER_VIEW.amountToPay(DiscountUtil.discountForThreeAndMoreItems(
-                    PIZZA_ORDER.totalOrder()) + +INGREDIENT_ORDER.totalOrder());
+                    PIZZA_ORDER.totalOrder()) + INGREDIENT_ORDER.totalOrder());
         } else if (PIZZA_ORDER.size() >= 3 && LocalDateTime.now().getDayOfWeek() == DayOfWeek.FRIDAY) {
             PIZZA_ORDER_VIEW.amountToPay(DiscountUtil.amountToPayFor3AndMorePizzasOnSpecificDay(
-                    PIZZA_ORDER.totalOrder()) + +INGREDIENT_ORDER.totalOrder());
+                    PIZZA_ORDER.totalOrder()) + INGREDIENT_ORDER.totalOrder());
         }
     }
 
@@ -225,8 +225,8 @@ public class PizzaOrderService {
     }
 
     public double getChange() {
-        return CASH_PAYMENT.countChange(amountToPay(PIZZA_ORDER.totalOrder()) +
-                INGREDIENT_ORDER.totalOrder());
+        return CASH_PAYMENT.countChange(amountToPay(PIZZA_ORDER.totalOrder() +
+                INGREDIENT_ORDER.totalOrder()));
     }
 
     public void paymentChoice() throws IOException {
