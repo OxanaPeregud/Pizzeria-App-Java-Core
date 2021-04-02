@@ -405,7 +405,7 @@ public class PizzaTests {
         assertEquals(3.12, RoundUtil.up(IngredientPriceUtil.priceCrustIncludingVAT()));
     }
 
-    public void putToMaps() {
+    public void putToMap() {
         OrderStatisticsController.SOLD_PIZZAS.put(1, 5);
         OrderStatisticsController.SOLD_PIZZAS.put(2, 5);
         OrderStatisticsController.SOLD_PIZZAS.put(3, 11);
@@ -415,19 +415,19 @@ public class PizzaTests {
 
     @Test
     public void pizzasSold_OrderStatisticsService() {
-        putToMaps();
+        putToMap();
         assertEquals(List.of(5, 5, 11, 1, 20), ORDER_STATISTICS.pizzasSold());
     }
 
     @Test
     public void totalPizzasSold_OrderStatisticsService() {
-        putToMaps();
+        putToMap();
         assertEquals(42, ORDER_STATISTICS.totalPizzasSold());
     }
 
     @Test
     public void pizzasPrices_OrderStatisticsService() {
-        putToMaps();
+        putToMap();
         assertEquals(List.of(PizzaPriceUtil.pricePizzaFourCheeseIncludingVAT(),
                 PizzaPriceUtil.pricePizzaMargheritaIncludingVAT(),
                 PizzaPriceUtil.pricePizzaMeatDelightIncludingVAT(),
@@ -437,32 +437,67 @@ public class PizzaTests {
     }
 
     @Test
+    public void pizzasRevenue_FourCheese_OrderStatisticsService() {
+        putToMap();
+        assertEquals(RoundUtil.up(ORDER_STATISTICS.pizzasSold().get(0) * ORDER_STATISTICS.pizzasPrices().get(0)),
+                RoundUtil.up(5 * PizzaPriceUtil.pricePizzaFourCheeseIncludingVAT()));
+    }
+
+    @Test
+    public void pizzasRevenue_Margherita_OrderStatisticsService() {
+        putToMap();
+        assertEquals(RoundUtil.up(ORDER_STATISTICS.pizzasSold().get(1) * ORDER_STATISTICS.pizzasPrices().get(1)),
+                RoundUtil.up(5 * PizzaPriceUtil.pricePizzaMargheritaIncludingVAT()));
+    }
+
+    @Test
+    public void pizzasRevenue_MeatDelight_OrderStatisticsService() {
+        putToMap();
+        assertEquals(RoundUtil.up(ORDER_STATISTICS.pizzasSold().get(2) * ORDER_STATISTICS.pizzasPrices().get(2)),
+                RoundUtil.up(11 * PizzaPriceUtil.pricePizzaMeatDelightIncludingVAT()));
+    }
+
+    @Test
+    public void pizzasRevenue_Pepperoni_OrderStatisticsService() {
+        putToMap();
+        assertEquals(RoundUtil.up(ORDER_STATISTICS.pizzasSold().get(3) * ORDER_STATISTICS.pizzasPrices().get(3)),
+                RoundUtil.up(1 * PizzaPriceUtil.pricePizzaPepperoniIncludingVAT()));
+    }
+
+    @Test
+    public void pizzasRevenue_Vegetarian_OrderStatisticsService() {
+        putToMap();
+        assertEquals(RoundUtil.up(ORDER_STATISTICS.pizzasSold().get(4) * ORDER_STATISTICS.pizzasPrices().get(4)),
+                RoundUtil.up(20 * PizzaPriceUtil.pricePizzaVegetarianIncludingVAT()));
+    }
+
+    @Test
     public void totalRevenue_OrderStatisticsService() {
-        putToMaps();
+        putToMap();
         assertEquals(1282.32, ORDER_STATISTICS.totalRevenue());
     }
 
     @Test
     public void averageCheck_OrderStatisticsService() {
-        putToMaps();
+        putToMap();
         assertEquals(30.53, ORDER_STATISTICS.averageCheck());
     }
 
     @Test
     public void totalCost_OrderStatisticsService() {
-        putToMaps();
+        putToMap();
         assertEquals(822.0, ORDER_STATISTICS.totalCost());
     }
 
     @Test
     public void totalProfit_OrderStatisticsService() {
-        putToMaps();
+        putToMap();
         assertEquals(202.21, ORDER_STATISTICS.totalProfit());
     }
 
     @Test
     public void profitMargin_OrderStatisticsService() {
-        putToMaps();
+        putToMap();
         assertEquals(15.77, ORDER_STATISTICS.profitMargin());
     }
 
