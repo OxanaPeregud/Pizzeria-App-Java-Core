@@ -4,6 +4,8 @@ import com.peregud.pizza.exceptions.OrderStatisticsException;
 import com.peregud.pizza.service.OrderStatisticsService;
 import com.peregud.pizza.util.RoundUtil;
 
+import java.util.ArrayList;
+
 public class OrderStatisticsViewConsole implements OrderStatisticsView {
     private static final OrderStatisticsService ORDER_STATISTICS;
     private static final OrderStatisticsException ORDER_STATISTICS_EXCEPTION;
@@ -55,20 +57,15 @@ public class OrderStatisticsViewConsole implements OrderStatisticsView {
 
     public void pizzasRevenue() {
         System.out.println("Revenue from Pizzas 'Four Cheese': " +
-                RoundUtil.up(ORDER_STATISTICS.pizzasSold().get(0)) *
-                        ORDER_STATISTICS.pizzasPrices().get(0) + "$");
+                RoundUtil.up(ORDER_STATISTICS.pizzasRevenue().get(0)) + "$");
         System.out.println("Revenue from Pizzas 'Margherita': " +
-                RoundUtil.up(ORDER_STATISTICS.pizzasSold().get(1) *
-                        ORDER_STATISTICS.pizzasPrices().get(1)) + "$");
+                RoundUtil.up(ORDER_STATISTICS.pizzasRevenue().get(1)) + "$");
         System.out.println("Revenue from Pizzas 'Meat Delight': " +
-                RoundUtil.up(ORDER_STATISTICS.pizzasSold().get(2) *
-                        ORDER_STATISTICS.pizzasPrices().get(2)) + "$");
+                RoundUtil.up(ORDER_STATISTICS.pizzasRevenue().get(2)) + "$");
         System.out.println("Revenue from Pizzas 'Pepperoni': " +
-                RoundUtil.up(ORDER_STATISTICS.pizzasSold().get(3) *
-                        ORDER_STATISTICS.pizzasPrices().get(3)) + "$");
+                RoundUtil.up(ORDER_STATISTICS.pizzasRevenue().get(3)) + "$");
         System.out.println("Revenue from Pizzas 'Vegetarian': " +
-                RoundUtil.up(ORDER_STATISTICS.pizzasSold().get(4) *
-                        ORDER_STATISTICS.pizzasPrices().get(4)) + "$");
+                RoundUtil.up(ORDER_STATISTICS.pizzasRevenue().get(4)) + "$");
     }
 
     public void totalRevenue() {

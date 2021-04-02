@@ -14,6 +14,7 @@ import java.util.Map;
 public class OrderStatisticsService {
     private static final Map<Integer, Double> PIZZAS_PRICES;
     private static final Map<Integer, Double> PIZZAS_COST;
+    private static final List<Double> PIZZAS_REVENUE;
 
     static {
         PIZZAS_PRICES = new HashMap<>();
@@ -29,6 +30,8 @@ public class OrderStatisticsService {
         PIZZAS_COST.put(3, PizzaCostUtil.getCostMeatDelight());
         PIZZAS_COST.put(4, PizzaCostUtil.getCostPepperoni());
         PIZZAS_COST.put(5, PizzaCostUtil.getCostVegetarian());
+
+        PIZZAS_REVENUE = new ArrayList<>();
     }
 
     public List<Integer> pizzasSold() {
@@ -49,10 +52,11 @@ public class OrderStatisticsService {
                 .values());
     }
 
-    public void pizzasRevenue() {
+    public List<Double> pizzasRevenue() {
         for (int i = 0; i < pizzasSold().size(); i++) {
-            pizzasPrices().set(i, (pizzasSold().get(i) * pizzasPrices().get(i)));
+            PIZZAS_REVENUE.add(pizzasSold().get(i) * pizzasPrices().get(i));
         }
+        return new ArrayList<>(PIZZAS_REVENUE);
     }
 
     public double totalRevenue() {
