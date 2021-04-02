@@ -8,7 +8,7 @@ public final class PizzaCostUtil {
     private PizzaCostUtil() {
     }
 
-    public static double getCostFourCheese() {
+    public static double costFourCheese() {
         return Ingredient.TRADITIONAL_DOUGH.getCostPerUnit() *
                 Pizza.FOUR_CHEESE.getIngredientQuantity(Ingredient.TRADITIONAL_DOUGH) +
                 Ingredient.SAUCE.getCostPerUnit() * Pizza.FOUR_CHEESE.getIngredientQuantity(Ingredient.SAUCE) +
@@ -16,7 +16,7 @@ public final class PizzaCostUtil {
                 Ingredient.OREGANO.getCostPerUnit() * Pizza.FOUR_CHEESE.getIngredientQuantity(Ingredient.OREGANO);
     }
 
-    public static double getCostMargherita() {
+    public static double costMargherita() {
         return Ingredient.TRADITIONAL_DOUGH.getCostPerUnit() *
                 Pizza.MARGHERITA.getIngredientQuantity(Ingredient.TRADITIONAL_DOUGH) +
                 Ingredient.SAUCE.getCostPerUnit() * Pizza.MARGHERITA.getIngredientQuantity(Ingredient.SAUCE) +
@@ -25,7 +25,7 @@ public final class PizzaCostUtil {
                 Ingredient.OREGANO.getCostPerUnit() * Pizza.MARGHERITA.getIngredientQuantity(Ingredient.OREGANO);
     }
 
-    public static double getCostMeatDelight() {
+    public static double costMeatDelight() {
         return Ingredient.TRADITIONAL_DOUGH.getCostPerUnit() *
                 Pizza.MEAT_DELIGHT.getIngredientQuantity(Ingredient.TRADITIONAL_DOUGH) +
                 Ingredient.SAUCE.getCostPerUnit() * Pizza.MEAT_DELIGHT.getIngredientQuantity(Ingredient.SAUCE) +
@@ -34,7 +34,7 @@ public final class PizzaCostUtil {
                 Ingredient.SAUSAGES.getCostPerUnit() * Pizza.MEAT_DELIGHT.getIngredientQuantity(Ingredient.SAUSAGES);
     }
 
-    public static double getCostPepperoni() {
+    public static double costPepperoni() {
         return Ingredient.TRADITIONAL_DOUGH.getCostPerUnit() *
                 Pizza.PEPPERONI.getIngredientQuantity(Ingredient.TRADITIONAL_DOUGH) +
                 Ingredient.SAUCE.getCostPerUnit() * Pizza.PEPPERONI.getIngredientQuantity(Ingredient.SAUCE) +
@@ -42,7 +42,7 @@ public final class PizzaCostUtil {
                 Ingredient.MEAT.getCostPerUnit() * Pizza.PEPPERONI.getIngredientQuantity(Ingredient.MEAT);
     }
 
-    public static double getCostVegetarian() {
+    public static double costVegetarian() {
         return Ingredient.TRADITIONAL_DOUGH.getCostPerUnit() *
                Pizza.VEGETARIAN.getIngredientQuantity(Ingredient.TRADITIONAL_DOUGH) +
                Ingredient.SAUCE.getCostPerUnit() * Pizza.VEGETARIAN.getIngredientQuantity(Ingredient.SAUCE) +

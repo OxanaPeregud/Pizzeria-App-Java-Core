@@ -62,4 +62,8 @@ public class StorageRepository implements IngredientStorageRepository {
     public Iterable<Map.Entry<Ingredient, Integer>> entrySet() {
         return STORAGE.entrySet();
     }
+
+    public void put(Ingredient ingredient, int quantity) {
+        STORAGE.put(ingredient, quantity);
+    }
 }

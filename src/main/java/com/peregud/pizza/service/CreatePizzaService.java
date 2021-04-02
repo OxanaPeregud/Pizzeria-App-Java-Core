@@ -34,9 +34,8 @@ public class CreatePizzaService {
     private static final OnlinePaymentService ONLINE_PAYMENT;
     private static final CardPaymentService CARD_PAYMENT;
     private static final Map<Integer, PaymentMethod> PAYMENT_METHOD;
-    public int payment;
-    public char ch;
-    public int choice;
+    private char ch;
+    private int choice;
 
     static {
         DOUGH = new HashMap<>();
@@ -223,7 +222,7 @@ public class CreatePizzaService {
     public void paymentChoice() {
         CREATE_PIZZA_VIEW.paymentChoice();
         try {
-            payment = CheckUtil.checkInt();
+            int payment = CheckUtil.checkInt();
             switch (PAYMENT_METHOD.get(payment)) {
                 case CASH:
                     CHECK_VIEW.displayCheckCreatePizza();

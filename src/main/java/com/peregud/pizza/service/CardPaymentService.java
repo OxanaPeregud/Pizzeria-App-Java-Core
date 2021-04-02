@@ -7,7 +7,6 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class CardPaymentService {
-    public int PIN;
     private static final CardPaymentViewConsole CARD_PAYMENT_VIEW;
 
     static {
@@ -19,7 +18,7 @@ public class CardPaymentService {
             CARD_PAYMENT_VIEW.enterPIN();
             Scanner scan = new Scanner(System.in);
             int count = 0;
-            PIN = scan.nextInt();
+            int PIN = scan.nextInt();
             while (PIN != 0) {
                 PIN = PIN / 10;
                 count++;

@@ -6,7 +6,7 @@ public final class PizzaPriceUtil {
     }
 
     public static double pricePizzaFourCheeseWithoutVAT() {
-        return ProfitUtil.profitPercentage(PizzaCostUtil.getCostFourCheese());
+        return ProfitUtil.profitPercentage(PizzaCostUtil.costFourCheese());
     }
 
     public static double pricePizzaFourCheeseIncludingVAT() {
@@ -14,7 +14,7 @@ public final class PizzaPriceUtil {
     }
 
     public static double pricePizzaMargheritaWithoutVAT() {
-        return ProfitUtil.profitPercentage(PizzaCostUtil.getCostMargherita());
+        return ProfitUtil.profitPercentage(PizzaCostUtil.costMargherita());
     }
 
     public static double pricePizzaMargheritaIncludingVAT() {
@@ -22,7 +22,7 @@ public final class PizzaPriceUtil {
     }
 
     public static double pricePizzaMeatDelightWithoutVAT() {
-        return ProfitUtil.profitPercentage(PizzaCostUtil.getCostMeatDelight());
+        return ProfitUtil.profitPercentage(PizzaCostUtil.costMeatDelight());
     }
 
     public static double pricePizzaMeatDelightIncludingVAT() {
@@ -30,7 +30,7 @@ public final class PizzaPriceUtil {
     }
 
     public static double pricePizzaPepperoniWithoutVAT() {
-        return ProfitUtil.profitPercentage(PizzaCostUtil.getCostPepperoni());
+        return ProfitUtil.profitPercentage(PizzaCostUtil.costPepperoni());
     }
 
     public static double pricePizzaPepperoniIncludingVAT() {
@@ -38,7 +38,7 @@ public final class PizzaPriceUtil {
     }
 
     public static double pricePizzaVegetarianWithoutVAT() {
-        return ProfitUtil.profitPercentage(PizzaCostUtil.getCostVegetarian());
+        return ProfitUtil.profitPercentage(PizzaCostUtil.costVegetarian());
     }
 
     public static double pricePizzaVegetarianIncludingVAT() {

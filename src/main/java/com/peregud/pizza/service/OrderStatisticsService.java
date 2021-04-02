@@ -25,11 +25,11 @@ public class OrderStatisticsService {
         PIZZAS_PRICES.put(5, PizzaPriceUtil.pricePizzaVegetarianIncludingVAT());
 
         PIZZAS_COST = new HashMap<>();
-        PIZZAS_COST.put(1, PizzaCostUtil.getCostFourCheese());
-        PIZZAS_COST.put(2, PizzaCostUtil.getCostMargherita());
-        PIZZAS_COST.put(3, PizzaCostUtil.getCostMeatDelight());
-        PIZZAS_COST.put(4, PizzaCostUtil.getCostPepperoni());
-        PIZZAS_COST.put(5, PizzaCostUtil.getCostVegetarian());
+        PIZZAS_COST.put(1, PizzaCostUtil.costFourCheese());
+        PIZZAS_COST.put(2, PizzaCostUtil.costMargherita());
+        PIZZAS_COST.put(3, PizzaCostUtil.costMeatDelight());
+        PIZZAS_COST.put(4, PizzaCostUtil.costPepperoni());
+        PIZZAS_COST.put(5, PizzaCostUtil.costVegetarian());
 
         PIZZAS_REVENUE = new ArrayList<>();
     }
