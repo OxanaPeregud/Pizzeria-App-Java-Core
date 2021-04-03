@@ -15,7 +15,7 @@ public class PizzaController {
     private static final PizzaOrderService PIZZA_ORDER;
     private static final CreatePizzaService CREATE_PIZZA;
     private static final OrderStatisticsController ORDER_STATISTICS;
-    private static final StorageViewConsole STORAGE_UTILITY_VIEW;
+    private static final StorageViewConsole STORAGE_VIEW;
     private static final SupplyService SUPPLY;
     private static final EmployeeController EMPLOYEE;
     private static boolean programOn;
@@ -25,7 +25,7 @@ public class PizzaController {
         PIZZA_ORDER = new PizzaOrderService();
         CREATE_PIZZA = new CreatePizzaService();
         ORDER_STATISTICS = new OrderStatisticsController();
-        STORAGE_UTILITY_VIEW = new StorageViewConsole();
+        STORAGE_VIEW = new StorageViewConsole();
         SUPPLY = new SupplyService();
         EMPLOYEE = new EmployeeController();
         programOn = true;
@@ -42,7 +42,6 @@ public class PizzaController {
                 case 1:
                     PIZZA_ORDER.start();
                     PIZZA_ORDER.choosePizza();
-                    PIZZA_ORDER.addPizzaQuestion();
                     addChoiceQuestion();
                     break;
                 case 2:
@@ -57,8 +56,8 @@ public class PizzaController {
                     addChoiceQuestion();
                     break;
                 case 4:
-                    STORAGE_UTILITY_VIEW.displayStorage();
-                    STORAGE_UTILITY_VIEW.showLackOfIngredients();
+                    STORAGE_VIEW.displayStorage();
+                    STORAGE_VIEW.showLackOfIngredients();
                     addChoiceQuestion();
                     break;
                 case 5:

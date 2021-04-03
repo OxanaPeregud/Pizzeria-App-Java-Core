@@ -1,8 +1,6 @@
 D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\model\PaymentMethod.java
 D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\controller\PizzaController.java
 D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\service\CardPaymentService.java
-D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\controller\EmployeeControllerStarter.java
-D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\controller\StorageUtilityControllerStarter.java
 D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\view\OrderStatisticsView.java
 D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\view\UtilView.java
 D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\service\CreatePizzaService.java
@@ -12,7 +10,6 @@ D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\view\PizzaO
 D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\service\OnlinePaymentService.java
 D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\view\EmployeeView.java
 D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\exceptions\PinException.java
-D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\controller\OrderStatisticsControllerStarter.java
 D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\model\Supplier.java
 D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\view\CreatePizzaView.java
 D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\model\Pizza.java
@@ -47,17 +44,17 @@ D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\view\Online
 D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\view\OrderStatisticsViewConsole.java
 D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\util\ChoiceUtil.java
 D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\view\SupplyServiceViewConsole.java
+D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\view\StorageView.java
 D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\view\CashPaymentView.java
 D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\repository\PizzaOrderRepository.java
 D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\controller\EmployeeController.java
 D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\controller\PizzaControllerStarter.java
 D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\view\StarterView.java
-D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\view\StorageUtilityViewConsole.java
 D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\view\CheckViewConsole.java
 D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\service\OrderStatisticsService.java
+D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\view\StorageViewConsole.java
 D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\repository\IngredientStorageRepository.java
 D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\service\PizzaOrderService.java
-D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\view\StorageUtilityView.java
 D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\service\SupplyService.java
 D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\util\DateFormatUtil.java
 D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\exceptions\CardException.java
@@ -69,9 +66,6 @@ D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\service\Ing
 D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\util\RoundUtil.java
 D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\view\StarterViewConsole.java
 D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\repository\IngredientCaloriesRepository.java
-D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\controller\SupplierDeliveringControllerStarter.java
 D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\model\Check.java
 D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\util\PizzaCaloriesUtil.java
 D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\view\CardPaymentViewConsole.java
-D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\controller\CreatePizzaControllerStarter.java
-D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\controller\PizzaOrderControllerStarter.java
