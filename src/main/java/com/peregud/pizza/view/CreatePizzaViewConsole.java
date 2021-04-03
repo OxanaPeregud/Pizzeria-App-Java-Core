@@ -23,26 +23,25 @@ public class CreatePizzaViewConsole implements CreatePizzaView {
 
     public void greeting() {
         System.out.println("\nWELCOME TO PIZZERIA!");
-        System.out.println("You can create your own pizza");
     }
 
     public void menuDough() {
         System.out.println("Choose type of dough you would like to have:");
-        System.out.println("1. Thin Dough");
-        System.out.println("2. Traditional Dough");
+        System.out.println("1. Thin Dough\tPrice: " + RoundUtil.up(IngredientPriceUtil.priceThinDoughIncludingVAT()) + "$");
+        System.out.println("2. Traditional Dough\tPrice: " + RoundUtil.up(IngredientPriceUtil.priceTraditionalDoughIncludingVAT()) + "$");
     }
 
     public void menuIngredients() {
         System.out.println("Choose ingredients you would like to have in your pizza:");
-        System.out.println("1. Cheese");
-        System.out.println("2. Meat");
-        System.out.println("3. Sausages");
-        System.out.println("4. Olives");
-        System.out.println("5. Tomatoes");
-        System.out.println("6. Pepper");
-        System.out.println("7. Oregano");
-        System.out.println("8. Sauce");
-        System.out.println("9. Cheese crust");
+        System.out.println("1. Cheese\tPrice: " + RoundUtil.up(IngredientPriceUtil.priceCheeseIncludingVAT()) + "$");
+        System.out.println("2. Meat\tPrice: " + RoundUtil.up(IngredientPriceUtil.priceMeatIncludingVAT()) + "$");
+        System.out.println("3. Sausages\tPrice: " + RoundUtil.up(IngredientPriceUtil.priceSausagesIncludingVAT()) + "$");
+        System.out.println("4. Olives\tPrice: " + RoundUtil.up(IngredientPriceUtil.priceOlivesIncludingVAT()) + "$");
+        System.out.println("5. Tomatoes\tPrice: " + RoundUtil.up(IngredientPriceUtil.priceTomatoesIncludingVAT()) + "$");
+        System.out.println("6. Pepper\tPrice: " + RoundUtil.up(IngredientPriceUtil.pricePepperIncludingVAT()) + "$");
+        System.out.println("7. Oregano\tPrice: " + RoundUtil.up(IngredientPriceUtil.priceOreganoIncludingVAT()) + "$");
+        System.out.println("8. Sauce\tPrice: " + RoundUtil.up(IngredientPriceUtil.priceSauceIncludingVAT()) + "$");
+        System.out.println("9. Cheese crust\tPrice: " + RoundUtil.up(IngredientPriceUtil.priceCrustIncludingVAT()) + "$");
     }
 
     public String orderThinDough() {
@@ -100,59 +99,81 @@ public class CreatePizzaViewConsole implements CreatePizzaView {
                 "\t" + RoundUtil.up(IngredientPriceUtil.priceCrustIncludingVAT()) + "$";
     }
 
-    public void displayCaloriesThinDough() {
-        System.out.println("Ingredient " + Ingredient.THIN_DOUGH + " Calories: " +
-                Ingredient.THIN_DOUGH.getCalories());
+    public void displayInfoThinDough() {
+        System.out.println("Ingredient " + Ingredient.THIN_DOUGH);
+        System.out.println("Calories: " + Ingredient.THIN_DOUGH.getCalories());
+        System.out.println("Price: " + RoundUtil.up(IngredientPriceUtil.priceThinDoughIncludingVAT()) + "$");
+        System.out.println();
     }
 
-    public void displayCaloriesTraditionalDough() {
-        System.out.println("Ingredient " + Ingredient.TRADITIONAL_DOUGH + " Calories: " +
-                Ingredient.TRADITIONAL_DOUGH.getCalories());
+    public void displayInfoTraditionalDough() {
+        System.out.println("Ingredient " + Ingredient.TRADITIONAL_DOUGH);
+        System.out.println("Calories: " + Ingredient.TRADITIONAL_DOUGH.getCalories());
+        System.out.println("Price: " + RoundUtil.up(IngredientPriceUtil.priceTraditionalDoughIncludingVAT()) + "$");
+        System.out.println();
     }
 
-    public void displayCaloriesCheese() {
-        System.out.println("Ingredient " + Ingredient.CHEESE + " Calories: " +
-                Ingredient.CHEESE.getCalories());
+    public void displayInfoCheese() {
+        System.out.println("Ingredient " + Ingredient.CHEESE);
+        System.out.println("Calories: " + Ingredient.CHEESE.getCalories());
+        System.out.println("Price: " + RoundUtil.up(IngredientPriceUtil.priceCheeseIncludingVAT()) + "$");
+        System.out.println();
     }
 
-    public void displayCaloriesMeat() {
-        System.out.println("Ingredient " + Ingredient.MEAT + " Calories: " +
-                Ingredient.MEAT.getCalories());
+    public void displayInfoMeat() {
+        System.out.println("Ingredient " + Ingredient.MEAT);
+        System.out.println("Calories: " + Ingredient.MEAT.getCalories());
+        System.out.println("Price: " + RoundUtil.up(IngredientPriceUtil.priceMeatIncludingVAT()) + "$");
+        System.out.println();
     }
 
-    public void displayCaloriesSausages() {
-        System.out.println("Ingredient " + Ingredient.SAUSAGES + " Calories: " +
-                Ingredient.SAUSAGES.getCalories());
+    public void displayInfoSausages() {
+        System.out.println("Ingredient " + Ingredient.SAUSAGES);
+        System.out.println("Calories: " + Ingredient.SAUSAGES.getCalories());
+        System.out.println("Price: " + RoundUtil.up(IngredientPriceUtil.priceSausagesIncludingVAT()) + "$");
+        System.out.println();
     }
 
-    public void displayCaloriesOlives() {
-        System.out.println("Ingredient " + Ingredient.OLIVES + " Calories: " +
-                Ingredient.OLIVES.getCalories());
+    public void displayInfoOlives() {
+        System.out.println("Ingredient " + Ingredient.OLIVES);
+        System.out.println("Calories: " + Ingredient.OLIVES.getCalories());
+        System.out.println("Price: " + RoundUtil.up(IngredientPriceUtil.priceOlivesIncludingVAT()) + "$");
+        System.out.println();
     }
 
-    public void displayCaloriesTomatoes() {
-        System.out.println("Ingredient " + Ingredient.TOMATOES + " Calories: " +
-                Ingredient.TOMATOES.getCalories());
+    public void displayInfoTomatoes() {
+        System.out.println("Ingredient " + Ingredient.TOMATOES);
+        System.out.println("Calories: " + Ingredient.TOMATOES.getCalories());
+        System.out.println("Price: " + RoundUtil.up(IngredientPriceUtil.priceTomatoesIncludingVAT()) + "$");
+        System.out.println();
     }
 
-    public void displayCaloriesPepper() {
-        System.out.println("Ingredient " + Ingredient.PEPPER + " Calories: " +
-                Ingredient.PEPPER.getCalories());
+    public void displayInfoPepper() {
+        System.out.println("Ingredient " + Ingredient.PEPPER);
+        System.out.println("Calories: " + Ingredient.PEPPER.getCalories());
+        System.out.println("Price: " + RoundUtil.up(IngredientPriceUtil.pricePepperIncludingVAT()) + "$");
+        System.out.println();
     }
 
-    public void displayCaloriesOregano() {
-        System.out.println("Ingredient " + Ingredient.OREGANO + " Calories: " +
-                Ingredient.OREGANO.getCalories());
+    public void displayInfoOregano() {
+        System.out.println("Ingredient " + Ingredient.OREGANO);
+        System.out.println("Calories: " + Ingredient.OREGANO.getCalories());
+        System.out.println("Price: " + RoundUtil.up(IngredientPriceUtil.priceOreganoIncludingVAT()) + "$");
+        System.out.println();
     }
 
-    public void displayCaloriesSauce() {
-        System.out.println("Ingredient " + Ingredient.SAUCE + " Calories: " +
-                Ingredient.SAUCE.getCalories());
+    public void displayInfoSauce() {
+        System.out.println("Ingredient " + Ingredient.SAUCE);
+        System.out.println("Calories: " + Ingredient.SAUCE.getCalories());
+        System.out.println("Price: " + RoundUtil.up(IngredientPriceUtil.priceSauceIncludingVAT()) + "$");
+        System.out.println();
     }
 
-    public void displayCaloriesCrust() {
-        System.out.println("Ingredient " + Ingredient.CRUST + " Calories: " +
-                Ingredient.CRUST.getCalories());
+    public void displayInfoCrust() {
+        System.out.println("Ingredient " + Ingredient.CRUST);
+        System.out.println("Calories: " + Ingredient.CRUST.getCalories());
+        System.out.println("Price: " + RoundUtil.up(IngredientPriceUtil.priceCrustIncludingVAT()) + "$");
+        System.out.println();
     }
 
     public void totalCalories(int totalCalories) {
@@ -188,5 +209,17 @@ public class CreatePizzaViewConsole implements CreatePizzaView {
 
     public void paymentChoiceException() {
         System.out.println(PAYMENT_CHOICE_EXCEPTION.toString());
+    }
+
+    public void displayOptions() {
+        System.out.println("Choose what would you like to do:");
+        System.out.println("1. Create your own pizza");
+        System.out.println("2. Display info about ingredients that we have");
+        System.out.println("3. Order pizza from our menu");
+        System.out.println("4. Exit");
+    }
+
+    public void choiceView() {
+        System.out.println("You need to enter a number from 1 to 4");
     }
 }

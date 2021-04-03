@@ -46,7 +46,7 @@ public class PizzaController {
                     break;
                 case 2:
                     CREATE_PIZZA.start();
-                    CREATE_PIZZA.chooseDough();
+                    CREATE_PIZZA.displayOptions();
                     CREATE_PIZZA.chooseIngredients();
                     CREATE_PIZZA.addIngredientsQuestion();
                     addChoiceQuestion();

@@ -30,27 +30,27 @@ public interface CreatePizzaView {
 
     String orderCrust();
 
-    void displayCaloriesThinDough();
+    void displayInfoThinDough();
 
-    void displayCaloriesTraditionalDough();
+    void displayInfoTraditionalDough();
 
-    void displayCaloriesCheese();
+    void displayInfoCheese();
 
-    void displayCaloriesMeat();
+    void displayInfoMeat();
 
-    void displayCaloriesSausages();
+    void displayInfoSausages();
 
-    void displayCaloriesOlives();
+    void displayInfoOlives();
 
-    void displayCaloriesTomatoes();
+    void displayInfoTomatoes();
 
-    void displayCaloriesPepper();
+    void displayInfoPepper();
 
-    void displayCaloriesOregano();
+    void displayInfoOregano();
 
-    void displayCaloriesSauce();
+    void displayInfoSauce();
 
-    void displayCaloriesCrust();
+    void displayInfoCrust();
 
     void totalCalories(int totalCalories);
 
@@ -67,5 +67,9 @@ public interface CreatePizzaView {
     void ingredientNumberException();
 
     void paymentChoiceException();
+
+    void displayOptions();
+
+    void choiceView();
 
 }
