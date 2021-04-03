@@ -5,7 +5,7 @@ import com.peregud.pizza.repository.StorageRepository;
 
 import java.util.Map;
 
-public class StorageUtilityViewConsole implements StorageUtilityView {
+public class StorageViewConsole implements StorageView {
     private static final StorageRepository STORAGE;
 
     static {

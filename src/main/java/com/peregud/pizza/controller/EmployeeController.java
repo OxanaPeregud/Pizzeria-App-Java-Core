@@ -11,9 +11,6 @@ public class EmployeeController {
     private static final EmployeeViewConsole EMPLOYEE_VIEW;
     private static final EmployeeService EMPLOYEE_SERVICE;
     private static boolean programOn;
-    public int userMenuOption;
-    public int employeeID;
-    public double amount;
     private static final List<EmployeeService> EMPLOYEE_LIST;
 
     static {
@@ -29,14 +26,15 @@ public class EmployeeController {
         EMPLOYEE_VIEW.operationsMenu();
         while (programOn) {
             EMPLOYEE_VIEW.showMenu();
-            userMenuOption = CheckUtil.checkInt();
+            int userMenuOption = CheckUtil.checkInt();
+            double amount;
             switch (userMenuOption) {
                 case 1:
                     EMPLOYEE_SERVICE.createNewEmployee(EMPLOYEE_LIST);
                     break;
                 case 2:
                     EMPLOYEE_VIEW.idForChangingSalary();
-                    employeeID = CheckUtil.checkInt();
+                    int employeeID = CheckUtil.checkInt();
                     if (employeeID > EMPLOYEE_LIST.size()) {
                         EMPLOYEE_VIEW.notValidID();
                         break;

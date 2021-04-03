@@ -10,11 +10,11 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class OrderStatisticsController {
-    public int numberOfFourCheeseSold;
-    public int numberOfMargheritaSold;
-    public int numberOfMeatDelightSold;
-    public int numberOfPepperoniSold;
-    public int numberOfVegetarianSold;
+    private int numberOfFourCheeseSold;
+    private int numberOfMargheritaSold;
+    private int numberOfMeatDelightSold;
+    private int numberOfPepperoniSold;
+    private int numberOfVegetarianSold;
     private static final OrderStatisticsViewConsole ORDER_STATISTICS_VIEW;
     private static final OrderStatisticsService ORDER_STATISTICS;
     public static final Map<Integer, Integer> SOLD_PIZZAS;

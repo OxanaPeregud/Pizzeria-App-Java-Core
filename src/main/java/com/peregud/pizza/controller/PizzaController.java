@@ -5,7 +5,7 @@ import com.peregud.pizza.service.PizzaOrderService;
 import com.peregud.pizza.service.SupplyService;
 import com.peregud.pizza.util.CheckUtil;
 import com.peregud.pizza.view.StarterViewConsole;
-import com.peregud.pizza.view.StorageUtilityViewConsole;
+import com.peregud.pizza.view.StorageViewConsole;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -15,10 +15,9 @@ public class PizzaController {
     private static final PizzaOrderService PIZZA_ORDER;
     private static final CreatePizzaService CREATE_PIZZA;
     private static final OrderStatisticsController ORDER_STATISTICS;
-    private static final StorageUtilityViewConsole STORAGE_UTILITY_VIEW;
+    private static final StorageViewConsole STORAGE_UTILITY_VIEW;
     private static final SupplyService SUPPLY;
     private static final EmployeeController EMPLOYEE;
-    public int operationChoice;
     private static boolean programOn;
 
     static {
@@ -26,7 +25,7 @@ public class PizzaController {
         PIZZA_ORDER = new PizzaOrderService();
         CREATE_PIZZA = new CreatePizzaService();
         ORDER_STATISTICS = new OrderStatisticsController();
-        STORAGE_UTILITY_VIEW = new StorageUtilityViewConsole();
+        STORAGE_UTILITY_VIEW = new StorageViewConsole();
         SUPPLY = new SupplyService();
         EMPLOYEE = new EmployeeController();
         programOn = true;
@@ -38,7 +37,7 @@ public class PizzaController {
     public void start() throws IOException {
         while (programOn) {
             STARTER_VIEW.displayOperations();
-            operationChoice = CheckUtil.checkInt();
+            int operationChoice = CheckUtil.checkInt();
             switch (operationChoice) {
                 case 1:
                     PIZZA_ORDER.start();

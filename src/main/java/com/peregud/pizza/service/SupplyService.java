@@ -14,7 +14,6 @@ public class SupplyService {
     private static final Map<Integer, Supplier> SUPPLIERS;
     private static final StorageRepository STORAGE;
     private static final SupplyServiceViewConsole SUPPLY_SERVICE_VIEW;
-    public int supplierChoice;
 
     static {
         SUPPLIERS = new HashMap<>();
@@ -34,7 +33,7 @@ public class SupplyService {
     public void start() {
         SUPPLY_SERVICE_VIEW.suppliersMenu();
         try {
-            supplierChoice = CheckUtil.checkInt();
+            int supplierChoice = CheckUtil.checkInt();
             switch (SUPPLIERS.get(supplierChoice)) {
                 case SUPPLIER_1:
                     SUPPLY_SERVICE_VIEW.supplier1IngredientBefore();

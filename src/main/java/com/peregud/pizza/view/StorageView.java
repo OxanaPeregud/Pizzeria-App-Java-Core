@@ -1,6 +1,6 @@
 package com.peregud.pizza.view;
 
-public interface StorageUtilityView {
+public interface StorageView {
 
     void displayStorage();
 

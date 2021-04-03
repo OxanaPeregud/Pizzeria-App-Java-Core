@@ -34,11 +34,8 @@ public class PizzaOrderService {
     private static final OnlinePaymentService ONLINE_PAYMENT;
     private static final CardPaymentService CARD_PAYMENT;
     private static final Map<Integer, PaymentMethod> PAYMENT_METHOD;
-    public static final PizzaOrderRepository PIZZA_ORDER;
+    private static final PizzaOrderRepository PIZZA_ORDER;
     public static final IngredientOrderRepository INGREDIENT_ORDER;
-    public int payment;
-    public char ch;
-    public int choice;
 
     static {
         PIZZAS = new HashMap<>();
@@ -74,7 +71,7 @@ public class PizzaOrderService {
 
     public void choosePizza() {
         PIZZA_ORDER_VIEW.pizzaMenu();
-        choice = CheckUtil.checkInt();
+        int choice = CheckUtil.checkInt();
         try {
             switch (PIZZAS.get(choice)) {
                 case FOUR_CHEESE:
@@ -215,7 +212,7 @@ public class PizzaOrderService {
     public void addPizzaQuestion() throws IOException {
         PIZZA_ORDER_VIEW.addPizzaQuestion();
         Scanner scan = new Scanner(System.in);
-        ch = scan.next().charAt(0);
+        char ch = scan.next().charAt(0);
         if (ch == 'Y' || ch == 'y') {
             choosePizza();
             addPizzaQuestion();
@@ -233,7 +230,7 @@ public class PizzaOrderService {
         CHECK.checkInFile();
         PIZZA_ORDER_VIEW.paymentChoice();
         try {
-            payment = CheckUtil.checkInt();
+            int payment = CheckUtil.checkInt();
             switch (PAYMENT_METHOD.get(payment)) {
                 case CASH:
                     CHECK_VIEW.displayCheckPizzaOrder();
