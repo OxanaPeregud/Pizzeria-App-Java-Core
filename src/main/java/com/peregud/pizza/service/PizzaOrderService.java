@@ -11,9 +11,7 @@ import com.peregud.pizza.util.CheckUtil;
 import com.peregud.pizza.util.ChoiceUtil;
 import com.peregud.pizza.util.DiscountUtil;
 import com.peregud.pizza.util.PizzaPriceUtil;
-import com.peregud.pizza.view.CashPaymentViewConsole;
-import com.peregud.pizza.view.CheckViewConsole;
-import com.peregud.pizza.view.PizzaOrderViewConsole;
+import com.peregud.pizza.view.*;
 
 import java.io.IOException;
 import java.time.DayOfWeek;
@@ -21,7 +19,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
 
 public class PizzaOrderService {
     private static final Map<Integer, Pizza> PIZZAS;
@@ -36,6 +33,7 @@ public class PizzaOrderService {
     private static final Map<Integer, PaymentMethod> PAYMENT_METHOD;
     private static final PizzaOrderRepository PIZZA_ORDER;
     public static final IngredientOrderRepository INGREDIENT_ORDER;
+    private static final CreatePizzaService CREATE_PIZZA;
 
     static {
         PIZZAS = new HashMap<>();
@@ -55,6 +53,7 @@ public class PizzaOrderService {
         CARD_PAYMENT = new CardPaymentService();
         PIZZA_ORDER = new PizzaOrderRepository(new ArrayList<>());
         INGREDIENT_ORDER = new IngredientOrderRepository(new ArrayList<>());
+        CREATE_PIZZA = new CreatePizzaService();
 
         PAYMENT_METHOD = new HashMap<>();
         PAYMENT_METHOD.put(1, PaymentMethod.CASH);
@@ -69,6 +68,36 @@ public class PizzaOrderService {
         PIZZA_ORDER_VIEW.greeting();
     }
 
+    public void displayOptions() {
+        PIZZA_ORDER_VIEW.displayOptions();
+        int choice = CheckUtil.checkInt();
+        switch (choice) {
+            case 1:
+                choosePizza();
+                break;
+            case 2:
+                PIZZA_ORDER_VIEW.displayInfoPizzaFourCheese();
+                PIZZA_ORDER_VIEW.displayInfoPizzaMargherita();
+                PIZZA_ORDER_VIEW.displayInfoPizzaMeatDelight();
+                PIZZA_ORDER_VIEW.displayInfoPizzaPepperoni();
+                PIZZA_ORDER_VIEW.displayInfoPizzaVegetarian();
+                displayOptions();
+                break;
+            case 3:
+                CREATE_PIZZA.start();
+                CREATE_PIZZA.chooseDough();
+                CREATE_PIZZA.chooseIngredients();
+                CREATE_PIZZA.addIngredientsQuestion();
+                break;
+            case 4:
+                break;
+            default:
+                PIZZA_ORDER_VIEW.choiceView();
+                displayOptions();
+                break;
+        }
+    }
+
     public void choosePizza() {
         PIZZA_ORDER_VIEW.pizzaMenu();
         int choice = CheckUtil.checkInt();
@@ -76,7 +105,6 @@ public class PizzaOrderService {
             switch (PIZZAS.get(choice)) {
                 case FOUR_CHEESE:
                     PIZZA_ORDER_VIEW.orderPizzaFourCheese();
-                    PIZZA_ORDER_VIEW.displayInfoPizzaFourCheese();
                     COOK.pizzaFourCheese();
                     CHECK.add(PIZZA_ORDER_VIEW.orderPizzaFourCheese());
                     PIZZA_ORDER.add(PizzaPriceUtil.pricePizzaFourCheeseIncludingVAT());
@@ -86,7 +114,6 @@ public class PizzaOrderService {
                     break;
                 case MARGHERITA:
                     PIZZA_ORDER_VIEW.orderPizzaMargherita();
-                    PIZZA_ORDER_VIEW.displayInfoPizzaMargherita();
                     COOK.pizzaMargherita();
                     CHECK.add(PIZZA_ORDER_VIEW.orderPizzaMargherita());
                     PIZZA_ORDER.add(PizzaPriceUtil.pricePizzaMargheritaIncludingVAT());
@@ -96,7 +123,6 @@ public class PizzaOrderService {
                     break;
                 case MEAT_DELIGHT:
                     PIZZA_ORDER_VIEW.orderPizzaMeatDelight();
-                    PIZZA_ORDER_VIEW.displayInfoPizzaMeatDelight();
                     COOK.pizzaMeatDelight();
                     CHECK.add(PIZZA_ORDER_VIEW.orderPizzaMeatDelight());
                     PIZZA_ORDER.add(PizzaPriceUtil.pricePizzaMeatDelightIncludingVAT());
@@ -106,7 +132,6 @@ public class PizzaOrderService {
                     break;
                 case PEPPERONI:
                     PIZZA_ORDER_VIEW.orderPizzaPepperoni();
-                    PIZZA_ORDER_VIEW.displayInfoPizzaPepperoni();
                     COOK.pizzaPepperoni();
                     CHECK.add(PIZZA_ORDER_VIEW.orderPizzaPepperoni());
                     PIZZA_ORDER.add(PizzaPriceUtil.pricePizzaPepperoniIncludingVAT());
@@ -116,7 +141,6 @@ public class PizzaOrderService {
                     break;
                 case VEGETARIAN:
                     PIZZA_ORDER_VIEW.orderPizzaVegetarian();
-                    PIZZA_ORDER_VIEW.displayInfoPizzaVegetarian();
                     COOK.pizzaVegetarian();
                     CHECK.add(PIZZA_ORDER_VIEW.orderPizzaVegetarian());
                     PIZZA_ORDER.add(PizzaPriceUtil.pricePizzaVegetarianIncludingVAT());
@@ -206,18 +230,6 @@ public class PizzaOrderService {
         } else if (PIZZA_ORDER.size() >= 3 && LocalDateTime.now().getDayOfWeek() == DayOfWeek.FRIDAY) {
             PIZZA_ORDER_VIEW.amountToPay(DiscountUtil.amountToPayFor3AndMorePizzasOnSpecificDay(
                     PIZZA_ORDER.totalOrder()) + INGREDIENT_ORDER.totalOrder());
-        }
-    }
-
-    public void addPizzaQuestion() throws IOException {
-        PIZZA_ORDER_VIEW.addPizzaQuestion();
-        Scanner scan = new Scanner(System.in);
-        char ch = scan.next().charAt(0);
-        if (ch == 'Y' || ch == 'y') {
-            choosePizza();
-            addPizzaQuestion();
-        } else {
-            paymentChoice();
         }
     }
 

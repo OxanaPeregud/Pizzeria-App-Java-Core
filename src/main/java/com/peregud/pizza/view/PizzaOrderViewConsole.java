@@ -18,7 +18,6 @@ public class PizzaOrderViewConsole implements PizzaOrderView {
 
     public void greeting() {
         System.out.println("\nWELCOME TO PIZZERIA!");
-        System.out.println("Choose what pizza you would like to order:");
     }
 
     public void pizzaMenu() {
@@ -110,10 +109,6 @@ public class PizzaOrderViewConsole implements PizzaOrderView {
         System.out.println("Amount to pay: " + RoundUtil.up(totalOrder) + "$");
     }
 
-    public void addPizzaQuestion() {
-        System.out.println("\nDo you want to order any other pizza (Type y or n)");
-    }
-
     public void paymentChoice() {
         System.out.println("How would you like to pay:");
         System.out.println("1. Cash");
@@ -133,5 +128,17 @@ public class PizzaOrderViewConsole implements PizzaOrderView {
         System.out.println("Press 1 - If you want to add more ingredients to your pizza");
         System.out.println("Press 2 - Continue with original order");
         System.out.println("Press 3 - Pay for the order");
+    }
+
+    public void displayOptions() {
+        System.out.println("Choose what would you like to do:");
+        System.out.println("1. Order pizza from our menu");
+        System.out.println("2. Display info about pizzas that we have");
+        System.out.println("3. Create your own pizza");
+        System.out.println("4. Exit");
+    }
+
+    public void choiceView() {
+        System.out.println("You need to enter a number from 1 to 4");
     }
 }

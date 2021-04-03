@@ -41,7 +41,7 @@ public class PizzaController {
             switch (operationChoice) {
                 case 1:
                     PIZZA_ORDER.start();
-                    PIZZA_ORDER.choosePizza();
+                    PIZZA_ORDER.displayOptions();
                     addChoiceQuestion();
                     break;
                 case 2:
