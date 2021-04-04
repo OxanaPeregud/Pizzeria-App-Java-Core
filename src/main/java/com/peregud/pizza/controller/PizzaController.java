@@ -53,6 +53,7 @@ public class PizzaController {
                     break;
                 case 3:
                     ORDER_STATISTICS.start();
+                    ORDER_STATISTICS.displayChoice();
                     addChoiceQuestion();
                     break;
                 case 4:

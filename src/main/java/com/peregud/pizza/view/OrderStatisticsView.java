@@ -28,4 +28,8 @@ public interface OrderStatisticsView {
 
     void profitMargin();
 
+    void displayChoice();
+
+    void choiceView();
+
 }

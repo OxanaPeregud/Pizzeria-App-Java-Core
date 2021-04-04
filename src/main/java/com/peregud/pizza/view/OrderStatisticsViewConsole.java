@@ -4,8 +4,6 @@ import com.peregud.pizza.exceptions.OrderStatisticsException;
 import com.peregud.pizza.service.OrderStatisticsService;
 import com.peregud.pizza.util.RoundUtil;
 
-import java.util.ArrayList;
-
 public class OrderStatisticsViewConsole implements OrderStatisticsView {
     private static final OrderStatisticsService ORDER_STATISTICS;
     private static final OrderStatisticsException ORDER_STATISTICS_EXCEPTION;
@@ -40,9 +38,6 @@ public class OrderStatisticsViewConsole implements OrderStatisticsView {
     }
 
     public void pizzasSold() {
-        System.out.println();
-        System.out.println("ORDER STATISTICS:");
-        System.out.println();
         System.out.println("Sold Pizzas 'Four Cheese': " + ORDER_STATISTICS.pizzasSold().get(0));
         System.out.println("Sold Pizzas 'Margherita': " + ORDER_STATISTICS.pizzasSold().get(1));
         System.out.println("Sold Pizzas 'Meat Delight': " + ORDER_STATISTICS.pizzasSold().get(2));
@@ -83,5 +78,20 @@ public class OrderStatisticsViewConsole implements OrderStatisticsView {
 
     public void profitMargin() {
         System.out.println("Profit margin is " + ORDER_STATISTICS.profitMargin() + "%");
+    }
+
+    public void displayChoice() {
+        System.out.println("Choose what statistics would you like to display:");
+        System.out.println("1. Total pizzas sold");
+        System.out.println("2. Pizzas revenue");
+        System.out.println("3. Average check");
+        System.out.println("4. Total profit");
+        System.out.println("5. Profit margin");
+        System.out.println("6. Full order statistics");
+        System.out.println("7. Exit");
+    }
+
+    public void choiceView() {
+        System.out.println("You need to enter a number from 1 to 7");
     }
 }

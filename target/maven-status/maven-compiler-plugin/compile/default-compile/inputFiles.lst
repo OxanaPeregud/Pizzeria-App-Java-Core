@@ -63,6 +63,7 @@ D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\model\Ingre
 D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\exceptions\IngredientNumberException.java
 D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\view\CardPaymentView.java
 D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\service\IngredientSupplementService.java
+D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\util\StatisticsUtil.java
 D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\util\RoundUtil.java
 D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\view\StarterViewConsole.java
 D:\home\peregud\dev\pizzeria-project\src\main\java\com\peregud\pizza\repository\IngredientCaloriesRepository.java

@@ -1,7 +1,8 @@
 package com.peregud.pizza.controller;
 
 import com.peregud.pizza.exceptions.OrderStatisticsException;
-import com.peregud.pizza.service.OrderStatisticsService;
+import com.peregud.pizza.util.CheckUtil;
+import com.peregud.pizza.util.StatisticsUtil;
 import com.peregud.pizza.view.OrderStatisticsViewConsole;
 
 import java.util.HashMap;
@@ -16,12 +17,10 @@ public class OrderStatisticsController {
     private int numberOfPepperoniSold;
     private int numberOfVegetarianSold;
     private static final OrderStatisticsViewConsole ORDER_STATISTICS_VIEW;
-    private static final OrderStatisticsService ORDER_STATISTICS;
     public static final Map<Integer, Integer> SOLD_PIZZAS;
 
     static {
         ORDER_STATISTICS_VIEW = new OrderStatisticsViewConsole();
-        ORDER_STATISTICS = new OrderStatisticsService();
         SOLD_PIZZAS = new HashMap<>();
     }
 
@@ -39,20 +38,6 @@ public class OrderStatisticsController {
             ORDER_STATISTICS_VIEW.enterVegetarian();
             numberOfVegetarianSold = scan.nextInt();
             createMapOfSoldPizzas();
-            ORDER_STATISTICS.pizzasSold();
-            ORDER_STATISTICS_VIEW.pizzasSold();
-            ORDER_STATISTICS.totalPizzasSold();
-            ORDER_STATISTICS_VIEW.totalPizzasSold();
-            ORDER_STATISTICS.pizzasRevenue();
-            ORDER_STATISTICS_VIEW.pizzasRevenue();
-            ORDER_STATISTICS.totalRevenue();
-            ORDER_STATISTICS_VIEW.totalRevenue();
-            ORDER_STATISTICS.averageCheck();
-            ORDER_STATISTICS_VIEW.averageCheck();
-            ORDER_STATISTICS.totalProfit();
-            ORDER_STATISTICS_VIEW.totalProfit();
-            ORDER_STATISTICS.profitMargin();
-            ORDER_STATISTICS_VIEW.profitMargin();
         } catch (InputMismatchException e) {
             try {
                 throw new OrderStatisticsException();
@@ -60,6 +45,43 @@ public class OrderStatisticsController {
                 ORDER_STATISTICS_VIEW.orderStatisticsException();
                 start();
             }
+        }
+    }
+
+    public void displayChoice() {
+        ORDER_STATISTICS_VIEW.displayChoice();
+        int choice = CheckUtil.checkInt();
+        switch (choice) {
+            case 1:
+                StatisticsUtil.displayTotalPizzasSold();
+                displayChoice();
+                break;
+            case 2:
+                StatisticsUtil.displayPizzasRevenue();
+                displayChoice();
+                break;
+            case 3:
+                StatisticsUtil.displayAverageCheck();
+                displayChoice();
+                break;
+            case 4:
+                StatisticsUtil.displayTotalProfit();
+                displayChoice();
+                break;
+            case 5:
+                StatisticsUtil.displayProfitMargin();
+                displayChoice();
+                break;
+            case 6:
+                StatisticsUtil.displayFullStatistics();
+                displayChoice();
+                break;
+            case 7:
+                break;
+            default:
+                ORDER_STATISTICS_VIEW.choiceView();
+                displayChoice();
+                break;
         }
     }
 
