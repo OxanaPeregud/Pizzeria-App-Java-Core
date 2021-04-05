@@ -8,9 +8,7 @@ import com.peregud.pizza.model.Ingredient;
 import com.peregud.pizza.model.PaymentMethod;
 import com.peregud.pizza.repository.IngredientCaloriesRepository;
 import com.peregud.pizza.repository.OrderRepository;
-import com.peregud.pizza.util.CheckUtil;
-import com.peregud.pizza.util.IngredientPriceUtil;
-import com.peregud.pizza.util.RoundUtil;
+import com.peregud.pizza.util.*;
 import com.peregud.pizza.view.CashPaymentViewConsole;
 import com.peregud.pizza.view.CheckViewConsole;
 import com.peregud.pizza.view.CreatePizzaViewConsole;
@@ -27,12 +25,9 @@ public class CreatePizzaService {
     private static final IngredientCaloriesRepository INGREDIENT_CALORIES;
     private static final CookService COOK;
     private static final OrderRepository ORDER;
-    private static final CashPaymentService CASH_PAYMENT;
     private static final CashPaymentViewConsole CASH_PAYMENT_VIEW;
     public static final Check CHECK;
     private static final CheckViewConsole CHECK_VIEW;
-    private static final OnlinePaymentService ONLINE_PAYMENT;
-    private static final CardPaymentService CARD_PAYMENT;
     private static final Map<Integer, PaymentMethod> PAYMENT_METHOD;
     private static final PizzaOrderService PIZZA_ORDER;
     private char ch;
@@ -57,12 +52,9 @@ public class CreatePizzaService {
         CREATE_PIZZA_VIEW = new CreatePizzaViewConsole();
         INGREDIENT_CALORIES = new IngredientCaloriesRepository(new ArrayList<>());
         COOK = new CookService();
-        CASH_PAYMENT = new CashPaymentService();
         CASH_PAYMENT_VIEW = new CashPaymentViewConsole();
         CHECK = new Check(new ArrayList<>());
         CHECK_VIEW = new CheckViewConsole();
-        ONLINE_PAYMENT = new OnlinePaymentService();
-        CARD_PAYMENT = new CardPaymentService();
         ORDER = new OrderRepository(new ArrayList<>());
         PIZZA_ORDER = new PizzaOrderService();
 
@@ -229,7 +221,7 @@ public class CreatePizzaService {
     }
 
     public double getChange() {
-        return CASH_PAYMENT.countChange(totalOrder());
+        return CashPaymentUtil.countChange(totalOrder());
     }
 
     public void addIngredientsQuestion() {
@@ -252,18 +244,18 @@ public class CreatePizzaService {
                 case CASH:
                     CHECK_VIEW.displayCheckCreatePizza();
                     displayTotalOrder();
-                    CASH_PAYMENT.getFullAmount();
+                    CashPaymentUtil.getFullAmount();
                     CASH_PAYMENT_VIEW.getChangeCreatePizza();
                     break;
                 case CARD:
                     CHECK_VIEW.displayCheckCreatePizza();
                     displayTotalOrder();
-                    CARD_PAYMENT.enterPIN();
+                    CardPaymentUtil.enterPIN();
                     break;
                 case ONLINE:
                     CHECK_VIEW.displayCheckCreatePizza();
                     displayTotalOrder();
-                    ONLINE_PAYMENT.addCustomer();
+                    OnlinePaymentUtil.addCustomer();
                     break;
             }
         } catch (NullPointerException e) {

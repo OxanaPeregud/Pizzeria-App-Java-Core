@@ -7,10 +7,7 @@ import com.peregud.pizza.model.PaymentMethod;
 import com.peregud.pizza.model.Pizza;
 import com.peregud.pizza.repository.IngredientOrderRepository;
 import com.peregud.pizza.repository.PizzaOrderRepository;
-import com.peregud.pizza.util.CheckUtil;
-import com.peregud.pizza.util.ChoiceUtil;
-import com.peregud.pizza.util.DiscountUtil;
-import com.peregud.pizza.util.PizzaPriceUtil;
+import com.peregud.pizza.util.*;
 import com.peregud.pizza.view.*;
 
 import java.io.IOException;
@@ -24,12 +21,9 @@ public class PizzaOrderService {
     private static final Map<Integer, Pizza> PIZZAS;
     private static final PizzaOrderViewConsole PIZZA_ORDER_VIEW;
     private static final CookService COOK;
-    private static final CashPaymentService CASH_PAYMENT;
     private static final CashPaymentViewConsole CASH_PAYMENT_VIEW;
     public static final Check CHECK;
     private static final CheckViewConsole CHECK_VIEW;
-    private static final OnlinePaymentService ONLINE_PAYMENT;
-    private static final CardPaymentService CARD_PAYMENT;
     private static final Map<Integer, PaymentMethod> PAYMENT_METHOD;
     private static final PizzaOrderRepository PIZZA_ORDER;
     public static final IngredientOrderRepository INGREDIENT_ORDER;
@@ -45,12 +39,9 @@ public class PizzaOrderService {
 
         PIZZA_ORDER_VIEW = new PizzaOrderViewConsole();
         COOK = new CookService();
-        CASH_PAYMENT = new CashPaymentService();
         CASH_PAYMENT_VIEW = new CashPaymentViewConsole();
         CHECK = new Check(new ArrayList<>());
         CHECK_VIEW = new CheckViewConsole();
-        ONLINE_PAYMENT = new OnlinePaymentService();
-        CARD_PAYMENT = new CardPaymentService();
         PIZZA_ORDER = new PizzaOrderRepository(new ArrayList<>());
         INGREDIENT_ORDER = new IngredientOrderRepository(new ArrayList<>());
         CREATE_PIZZA = new CreatePizzaService();
@@ -234,7 +225,7 @@ public class PizzaOrderService {
     }
 
     public double getChange() {
-        return CASH_PAYMENT.countChange(amountToPay(PIZZA_ORDER.totalOrder() +
+        return CashPaymentUtil.countChange(amountToPay(PIZZA_ORDER.totalOrder() +
                 INGREDIENT_ORDER.totalOrder()));
     }
 
@@ -247,18 +238,18 @@ public class PizzaOrderService {
                 case CASH:
                     CHECK_VIEW.displayCheckPizzaOrder();
                     createCheck();
-                    CASH_PAYMENT.getFullAmount();
+                    CashPaymentUtil.getFullAmount();
                     CASH_PAYMENT_VIEW.getChangePizzaOrder();
                     break;
                 case CARD:
                     CHECK_VIEW.displayCheckPizzaOrder();
                     createCheck();
-                    CARD_PAYMENT.enterPIN();
+                    CardPaymentUtil.enterPIN();
                     break;
                 case ONLINE:
                     CHECK_VIEW.displayCheckPizzaOrder();
                     createCheck();
-                    ONLINE_PAYMENT.addCustomer();
+                    OnlinePaymentUtil.addCustomer();
                     break;
             }
         } catch (NullPointerException e) {

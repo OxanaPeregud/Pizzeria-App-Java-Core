@@ -1,7 +1,7 @@
 package com.peregud.pizza.view;
 
 import com.peregud.pizza.exceptions.CashAmountException;
-import com.peregud.pizza.service.CashPaymentService;
+import com.peregud.pizza.util.CashPaymentUtil;
 import com.peregud.pizza.service.CreatePizzaService;
 import com.peregud.pizza.service.PizzaOrderService;
 
@@ -22,13 +22,13 @@ public class CashPaymentViewConsole implements CashPaymentView {
 
     public void getChangePizzaOrder() {
         if (PIZZA_ORDER.getChange() >= 0)
-            System.out.println("Your change from " + CashPaymentService.fullAmount + "$ is "
+            System.out.println("Your change from " + CashPaymentUtil.fullAmount + "$ is "
                     + PIZZA_ORDER.getChange() + "$");
     }
 
     public void getChangeCreatePizza() {
         if (CREATE_PIZZA.getChange() >= 0)
-            System.out.println("Your change from " + CashPaymentService.fullAmount + "$ is "
+            System.out.println("Your change from " + CashPaymentUtil.fullAmount + "$ is "
                     + CREATE_PIZZA.getChange() + "$");
     }
 

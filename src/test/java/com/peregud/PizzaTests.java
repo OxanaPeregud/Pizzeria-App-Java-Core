@@ -7,7 +7,7 @@ import com.peregud.pizza.model.Supplier;
 import com.peregud.pizza.repository.IngredientCaloriesRepository;
 import com.peregud.pizza.repository.OrderRepository;
 import com.peregud.pizza.repository.StorageRepository;
-import com.peregud.pizza.service.CashPaymentService;
+import com.peregud.pizza.util.CashPaymentUtil;
 import com.peregud.pizza.service.CookService;
 import com.peregud.pizza.service.OrderStatisticsService;
 import com.peregud.pizza.util.*;
@@ -20,7 +20,6 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PizzaTests {
-    private static final CashPaymentService CASH_PAYMENT;
     private static final OrderStatisticsService ORDER_STATISTICS;
     private static final CookService COOK;
     private static final StorageRepository STORAGE;
@@ -28,7 +27,6 @@ public class PizzaTests {
     private static final OrderRepository ORDER;
 
     static {
-        CASH_PAYMENT = new CashPaymentService();
         ORDER_STATISTICS = new OrderStatisticsService();
         COOK = new CookService();
         STORAGE = new StorageRepository();
@@ -687,8 +685,8 @@ public class PizzaTests {
 
     @Test
     public void countChange_CashPaymentService() {
-        CashPaymentService.fullAmount = 250;
-        assertEquals(150, CASH_PAYMENT.countChange(100));
+        CashPaymentUtil.fullAmount = 250;
+        assertEquals(150, CashPaymentUtil.countChange(100));
     }
 
     @Test

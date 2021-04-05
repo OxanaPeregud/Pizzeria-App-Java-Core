@@ -1,13 +1,12 @@
-package com.peregud.pizza.service;
+package com.peregud.pizza.util;
 
 import com.peregud.pizza.exceptions.CashAmountException;
-import com.peregud.pizza.util.RoundUtil;
 import com.peregud.pizza.view.CashPaymentViewConsole;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class CashPaymentService {
+public final class CashPaymentUtil {
     public static double fullAmount;
     private static final CashPaymentViewConsole CASH_PAYMENT_VIEW;
 
@@ -15,7 +14,10 @@ public class CashPaymentService {
         CASH_PAYMENT_VIEW = new CashPaymentViewConsole();
     }
 
-    public double countChange(double amountToPay) {
+    private CashPaymentUtil() {
+    }
+
+    public static double countChange(double amountToPay) {
         if (fullAmount < amountToPay) {
             CASH_PAYMENT_VIEW.notEnoughMoney();
             getFullAmount();
@@ -23,7 +25,7 @@ public class CashPaymentService {
         return RoundUtil.up(fullAmount - amountToPay);
     }
 
-    public void getFullAmount() {
+    public static void getFullAmount() {
         try {
             CASH_PAYMENT_VIEW.fullAmountView();
             Scanner scan = new Scanner(System.in);
