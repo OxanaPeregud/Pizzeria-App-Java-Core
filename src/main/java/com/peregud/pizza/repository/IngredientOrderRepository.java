@@ -8,10 +8,12 @@ public class IngredientOrderRepository extends OrderRepository {
         super(order);
     }
 
+    @Override
     public void add(double price) {
         super.add(price);
     }
 
+    @Override
     public double totalOrder() {
         return super.totalOrder();
     }

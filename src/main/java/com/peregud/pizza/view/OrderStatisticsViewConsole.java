@@ -13,30 +13,37 @@ public class OrderStatisticsViewConsole implements OrderStatisticsView {
         ORDER_STATISTICS_EXCEPTION = new OrderStatisticsException();
     }
 
+    @Override
     public void enterFourCheese() {
         System.out.println("Enter number of Pizzas 'Four Cheese' sold:");
     }
 
+    @Override
     public void enterMargherita() {
         System.out.println("Enter number of Pizzas 'Margherita' sold:");
     }
 
+    @Override
     public void enterMeatDelight() {
         System.out.println("Enter number of Pizzas 'Meat Delight' sold:");
     }
 
+    @Override
     public void enterPepperoni() {
         System.out.println("Enter number of Pizzas 'Pepperoni' sold:");
     }
 
+    @Override
     public void enterVegetarian() {
         System.out.println("Enter number of Pizzas 'Vegetarian' sold:");
     }
 
+    @Override
     public void orderStatisticsException() {
         System.out.println(ORDER_STATISTICS_EXCEPTION.toString());
     }
 
+    @Override
     public void pizzasSold() {
         System.out.println("Sold Pizzas 'Four Cheese': " + ORDER_STATISTICS.pizzasSold().get(0));
         System.out.println("Sold Pizzas 'Margherita': " + ORDER_STATISTICS.pizzasSold().get(1));
@@ -45,11 +52,13 @@ public class OrderStatisticsViewConsole implements OrderStatisticsView {
         System.out.println("Sold Pizzas 'Vegetarian': " + ORDER_STATISTICS.pizzasSold().get(4));
     }
 
+    @Override
     public void totalPizzasSold() {
         System.out.println("Total pizzas sold: " + ORDER_STATISTICS.totalPizzasSold());
         System.out.println();
     }
 
+    @Override
     public void pizzasRevenue() {
         System.out.println("Revenue from Pizzas 'Four Cheese': " +
                 RoundUtil.up(ORDER_STATISTICS.pizzasRevenue().get(0)) + "$");
@@ -63,23 +72,28 @@ public class OrderStatisticsViewConsole implements OrderStatisticsView {
                 RoundUtil.up(ORDER_STATISTICS.pizzasRevenue().get(4)) + "$");
     }
 
+    @Override
     public void totalRevenue() {
         System.out.println("Total revenue is " + ORDER_STATISTICS.totalRevenue() + "$");
         System.out.println();
     }
 
+    @Override
     public void averageCheck() {
         System.out.println("Average check is " + ORDER_STATISTICS.averageCheck() + "$");
     }
 
+    @Override
     public void totalProfit() {
         System.out.println("Total profit is " + ORDER_STATISTICS.totalProfit() + "$");
     }
 
+    @Override
     public void profitMargin() {
         System.out.println("Profit margin is " + ORDER_STATISTICS.profitMargin() + "%");
     }
 
+    @Override
     public void displayChoice() {
         System.out.println("Choose what statistics would you like to display:");
         System.out.println("1. Total pizzas sold");
@@ -91,6 +105,7 @@ public class OrderStatisticsViewConsole implements OrderStatisticsView {
         System.out.println("7. Exit");
     }
 
+    @Override
     public void choiceView() {
         System.out.println("You need to enter a number from 1 to 7");
     }

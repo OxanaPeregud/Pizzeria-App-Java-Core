@@ -22,4 +22,6 @@ public interface IngredientStorageRepository {
 
     Iterable<Map.Entry<Ingredient, Integer>> entrySet();
 
+    void put(Ingredient ingredient, int quantity);
+
 }

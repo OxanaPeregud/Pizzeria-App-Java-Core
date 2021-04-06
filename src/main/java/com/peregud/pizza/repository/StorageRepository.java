@@ -30,14 +30,17 @@ public class StorageRepository implements IngredientStorageRepository {
         STORAGE.put(Ingredient.TRADITIONAL_DOUGH, 15);
     }
 
+    @Override
     public Map<Ingredient, Integer> getStorage() {
         return STORAGE;
     }
 
+    @Override
     public int getIngredientQuantity(Ingredient ingredient) {
         return STORAGE.get(ingredient);
     }
 
+    @Override
     public void changeIngredientQuantity(Pizza pizza) {
         pizza.getIngredients().forEach((ingredient, ingredientsForPizza) -> {
             Integer oldQuantity = STORAGE.get(ingredient);
@@ -46,23 +49,28 @@ public class StorageRepository implements IngredientStorageRepository {
         });
     }
 
+    @Override
     public void changeIngredientQuantity(Ingredient ingredient, int newQuantity) {
         STORAGE.replace(ingredient, newQuantity);
     }
 
+    @Override
     public void removeOneIngredient(Ingredient ingredient) {
         changeIngredientQuantity(ingredient, getIngredientQuantity(ingredient) - 1);
     }
 
+    @Override
     public void changeDeliveredIngredient(Supplier supplier) {
         changeIngredientQuantity(supplier.getIngredient(), getIngredientQuantity(supplier.getIngredient())
-                        + SCANNER.nextInt());
+                + SCANNER.nextInt());
     }
 
+    @Override
     public Iterable<Map.Entry<Ingredient, Integer>> entrySet() {
         return STORAGE.entrySet();
     }
 
+    @Override
     public void put(Ingredient ingredient, int quantity) {
         STORAGE.put(ingredient, quantity);
     }

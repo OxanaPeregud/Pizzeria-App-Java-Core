@@ -2,6 +2,7 @@ package com.peregud.pizza.view;
 
 public class StarterViewConsole implements StarterView {
 
+    @Override
     public void displayOperations() {
         System.out.println("Choose operation:");
         System.out.println("1. Start 'Pizza Order'");
@@ -13,18 +14,22 @@ public class StarterViewConsole implements StarterView {
         System.out.println("7. Exit program");
     }
 
+    @Override
     public void chooseOtherOperations() {
         System.out.println("\nDo you want to choose another operation? (Type y or n)");
     }
 
+    @Override
     public void noSuchOperation() {
         System.out.println("No operation under entered number. Check Operation List");
     }
 
+    @Override
     public void invalidInput() {
         System.out.println("Your input is invalid. You must enter a digit");
     }
 
+    @Override
     public void exitProgram() {
         System.out.println("Program Terminated!");
     }

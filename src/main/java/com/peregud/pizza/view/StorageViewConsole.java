@@ -12,12 +12,14 @@ public class StorageViewConsole implements StorageView {
         STORAGE = new StorageRepository();
     }
 
+    @Override
     public void displayStorage() {
         for (Map.Entry<Ingredient, Integer> entry : STORAGE.entrySet()) {
             System.out.println(entry.getKey() + " : " + entry.getValue());
         }
     }
 
+    @Override
     public void showLackOfIngredients() {
         for (Map.Entry<Ingredient, Integer> entry : STORAGE.entrySet()) {
             Integer value = entry.getValue();
