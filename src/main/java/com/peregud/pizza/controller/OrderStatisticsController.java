@@ -3,6 +3,7 @@ package com.peregud.pizza.controller;
 import com.peregud.pizza.exceptions.OrderStatisticsException;
 import com.peregud.pizza.util.CheckUtil;
 import com.peregud.pizza.util.StatisticsUtil;
+import com.peregud.pizza.view.OrderStatisticsView;
 import com.peregud.pizza.view.OrderStatisticsViewConsole;
 
 import java.util.HashMap;
@@ -16,7 +17,7 @@ public class OrderStatisticsController {
     private int numberOfMeatDelightSold;
     private int numberOfPepperoniSold;
     private int numberOfVegetarianSold;
-    private static final OrderStatisticsViewConsole ORDER_STATISTICS_VIEW;
+    private static final OrderStatisticsView ORDER_STATISTICS_VIEW;
     public static final Map<Integer, Integer> SOLD_PIZZAS;
 
     static {

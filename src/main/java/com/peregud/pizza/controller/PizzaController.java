@@ -4,18 +4,20 @@ import com.peregud.pizza.service.CreatePizzaService;
 import com.peregud.pizza.service.PizzaOrderService;
 import com.peregud.pizza.service.SupplyService;
 import com.peregud.pizza.util.CheckUtil;
+import com.peregud.pizza.view.StarterView;
 import com.peregud.pizza.view.StarterViewConsole;
+import com.peregud.pizza.view.StorageView;
 import com.peregud.pizza.view.StorageViewConsole;
 
 import java.io.IOException;
 import java.util.Scanner;
 
 public class PizzaController {
-    private static final StarterViewConsole STARTER_VIEW;
+    private static final StarterView STARTER_VIEW;
     private static final PizzaOrderService PIZZA_ORDER;
     private static final CreatePizzaService CREATE_PIZZA;
     private static final OrderStatisticsController ORDER_STATISTICS;
-    private static final StorageViewConsole STORAGE_VIEW;
+    private static final StorageView STORAGE_VIEW;
     private static final SupplyService SUPPLY;
     private static final EmployeeController EMPLOYEE;
     private static boolean programOn;

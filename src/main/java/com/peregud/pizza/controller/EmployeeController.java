@@ -2,13 +2,14 @@ package com.peregud.pizza.controller;
 
 import com.peregud.pizza.service.EmployeeService;
 import com.peregud.pizza.util.CheckUtil;
+import com.peregud.pizza.view.EmployeeView;
 import com.peregud.pizza.view.EmployeeViewConsole;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeeController {
-    private static final EmployeeViewConsole EMPLOYEE_VIEW;
+    private static final EmployeeView EMPLOYEE_VIEW;
     private static final EmployeeService EMPLOYEE_SERVICE;
     private static boolean programOn;
     private static final List<EmployeeService> EMPLOYEE_LIST;

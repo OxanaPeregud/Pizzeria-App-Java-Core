@@ -2,13 +2,14 @@ package com.peregud.pizza.util;
 
 import com.peregud.pizza.exceptions.CardException;
 import com.peregud.pizza.model.Customer;
+import com.peregud.pizza.view.OnlinePaymentView;
 import com.peregud.pizza.view.OnlinePaymentViewConsole;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class OnlinePaymentUtil {
-    private static final OnlinePaymentViewConsole ONLINE_PAYMENT_VIEW;
+    private static final OnlinePaymentView ONLINE_PAYMENT_VIEW;
 
     static {
         ONLINE_PAYMENT_VIEW = new OnlinePaymentViewConsole();

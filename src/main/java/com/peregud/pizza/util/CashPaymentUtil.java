@@ -1,6 +1,7 @@
 package com.peregud.pizza.util;
 
 import com.peregud.pizza.exceptions.CashAmountException;
+import com.peregud.pizza.view.CashPaymentView;
 import com.peregud.pizza.view.CashPaymentViewConsole;
 
 import java.util.InputMismatchException;
@@ -8,7 +9,7 @@ import java.util.Scanner;
 
 public final class CashPaymentUtil {
     public static double fullAmount;
-    private static final CashPaymentViewConsole CASH_PAYMENT_VIEW;
+    private static final CashPaymentView CASH_PAYMENT_VIEW;
 
     static {
         CASH_PAYMENT_VIEW = new CashPaymentViewConsole();

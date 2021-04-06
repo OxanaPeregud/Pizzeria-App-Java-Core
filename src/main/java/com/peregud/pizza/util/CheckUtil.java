@@ -1,11 +1,12 @@
 package com.peregud.pizza.util;
 
+import com.peregud.pizza.view.UtilView;
 import com.peregud.pizza.view.UtilViewConsole;
 
 import java.util.Scanner;
 
 public final class CheckUtil {
-    private static final UtilViewConsole UTIL_VIEW;
+    private static final UtilView UTIL_VIEW;
 
     static {
         UTIL_VIEW = new UtilViewConsole();

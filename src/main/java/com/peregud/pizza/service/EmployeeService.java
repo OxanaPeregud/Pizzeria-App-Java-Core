@@ -2,6 +2,7 @@ package com.peregud.pizza.service;
 
 import com.peregud.pizza.model.Employee;
 import com.peregud.pizza.util.CheckUtil;
+import com.peregud.pizza.view.EmployeeView;
 import com.peregud.pizza.view.EmployeeViewConsole;
 
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.Scanner;
 public class EmployeeService {
     public int employeeID;
     private static final Scanner SCAN;
-    private static final EmployeeViewConsole EMPLOYEE_VIEW;
+    private static final EmployeeView EMPLOYEE_VIEW;
     private final Employee employee = new Employee();
 
     static {

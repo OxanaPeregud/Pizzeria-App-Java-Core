@@ -1,10 +1,11 @@
 package com.peregud.pizza.util;
 
 import com.peregud.pizza.service.OrderStatisticsService;
+import com.peregud.pizza.view.OrderStatisticsView;
 import com.peregud.pizza.view.OrderStatisticsViewConsole;
 
 public final class StatisticsUtil {
-    private static final OrderStatisticsViewConsole ORDER_STATISTICS_VIEW;
+    private static final OrderStatisticsView ORDER_STATISTICS_VIEW;
     private static final OrderStatisticsService ORDER_STATISTICS;
 
     static {

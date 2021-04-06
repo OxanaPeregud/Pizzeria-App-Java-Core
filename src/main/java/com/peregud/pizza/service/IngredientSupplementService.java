@@ -5,7 +5,9 @@ import com.peregud.pizza.model.Ingredient;
 import com.peregud.pizza.util.CheckUtil;
 import com.peregud.pizza.util.ChoiceUtil;
 import com.peregud.pizza.util.IngredientPriceUtil;
+import com.peregud.pizza.view.CreatePizzaView;
 import com.peregud.pizza.view.CreatePizzaViewConsole;
+import com.peregud.pizza.view.PizzaOrderView;
 import com.peregud.pizza.view.PizzaOrderViewConsole;
 
 import java.io.IOException;
@@ -13,10 +15,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class IngredientSupplementService {
-    private static final CreatePizzaViewConsole CREATE_PIZZA_VIEW;
+    private static final CreatePizzaView CREATE_PIZZA_VIEW;
     private static final Map<Integer, Ingredient> INGREDIENTS;
     private static final CookService COOK;
-    private static final PizzaOrderViewConsole PIZZA_ORDER_VIEW;
+    private static final PizzaOrderView PIZZA_ORDER_VIEW;
 
     static {
         INGREDIENTS = new HashMap<>();

@@ -4,6 +4,7 @@ import com.peregud.pizza.exceptions.SupplierNumberException;
 import com.peregud.pizza.model.Supplier;
 import com.peregud.pizza.repository.StorageRepository;
 import com.peregud.pizza.util.CheckUtil;
+import com.peregud.pizza.view.SupplyServiceView;
 import com.peregud.pizza.view.SupplyServiceViewConsole;
 
 import java.util.HashMap;
@@ -13,7 +14,7 @@ import java.util.Scanner;
 public class SupplyService {
     private static final Map<Integer, Supplier> SUPPLIERS;
     private static final StorageRepository STORAGE;
-    private static final SupplyServiceViewConsole SUPPLY_SERVICE_VIEW;
+    private static final SupplyServiceView SUPPLY_SERVICE_VIEW;
 
     static {
         SUPPLIERS = new HashMap<>();

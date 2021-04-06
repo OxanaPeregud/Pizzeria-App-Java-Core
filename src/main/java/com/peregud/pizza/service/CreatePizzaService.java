@@ -9,9 +9,7 @@ import com.peregud.pizza.model.PaymentMethod;
 import com.peregud.pizza.repository.IngredientCaloriesRepository;
 import com.peregud.pizza.repository.OrderRepository;
 import com.peregud.pizza.util.*;
-import com.peregud.pizza.view.CashPaymentViewConsole;
-import com.peregud.pizza.view.CheckViewConsole;
-import com.peregud.pizza.view.CreatePizzaViewConsole;
+import com.peregud.pizza.view.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,15 +17,15 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class CreatePizzaService {
-    private static final CreatePizzaViewConsole CREATE_PIZZA_VIEW;
+    private static final CreatePizzaView CREATE_PIZZA_VIEW;
     private static final Map<Integer, Ingredient> DOUGH;
     private static final Map<Integer, Ingredient> INGREDIENTS;
     private static final IngredientCaloriesRepository INGREDIENT_CALORIES;
     private static final CookService COOK;
     private static final OrderRepository ORDER;
-    private static final CashPaymentViewConsole CASH_PAYMENT_VIEW;
+    private static final CashPaymentView CASH_PAYMENT_VIEW;
     public static final Check CHECK;
-    private static final CheckViewConsole CHECK_VIEW;
+    private static final CheckView CHECK_VIEW;
     private static final Map<Integer, PaymentMethod> PAYMENT_METHOD;
     private static final PizzaOrderService PIZZA_ORDER;
     private char ch;

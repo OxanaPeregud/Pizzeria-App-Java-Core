@@ -1,13 +1,14 @@
 package com.peregud.pizza.util;
 
 import com.peregud.pizza.exceptions.PinException;
+import com.peregud.pizza.view.CardPaymentView;
 import com.peregud.pizza.view.CardPaymentViewConsole;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public final class CardPaymentUtil {
-    private static final CardPaymentViewConsole CARD_PAYMENT_VIEW;
+    private static final CardPaymentView CARD_PAYMENT_VIEW;
 
     static {
         CARD_PAYMENT_VIEW = new CardPaymentViewConsole();

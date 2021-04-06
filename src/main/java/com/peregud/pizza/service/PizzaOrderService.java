@@ -19,11 +19,11 @@ import java.util.Map;
 
 public class PizzaOrderService {
     private static final Map<Integer, Pizza> PIZZAS;
-    private static final PizzaOrderViewConsole PIZZA_ORDER_VIEW;
+    private static final PizzaOrderView PIZZA_ORDER_VIEW;
     private static final CookService COOK;
-    private static final CashPaymentViewConsole CASH_PAYMENT_VIEW;
+    private static final CashPaymentView CASH_PAYMENT_VIEW;
     public static final Check CHECK;
-    private static final CheckViewConsole CHECK_VIEW;
+    private static final CheckView CHECK_VIEW;
     private static final Map<Integer, PaymentMethod> PAYMENT_METHOD;
     private static final PizzaOrderRepository PIZZA_ORDER;
     public static final IngredientOrderRepository INGREDIENT_ORDER;

@@ -2,6 +2,7 @@ package com.peregud.pizza.util;
 
 import com.peregud.pizza.service.IngredientSupplementService;
 import com.peregud.pizza.service.PizzaOrderService;
+import com.peregud.pizza.view.UtilView;
 import com.peregud.pizza.view.UtilViewConsole;
 
 import java.io.IOException;
@@ -9,7 +10,7 @@ import java.io.IOException;
 public final class ChoiceUtil {
     private static final PizzaOrderService PIZZA_ORDER;
     private static final IngredientSupplementService INGREDIENT_SUPPLEMENT;
-    private static final UtilViewConsole UTIL_VIEW;
+    private static final UtilView UTIL_VIEW;
 
     static {
         PIZZA_ORDER = new PizzaOrderService();
