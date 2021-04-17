@@ -3,9 +3,11 @@ package com.peregud.pizza.service;
 import com.peregud.pizza.exceptions.PaymentChoiceException;
 import com.peregud.pizza.exceptions.PizzaNumberException;
 import com.peregud.pizza.model.Check;
+import com.peregud.pizza.model.Order;
 import com.peregud.pizza.model.PaymentMethod;
 import com.peregud.pizza.model.Pizza;
 import com.peregud.pizza.repository.IngredientOrderRepository;
+import com.peregud.pizza.repository.OrderRepositorySQL;
 import com.peregud.pizza.repository.PizzaOrderRepository;
 import com.peregud.pizza.util.*;
 import com.peregud.pizza.view.*;
@@ -15,6 +17,7 @@ import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class PizzaOrderService {
@@ -28,6 +31,8 @@ public class PizzaOrderService {
     private static final PizzaOrderRepository PIZZA_ORDER;
     public static final IngredientOrderRepository INGREDIENT_ORDER;
     private static final CreatePizzaService CREATE_PIZZA;
+    private static final Order ORDER;
+    private static final List<Order> ORDER_LIST;
 
     static {
         PIZZAS = new HashMap<>();
@@ -45,6 +50,8 @@ public class PizzaOrderService {
         PIZZA_ORDER = new PizzaOrderRepository(new ArrayList<>());
         INGREDIENT_ORDER = new IngredientOrderRepository(new ArrayList<>());
         CREATE_PIZZA = new CreatePizzaService();
+        ORDER = new Order();
+        ORDER_LIST = new ArrayList<>();
 
         PAYMENT_METHOD = new HashMap<>();
         PAYMENT_METHOD.put(1, PaymentMethod.CASH);
@@ -98,6 +105,9 @@ public class PizzaOrderService {
                     PIZZA_ORDER_VIEW.orderPizzaFourCheese();
                     COOK.pizzaFourCheese();
                     CHECK.add(PIZZA_ORDER_VIEW.orderPizzaFourCheese());
+                    ORDER_LIST.add(ORDER.add(Pizza.FOUR_CHEESE.name(), RoundUtil.up(
+                            PizzaPriceUtil.pricePizzaFourCheeseIncludingVAT()),
+                            DateFormatUtil.localDatePattern(LocalDateTime.now())));
                     PIZZA_ORDER.add(PizzaPriceUtil.pricePizzaFourCheeseIncludingVAT());
                     showOrderInfo();
                     PIZZA_ORDER_VIEW.addSupplementIngredients();
@@ -107,6 +117,9 @@ public class PizzaOrderService {
                     PIZZA_ORDER_VIEW.orderPizzaMargherita();
                     COOK.pizzaMargherita();
                     CHECK.add(PIZZA_ORDER_VIEW.orderPizzaMargherita());
+                    ORDER_LIST.add(ORDER.add(Pizza.MARGHERITA.name(), RoundUtil.up(
+                            PizzaPriceUtil.pricePizzaMargheritaIncludingVAT()),
+                            DateFormatUtil.localDatePattern(LocalDateTime.now())));
                     PIZZA_ORDER.add(PizzaPriceUtil.pricePizzaMargheritaIncludingVAT());
                     showOrderInfo();
                     PIZZA_ORDER_VIEW.addSupplementIngredients();
@@ -116,6 +129,9 @@ public class PizzaOrderService {
                     PIZZA_ORDER_VIEW.orderPizzaMeatDelight();
                     COOK.pizzaMeatDelight();
                     CHECK.add(PIZZA_ORDER_VIEW.orderPizzaMeatDelight());
+                    ORDER_LIST.add(ORDER.add(Pizza.MEAT_DELIGHT.name(),
+                            RoundUtil.up(PizzaPriceUtil.pricePizzaMeatDelightIncludingVAT()),
+                            DateFormatUtil.localDatePattern(LocalDateTime.now())));
                     PIZZA_ORDER.add(PizzaPriceUtil.pricePizzaMeatDelightIncludingVAT());
                     showOrderInfo();
                     PIZZA_ORDER_VIEW.addSupplementIngredients();
@@ -125,6 +141,9 @@ public class PizzaOrderService {
                     PIZZA_ORDER_VIEW.orderPizzaPepperoni();
                     COOK.pizzaPepperoni();
                     CHECK.add(PIZZA_ORDER_VIEW.orderPizzaPepperoni());
+                    ORDER_LIST.add(ORDER.add(Pizza.PEPPERONI.name(),
+                            RoundUtil.up(PizzaPriceUtil.pricePizzaPepperoniIncludingVAT()),
+                            DateFormatUtil.localDatePattern(LocalDateTime.now())));
                     PIZZA_ORDER.add(PizzaPriceUtil.pricePizzaPepperoniIncludingVAT());
                     showOrderInfo();
                     PIZZA_ORDER_VIEW.addSupplementIngredients();
@@ -134,6 +153,9 @@ public class PizzaOrderService {
                     PIZZA_ORDER_VIEW.orderPizzaVegetarian();
                     COOK.pizzaVegetarian();
                     CHECK.add(PIZZA_ORDER_VIEW.orderPizzaVegetarian());
+                    ORDER_LIST.add(ORDER.add(Pizza.VEGETARIAN.name(),
+                            RoundUtil.up(PizzaPriceUtil.pricePizzaVegetarianIncludingVAT()),
+                            DateFormatUtil.localDatePattern(LocalDateTime.now())));
                     PIZZA_ORDER.add(PizzaPriceUtil.pricePizzaVegetarianIncludingVAT());
                     showOrderInfo();
                     PIZZA_ORDER_VIEW.addSupplementIngredients();
@@ -231,6 +253,7 @@ public class PizzaOrderService {
 
     public void paymentChoice() throws IOException {
         CHECK.checkInFile();
+        OrderRepositorySQL.orderInput(ORDER_LIST);
         PIZZA_ORDER_VIEW.paymentChoice();
         try {
             int payment = CheckUtil.checkInt();

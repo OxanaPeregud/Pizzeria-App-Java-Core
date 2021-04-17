@@ -11,13 +11,13 @@ import com.peregud.pizza.util.CashPaymentUtil;
 import com.peregud.pizza.service.CookService;
 import com.peregud.pizza.service.OrderStatisticsService;
 import com.peregud.pizza.util.*;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PizzaTests {
     private static final OrderStatisticsService ORDER_STATISTICS;
