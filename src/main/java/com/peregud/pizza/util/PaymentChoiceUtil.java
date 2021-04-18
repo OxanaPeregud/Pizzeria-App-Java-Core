@@ -8,14 +8,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public final class PaymentChoiceUtil {
-    private static final PizzaOrderView PIZZA_ORDER_VIEW;
     private static final Map<Integer, PaymentMethod> PAYMENT_METHOD;
     private static final CheckView CHECK_VIEW;
     private static final CashPaymentView CASH_PAYMENT_VIEW;
     private static final PaymentView PAYMENT_VIEW;
 
     static {
-        PIZZA_ORDER_VIEW = new PizzaOrderViewConsole();
         CHECK_VIEW = new CheckViewConsole();
         CASH_PAYMENT_VIEW = new CashPaymentViewConsole();
         PAYMENT_VIEW = new PaymentViewConsole();
@@ -55,6 +53,7 @@ public final class PaymentChoiceUtil {
             try {
                 throw new PaymentChoiceException();
             } catch (PaymentChoiceException ex) {
+                ex.printStackTrace();
                 PAYMENT_VIEW.paymentChoiceException();
                 paymentChoice();
             }

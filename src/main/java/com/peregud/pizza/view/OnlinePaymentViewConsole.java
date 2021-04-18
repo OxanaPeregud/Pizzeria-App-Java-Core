@@ -1,14 +1,8 @@
 package com.peregud.pizza.view;
 
-import com.peregud.pizza.exceptions.CardException;
 import com.peregud.pizza.model.Customer;
 
 public class OnlinePaymentViewConsole implements OnlinePaymentView {
-    private static final CardException CARD_EXCEPTION;
-
-    static {
-        CARD_EXCEPTION = new CardException();
-    }
 
     @Override
     public void firstName() {
@@ -37,6 +31,6 @@ public class OnlinePaymentViewConsole implements OnlinePaymentView {
 
     @Override
     public void cardException() {
-        System.out.println(CARD_EXCEPTION.toString());
+        System.out.println("Card Number must contain only digits");
     }
 }

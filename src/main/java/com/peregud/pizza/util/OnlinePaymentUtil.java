@@ -48,6 +48,7 @@ public class OnlinePaymentUtil {
             try {
                 throw new CardException();
             } catch (CardException ex) {
+                ex.printStackTrace();
                 ONLINE_PAYMENT_VIEW.cardException();
                 ONLINE_PAYMENT_VIEW.cardNumber();
                 enterCardNumber();

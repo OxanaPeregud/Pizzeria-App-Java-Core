@@ -1,17 +1,11 @@
 package com.peregud.pizza.view;
 
-import com.peregud.pizza.exceptions.PizzaNumberException;
 import com.peregud.pizza.model.Pizza;
 import com.peregud.pizza.util.*;
 
 import java.time.LocalDateTime;
 
 public class PizzaOrderViewConsole implements PizzaOrderView {
-    private static final PizzaNumberException PIZZA_NUMBER_EXCEPTION;
-
-    static {
-        PIZZA_NUMBER_EXCEPTION = new PizzaNumberException();
-    }
 
     @Override
     public void greeting() {
@@ -144,7 +138,7 @@ public class PizzaOrderViewConsole implements PizzaOrderView {
 
     @Override
     public void pizzaNumberException() {
-        System.out.println(PIZZA_NUMBER_EXCEPTION.toString());
+        System.out.println("We don't have a pizza under entered number");
     }
 
     @Override

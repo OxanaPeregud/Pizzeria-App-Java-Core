@@ -83,6 +83,7 @@ public class CreatePizzaService {
             try {
                 throw new DoughException();
             } catch (DoughException ex) {
+                ex.printStackTrace();
                 CREATE_PIZZA_VIEW.doughException();
                 addDoughQuestion();
             }
@@ -137,6 +138,7 @@ public class CreatePizzaService {
             try {
                 throw new IngredientNumberException();
             } catch (IngredientNumberException ex) {
+                ex.printStackTrace();
                 CREATE_PIZZA_VIEW.ingredientNumberException();
             }
         }

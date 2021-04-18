@@ -1,7 +1,5 @@
 package com.peregud.pizza.view;
 
-import com.peregud.pizza.exceptions.DoughException;
-import com.peregud.pizza.exceptions.IngredientNumberException;
 import com.peregud.pizza.model.Ingredient;
 import com.peregud.pizza.util.DateFormatUtil;
 import com.peregud.pizza.util.IngredientPriceUtil;
@@ -10,13 +8,6 @@ import com.peregud.pizza.util.RoundUtil;
 import java.time.LocalDateTime;
 
 public class CreatePizzaViewConsole implements CreatePizzaView {
-    private static final DoughException DOUGH_EXCEPTION;
-    private static final IngredientNumberException INGREDIENT_NUMBER_EXCEPTION;
-
-    static {
-        DOUGH_EXCEPTION = new DoughException();
-        INGREDIENT_NUMBER_EXCEPTION = new IngredientNumberException();
-    }
 
     @Override
     public void greeting() {
@@ -235,12 +226,12 @@ public class CreatePizzaViewConsole implements CreatePizzaView {
 
     @Override
     public void doughException() {
-        System.out.println(DOUGH_EXCEPTION.toString());
+        System.out.println("To choose dough you need to enter 1 or 2");
     }
 
     @Override
     public void ingredientNumberException() {
-        System.out.println(INGREDIENT_NUMBER_EXCEPTION.toString());
+        System.out.println("We don't have an ingredient under entered number");
     }
 
     @Override

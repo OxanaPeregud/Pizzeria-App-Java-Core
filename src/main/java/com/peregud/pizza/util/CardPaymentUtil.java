@@ -37,6 +37,7 @@ public final class CardPaymentUtil {
             try {
                 throw new PinException();
             } catch (PinException ex) {
+                ex.printStackTrace();
                 CARD_PAYMENT_VIEW.pinException();
                 enterPIN();
             }

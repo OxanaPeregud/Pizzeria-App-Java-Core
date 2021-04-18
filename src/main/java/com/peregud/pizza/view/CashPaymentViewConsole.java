@@ -1,16 +1,9 @@
 package com.peregud.pizza.view;
 
-import com.peregud.pizza.exceptions.CashAmountException;
-import com.peregud.pizza.service.CreatePizzaService;
 import com.peregud.pizza.util.CashPaymentUtil;
 import com.peregud.pizza.util.ChangeCalculatorUtil;
 
 public class CashPaymentViewConsole implements CashPaymentView {
-    private static final CashAmountException CASH_AMOUNT_EXCEPTION;
-
-    static {
-        CASH_AMOUNT_EXCEPTION = new CashAmountException();
-    }
 
     @Override
     public void fullAmountView() {
@@ -31,6 +24,6 @@ public class CashPaymentViewConsole implements CashPaymentView {
 
     @Override
     public void cashAmountException() {
-        System.out.println(CASH_AMOUNT_EXCEPTION.toString());
+        System.out.println("Cash amount must be a number");
     }
 }

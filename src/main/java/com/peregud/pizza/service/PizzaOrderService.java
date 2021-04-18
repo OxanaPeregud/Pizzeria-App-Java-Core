@@ -85,6 +85,7 @@ public class PizzaOrderService {
             try {
                 throw new PizzaNumberException();
             } catch (PizzaNumberException ex) {
+                ex.printStackTrace();
                 PIZZA_ORDER_VIEW.pizzaNumberException();
             }
         }

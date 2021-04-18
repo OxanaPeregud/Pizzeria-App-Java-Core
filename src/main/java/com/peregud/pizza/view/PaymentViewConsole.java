@@ -1,13 +1,6 @@
 package com.peregud.pizza.view;
 
-import com.peregud.pizza.exceptions.PaymentChoiceException;
-
 public class PaymentViewConsole implements PaymentView {
-    private static final PaymentChoiceException PAYMENT_CHOICE_EXCEPTION;
-
-    static {
-        PAYMENT_CHOICE_EXCEPTION = new PaymentChoiceException();
-    }
 
     @Override
     public void paymentChoice() {
@@ -19,6 +12,6 @@ public class PaymentViewConsole implements PaymentView {
 
     @Override
     public void paymentChoiceException() {
-        System.out.println(PAYMENT_CHOICE_EXCEPTION.toString());
+        System.out.println("To choose a payment method you need to enter a number from 1 to 3");
     }
 }

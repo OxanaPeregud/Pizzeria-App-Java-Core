@@ -43,6 +43,7 @@ public class OrderStatisticsController {
             try {
                 throw new OrderStatisticsException();
             } catch (OrderStatisticsException ex) {
+                ex.printStackTrace();
                 ORDER_STATISTICS_VIEW.orderStatisticsException();
                 start();
             }

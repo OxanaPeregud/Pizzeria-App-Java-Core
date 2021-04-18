@@ -1,16 +1,13 @@
 package com.peregud.pizza.view;
 
-import com.peregud.pizza.exceptions.OrderStatisticsException;
 import com.peregud.pizza.service.OrderStatisticsService;
 import com.peregud.pizza.util.RoundUtil;
 
 public class OrderStatisticsViewConsole implements OrderStatisticsView {
     private static final OrderStatisticsService ORDER_STATISTICS;
-    private static final OrderStatisticsException ORDER_STATISTICS_EXCEPTION;
 
     static {
         ORDER_STATISTICS = new OrderStatisticsService();
-        ORDER_STATISTICS_EXCEPTION = new OrderStatisticsException();
     }
 
     @Override
@@ -40,7 +37,7 @@ public class OrderStatisticsViewConsole implements OrderStatisticsView {
 
     @Override
     public void orderStatisticsException() {
-        System.out.println(ORDER_STATISTICS_EXCEPTION.toString());
+        System.out.println("Number of sold pizzas must to be an integer");
     }
 
     @Override

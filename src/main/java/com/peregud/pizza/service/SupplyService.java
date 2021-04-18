@@ -97,6 +97,7 @@ public class SupplyService {
             try {
                 throw new SupplierNumberException();
             } catch (SupplierNumberException ex) {
+                ex.printStackTrace();
                 SUPPLY_SERVICE_VIEW.supplierNumberException();
                 addChoiceQuestion();
             }

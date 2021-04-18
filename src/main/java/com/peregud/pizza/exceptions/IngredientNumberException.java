@@ -3,6 +3,6 @@ package com.peregud.pizza.exceptions;
 public class IngredientNumberException extends Exception {
 
     public String toString() {
-        return "We don't have an ingredient under entered number";
+        return "Invalid ingredient number";
     }
 }

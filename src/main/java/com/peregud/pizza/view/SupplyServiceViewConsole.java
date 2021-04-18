@@ -1,16 +1,13 @@
 package com.peregud.pizza.view;
 
-import com.peregud.pizza.exceptions.SupplierNumberException;
 import com.peregud.pizza.model.Supplier;
 import com.peregud.pizza.repository.StorageRepository;
 
 public class SupplyServiceViewConsole implements SupplyServiceView {
     private static final StorageRepository STORAGE;
-    private static final SupplierNumberException SUPPLIER_NUMBER_EXCEPTION;
 
     static {
         STORAGE = new StorageRepository();
-        SUPPLIER_NUMBER_EXCEPTION = new SupplierNumberException();
     }
 
     @Override
@@ -147,6 +144,6 @@ public class SupplyServiceViewConsole implements SupplyServiceView {
 
     @Override
     public void supplierNumberException() {
-        System.out.println(SUPPLIER_NUMBER_EXCEPTION.toString());
+        System.out.println("There is no supplier under entered number");
     }
 }

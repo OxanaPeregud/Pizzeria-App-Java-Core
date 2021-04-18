@@ -35,6 +35,7 @@ public final class CashPaymentUtil {
             try {
                 throw new CashAmountException();
             } catch (CashAmountException ex) {
+                ex.printStackTrace();
                 CASH_PAYMENT_VIEW.cashAmountException();
                 getFullAmount();
             }

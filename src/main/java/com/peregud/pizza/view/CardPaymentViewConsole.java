@@ -1,13 +1,6 @@
 package com.peregud.pizza.view;
 
-import com.peregud.pizza.exceptions.PinException;
-
 public class CardPaymentViewConsole implements CardPaymentView {
-    private static final PinException PIN_EXCEPTION;
-
-    static {
-        PIN_EXCEPTION = new PinException();
-    }
 
     @Override
     public void enterPIN() {
@@ -26,6 +19,6 @@ public class CardPaymentViewConsole implements CardPaymentView {
 
     @Override
     public void pinException() {
-        System.out.println(PIN_EXCEPTION.toString());
+        System.out.println("PIN must contain only digits");
     }
 }

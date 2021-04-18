@@ -88,6 +88,7 @@ public class IngredientSupplementService {
             try {
                 throw new IngredientNumberException();
             } catch (IngredientNumberException ex) {
+                ex.printStackTrace();
                 CREATE_PIZZA_VIEW.ingredientNumberException();
             }
         }
