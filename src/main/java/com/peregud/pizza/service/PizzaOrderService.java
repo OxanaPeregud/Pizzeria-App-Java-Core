@@ -3,7 +3,6 @@ package com.peregud.pizza.service;
 import com.peregud.pizza.exceptions.PaymentChoiceException;
 import com.peregud.pizza.exceptions.PizzaNumberException;
 import com.peregud.pizza.model.Check;
-import com.peregud.pizza.model.Order;
 import com.peregud.pizza.model.PaymentMethod;
 import com.peregud.pizza.model.Pizza;
 import com.peregud.pizza.repository.OrderRepository;
@@ -11,27 +10,21 @@ import com.peregud.pizza.repository.OrderRepositorySQL;
 import com.peregud.pizza.util.*;
 import com.peregud.pizza.view.*;
 
-import java.io.IOException;
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class PizzaOrderService {
     private static final Map<Integer, Pizza> PIZZAS;
     private static final PizzaOrderView PIZZA_ORDER_VIEW;
-    private static final CookService COOK;
     private static final CashPaymentView CASH_PAYMENT_VIEW;
     public static final Check CHECK;
     private static final CheckView CHECK_VIEW;
     private static final Map<Integer, PaymentMethod> PAYMENT_METHOD;
-    private static final PizzaOrderCalculatorService PIZZA_ORDER;
     public static final IngredientOrderCalculatorService INGREDIENT_ORDER;
     private static final CreatePizzaService CREATE_PIZZA;
-    private static final Order ORDER;
-    private static final List<Order> ORDER_LIST;
     private static final OrderRepository ORDER_REPOSITORY;
 
     static {
@@ -43,15 +36,11 @@ public class PizzaOrderService {
         PIZZAS.put(5, Pizza.VEGETARIAN);
 
         PIZZA_ORDER_VIEW = new PizzaOrderViewConsole();
-        COOK = new CookService();
         CASH_PAYMENT_VIEW = new CashPaymentViewConsole();
         CHECK = new Check(new ArrayList<>());
         CHECK_VIEW = new CheckViewConsole();
-        PIZZA_ORDER = new PizzaOrderCalculatorService(new ArrayList<>());
         INGREDIENT_ORDER = new IngredientOrderCalculatorService(new ArrayList<>());
         CREATE_PIZZA = new CreatePizzaService();
-        ORDER = new Order();
-        ORDER_LIST = new ArrayList<>();
         ORDER_REPOSITORY = new OrderRepositorySQL();
 
         PAYMENT_METHOD = new HashMap<>();
@@ -75,11 +64,7 @@ public class PizzaOrderService {
                 choosePizza();
                 break;
             case 2:
-                PIZZA_ORDER_VIEW.displayInfoPizzaFourCheese();
-                PIZZA_ORDER_VIEW.displayInfoPizzaMargherita();
-                PIZZA_ORDER_VIEW.displayInfoPizzaMeatDelight();
-                PIZZA_ORDER_VIEW.displayInfoPizzaPepperoni();
-                PIZZA_ORDER_VIEW.displayInfoPizzaVegetarian();
+                PIZZA_ORDER_VIEW.displayInfoPizza();
                 displayOptions();
                 break;
             case 3:
@@ -103,67 +88,27 @@ public class PizzaOrderService {
         try {
             switch (PIZZAS.get(choice)) {
                 case FOUR_CHEESE:
-                    PIZZA_ORDER_VIEW.orderPizzaFourCheese();
-                    COOK.pizzaFourCheese();
-                    CHECK.add(PIZZA_ORDER_VIEW.orderPizzaFourCheese());
-                    ORDER_LIST.add(ORDER.add(Pizza.FOUR_CHEESE.name(), RoundUtil.up(
-                            PizzaPriceUtil.pricePizzaFourCheeseIncludingVAT()),
-                            DateFormatUtil.localDatePattern(LocalDateTime.now())));
-                    PIZZA_ORDER.add(PizzaPriceUtil.pricePizzaFourCheeseIncludingVAT());
+                    OrderUtil.orderFourCheese();
                     showOrderInfo();
-                    PIZZA_ORDER_VIEW.addSupplementIngredients();
-                    ChoiceUtil.addChoiceQuestion();
                     break;
                 case MARGHERITA:
-                    PIZZA_ORDER_VIEW.orderPizzaMargherita();
-                    COOK.pizzaMargherita();
-                    CHECK.add(PIZZA_ORDER_VIEW.orderPizzaMargherita());
-                    ORDER_LIST.add(ORDER.add(Pizza.MARGHERITA.name(), RoundUtil.up(
-                            PizzaPriceUtil.pricePizzaMargheritaIncludingVAT()),
-                            DateFormatUtil.localDatePattern(LocalDateTime.now())));
-                    PIZZA_ORDER.add(PizzaPriceUtil.pricePizzaMargheritaIncludingVAT());
+                    OrderUtil.orderMargherita();
                     showOrderInfo();
-                    PIZZA_ORDER_VIEW.addSupplementIngredients();
-                    ChoiceUtil.addChoiceQuestion();
                     break;
                 case MEAT_DELIGHT:
-                    PIZZA_ORDER_VIEW.orderPizzaMeatDelight();
-                    COOK.pizzaMeatDelight();
-                    CHECK.add(PIZZA_ORDER_VIEW.orderPizzaMeatDelight());
-                    ORDER_LIST.add(ORDER.add(Pizza.MEAT_DELIGHT.name(),
-                            RoundUtil.up(PizzaPriceUtil.pricePizzaMeatDelightIncludingVAT()),
-                            DateFormatUtil.localDatePattern(LocalDateTime.now())));
-                    PIZZA_ORDER.add(PizzaPriceUtil.pricePizzaMeatDelightIncludingVAT());
+                    OrderUtil.orderMeatDelight();
                     showOrderInfo();
-                    PIZZA_ORDER_VIEW.addSupplementIngredients();
-                    ChoiceUtil.addChoiceQuestion();
                     break;
                 case PEPPERONI:
-                    PIZZA_ORDER_VIEW.orderPizzaPepperoni();
-                    COOK.pizzaPepperoni();
-                    CHECK.add(PIZZA_ORDER_VIEW.orderPizzaPepperoni());
-                    ORDER_LIST.add(ORDER.add(Pizza.PEPPERONI.name(),
-                            RoundUtil.up(PizzaPriceUtil.pricePizzaPepperoniIncludingVAT()),
-                            DateFormatUtil.localDatePattern(LocalDateTime.now())));
-                    PIZZA_ORDER.add(PizzaPriceUtil.pricePizzaPepperoniIncludingVAT());
+                    OrderUtil.orderPepperoni();
                     showOrderInfo();
-                    PIZZA_ORDER_VIEW.addSupplementIngredients();
-                    ChoiceUtil.addChoiceQuestion();
                     break;
                 case VEGETARIAN:
-                    PIZZA_ORDER_VIEW.orderPizzaVegetarian();
-                    COOK.pizzaVegetarian();
-                    CHECK.add(PIZZA_ORDER_VIEW.orderPizzaVegetarian());
-                    ORDER_LIST.add(ORDER.add(Pizza.VEGETARIAN.name(),
-                            RoundUtil.up(PizzaPriceUtil.pricePizzaVegetarianIncludingVAT()),
-                            DateFormatUtil.localDatePattern(LocalDateTime.now())));
-                    PIZZA_ORDER.add(PizzaPriceUtil.pricePizzaVegetarianIncludingVAT());
+                    OrderUtil.orderVegetarian();
                     showOrderInfo();
-                    PIZZA_ORDER_VIEW.addSupplementIngredients();
-                    ChoiceUtil.addChoiceQuestion();
                     break;
             }
-        } catch (NullPointerException | IOException e) {
+        } catch (NullPointerException e) {
             try {
                 throw new PizzaNumberException();
             } catch (PizzaNumberException ex) {
@@ -177,84 +122,84 @@ public class PizzaOrderService {
         discountForTwoItems();
         discountForThreeAndMoreItems();
         discountForOrderOnSpecificDay();
-        amountToPay(PIZZA_ORDER.totalOrder() + INGREDIENT_ORDER.totalOrder());
+        amountToPay(OrderUtil.getPizzaOrder().totalOrder() + INGREDIENT_ORDER.totalOrder());
     }
 
     public void totalOrder() {
-        double totalOrder = PIZZA_ORDER.totalOrder() + INGREDIENT_ORDER.totalOrder();
-        int size = PIZZA_ORDER.size();
-        PIZZA_ORDER_VIEW.totalOrder(totalOrder, size);
+        double totalOrder = OrderUtil.getPizzaOrder().totalOrder() + INGREDIENT_ORDER.totalOrder();
+        int size = OrderUtil.getPizzaOrder().size();
+        OrderUtil.getPizzaOrderView().totalOrder(totalOrder, size);
     }
 
     public void discountForTwoItems() {
-        if (PIZZA_ORDER.size() == 2) {
-            double totalOrder = DiscountUtil.discountForTwoItems(PIZZA_ORDER.totalOrder());
-            PIZZA_ORDER_VIEW.discountFor2Pizzas(totalOrder);
+        if (OrderUtil.getPizzaOrder().size() == 2) {
+            double totalOrder = DiscountUtil.discountForTwoItems(OrderUtil.getPizzaOrder().totalOrder());
+            OrderUtil.getPizzaOrderView().discountFor2Pizzas(totalOrder);
         }
     }
 
     public void discountForThreeAndMoreItems() {
-        if (PIZZA_ORDER.size() >= 3) {
-            double totalOrder = DiscountUtil.discountForThreeAndMoreItems(PIZZA_ORDER.totalOrder());
-            PIZZA_ORDER_VIEW.discountFor3AndMorePizzas(totalOrder);
+        if (OrderUtil.getPizzaOrder().size() >= 3) {
+            double totalOrder = DiscountUtil.discountForThreeAndMoreItems(OrderUtil.getPizzaOrder().totalOrder());
+            OrderUtil.getPizzaOrderView().discountFor3AndMorePizzas(totalOrder);
         }
     }
 
     public void discountForOrderOnSpecificDay() {
-        if (PIZZA_ORDER.size() == 1 && LocalDateTime.now().getDayOfWeek() == DayOfWeek.FRIDAY) {
-            double totalOrder = DiscountUtil.discountForOrderOnSpecificDay(PIZZA_ORDER.totalOrder()) +
+        if (OrderUtil.getPizzaOrder().size() == 1 && LocalDateTime.now().getDayOfWeek() == DayOfWeek.FRIDAY) {
+            double totalOrder = DiscountUtil.discountForOrderOnSpecificDay(OrderUtil.getPizzaOrder().totalOrder()) +
                     INGREDIENT_ORDER.totalOrder();
-            PIZZA_ORDER_VIEW.discountForOrderOnSpecificDay(totalOrder);
-            PIZZA_ORDER_VIEW.amountToPay(DiscountUtil.discountForOrderOnSpecificDay(
-                    PIZZA_ORDER.totalOrder()) + INGREDIENT_ORDER.totalOrder());
+            OrderUtil.getPizzaOrderView().discountForOrderOnSpecificDay(totalOrder);
+            OrderUtil.getPizzaOrderView().amountToPay(DiscountUtil.discountForOrderOnSpecificDay(
+                    OrderUtil.getPizzaOrder().totalOrder()) + INGREDIENT_ORDER.totalOrder());
         } else if (LocalDateTime.now().getDayOfWeek() == DayOfWeek.FRIDAY) {
-            double totalOrder = DiscountUtil.discountForOrderOnSpecificDay(PIZZA_ORDER.totalOrder()) +
+            double totalOrder = DiscountUtil.discountForOrderOnSpecificDay(OrderUtil.getPizzaOrder().totalOrder()) +
                     INGREDIENT_ORDER.totalOrder();
-            PIZZA_ORDER_VIEW.discountForOrderOnSpecificDay(totalOrder);
+            OrderUtil.getPizzaOrderView().discountForOrderOnSpecificDay(totalOrder);
         }
     }
 
     public double amountToPay(double amountToPay) {
-        if (PIZZA_ORDER.size() == 2 && LocalDateTime.now().getDayOfWeek() != DayOfWeek.FRIDAY) {
-            amountToPay = DiscountUtil.discountForTwoItems(PIZZA_ORDER.totalOrder()) +
+        if (OrderUtil.getPizzaOrder().size() == 2 && LocalDateTime.now().getDayOfWeek() != DayOfWeek.FRIDAY) {
+            amountToPay = DiscountUtil.discountForTwoItems(OrderUtil.getPizzaOrder().totalOrder()) +
                     INGREDIENT_ORDER.totalOrder();
-        } else if (PIZZA_ORDER.size() == 2 && LocalDateTime.now().getDayOfWeek() == DayOfWeek.FRIDAY) {
+        } else if (OrderUtil.getPizzaOrder().size() == 2 && LocalDateTime.now().getDayOfWeek() == DayOfWeek.FRIDAY) {
             amountToPay = DiscountUtil.amountToPayFor2PizzasOnSpecificDay(
-                    PIZZA_ORDER.totalOrder()) + INGREDIENT_ORDER.totalOrder();
-        } else if (PIZZA_ORDER.size() >= 3 && LocalDateTime.now().getDayOfWeek() != DayOfWeek.FRIDAY) {
+                    OrderUtil.getPizzaOrder().totalOrder()) + INGREDIENT_ORDER.totalOrder();
+        } else if (OrderUtil.getPizzaOrder().size() >= 3 && LocalDateTime.now().getDayOfWeek() != DayOfWeek.FRIDAY) {
             amountToPay = DiscountUtil.discountForThreeAndMoreItems(
-                    PIZZA_ORDER.totalOrder()) + INGREDIENT_ORDER.totalOrder();
-        } else if (PIZZA_ORDER.size() >= 3 && LocalDateTime.now().getDayOfWeek() == DayOfWeek.FRIDAY) {
+                    OrderUtil.getPizzaOrder().totalOrder()) + INGREDIENT_ORDER.totalOrder();
+        } else if (OrderUtil.getPizzaOrder().size() >= 3 && LocalDateTime.now().getDayOfWeek() == DayOfWeek.FRIDAY) {
             amountToPay = DiscountUtil.amountToPayFor3AndMorePizzasOnSpecificDay(
-                    PIZZA_ORDER.totalOrder()) + INGREDIENT_ORDER.totalOrder();
+                    OrderUtil.getPizzaOrder().totalOrder()) + INGREDIENT_ORDER.totalOrder();
         }
         return amountToPay;
     }
 
     public void createCheck() {
-        if (PIZZA_ORDER.size() == 2 && LocalDateTime.now().getDayOfWeek() != DayOfWeek.FRIDAY) {
-            PIZZA_ORDER_VIEW.amountToPay(DiscountUtil.discountForTwoItems(PIZZA_ORDER.totalOrder()) +
-                    INGREDIENT_ORDER.totalOrder());
-        } else if (PIZZA_ORDER.size() == 2 && LocalDateTime.now().getDayOfWeek() == DayOfWeek.FRIDAY) {
-            PIZZA_ORDER_VIEW.amountToPay(DiscountUtil.amountToPayFor2PizzasOnSpecificDay(
-                    PIZZA_ORDER.totalOrder()) + INGREDIENT_ORDER.totalOrder());
-        } else if (PIZZA_ORDER.size() >= 3 && LocalDateTime.now().getDayOfWeek() != DayOfWeek.FRIDAY) {
-            PIZZA_ORDER_VIEW.amountToPay(DiscountUtil.discountForThreeAndMoreItems(
-                    PIZZA_ORDER.totalOrder()) + INGREDIENT_ORDER.totalOrder());
-        } else if (PIZZA_ORDER.size() >= 3 && LocalDateTime.now().getDayOfWeek() == DayOfWeek.FRIDAY) {
-            PIZZA_ORDER_VIEW.amountToPay(DiscountUtil.amountToPayFor3AndMorePizzasOnSpecificDay(
-                    PIZZA_ORDER.totalOrder()) + INGREDIENT_ORDER.totalOrder());
+        if (OrderUtil.getPizzaOrder().size() == 2 && LocalDateTime.now().getDayOfWeek() != DayOfWeek.FRIDAY) {
+            OrderUtil.getPizzaOrderView().amountToPay(DiscountUtil.discountForTwoItems(OrderUtil.getPizzaOrder()
+                    .totalOrder()) + INGREDIENT_ORDER.totalOrder());
+        } else if (OrderUtil.getPizzaOrder().size() == 2 && LocalDateTime.now().getDayOfWeek() == DayOfWeek.FRIDAY) {
+            OrderUtil.getPizzaOrderView().amountToPay(DiscountUtil.amountToPayFor2PizzasOnSpecificDay(
+                    OrderUtil.getPizzaOrder().totalOrder()) + INGREDIENT_ORDER.totalOrder());
+        } else if (OrderUtil.getPizzaOrder().size() >= 3 && LocalDateTime.now().getDayOfWeek() != DayOfWeek.FRIDAY) {
+            OrderUtil.getPizzaOrderView().amountToPay(DiscountUtil.discountForThreeAndMoreItems(
+                    OrderUtil.getPizzaOrder().totalOrder()) + INGREDIENT_ORDER.totalOrder());
+        } else if (OrderUtil.getPizzaOrder().size() >= 3 && LocalDateTime.now().getDayOfWeek() == DayOfWeek.FRIDAY) {
+            OrderUtil.getPizzaOrderView().amountToPay(DiscountUtil.amountToPayFor3AndMorePizzasOnSpecificDay(
+                    OrderUtil.getPizzaOrder().totalOrder()) + INGREDIENT_ORDER.totalOrder());
         }
     }
 
     public double getChange() {
-        return CashPaymentUtil.countChange(amountToPay(PIZZA_ORDER.totalOrder() +
+        return CashPaymentUtil.countChange(amountToPay(OrderUtil.getPizzaOrder().totalOrder() +
                 INGREDIENT_ORDER.totalOrder()));
     }
 
     public void paymentChoice() {
-        ORDER_REPOSITORY.orderInput(ORDER_LIST);
-        PIZZA_ORDER_VIEW.paymentChoice();
+        ORDER_REPOSITORY.orderInput(OrderUtil.getOrderList());
+        OrderUtil.getPizzaOrderView().paymentChoice();
         try {
             int payment = CheckUtil.checkInt();
             switch (PAYMENT_METHOD.get(payment)) {

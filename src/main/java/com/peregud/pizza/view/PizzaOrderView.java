@@ -26,6 +26,8 @@ public interface PizzaOrderView {
 
     void displayInfoPizzaVegetarian();
 
+    void displayInfoPizza();
+
     void totalOrder(double totalOrder, int size);
 
     void discountFor2Pizzas(double totalOrder);

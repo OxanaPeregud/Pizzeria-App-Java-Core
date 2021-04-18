@@ -6,7 +6,6 @@ import com.peregud.pizza.exceptions.PaymentChoiceException;
 import com.peregud.pizza.model.Check;
 import com.peregud.pizza.model.Ingredient;
 import com.peregud.pizza.model.PaymentMethod;
-import com.peregud.pizza.repository.IngredientCaloriesRepository;
 import com.peregud.pizza.util.*;
 import com.peregud.pizza.view.*;
 
@@ -19,7 +18,7 @@ public class CreatePizzaService {
     private static final CreatePizzaView CREATE_PIZZA_VIEW;
     private static final Map<Integer, Ingredient> DOUGH;
     private static final Map<Integer, Ingredient> INGREDIENTS;
-    private static final IngredientCaloriesRepository INGREDIENT_CALORIES;
+    private static final IngredientCaloriesCalculatorService INGREDIENT_CALORIES;
     private static final CookService COOK;
     private static final OrderCalculatorService ORDER;
     private static final CashPaymentView CASH_PAYMENT_VIEW;
@@ -47,7 +46,7 @@ public class CreatePizzaService {
         INGREDIENTS.put(9, Ingredient.CRUST);
 
         CREATE_PIZZA_VIEW = new CreatePizzaViewConsole();
-        INGREDIENT_CALORIES = new IngredientCaloriesRepository(new ArrayList<>());
+        INGREDIENT_CALORIES = new IngredientCaloriesCalculatorService(new ArrayList<>());
         COOK = new CookService();
         CASH_PAYMENT_VIEW = new CashPaymentViewConsole();
         CHECK = new Check(new ArrayList<>());

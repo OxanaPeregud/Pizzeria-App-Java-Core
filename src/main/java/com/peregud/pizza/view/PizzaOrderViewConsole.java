@@ -106,6 +106,15 @@ public class PizzaOrderViewConsole implements PizzaOrderView {
     }
 
     @Override
+    public void displayInfoPizza() {
+        displayInfoPizzaFourCheese();
+        displayInfoPizzaMargherita();
+        displayInfoPizzaMeatDelight();
+        displayInfoPizzaPepperoni();
+        displayInfoPizzaVegetarian();
+    }
+
+    @Override
     public void totalOrder(double totalOrder, int size) {
         System.out.println("Order is " + RoundUtil.up(totalOrder) + "$\nNumber of pizzas: " + size);
     }

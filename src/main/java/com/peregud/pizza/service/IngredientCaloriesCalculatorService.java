@@ -1,11 +1,11 @@
-package com.peregud.pizza.repository;
+package com.peregud.pizza.service;
 
 import java.util.List;
 
-public class IngredientCaloriesRepository {
+public class IngredientCaloriesCalculatorService {
     private final List<Integer> totalCalories;
 
-    public IngredientCaloriesRepository(List<Integer> totalCalories) {
+    public IngredientCaloriesCalculatorService(List<Integer> totalCalories) {
         this.totalCalories = totalCalories;
     }
 
