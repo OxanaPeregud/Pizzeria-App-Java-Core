@@ -1,9 +1,9 @@
 package com.peregud;
 
-import com.peregud.pizza.controller.OrderStatisticsController;
 import com.peregud.pizza.model.Ingredient;
 import com.peregud.pizza.model.Pizza;
 import com.peregud.pizza.model.Supplier;
+import com.peregud.pizza.util.SoldPizzasUtil;
 import com.peregud.pizza.repository.StorageRepository;
 import com.peregud.pizza.util.CookUtil;
 import com.peregud.pizza.service.OrderCalculatorService;
@@ -1057,11 +1057,11 @@ public class PizzaTests {
     }
 
     public void putToMap() {
-        OrderStatisticsController.SOLD_PIZZAS.put(1, 5);
-        OrderStatisticsController.SOLD_PIZZAS.put(2, 5);
-        OrderStatisticsController.SOLD_PIZZAS.put(3, 11);
-        OrderStatisticsController.SOLD_PIZZAS.put(4, 1);
-        OrderStatisticsController.SOLD_PIZZAS.put(5, 20);
+        SoldPizzasUtil.getSoldPizzas().put(1, 5);
+        SoldPizzasUtil.getSoldPizzas().put(2, 5);
+        SoldPizzasUtil.getSoldPizzas().put(3, 11);
+        SoldPizzasUtil.getSoldPizzas().put(4, 1);
+        SoldPizzasUtil.getSoldPizzas().put(5, 20);
     }
 
     @Test

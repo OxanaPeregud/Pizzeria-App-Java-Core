@@ -1,10 +1,7 @@
 package com.peregud.pizza.service;
 
-import com.peregud.pizza.controller.OrderStatisticsController;
-import com.peregud.pizza.util.PizzaCostUtil;
-import com.peregud.pizza.util.PizzaPriceUtil;
-import com.peregud.pizza.util.RoundUtil;
-import com.peregud.pizza.util.TaxUtil;
+import com.peregud.pizza.util.SoldPizzasUtil;
+import com.peregud.pizza.util.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,12 +32,12 @@ public class OrderStatisticsService {
     }
 
     public List<Integer> pizzasSold() {
-        return new ArrayList<>(OrderStatisticsController.SOLD_PIZZAS
+        return new ArrayList<>(SoldPizzasUtil.getSoldPizzas()
                 .values());
     }
 
     public int totalPizzasSold() {
-        return OrderStatisticsController.SOLD_PIZZAS
+        return SoldPizzasUtil.getSoldPizzas()
                 .values()
                 .stream()
                 .mapToInt(Integer::intValue)
@@ -61,8 +58,8 @@ public class OrderStatisticsService {
 
     public double totalRevenue() {
         double sum = 0;
-        for (Integer key : OrderStatisticsController.SOLD_PIZZAS.keySet()) {
-            double value1 = OrderStatisticsController.SOLD_PIZZAS.get(key);
+        for (Integer key : SoldPizzasUtil.getSoldPizzas().keySet()) {
+            double value1 = SoldPizzasUtil.getSoldPizzas().get(key);
             double value2 = PIZZAS_PRICES.get(key);
             sum += value1 * value2;
         }
@@ -75,8 +72,8 @@ public class OrderStatisticsService {
 
     public double totalCost() {
         double sum = 0;
-        for (Integer key : OrderStatisticsController.SOLD_PIZZAS.keySet()) {
-            double value1 = OrderStatisticsController.SOLD_PIZZAS.get(key);
+        for (Integer key : SoldPizzasUtil.getSoldPizzas().keySet()) {
+            double value1 = SoldPizzasUtil.getSoldPizzas().get(key);
             double value2 = PIZZAS_COST.get(key);
             sum += value1 * value2;
         }
