@@ -1,7 +1,7 @@
 package com.peregud.pizza.service;
 
 import com.peregud.pizza.model.Employee;
-import com.peregud.pizza.util.CheckUtil;
+import com.peregud.pizza.util.CheckScannerInputUtil;
 import com.peregud.pizza.view.EmployeeView;
 import com.peregud.pizza.view.EmployeeViewConsole;
 
@@ -36,7 +36,7 @@ public class EmployeeService {
 
     public void quitEmployee(List<EmployeeService> employeeList) {
         EMPLOYEE_VIEW.quitEmployee();
-        employeeID = CheckUtil.checkInt();
+        employeeID = CheckScannerInputUtil.checkInt();
         if (employeeID > employeeList.size())
             EMPLOYEE_VIEW.notValidID();
         else
@@ -52,14 +52,14 @@ public class EmployeeService {
 
     public void createNewEmployee(List<EmployeeService> employeeList) {
         EMPLOYEE_VIEW.employeeQuantity();
-        employeeID = CheckUtil.checkInt();
+        employeeID = CheckScannerInputUtil.checkInt();
         for (int i = 0; i < employeeID; i++) {
             EMPLOYEE_VIEW.employeeFirstName();
             employee.firstName = SCAN.next();
             EMPLOYEE_VIEW.employeeLastName();
             employee.lastName = SCAN.next();
             EMPLOYEE_VIEW.employeeSalary();
-            employee.salary = CheckUtil.checkDouble();
+            employee.salary = CheckScannerInputUtil.checkDouble();
             employeeList.add(new EmployeeService(employee.firstName, employee.lastName, employee.salary));
         }
     }

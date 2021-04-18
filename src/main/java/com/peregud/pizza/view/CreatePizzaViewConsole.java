@@ -2,7 +2,6 @@ package com.peregud.pizza.view;
 
 import com.peregud.pizza.exceptions.DoughException;
 import com.peregud.pizza.exceptions.IngredientNumberException;
-import com.peregud.pizza.exceptions.PaymentChoiceException;
 import com.peregud.pizza.model.Ingredient;
 import com.peregud.pizza.util.DateFormatUtil;
 import com.peregud.pizza.util.IngredientPriceUtil;
@@ -13,12 +12,10 @@ import java.time.LocalDateTime;
 public class CreatePizzaViewConsole implements CreatePizzaView {
     private static final DoughException DOUGH_EXCEPTION;
     private static final IngredientNumberException INGREDIENT_NUMBER_EXCEPTION;
-    private static final PaymentChoiceException PAYMENT_CHOICE_EXCEPTION;
 
     static {
         DOUGH_EXCEPTION = new DoughException();
         INGREDIENT_NUMBER_EXCEPTION = new IngredientNumberException();
-        PAYMENT_CHOICE_EXCEPTION = new PaymentChoiceException();
     }
 
     @Override
@@ -202,6 +199,21 @@ public class CreatePizzaViewConsole implements CreatePizzaView {
     }
 
     @Override
+    public void displayInfoIngredients() {
+        displayInfoThinDough();
+        displayInfoTraditionalDough();
+        displayInfoCheese();
+        displayInfoMeat();
+        displayInfoSausages();
+        displayInfoOlives();
+        displayInfoTomatoes();
+        displayInfoPepper();
+        displayInfoOregano();
+        displayInfoSauce();
+        displayInfoCrust();
+    }
+
+    @Override
     public void totalCalories(int totalCalories) {
         System.out.println("Total Calories of Created Pizza: " + totalCalories);
     }
@@ -222,14 +234,6 @@ public class CreatePizzaViewConsole implements CreatePizzaView {
     }
 
     @Override
-    public void paymentChoice() {
-        System.out.println("How would you like to pay:");
-        System.out.println("1. Cash");
-        System.out.println("2. Credit card");
-        System.out.println("3. Online");
-    }
-
-    @Override
     public void doughException() {
         System.out.println(DOUGH_EXCEPTION.toString());
     }
@@ -237,11 +241,6 @@ public class CreatePizzaViewConsole implements CreatePizzaView {
     @Override
     public void ingredientNumberException() {
         System.out.println(INGREDIENT_NUMBER_EXCEPTION.toString());
-    }
-
-    @Override
-    public void paymentChoiceException() {
-        System.out.println(PAYMENT_CHOICE_EXCEPTION.toString());
     }
 
     @Override

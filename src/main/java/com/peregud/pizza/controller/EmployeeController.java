@@ -1,7 +1,7 @@
 package com.peregud.pizza.controller;
 
 import com.peregud.pizza.service.EmployeeService;
-import com.peregud.pizza.util.CheckUtil;
+import com.peregud.pizza.util.CheckScannerInputUtil;
 import com.peregud.pizza.view.EmployeeView;
 import com.peregud.pizza.view.EmployeeViewConsole;
 
@@ -27,7 +27,7 @@ public class EmployeeController {
         EMPLOYEE_VIEW.operationsMenu();
         while (programOn) {
             EMPLOYEE_VIEW.showMenu();
-            int userMenuOption = CheckUtil.checkInt();
+            int userMenuOption = CheckScannerInputUtil.checkInt();
             double amount;
             switch (userMenuOption) {
                 case 1:
@@ -35,14 +35,14 @@ public class EmployeeController {
                     break;
                 case 2:
                     EMPLOYEE_VIEW.idForChangingSalary();
-                    int employeeID = CheckUtil.checkInt();
+                    int employeeID = CheckScannerInputUtil.checkInt();
                     if (employeeID > EMPLOYEE_LIST.size()) {
                         EMPLOYEE_VIEW.notValidID();
                         break;
                     } else {
                         employeeID -= 1;
                         EMPLOYEE_VIEW.changeSalary();
-                        amount = CheckUtil.checkDouble();
+                        amount = CheckScannerInputUtil.checkDouble();
                     }
                     EMPLOYEE_LIST.get(employeeID).salaryChange(amount);
                     break;

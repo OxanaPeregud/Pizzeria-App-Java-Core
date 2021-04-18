@@ -1,73 +1,76 @@
-package com.peregud.pizza.service;
+package com.peregud.pizza.util;
 
 import com.peregud.pizza.model.Ingredient;
 import com.peregud.pizza.model.Pizza;
 import com.peregud.pizza.repository.StorageRepository;
 
-public class CookService {
+public final class CookUtil {
     private static final StorageRepository STORAGE;
 
     static {
         STORAGE = new StorageRepository();
     }
 
-    public void pizzaFourCheese() {
+    private CookUtil() {
+    }
+
+    public static void pizzaFourCheese() {
         STORAGE.changeIngredientQuantity(Pizza.FOUR_CHEESE);
     }
 
-    public void pizzaMargherita() {
+    public static void pizzaMargherita() {
         STORAGE.changeIngredientQuantity(Pizza.MARGHERITA);
     }
 
-    public void pizzaMeatDelight() {
+    public static void pizzaMeatDelight() {
         STORAGE.changeIngredientQuantity(Pizza.MEAT_DELIGHT);
     }
 
-    public void pizzaPepperoni() {
+    public static void pizzaPepperoni() {
         STORAGE.changeIngredientQuantity(Pizza.PEPPERONI);
     }
 
-    public void pizzaVegetarian() {
+    public static void pizzaVegetarian() {
         STORAGE.changeIngredientQuantity(Pizza.VEGETARIAN);
     }
 
-    public void thinDough() {
+    public static void thinDough() {
         STORAGE.removeOneIngredient(Ingredient.THIN_DOUGH);
     }
 
-    public void traditionalDough() {
+    public static void traditionalDough() {
         STORAGE.removeOneIngredient(Ingredient.TRADITIONAL_DOUGH);
     }
 
-    public void cheese() {
+    public static void cheese() {
         STORAGE.removeOneIngredient(Ingredient.CHEESE);
     }
 
-    public void meat() {
+    public static void meat() {
         STORAGE.removeOneIngredient(Ingredient.MEAT);
     }
 
-    public void sausages() {
+    public static void sausages() {
         STORAGE.removeOneIngredient(Ingredient.SAUSAGES);
     }
 
-    public void olives() {
+    public static void olives() {
         STORAGE.removeOneIngredient(Ingredient.OLIVES);
     }
 
-    public void tomatoes() {
+    public static void tomatoes() {
         STORAGE.removeOneIngredient(Ingredient.TOMATOES);
     }
 
-    public void pepper() {
+    public static void pepper() {
         STORAGE.removeOneIngredient(Ingredient.PEPPER);
     }
 
-    public void oregano() {
+    public static void oregano() {
         STORAGE.removeOneIngredient(Ingredient.OREGANO);
     }
 
-    public void sauce() {
+    public static void sauce() {
         STORAGE.removeOneIngredient(Ingredient.SAUCE);
     }
 }

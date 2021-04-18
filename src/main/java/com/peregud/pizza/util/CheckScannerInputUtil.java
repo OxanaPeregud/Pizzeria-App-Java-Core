@@ -5,14 +5,14 @@ import com.peregud.pizza.view.UtilViewConsole;
 
 import java.util.Scanner;
 
-public final class CheckUtil {
+public final class CheckScannerInputUtil {
     private static final UtilView UTIL_VIEW;
 
     static {
         UTIL_VIEW = new UtilViewConsole();
     }
 
-    private CheckUtil() {
+    private CheckScannerInputUtil() {
     }
 
     public static int checkInt() {

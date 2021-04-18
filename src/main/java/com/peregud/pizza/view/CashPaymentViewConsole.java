@@ -6,11 +6,9 @@ import com.peregud.pizza.util.CashPaymentUtil;
 import com.peregud.pizza.util.ChangeCalculatorUtil;
 
 public class CashPaymentViewConsole implements CashPaymentView {
-    private static final CreatePizzaService CREATE_PIZZA;
     private static final CashAmountException CASH_AMOUNT_EXCEPTION;
 
     static {
-        CREATE_PIZZA = new CreatePizzaService();
         CASH_AMOUNT_EXCEPTION = new CashAmountException();
     }
 
@@ -20,17 +18,10 @@ public class CashPaymentViewConsole implements CashPaymentView {
     }
 
     @Override
-    public void getChangePizzaOrder() {
+    public void getChange() {
         if (ChangeCalculatorUtil.getChange() >= 0)
             System.out.println("Your change from " + CashPaymentUtil.fullAmount + "$ is "
                     + ChangeCalculatorUtil.getChange() + "$");
-    }
-
-    @Override
-    public void getChangeCreatePizza() {
-        if (CREATE_PIZZA.getChange() >= 0)
-            System.out.println("Your change from " + CashPaymentUtil.fullAmount + "$ is "
-                    + CREATE_PIZZA.getChange() + "$");
     }
 
     @Override

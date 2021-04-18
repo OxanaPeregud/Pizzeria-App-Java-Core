@@ -3,13 +3,12 @@ package com.peregud.pizza.controller;
 import com.peregud.pizza.service.CreatePizzaService;
 import com.peregud.pizza.service.PizzaOrderService;
 import com.peregud.pizza.service.SupplyService;
-import com.peregud.pizza.util.CheckUtil;
+import com.peregud.pizza.util.CheckScannerInputUtil;
 import com.peregud.pizza.view.StarterView;
 import com.peregud.pizza.view.StarterViewConsole;
 import com.peregud.pizza.view.StorageView;
 import com.peregud.pizza.view.StorageViewConsole;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 public class PizzaController {
@@ -36,10 +35,10 @@ public class PizzaController {
     public PizzaController() {
     }
 
-    public void start() throws IOException {
+    public void start() {
         while (programOn) {
             STARTER_VIEW.displayOperations();
-            int operationChoice = CheckUtil.checkInt();
+            int operationChoice = CheckScannerInputUtil.checkInt();
             switch (operationChoice) {
                 case 1:
                     PIZZA_ORDER.start();
@@ -83,12 +82,16 @@ public class PizzaController {
         }
     }
 
-    public void addChoiceQuestion() throws IOException {
-        STARTER_VIEW.chooseOtherOperations();
-        Scanner scan = new Scanner(System.in);
-        char ch = scan.next().charAt(0);
-        if (ch == 'Y' || ch == 'y') {
-            start();
+    public void addChoiceQuestion() {
+        try {
+            STARTER_VIEW.chooseOtherOperations();
+            Scanner scan = new Scanner(System.in);
+            char ch = scan.next().charAt(0);
+            if (ch == 'Y' || ch == 'y') {
+                start();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

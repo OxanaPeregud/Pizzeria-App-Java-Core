@@ -2,7 +2,7 @@ package com.peregud.pizza.service;
 
 import com.peregud.pizza.exceptions.PizzaNumberException;
 import com.peregud.pizza.model.Pizza;
-import com.peregud.pizza.util.CheckUtil;
+import com.peregud.pizza.util.CheckScannerInputUtil;
 import com.peregud.pizza.util.OrderPizzaUtil;
 import com.peregud.pizza.view.PizzaOrderView;
 import com.peregud.pizza.view.PizzaOrderViewConsole;
@@ -36,7 +36,7 @@ public class PizzaOrderService {
 
     public void displayOptions() {
         PIZZA_ORDER_VIEW.displayOptions();
-        int choice = CheckUtil.checkInt();
+        int choice = CheckScannerInputUtil.checkInt();
         switch (choice) {
             case 1:
                 choosePizza();
@@ -62,7 +62,7 @@ public class PizzaOrderService {
 
     public void choosePizza() {
         PIZZA_ORDER_VIEW.pizzaMenu();
-        int choice = CheckUtil.checkInt();
+        int choice = CheckScannerInputUtil.checkInt();
         try {
             switch (PIZZAS.get(choice)) {
                 case FOUR_CHEESE:

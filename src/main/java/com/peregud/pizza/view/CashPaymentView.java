@@ -4,9 +4,7 @@ public interface CashPaymentView {
 
     void fullAmountView();
 
-    void getChangePizzaOrder();
-
-    void getChangeCreatePizza();
+    void getChange();
 
     void notEnoughMoney();
 

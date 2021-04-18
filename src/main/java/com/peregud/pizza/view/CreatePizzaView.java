@@ -52,6 +52,8 @@ public interface CreatePizzaView {
 
     void displayInfoCrust();
 
+    void displayInfoIngredients();
+
     void totalCalories(int totalCalories);
 
     void totalOrder(double totalOrder);
@@ -60,13 +62,9 @@ public interface CreatePizzaView {
 
     void addIngredientsQuestion();
 
-    void paymentChoice();
-
     void doughException();
 
     void ingredientNumberException();
-
-    void paymentChoiceException();
 
     void displayOptions();
 

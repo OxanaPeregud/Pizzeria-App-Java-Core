@@ -1,7 +1,7 @@
 package com.peregud.pizza.controller;
 
 import com.peregud.pizza.exceptions.OrderStatisticsException;
-import com.peregud.pizza.util.CheckUtil;
+import com.peregud.pizza.util.CheckScannerInputUtil;
 import com.peregud.pizza.util.StatisticsUtil;
 import com.peregud.pizza.view.OrderStatisticsView;
 import com.peregud.pizza.view.OrderStatisticsViewConsole;
@@ -51,7 +51,7 @@ public class OrderStatisticsController {
 
     public void displayChoice() {
         ORDER_STATISTICS_VIEW.displayChoice();
-        int choice = CheckUtil.checkInt();
+        int choice = CheckScannerInputUtil.checkInt();
         switch (choice) {
             case 1:
                 StatisticsUtil.displayTotalPizzasSold();

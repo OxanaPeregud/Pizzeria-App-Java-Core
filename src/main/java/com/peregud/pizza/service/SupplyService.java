@@ -3,7 +3,7 @@ package com.peregud.pizza.service;
 import com.peregud.pizza.exceptions.SupplierNumberException;
 import com.peregud.pizza.model.Supplier;
 import com.peregud.pizza.repository.StorageRepository;
-import com.peregud.pizza.util.CheckUtil;
+import com.peregud.pizza.util.CheckScannerInputUtil;
 import com.peregud.pizza.view.SupplyServiceView;
 import com.peregud.pizza.view.SupplyServiceViewConsole;
 
@@ -34,7 +34,7 @@ public class SupplyService {
     public void start() {
         SUPPLY_SERVICE_VIEW.suppliersMenu();
         try {
-            int supplierChoice = CheckUtil.checkInt();
+            int supplierChoice = CheckScannerInputUtil.checkInt();
             switch (SUPPLIERS.get(supplierChoice)) {
                 case SUPPLIER_1:
                     SUPPLY_SERVICE_VIEW.supplier1IngredientBefore();

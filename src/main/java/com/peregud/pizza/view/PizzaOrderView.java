@@ -38,11 +38,7 @@ public interface PizzaOrderView {
 
     void amountToPay(double totalOrder);
 
-    void paymentChoice();
-
     void pizzaNumberException();
-
-    void paymentChoiceException();
 
     void addSupplementIngredients();
 

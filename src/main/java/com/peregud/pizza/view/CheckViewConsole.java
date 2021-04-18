@@ -5,12 +5,7 @@ import com.peregud.pizza.model.Check;
 public class CheckViewConsole implements CheckView {
 
     @Override
-    public void displayCheckPizzaOrder() {
-        Check.getCheck().forEach(System.out::println);
-    }
-
-    @Override
-    public void displayCheckCreatePizza() {
+    public void displayCheck() {
         Check.getCheck().forEach(System.out::println);
     }
 }

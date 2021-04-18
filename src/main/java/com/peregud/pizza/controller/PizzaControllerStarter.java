@@ -1,9 +1,7 @@
 package com.peregud.pizza.controller;
 
-import java.io.IOException;
-
 public class PizzaControllerStarter {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         PizzaController pizzaController = new PizzaController();
         pizzaController.start();
     }
