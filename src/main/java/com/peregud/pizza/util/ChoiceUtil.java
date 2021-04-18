@@ -28,7 +28,7 @@ public final class ChoiceUtil {
         } else if (choice == 2) {
             PIZZA_ORDER.choosePizza();
         } else if (choice == 3) {
-            PIZZA_ORDER.paymentChoice();
+            PaymentChoiceUtil.paymentChoice();
         } else {
             UTIL_VIEW.choiceUtilView();
             addChoiceQuestion();

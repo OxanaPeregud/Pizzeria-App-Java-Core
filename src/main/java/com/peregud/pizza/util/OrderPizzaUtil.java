@@ -13,10 +13,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class OrderUtil {
+public final class OrderPizzaUtil {
     private static final PizzaOrderView PIZZA_ORDER_VIEW;
     private static final CookService COOK;
-    private static final Check CHECK;
     private static final List<Order> ORDER_LIST;
     private static final Order ORDER;
     private static final PizzaOrderCalculatorService PIZZA_ORDER;
@@ -24,24 +23,24 @@ public final class OrderUtil {
     static {
         PIZZA_ORDER_VIEW = new PizzaOrderViewConsole();
         COOK = new CookService();
-        CHECK = new Check(new ArrayList<>());
         ORDER_LIST = new ArrayList<>();
         ORDER = new Order();
         PIZZA_ORDER = new PizzaOrderCalculatorService(new ArrayList<>());
     }
 
-    private OrderUtil() {
+    private OrderPizzaUtil() {
     }
 
     public static void orderFourCheese() {
         try {
             PIZZA_ORDER_VIEW.orderPizzaFourCheese();
             COOK.pizzaFourCheese();
-            CHECK.add(PIZZA_ORDER_VIEW.orderPizzaFourCheese());
+            Check.add(PIZZA_ORDER_VIEW.orderPizzaFourCheese());
             ORDER_LIST.add(ORDER.add(Pizza.FOUR_CHEESE.name(), RoundUtil.up(
                     PizzaPriceUtil.pricePizzaFourCheeseIncludingVAT()),
                     DateFormatUtil.localDatePattern(LocalDateTime.now())));
             PIZZA_ORDER.add(PizzaPriceUtil.pricePizzaFourCheeseIncludingVAT());
+            DisplayOrderInfoUtil.showOrderInfo();
             PIZZA_ORDER_VIEW.addSupplementIngredients();
             ChoiceUtil.addChoiceQuestion();
         } catch (IOException e) {
@@ -53,11 +52,12 @@ public final class OrderUtil {
         try {
             PIZZA_ORDER_VIEW.orderPizzaMargherita();
             COOK.pizzaMargherita();
-            CHECK.add(PIZZA_ORDER_VIEW.orderPizzaMargherita());
+            Check.add(PIZZA_ORDER_VIEW.orderPizzaMargherita());
             ORDER_LIST.add(ORDER.add(Pizza.MARGHERITA.name(), RoundUtil.up(
                     PizzaPriceUtil.pricePizzaMargheritaIncludingVAT()),
                     DateFormatUtil.localDatePattern(LocalDateTime.now())));
             PIZZA_ORDER.add(PizzaPriceUtil.pricePizzaMargheritaIncludingVAT());
+            DisplayOrderInfoUtil.showOrderInfo();
             PIZZA_ORDER_VIEW.addSupplementIngredients();
             ChoiceUtil.addChoiceQuestion();
         } catch (IOException e) {
@@ -69,11 +69,12 @@ public final class OrderUtil {
         try {
             PIZZA_ORDER_VIEW.orderPizzaMeatDelight();
             COOK.pizzaMeatDelight();
-            CHECK.add(PIZZA_ORDER_VIEW.orderPizzaMeatDelight());
+            Check.add(PIZZA_ORDER_VIEW.orderPizzaMeatDelight());
             ORDER_LIST.add(ORDER.add(Pizza.MEAT_DELIGHT.name(),
                     RoundUtil.up(PizzaPriceUtil.pricePizzaMeatDelightIncludingVAT()),
                     DateFormatUtil.localDatePattern(LocalDateTime.now())));
             PIZZA_ORDER.add(PizzaPriceUtil.pricePizzaMeatDelightIncludingVAT());
+            DisplayOrderInfoUtil.showOrderInfo();
             PIZZA_ORDER_VIEW.addSupplementIngredients();
             ChoiceUtil.addChoiceQuestion();
         } catch (IOException e) {
@@ -85,11 +86,12 @@ public final class OrderUtil {
         try {
             PIZZA_ORDER_VIEW.orderPizzaPepperoni();
             COOK.pizzaPepperoni();
-            CHECK.add(PIZZA_ORDER_VIEW.orderPizzaPepperoni());
+            Check.add(PIZZA_ORDER_VIEW.orderPizzaPepperoni());
             ORDER_LIST.add(ORDER.add(Pizza.PEPPERONI.name(),
                     RoundUtil.up(PizzaPriceUtil.pricePizzaPepperoniIncludingVAT()),
                     DateFormatUtil.localDatePattern(LocalDateTime.now())));
             PIZZA_ORDER.add(PizzaPriceUtil.pricePizzaPepperoniIncludingVAT());
+            DisplayOrderInfoUtil.showOrderInfo();
             PIZZA_ORDER_VIEW.addSupplementIngredients();
             ChoiceUtil.addChoiceQuestion();
         } catch (IOException e) {
@@ -101,11 +103,12 @@ public final class OrderUtil {
         try {
             PIZZA_ORDER_VIEW.orderPizzaVegetarian();
             COOK.pizzaVegetarian();
-            CHECK.add(PIZZA_ORDER_VIEW.orderPizzaVegetarian());
+            Check.add(PIZZA_ORDER_VIEW.orderPizzaVegetarian());
             ORDER_LIST.add(ORDER.add(Pizza.VEGETARIAN.name(),
                     RoundUtil.up(PizzaPriceUtil.pricePizzaVegetarianIncludingVAT()),
                     DateFormatUtil.localDatePattern(LocalDateTime.now())));
             PIZZA_ORDER.add(PizzaPriceUtil.pricePizzaVegetarianIncludingVAT());
+            DisplayOrderInfoUtil.showOrderInfo();
             PIZZA_ORDER_VIEW.addSupplementIngredients();
             ChoiceUtil.addChoiceQuestion();
         } catch (IOException e) {
@@ -117,20 +120,8 @@ public final class OrderUtil {
         return PIZZA_ORDER_VIEW;
     }
 
-    public static CookService getCOOK() {
-        return COOK;
-    }
-
-    public static Check getCHECK() {
-        return CHECK;
-    }
-
     public static List<Order> getOrderList() {
         return ORDER_LIST;
-    }
-
-    public static Order getORDER() {
-        return ORDER;
     }
 
     public static PizzaOrderCalculatorService getPizzaOrder() {

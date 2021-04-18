@@ -1,17 +1,16 @@
 package com.peregud.pizza.view;
 
-import com.peregud.pizza.service.CreatePizzaService;
-import com.peregud.pizza.service.PizzaOrderService;
+import com.peregud.pizza.model.Check;
 
 public class CheckViewConsole implements CheckView {
 
     @Override
     public void displayCheckPizzaOrder() {
-        PizzaOrderService.CHECK.getItemsInCheck().forEach(System.out::println);
+        Check.getCheck().forEach(System.out::println);
     }
 
     @Override
     public void displayCheckCreatePizza() {
-        CreatePizzaService.CHECK.getItemsInCheck().forEach(System.out::println);
+        Check.getCheck().forEach(System.out::println);
     }
 }

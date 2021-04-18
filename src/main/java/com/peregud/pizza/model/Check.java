@@ -1,19 +1,23 @@
 package com.peregud.pizza.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class Check {
-    private final List<String> check;
+public final class Check {
+    private static final List<String> CHECK;
 
-    public Check(List<String> check) {
-        this.check = check;
+    static {
+        CHECK = new ArrayList<>();
     }
 
-    public void add(String item) {
-        check.add(item);
+    private Check() {
     }
 
-    public List<String> getItemsInCheck() {
-        return check;
+    public static void add(String item) {
+        CHECK.add(item);
+    }
+
+    public static List<String> getCheck() {
+        return CHECK;
     }
 }
