@@ -1,6 +1,8 @@
 package com.peregud.pizza.model;
 
-public class Order {
+import java.io.Serializable;
+
+public class Order implements Serializable {
     private String pizza;
     private double price;
     private String orderTime;

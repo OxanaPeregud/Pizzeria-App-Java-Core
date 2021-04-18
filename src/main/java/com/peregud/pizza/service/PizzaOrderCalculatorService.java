@@ -1,10 +1,10 @@
-package com.peregud.pizza.repository;
+package com.peregud.pizza.service;
 
 import java.util.List;
 
-public class IngredientOrderRepository extends OrderRepository {
+public class PizzaOrderCalculatorService extends OrderCalculatorService {
 
-    public IngredientOrderRepository(List<Double> order) {
+    public PizzaOrderCalculatorService(List<Double> order) {
         super(order);
     }
 

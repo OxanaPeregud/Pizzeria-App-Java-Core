@@ -5,7 +5,7 @@ import com.peregud.pizza.model.Ingredient;
 import com.peregud.pizza.model.Pizza;
 import com.peregud.pizza.model.Supplier;
 import com.peregud.pizza.repository.IngredientCaloriesRepository;
-import com.peregud.pizza.repository.OrderRepository;
+import com.peregud.pizza.service.OrderCalculatorService;
 import com.peregud.pizza.repository.StorageRepository;
 import com.peregud.pizza.util.CashPaymentUtil;
 import com.peregud.pizza.service.CookService;
@@ -24,14 +24,14 @@ public class PizzaTests {
     private static final CookService COOK;
     private static final StorageRepository STORAGE;
     private static final IngredientCaloriesRepository INGREDIENT_CALORIES;
-    private static final OrderRepository ORDER;
+    private static final OrderCalculatorService ORDER;
 
     static {
         ORDER_STATISTICS = new OrderStatisticsService();
         COOK = new CookService();
         STORAGE = new StorageRepository();
         INGREDIENT_CALORIES = new IngredientCaloriesRepository(new ArrayList<>());
-        ORDER = new OrderRepository(new ArrayList<>());
+        ORDER = new OrderCalculatorService(new ArrayList<>());
     }
 
     @Test

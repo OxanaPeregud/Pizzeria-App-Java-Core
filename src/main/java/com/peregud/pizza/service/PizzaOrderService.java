@@ -6,9 +6,8 @@ import com.peregud.pizza.model.Check;
 import com.peregud.pizza.model.Order;
 import com.peregud.pizza.model.PaymentMethod;
 import com.peregud.pizza.model.Pizza;
-import com.peregud.pizza.repository.IngredientOrderRepository;
+import com.peregud.pizza.repository.OrderRepository;
 import com.peregud.pizza.repository.OrderRepositorySQL;
-import com.peregud.pizza.repository.PizzaOrderRepository;
 import com.peregud.pizza.util.*;
 import com.peregud.pizza.view.*;
 
@@ -28,11 +27,12 @@ public class PizzaOrderService {
     public static final Check CHECK;
     private static final CheckView CHECK_VIEW;
     private static final Map<Integer, PaymentMethod> PAYMENT_METHOD;
-    private static final PizzaOrderRepository PIZZA_ORDER;
-    public static final IngredientOrderRepository INGREDIENT_ORDER;
+    private static final PizzaOrderCalculatorService PIZZA_ORDER;
+    public static final IngredientOrderCalculatorService INGREDIENT_ORDER;
     private static final CreatePizzaService CREATE_PIZZA;
     private static final Order ORDER;
     private static final List<Order> ORDER_LIST;
+    private static final OrderRepository ORDER_REPOSITORY;
 
     static {
         PIZZAS = new HashMap<>();
@@ -47,11 +47,12 @@ public class PizzaOrderService {
         CASH_PAYMENT_VIEW = new CashPaymentViewConsole();
         CHECK = new Check(new ArrayList<>());
         CHECK_VIEW = new CheckViewConsole();
-        PIZZA_ORDER = new PizzaOrderRepository(new ArrayList<>());
-        INGREDIENT_ORDER = new IngredientOrderRepository(new ArrayList<>());
+        PIZZA_ORDER = new PizzaOrderCalculatorService(new ArrayList<>());
+        INGREDIENT_ORDER = new IngredientOrderCalculatorService(new ArrayList<>());
         CREATE_PIZZA = new CreatePizzaService();
         ORDER = new Order();
         ORDER_LIST = new ArrayList<>();
+        ORDER_REPOSITORY = new OrderRepositorySQL();
 
         PAYMENT_METHOD = new HashMap<>();
         PAYMENT_METHOD.put(1, PaymentMethod.CASH);
@@ -251,9 +252,8 @@ public class PizzaOrderService {
                 INGREDIENT_ORDER.totalOrder()));
     }
 
-    public void paymentChoice() throws IOException {
-        CHECK.checkInFile();
-        OrderRepositorySQL.orderInput(ORDER_LIST);
+    public void paymentChoice() {
+        ORDER_REPOSITORY.orderInput(ORDER_LIST);
         PIZZA_ORDER_VIEW.paymentChoice();
         try {
             int payment = CheckUtil.checkInt();

@@ -1,26 +1,11 @@
 package com.peregud.pizza.repository;
 
+import com.peregud.pizza.model.Order;
+
 import java.util.List;
 
-public class OrderRepository {
-    private final List<Double> order;
+public interface OrderRepository {
 
-    public OrderRepository(List<Double> order) {
-        this.order = order;
-    }
+    void orderInput(List<Order> list);
 
-    public void add(double price) {
-        order.add(price);
-    }
-
-    public double totalOrder() {
-        return order.stream()
-                .mapToDouble(Double::doubleValue)
-                .sum();
-    }
-
-    public int size() {
-        return order.size();
-    }
 }
-

@@ -8,10 +8,11 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
-public class OrderRepositorySQL {
+public class OrderRepositorySQL implements OrderRepository {
     private static final String SQL_URL = "jdbc:mysql://localhost:3306/orders";
 
-    public static void orderInput(List<Order> list) {
+    @Override
+    public void orderInput(List<Order> list) {
         Connection conn = null;
         PreparedStatement preparedStatement = null;
         try {
