@@ -1,12 +1,19 @@
-package com.peregud.pizza.service;
+package com.peregud.pizza.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class CreatePizzasDatabaseService {
-    private static final String SQL_URL = "jdbc:mysql://localhost:3306";
+public class CreatePizzasDatabaseUtil {
+    private static final String SQL_URL;
+
+    static {
+        SQL_URL = "jdbc:mysql://localhost:3306";
+    }
+
+    private CreatePizzasDatabaseUtil() {
+    }
 
     public static void createDatabase() {
         Connection conn = null;

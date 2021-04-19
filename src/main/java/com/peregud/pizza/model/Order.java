@@ -24,11 +24,23 @@ public class Order implements Serializable {
         return pizza;
     }
 
+    public void setPizza(String pizza) {
+        this.pizza = pizza;
+    }
+
     public double getPrice() {
         return price;
     }
 
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     public String getOrderTime() {
         return orderTime;
+    }
+
+    public void setOrderTime(String orderTime) {
+        this.orderTime = orderTime;
     }
 }

@@ -8,4 +8,6 @@ public interface OrderRepository {
 
     void orderInput(List<Order> list);
 
+    List<Order> orderOutput();
+
 }

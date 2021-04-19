@@ -99,11 +99,12 @@ public class OrderStatisticsViewConsole implements OrderStatisticsView {
         System.out.println("4. Total profit");
         System.out.println("5. Profit margin");
         System.out.println("6. Full order statistics");
-        System.out.println("7. Exit");
+        System.out.println("7. Display all sold pizzas");
+        System.out.println("8. Exit");
     }
 
     @Override
     public void choiceView() {
-        System.out.println("You need to enter a number from 1 to 7");
+        System.out.println("You need to enter a number from 1 to 8");
     }
 }

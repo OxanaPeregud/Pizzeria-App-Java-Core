@@ -1,29 +1,35 @@
 package com.peregud.pizza.util;
 
-import com.peregud.pizza.service.SoldPizzasCounterService;
-import com.peregud.pizza.service.SoldPizzasCounterServiceSQL;
+import com.peregud.pizza.model.Pizza;
+import com.peregud.pizza.repository.OrderRepository;
+import com.peregud.pizza.repository.OrderRepositorySQL;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public final class SoldPizzasUtil {
     private static final Map<Integer, Integer> SOLD_PIZZAS;
-    private static final SoldPizzasCounterService SOLD_PIZZAS_COUNTER;
+    private static final OrderRepository ORDER_REPOSITORY;
 
     static {
         SOLD_PIZZAS = new HashMap<>();
-        SOLD_PIZZAS_COUNTER = new SoldPizzasCounterServiceSQL();
+        ORDER_REPOSITORY = new OrderRepositorySQL();
     }
 
     private SoldPizzasUtil() {
     }
 
     public static void createMapOfSoldPizzas() {
-        SOLD_PIZZAS.put(1, SOLD_PIZZAS_COUNTER.countPizzasFourCheese().size());
-        SOLD_PIZZAS.put(2, SOLD_PIZZAS_COUNTER.countPizzasMargherita().size());
-        SOLD_PIZZAS.put(3, SOLD_PIZZAS_COUNTER.countPizzasMeatDelight().size());
-        SOLD_PIZZAS.put(4, SOLD_PIZZAS_COUNTER.countPizzasPepperoni().size());
-        SOLD_PIZZAS.put(5, SOLD_PIZZAS_COUNTER.countPizzasVegetarian().size());
+        SOLD_PIZZAS.put(1, SoldPizzasCounterUtil.soldPizzas(ORDER_REPOSITORY.orderOutput(),
+                Pizza.FOUR_CHEESE.name()).size());
+        SOLD_PIZZAS.put(2, SoldPizzasCounterUtil.soldPizzas(ORDER_REPOSITORY.orderOutput(),
+                Pizza.MARGHERITA.name()).size());
+        SOLD_PIZZAS.put(3, SoldPizzasCounterUtil.soldPizzas(ORDER_REPOSITORY.orderOutput(),
+                Pizza.MEAT_DELIGHT.name()).size());
+        SOLD_PIZZAS.put(4, SoldPizzasCounterUtil.soldPizzas(ORDER_REPOSITORY.orderOutput(),
+                Pizza.PEPPERONI.name()).size());
+        SOLD_PIZZAS.put(5, SoldPizzasCounterUtil.soldPizzas(ORDER_REPOSITORY.orderOutput(),
+                Pizza.VEGETARIAN.name()).size());
     }
 
     public static Map<Integer, Integer> getSoldPizzas() {

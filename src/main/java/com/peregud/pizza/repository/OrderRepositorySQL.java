@@ -2,14 +2,16 @@ package com.peregud.pizza.repository;
 
 import com.peregud.pizza.model.Order;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrderRepositorySQL implements OrderRepository {
-    private static final String SQL_URL = "jdbc:mysql://localhost:3306/orders";
+    private static final String SQL_URL;
+
+    static {
+        SQL_URL = "jdbc:mysql://localhost:3306/orders";
+    }
 
     @Override
     public void orderInput(List<Order> list) {
@@ -39,5 +41,39 @@ public class OrderRepositorySQL implements OrderRepository {
                 throwables.printStackTrace();
             }
         }
+    }
+
+    @Override
+    public List<Order> orderOutput() {
+        Connection conn = null;
+        Statement stmt = null;
+        try {
+            conn = DriverManager.getConnection(SQL_URL, "root", "1234");
+            stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("select * from orders.pizzas");
+            List<Order> list = new ArrayList<>();
+            while (rs.next()) {
+                Order order = new Order();
+                order.setPizza(rs.getString("pizza"));
+                order.setPrice(rs.getDouble("price"));
+                order.setOrderTime(rs.getString("order_time"));
+                list.add(order);
+            }
+            return list;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+                if (stmt != null) {
+                    stmt.close();
+                }
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+        return null;
     }
 }
