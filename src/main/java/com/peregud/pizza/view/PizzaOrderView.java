@@ -1,20 +1,14 @@
 package com.peregud.pizza.view;
 
+import com.peregud.pizza.model.Pizza;
+
 public interface PizzaOrderView {
 
     void greeting();
 
     void pizzaMenu();
 
-    String orderPizzaFourCheese();
-
-    String orderPizzaMargherita();
-
-    String orderPizzaMeatDelight();
-
-    String orderPizzaPepperoni();
-
-    String orderPizzaVegetarian();
+    String orderPizza(Pizza pizza, double price);
 
     void displayInfoPizzaFourCheese();
 

@@ -41,42 +41,42 @@ public class IngredientSupplementService {
             switch (INGREDIENTS.get(choice)) {
                 case CHEESE:
                     IngredientOrderUtil.getIngredientOrder().add(IngredientPriceUtil.priceCheeseIncludingVAT());
-                    CookUtil.cheese();
+                    CookUtil.cookIngredient(Ingredient.CHEESE);
                     Check.add(CREATE_PIZZA_VIEW.orderCheese());
                     break;
                 case MEAT:
                     IngredientOrderUtil.getIngredientOrder().add(IngredientPriceUtil.priceMeatIncludingVAT());
-                    CookUtil.meat();
+                    CookUtil.cookIngredient(Ingredient.MEAT);
                     Check.add(CREATE_PIZZA_VIEW.orderMeat());
                     break;
                 case SAUSAGES:
                     IngredientOrderUtil.getIngredientOrder().add(IngredientPriceUtil.priceSausagesIncludingVAT());
-                    CookUtil.sausages();
+                    CookUtil.cookIngredient(Ingredient.SAUSAGES);
                     Check.add(CREATE_PIZZA_VIEW.orderSausages());
                     break;
                 case OLIVES:
                     IngredientOrderUtil.getIngredientOrder().add(IngredientPriceUtil.priceOlivesIncludingVAT());
-                    CookUtil.olives();
+                    CookUtil.cookIngredient(Ingredient.OLIVES);
                     Check.add(CREATE_PIZZA_VIEW.orderOlives());
                     break;
                 case TOMATOES:
                     IngredientOrderUtil.getIngredientOrder().add(IngredientPriceUtil.priceTomatoesIncludingVAT());
-                    CookUtil.tomatoes();
+                    CookUtil.cookIngredient(Ingredient.TOMATOES);
                     Check.add(CREATE_PIZZA_VIEW.orderTomatoes());
                     break;
                 case PEPPER:
                     IngredientOrderUtil.getIngredientOrder().add(IngredientPriceUtil.pricePepperIncludingVAT());
-                    CookUtil.pepper();
+                    CookUtil.cookIngredient(Ingredient.PEPPER);
                     Check.add(CREATE_PIZZA_VIEW.orderPepper());
                     break;
                 case OREGANO:
                     IngredientOrderUtil.getIngredientOrder().add(IngredientPriceUtil.priceOreganoIncludingVAT());
-                    CookUtil.oregano();
+                    CookUtil.cookIngredient(Ingredient.OREGANO);
                     Check.add(CREATE_PIZZA_VIEW.orderOregano());
                     break;
                 case SAUCE:
                     IngredientOrderUtil.getIngredientOrder().add(IngredientPriceUtil.priceSauceIncludingVAT());
-                    CookUtil.sauce();
+                    CookUtil.cookIngredient(Ingredient.SAUCE);
                     Check.add(CREATE_PIZZA_VIEW.orderSauce());
                     break;
                 case CRUST:

@@ -686,238 +686,238 @@ public class PizzaTests {
     @Test
     public void pizzaFourCheese_TraditionalDough_CookService() {
         int oldQuantity = STORAGE.getIngredientQuantity(Ingredient.TRADITIONAL_DOUGH);
-        CookUtil.pizzaFourCheese();
+        CookUtil.cookPizza(Pizza.FOUR_CHEESE);
         assertEquals(oldQuantity - 1, STORAGE.getIngredientQuantity(Ingredient.TRADITIONAL_DOUGH));
     }
 
     @Test
     public void pizzaFourCheese_Sauce_CookService() {
         int oldQuantity = STORAGE.getIngredientQuantity(Ingredient.SAUCE);
-        CookUtil.pizzaFourCheese();
+        CookUtil.cookPizza(Pizza.FOUR_CHEESE);
         assertEquals(oldQuantity - 1, STORAGE.getIngredientQuantity(Ingredient.SAUCE));
     }
 
     @Test
     public void pizzaFourCheese_Cheese_CookService() {
         int oldQuantity = STORAGE.getIngredientQuantity(Ingredient.CHEESE);
-        CookUtil.pizzaFourCheese();
+        CookUtil.cookPizza(Pizza.FOUR_CHEESE);
         assertEquals(oldQuantity - 4, STORAGE.getIngredientQuantity(Ingredient.CHEESE));
     }
 
     @Test
     public void pizzaFourCheese_Oregano_CookService() {
         int oldQuantity = STORAGE.getIngredientQuantity(Ingredient.OREGANO);
-        CookUtil.pizzaFourCheese();
+        CookUtil.cookPizza(Pizza.FOUR_CHEESE);
         assertEquals(oldQuantity - 1, STORAGE.getIngredientQuantity(Ingredient.OREGANO));
     }
 
     @Test
     public void pizzaMargherita_TraditionalDough_CookService() {
         int oldQuantity = STORAGE.getIngredientQuantity(Ingredient.TRADITIONAL_DOUGH);
-        CookUtil.pizzaMargherita();
+        CookUtil.cookPizza(Pizza.MARGHERITA);
         assertEquals(oldQuantity - 1, STORAGE.getIngredientQuantity(Ingredient.TRADITIONAL_DOUGH));
     }
 
     @Test
     public void pizzaMargherita_Sauce_CookService() {
         int oldQuantity = STORAGE.getIngredientQuantity(Ingredient.SAUCE);
-        CookUtil.pizzaMargherita();
+        CookUtil.cookPizza(Pizza.MARGHERITA);
         assertEquals(oldQuantity - 1, STORAGE.getIngredientQuantity(Ingredient.SAUCE));
     }
 
     @Test
     public void pizzaMargherita_Cheese_CookService() {
         int oldQuantity = STORAGE.getIngredientQuantity(Ingredient.CHEESE);
-        CookUtil.pizzaMargherita();
+        CookUtil.cookPizza(Pizza.MARGHERITA);
         assertEquals(oldQuantity - 2, STORAGE.getIngredientQuantity(Ingredient.CHEESE));
     }
 
     @Test
     public void pizzaMargherita_Tomatoes_CookService() {
         int oldQuantity = STORAGE.getIngredientQuantity(Ingredient.TOMATOES);
-        CookUtil.pizzaMargherita();
+        CookUtil.cookPizza(Pizza.MARGHERITA);
         assertEquals(oldQuantity - 2, STORAGE.getIngredientQuantity(Ingredient.TOMATOES));
     }
 
     @Test
     public void pizzaMargherita_Oregano_CookService() {
         int oldQuantityOregano = STORAGE.getIngredientQuantity(Ingredient.OREGANO);
-        CookUtil.pizzaMargherita();
+        CookUtil.cookPizza(Pizza.MARGHERITA);
         assertEquals(oldQuantityOregano - 1, STORAGE.getIngredientQuantity(Ingredient.OREGANO));
     }
 
     @Test
     public void pizzaMeatDelight_TraditionalDough_CookService() {
         int oldQuantity = STORAGE.getIngredientQuantity(Ingredient.TRADITIONAL_DOUGH);
-        CookUtil.pizzaMeatDelight();
+        CookUtil.cookPizza(Pizza.MEAT_DELIGHT);
         assertEquals(oldQuantity - 1, STORAGE.getIngredientQuantity(Ingredient.TRADITIONAL_DOUGH));
     }
 
     @Test
     public void pizzaMeatDelight_Sauce_CookService() {
         int oldQuantity = STORAGE.getIngredientQuantity(Ingredient.SAUCE);
-        CookUtil.pizzaMeatDelight();
+        CookUtil.cookPizza(Pizza.MEAT_DELIGHT);
         assertEquals(oldQuantity - 1, STORAGE.getIngredientQuantity(Ingredient.SAUCE));
     }
 
     @Test
     public void pizzaMeatDelight_Cheese_CookService() {
         int oldQuantity = STORAGE.getIngredientQuantity(Ingredient.CHEESE);
-        CookUtil.pizzaMeatDelight();
+        CookUtil.cookPizza(Pizza.MEAT_DELIGHT);
         assertEquals(oldQuantity - 1, STORAGE.getIngredientQuantity(Ingredient.CHEESE));
     }
 
     @Test
     public void pizzaMeatDelight_Meat_CookService() {
         int oldQuantity = STORAGE.getIngredientQuantity(Ingredient.MEAT);
-        CookUtil.pizzaMeatDelight();
+        CookUtil.cookPizza(Pizza.MEAT_DELIGHT);
         assertEquals(oldQuantity - 2, STORAGE.getIngredientQuantity(Ingredient.MEAT));
     }
 
     @Test
     public void pizzaMeatDelight_Sausages_CookService() {
         int oldQuantity = STORAGE.getIngredientQuantity(Ingredient.SAUSAGES);
-        CookUtil.pizzaMeatDelight();
+        CookUtil.cookPizza(Pizza.MEAT_DELIGHT);
         assertEquals(oldQuantity - 2, STORAGE.getIngredientQuantity(Ingredient.SAUSAGES));
     }
 
     @Test
     public void pizzaPepperoni_TraditionalDough_CookService() {
         int oldQuantity = STORAGE.getIngredientQuantity(Ingredient.TRADITIONAL_DOUGH);
-        CookUtil.pizzaPepperoni();
+        CookUtil.cookPizza(Pizza.PEPPERONI);
         assertEquals(oldQuantity - 1, STORAGE.getIngredientQuantity(Ingredient.TRADITIONAL_DOUGH));
     }
 
     @Test
     public void pizzaPepperoni_Sauce_CookService() {
         int oldQuantity = STORAGE.getIngredientQuantity(Ingredient.SAUCE);
-        CookUtil.pizzaPepperoni();
+        CookUtil.cookPizza(Pizza.PEPPERONI);
         assertEquals(oldQuantity - 1, STORAGE.getIngredientQuantity(Ingredient.SAUCE));
     }
 
     @Test
     public void pizzaPepperoni_Cheese_CookService() {
         int oldQuantity = STORAGE.getIngredientQuantity(Ingredient.CHEESE);
-        CookUtil.pizzaPepperoni();
+        CookUtil.cookPizza(Pizza.PEPPERONI);
         assertEquals(oldQuantity - 1, STORAGE.getIngredientQuantity(Ingredient.CHEESE));
     }
 
     @Test
     public void pizzaPepperoni_Meat_CookService() {
         int oldQuantity = STORAGE.getIngredientQuantity(Ingredient.MEAT);
-        CookUtil.pizzaPepperoni();
+        CookUtil.cookPizza(Pizza.PEPPERONI);
         assertEquals(oldQuantity - 3, STORAGE.getIngredientQuantity(Ingredient.MEAT));
     }
 
     @Test
     public void pizzaVegetarian_TraditionalDough_CookService() {
         int oldQuantity = STORAGE.getIngredientQuantity(Ingredient.TRADITIONAL_DOUGH);
-        CookUtil.pizzaVegetarian();
+        CookUtil.cookPizza(Pizza.VEGETARIAN);
         assertEquals(oldQuantity - 1, STORAGE.getIngredientQuantity(Ingredient.TRADITIONAL_DOUGH));
     }
 
     @Test
     public void pizzaVegetarian_Sauce_CookService() {
         int oldQuantity = STORAGE.getIngredientQuantity(Ingredient.SAUCE);
-        CookUtil.pizzaVegetarian();
+        CookUtil.cookPizza(Pizza.VEGETARIAN);
         assertEquals(oldQuantity - 1, STORAGE.getIngredientQuantity(Ingredient.SAUCE));
     }
 
     @Test
     public void pizzaVegetarian_Cheese_CookService() {
         int oldQuantity = STORAGE.getIngredientQuantity(Ingredient.CHEESE);
-        CookUtil.pizzaVegetarian();
+        CookUtil.cookPizza(Pizza.VEGETARIAN);
         assertEquals(oldQuantity - 1, STORAGE.getIngredientQuantity(Ingredient.CHEESE));
     }
 
     @Test
     public void pizzaVegetarian_Tomatoes_CookService() {
         int oldQuantity = STORAGE.getIngredientQuantity(Ingredient.TOMATOES);
-        CookUtil.pizzaVegetarian();
+        CookUtil.cookPizza(Pizza.VEGETARIAN);
         assertEquals(oldQuantity - 2, STORAGE.getIngredientQuantity(Ingredient.TOMATOES));
     }
 
     @Test
     public void pizzaVegetarian_Pepper_CookService() {
         int oldQuantity = STORAGE.getIngredientQuantity(Ingredient.PEPPER);
-        CookUtil.pizzaVegetarian();
+        CookUtil.cookPizza(Pizza.VEGETARIAN);
         assertEquals(oldQuantity - 2, STORAGE.getIngredientQuantity(Ingredient.PEPPER));
     }
 
     @Test
     public void pizzaVegetarian_Olives_CookService() {
         int oldQuantity = STORAGE.getIngredientQuantity(Ingredient.OLIVES);
-        CookUtil.pizzaVegetarian();
+        CookUtil.cookPizza(Pizza.VEGETARIAN);
         assertEquals(oldQuantity - 2, STORAGE.getIngredientQuantity(Ingredient.OLIVES));
     }
 
     @Test
     public void thinDough_CookService() {
         int oldQuantity = STORAGE.getIngredientQuantity(Ingredient.THIN_DOUGH);
-        CookUtil.thinDough();
+        CookUtil.cookIngredient(Ingredient.THIN_DOUGH);
         assertEquals(oldQuantity - 1, STORAGE.getIngredientQuantity(Ingredient.THIN_DOUGH));
     }
 
     @Test
     public void traditionalDough_CookService() {
         int oldQuantity = STORAGE.getIngredientQuantity(Ingredient.TRADITIONAL_DOUGH);
-        CookUtil.traditionalDough();
+        CookUtil.cookIngredient(Ingredient.TRADITIONAL_DOUGH);
         assertEquals(oldQuantity - 1, STORAGE.getIngredientQuantity(Ingredient.TRADITIONAL_DOUGH));
     }
 
     @Test
     public void cheese_CookService() {
         int oldQuantity = STORAGE.getIngredientQuantity(Ingredient.CHEESE);
-        CookUtil.cheese();
+        CookUtil.cookIngredient(Ingredient.CHEESE);
         assertEquals(oldQuantity - 1, STORAGE.getIngredientQuantity(Ingredient.CHEESE));
     }
 
     @Test
     public void meat_CookService() {
         int oldQuantity = STORAGE.getIngredientQuantity(Ingredient.MEAT);
-        CookUtil.meat();
+        CookUtil.cookIngredient(Ingredient.MEAT);
         assertEquals(oldQuantity - 1, STORAGE.getIngredientQuantity(Ingredient.MEAT));
     }
 
     @Test
     public void sausages_CookService() {
         int oldQuantity = STORAGE.getIngredientQuantity(Ingredient.SAUSAGES);
-        CookUtil.sausages();
+        CookUtil.cookIngredient(Ingredient.SAUSAGES);
         assertEquals(oldQuantity - 1, STORAGE.getIngredientQuantity(Ingredient.SAUSAGES));
     }
 
     @Test
     public void olives_CookService() {
         int oldQuantity = STORAGE.getIngredientQuantity(Ingredient.OLIVES);
-        CookUtil.olives();
+        CookUtil.cookIngredient(Ingredient.OLIVES);
         assertEquals(oldQuantity - 1, STORAGE.getIngredientQuantity(Ingredient.OLIVES));
     }
 
     @Test
     public void tomatoes_CookService() {
         int oldQuantity = STORAGE.getIngredientQuantity(Ingredient.TOMATOES);
-        CookUtil.tomatoes();
+        CookUtil.cookIngredient(Ingredient.TOMATOES);
         assertEquals(oldQuantity - 1, STORAGE.getIngredientQuantity(Ingredient.TOMATOES));
     }
 
     @Test
     public void pepper_CookService() {
         int oldQuantity = STORAGE.getIngredientQuantity(Ingredient.PEPPER);
-        CookUtil.pepper();
+        CookUtil.cookIngredient(Ingredient.PEPPER);
         assertEquals(oldQuantity - 1, STORAGE.getIngredientQuantity(Ingredient.PEPPER));
     }
 
     @Test
     public void oregano_CookService() {
         int oldQuantity = STORAGE.getIngredientQuantity(Ingredient.OREGANO);
-        CookUtil.oregano();
+        CookUtil.cookIngredient(Ingredient.OREGANO);
         assertEquals(oldQuantity - 1, STORAGE.getIngredientQuantity(Ingredient.OREGANO));
     }
 
     @Test
     public void sauce_CookService() {
         int oldQuantity = STORAGE.getIngredientQuantity(Ingredient.SAUCE);
-        CookUtil.sauce();
+        CookUtil.cookIngredient(Ingredient.SAUCE);
         assertEquals(oldQuantity - 1, STORAGE.getIngredientQuantity(Ingredient.SAUCE));
     }
 

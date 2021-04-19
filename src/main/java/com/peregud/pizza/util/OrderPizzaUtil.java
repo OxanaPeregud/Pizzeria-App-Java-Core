@@ -27,66 +27,57 @@ public final class OrderPizzaUtil {
     private OrderPizzaUtil() {
     }
 
-    public static void orderFourCheese() {
-        PIZZA_ORDER_VIEW.orderPizzaFourCheese();
-        CookUtil.pizzaFourCheese();
-        Check.add(PIZZA_ORDER_VIEW.orderPizzaFourCheese());
-        ORDER_LIST.add(ORDER.add(Pizza.FOUR_CHEESE.name(), RoundUtil.up(
-                PizzaPriceUtil.pricePizzaFourCheeseIncludingVAT()),
+    public static void addToOrder(String pizzaName, double price) {
+        getOrderList().add(ORDER.add(pizzaName, RoundUtil.up(price),
                 DateFormatUtil.localDatePattern(LocalDateTime.now())));
+    }
+
+    public static void orderFourCheese() {
+        PIZZA_ORDER_VIEW.orderPizza(Pizza.FOUR_CHEESE, PizzaPriceUtil.pricePizzaFourCheeseIncludingVAT());
+        CookUtil.cookPizza(Pizza.FOUR_CHEESE);
+        Check.add(PIZZA_ORDER_VIEW.orderPizza(Pizza.FOUR_CHEESE, PizzaPriceUtil.pricePizzaFourCheeseIncludingVAT()));
+        addToOrder(Pizza.FOUR_CHEESE.name(), PizzaPriceUtil.pricePizzaFourCheeseIncludingVAT());
         PIZZA_ORDER.add(PizzaPriceUtil.pricePizzaFourCheeseIncludingVAT());
-        DisplayOrderInfoUtil.showOrderInfo();
-        PIZZA_ORDER_VIEW.addSupplementIngredients();
-        ChoiceUtil.addChoiceQuestion();
+        additionalInfo();
     }
 
     public static void orderMargherita() {
-        PIZZA_ORDER_VIEW.orderPizzaMargherita();
-        CookUtil.pizzaMargherita();
-        Check.add(PIZZA_ORDER_VIEW.orderPizzaMargherita());
-        ORDER_LIST.add(ORDER.add(Pizza.MARGHERITA.name(), RoundUtil.up(
-                PizzaPriceUtil.pricePizzaMargheritaIncludingVAT()),
-                DateFormatUtil.localDatePattern(LocalDateTime.now())));
+        PIZZA_ORDER_VIEW.orderPizza(Pizza.MARGHERITA, PizzaPriceUtil.pricePizzaMargheritaIncludingVAT());
+        CookUtil.cookPizza(Pizza.MARGHERITA);
+        Check.add(PIZZA_ORDER_VIEW.orderPizza(Pizza.MARGHERITA, PizzaPriceUtil.pricePizzaMargheritaIncludingVAT()));
+        addToOrder(Pizza.MARGHERITA.name(), PizzaPriceUtil.pricePizzaMargheritaIncludingVAT());
         PIZZA_ORDER.add(PizzaPriceUtil.pricePizzaMargheritaIncludingVAT());
-        DisplayOrderInfoUtil.showOrderInfo();
-        PIZZA_ORDER_VIEW.addSupplementIngredients();
-        ChoiceUtil.addChoiceQuestion();
+        additionalInfo();
     }
 
     public static void orderMeatDelight() {
-        PIZZA_ORDER_VIEW.orderPizzaMeatDelight();
-        CookUtil.pizzaMeatDelight();
-        Check.add(PIZZA_ORDER_VIEW.orderPizzaMeatDelight());
-        ORDER_LIST.add(ORDER.add(Pizza.MEAT_DELIGHT.name(),
-                RoundUtil.up(PizzaPriceUtil.pricePizzaMeatDelightIncludingVAT()),
-                DateFormatUtil.localDatePattern(LocalDateTime.now())));
+        PIZZA_ORDER_VIEW.orderPizza(Pizza.MEAT_DELIGHT, PizzaPriceUtil.pricePizzaMeatDelightIncludingVAT());
+        CookUtil.cookPizza(Pizza.MEAT_DELIGHT);
+        Check.add(PIZZA_ORDER_VIEW.orderPizza(Pizza.MEAT_DELIGHT, PizzaPriceUtil.pricePizzaMeatDelightIncludingVAT()));
+        addToOrder(Pizza.MEAT_DELIGHT.name(), PizzaPriceUtil.pricePizzaMeatDelightIncludingVAT());
         PIZZA_ORDER.add(PizzaPriceUtil.pricePizzaMeatDelightIncludingVAT());
-        DisplayOrderInfoUtil.showOrderInfo();
-        PIZZA_ORDER_VIEW.addSupplementIngredients();
-        ChoiceUtil.addChoiceQuestion();
+        additionalInfo();
     }
 
     public static void orderPepperoni() {
-        PIZZA_ORDER_VIEW.orderPizzaPepperoni();
-        CookUtil.pizzaPepperoni();
-        Check.add(PIZZA_ORDER_VIEW.orderPizzaPepperoni());
-        ORDER_LIST.add(ORDER.add(Pizza.PEPPERONI.name(),
-                RoundUtil.up(PizzaPriceUtil.pricePizzaPepperoniIncludingVAT()),
-                DateFormatUtil.localDatePattern(LocalDateTime.now())));
+        PIZZA_ORDER_VIEW.orderPizza(Pizza.PEPPERONI, PizzaPriceUtil.pricePizzaPepperoniIncludingVAT());
+        CookUtil.cookPizza(Pizza.PEPPERONI);
+        Check.add(PIZZA_ORDER_VIEW.orderPizza(Pizza.PEPPERONI, PizzaPriceUtil.pricePizzaPepperoniIncludingVAT()));
+        addToOrder(Pizza.PEPPERONI.name(), PizzaPriceUtil.pricePizzaPepperoniIncludingVAT());
         PIZZA_ORDER.add(PizzaPriceUtil.pricePizzaPepperoniIncludingVAT());
-        DisplayOrderInfoUtil.showOrderInfo();
-        PIZZA_ORDER_VIEW.addSupplementIngredients();
-        ChoiceUtil.addChoiceQuestion();
+        additionalInfo();
     }
 
     public static void orderVegetarian() {
-        PIZZA_ORDER_VIEW.orderPizzaVegetarian();
-        CookUtil.pizzaVegetarian();
-        Check.add(PIZZA_ORDER_VIEW.orderPizzaVegetarian());
-        ORDER_LIST.add(ORDER.add(Pizza.VEGETARIAN.name(),
-                RoundUtil.up(PizzaPriceUtil.pricePizzaVegetarianIncludingVAT()),
-                DateFormatUtil.localDatePattern(LocalDateTime.now())));
+        PIZZA_ORDER_VIEW.orderPizza(Pizza.VEGETARIAN, PizzaPriceUtil.pricePizzaVegetarianIncludingVAT());
+        CookUtil.cookPizza(Pizza.VEGETARIAN);
+        Check.add(PIZZA_ORDER_VIEW.orderPizza(Pizza.VEGETARIAN, PizzaPriceUtil.pricePizzaVegetarianIncludingVAT()));
+        addToOrder(Pizza.VEGETARIAN.name(), PizzaPriceUtil.pricePizzaVegetarianIncludingVAT());
         PIZZA_ORDER.add(PizzaPriceUtil.pricePizzaVegetarianIncludingVAT());
+        additionalInfo();
+    }
+
+    public static void additionalInfo() {
         DisplayOrderInfoUtil.showOrderInfo();
         PIZZA_ORDER_VIEW.addSupplementIngredients();
         ChoiceUtil.addChoiceQuestion();

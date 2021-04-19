@@ -27,33 +27,9 @@ public class PizzaOrderViewConsole implements PizzaOrderView {
     }
 
     @Override
-    public String orderPizzaFourCheese() {
-        return DateFormatUtil.localDatePattern(LocalDateTime.now()) + "\t" + Pizza.FOUR_CHEESE +
-                "\t" + RoundUtil.up(PizzaPriceUtil.pricePizzaFourCheeseIncludingVAT()) + "$";
-    }
-
-    @Override
-    public String orderPizzaMargherita() {
-        return DateFormatUtil.localDatePattern(LocalDateTime.now()) + "\t" + Pizza.MARGHERITA +
-                "\t" + RoundUtil.up(PizzaPriceUtil.pricePizzaMargheritaIncludingVAT()) + "$";
-    }
-
-    @Override
-    public String orderPizzaMeatDelight() {
-        return DateFormatUtil.localDatePattern(LocalDateTime.now()) + "\t" + Pizza.MEAT_DELIGHT +
-                "\t" + RoundUtil.up(PizzaPriceUtil.pricePizzaMeatDelightIncludingVAT()) + "$";
-    }
-
-    @Override
-    public String orderPizzaPepperoni() {
-        return DateFormatUtil.localDatePattern(LocalDateTime.now()) + "\t" + Pizza.PEPPERONI +
-                "\t" + RoundUtil.up(PizzaPriceUtil.pricePizzaPepperoniIncludingVAT()) + "$";
-    }
-
-    @Override
-    public String orderPizzaVegetarian() {
-        return DateFormatUtil.localDatePattern(LocalDateTime.now()) + "\t" + Pizza.VEGETARIAN +
-                "\t" + RoundUtil.up(PizzaPriceUtil.pricePizzaVegetarianIncludingVAT()) + "$";
+    public String orderPizza(Pizza pizza, double price) {
+        return DateFormatUtil.localDatePattern(LocalDateTime.now()) + "\t" + pizza +
+                "\t" + RoundUtil.up(price) + "$";
     }
 
     @Override
