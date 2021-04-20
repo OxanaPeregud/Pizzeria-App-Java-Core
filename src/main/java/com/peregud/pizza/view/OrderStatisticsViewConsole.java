@@ -2,6 +2,7 @@ package com.peregud.pizza.view;
 
 import com.peregud.pizza.service.OrderStatisticsService;
 import com.peregud.pizza.util.RoundUtil;
+import com.peregud.pizza.util.SoldPizzasUtil;
 
 public class OrderStatisticsViewConsole implements OrderStatisticsView {
     private static final OrderStatisticsService ORDER_STATISTICS;
@@ -42,52 +43,66 @@ public class OrderStatisticsViewConsole implements OrderStatisticsView {
 
     @Override
     public void pizzasSold() {
-        System.out.println("Sold Pizzas 'Four Cheese': " + ORDER_STATISTICS.pizzasSold().get(0));
-        System.out.println("Sold Pizzas 'Margherita': " + ORDER_STATISTICS.pizzasSold().get(1));
-        System.out.println("Sold Pizzas 'Meat Delight': " + ORDER_STATISTICS.pizzasSold().get(2));
-        System.out.println("Sold Pizzas 'Pepperoni': " + ORDER_STATISTICS.pizzasSold().get(3));
-        System.out.println("Sold Pizzas 'Vegetarian': " + ORDER_STATISTICS.pizzasSold().get(4));
+        System.out.println("Sold Pizzas 'Four Cheese': " +
+                ORDER_STATISTICS.soldItems(SoldPizzasUtil.getSoldPizzas()).get(0));
+        System.out.println("Sold Pizzas 'Margherita': " +
+                ORDER_STATISTICS.soldItems(SoldPizzasUtil.getSoldPizzas()).get(1));
+        System.out.println("Sold Pizzas 'Meat Delight': " +
+                ORDER_STATISTICS.soldItems(SoldPizzasUtil.getSoldPizzas()).get(2));
+        System.out.println("Sold Pizzas 'Pepperoni': " +
+                ORDER_STATISTICS.soldItems(SoldPizzasUtil.getSoldPizzas()).get(3));
+        System.out.println("Sold Pizzas 'Vegetarian': " +
+                ORDER_STATISTICS.soldItems(SoldPizzasUtil.getSoldPizzas()).get(4));
     }
 
     @Override
     public void totalPizzasSold() {
-        System.out.println("Total pizzas sold: " + ORDER_STATISTICS.totalPizzasSold());
+        System.out.println("Total pizzas sold: " + ORDER_STATISTICS.totalSold(SoldPizzasUtil.getSoldPizzas()));
         System.out.println();
     }
 
     @Override
     public void pizzasRevenue() {
         System.out.println("Revenue from Pizzas 'Four Cheese': " +
-                RoundUtil.up(ORDER_STATISTICS.pizzasRevenue().get(0)) + "$");
+                RoundUtil.up(ORDER_STATISTICS.revenue(ORDER_STATISTICS.soldItems(SoldPizzasUtil.getSoldPizzas()),
+                        ORDER_STATISTICS.prices(SoldPizzasUtil.getPizzasPrices())).get(0)) + "$");
         System.out.println("Revenue from Pizzas 'Margherita': " +
-                RoundUtil.up(ORDER_STATISTICS.pizzasRevenue().get(1)) + "$");
+                RoundUtil.up(ORDER_STATISTICS.revenue(ORDER_STATISTICS.soldItems(SoldPizzasUtil.getSoldPizzas()),
+                        ORDER_STATISTICS.prices(SoldPizzasUtil.getPizzasPrices())).get(1)) + "$");
         System.out.println("Revenue from Pizzas 'Meat Delight': " +
-                RoundUtil.up(ORDER_STATISTICS.pizzasRevenue().get(2)) + "$");
+                RoundUtil.up(ORDER_STATISTICS.revenue(ORDER_STATISTICS.soldItems(SoldPizzasUtil.getSoldPizzas()),
+                        ORDER_STATISTICS.prices(SoldPizzasUtil.getPizzasPrices())).get(2)) + "$");
         System.out.println("Revenue from Pizzas 'Pepperoni': " +
-                RoundUtil.up(ORDER_STATISTICS.pizzasRevenue().get(3)) + "$");
+                RoundUtil.up(ORDER_STATISTICS.revenue(ORDER_STATISTICS.soldItems(SoldPizzasUtil.getSoldPizzas()),
+                        ORDER_STATISTICS.prices(SoldPizzasUtil.getPizzasPrices())).get(3)) + "$");
         System.out.println("Revenue from Pizzas 'Vegetarian': " +
-                RoundUtil.up(ORDER_STATISTICS.pizzasRevenue().get(4)) + "$");
+                RoundUtil.up(ORDER_STATISTICS.revenue(ORDER_STATISTICS.soldItems(SoldPizzasUtil.getSoldPizzas()),
+                        ORDER_STATISTICS.prices(SoldPizzasUtil.getPizzasPrices())).get(4)) + "$");
     }
 
     @Override
     public void totalRevenue() {
-        System.out.println("Total revenue is " + ORDER_STATISTICS.totalRevenue() + "$");
+        System.out.println("Total revenue is " + ORDER_STATISTICS.totalRevenue(
+                SoldPizzasUtil.getSoldPizzas(), SoldPizzasUtil.getPizzasPrices()) + "$");
         System.out.println();
     }
 
     @Override
     public void averageCheck() {
-        System.out.println("Average check is " + ORDER_STATISTICS.averageCheck() + "$");
+        System.out.println("Average check is " + ORDER_STATISTICS.averageCheck(SoldPizzasUtil.getSoldPizzas(),
+                SoldPizzasUtil.getPizzasPrices()) + "$");
     }
 
     @Override
     public void totalProfit() {
-        System.out.println("Total profit is " + ORDER_STATISTICS.totalProfit() + "$");
+        System.out.println("Total profit is " + ORDER_STATISTICS.totalProfit(SoldPizzasUtil.getSoldPizzas(),
+                SoldPizzasUtil.getPizzasPrices(), SoldPizzasUtil.getPizzasCost()) + "$");
     }
 
     @Override
     public void profitMargin() {
-        System.out.println("Profit margin is " + ORDER_STATISTICS.profitMargin() + "%");
+        System.out.println("Profit margin is " + ORDER_STATISTICS.profitMargin(SoldPizzasUtil.getSoldPizzas(),
+                SoldPizzasUtil.getPizzasPrices(), SoldPizzasUtil.getPizzasCost()) + "%");
     }
 
     @Override

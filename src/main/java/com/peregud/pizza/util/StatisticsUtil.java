@@ -17,31 +17,34 @@ public final class StatisticsUtil {
     }
 
     public static void displayTotalPizzasSold() {
-        ORDER_STATISTICS.pizzasSold();
+        ORDER_STATISTICS.soldItems(SoldPizzasUtil.getSoldPizzas());
         ORDER_STATISTICS_VIEW.pizzasSold();
-        ORDER_STATISTICS.totalPizzasSold();
+        ORDER_STATISTICS.totalSold(SoldPizzasUtil.getSoldPizzas());
         ORDER_STATISTICS_VIEW.totalPizzasSold();
     }
 
     public static void displayPizzasRevenue() {
-        ORDER_STATISTICS.pizzasRevenue();
+        ORDER_STATISTICS.revenue(ORDER_STATISTICS.soldItems(SoldPizzasUtil.getSoldPizzas()),
+                ORDER_STATISTICS.prices(SoldPizzasUtil.getPizzasPrices()));
         ORDER_STATISTICS_VIEW.pizzasRevenue();
-        ORDER_STATISTICS.totalRevenue();
+        ORDER_STATISTICS.totalRevenue(SoldPizzasUtil.getSoldPizzas(), SoldPizzasUtil.getPizzasPrices());
         ORDER_STATISTICS_VIEW.totalRevenue();
     }
 
     public static void displayAverageCheck() {
-        ORDER_STATISTICS.averageCheck();
+        ORDER_STATISTICS.averageCheck(SoldPizzasUtil.getSoldPizzas(), SoldPizzasUtil.getPizzasPrices());
         ORDER_STATISTICS_VIEW.averageCheck();
     }
 
     public static void displayTotalProfit() {
-        ORDER_STATISTICS.totalProfit();
+        ORDER_STATISTICS.totalProfit(SoldPizzasUtil.getSoldPizzas(), SoldPizzasUtil.getPizzasPrices(),
+                SoldPizzasUtil.getPizzasCost());
         ORDER_STATISTICS_VIEW.totalProfit();
     }
 
     public static void displayProfitMargin() {
-        ORDER_STATISTICS.profitMargin();
+        ORDER_STATISTICS.profitMargin(SoldPizzasUtil.getSoldPizzas(), SoldPizzasUtil.getPizzasPrices(),
+                SoldPizzasUtil.getPizzasCost());
         ORDER_STATISTICS_VIEW.profitMargin();
     }
 

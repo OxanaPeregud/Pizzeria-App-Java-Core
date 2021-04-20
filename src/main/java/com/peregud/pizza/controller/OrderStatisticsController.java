@@ -23,6 +23,8 @@ public class OrderStatisticsController {
 
     public void displayChoice() {
         SoldPizzasUtil.createMapOfSoldPizzas();
+        SoldPizzasUtil.createMapOfPizzasPrices();
+        SoldPizzasUtil.createMapOfPizzasCost();
         ORDER_STATISTICS_VIEW.displayChoice();
         int choice = CheckScannerInputUtil.checkInt();
         switch (choice) {
