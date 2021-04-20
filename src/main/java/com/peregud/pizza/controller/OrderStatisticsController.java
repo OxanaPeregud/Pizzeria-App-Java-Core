@@ -4,7 +4,7 @@ import com.peregud.pizza.repository.OrderRepository;
 import com.peregud.pizza.repository.OrderRepositorySQL;
 import com.peregud.pizza.util.SoldPizzasUtil;
 import com.peregud.pizza.util.CheckScannerInputUtil;
-import com.peregud.pizza.util.StatisticsUtil;
+import com.peregud.pizza.service.StatisticsService;
 import com.peregud.pizza.view.OrderStatisticsView;
 import com.peregud.pizza.view.OrderStatisticsViewConsole;
 import com.peregud.pizza.view.SoldPizzasView;
@@ -14,11 +14,13 @@ public class OrderStatisticsController {
     private static final OrderStatisticsView ORDER_STATISTICS_VIEW;
     private static final SoldPizzasView SOLD_PIZZAS_VIEW;
     private static final OrderRepository ORDER_REPOSITORY;
+    private static final StatisticsService STATISTICS;
 
     static {
         ORDER_STATISTICS_VIEW = new OrderStatisticsViewConsole();
         SOLD_PIZZAS_VIEW = new SoldPizzasViewConsole();
         ORDER_REPOSITORY = new OrderRepositorySQL();
+        STATISTICS = new StatisticsService();
     }
 
     public void displayChoice() {
@@ -29,27 +31,27 @@ public class OrderStatisticsController {
         int choice = CheckScannerInputUtil.checkInt();
         switch (choice) {
             case 1:
-                StatisticsUtil.displayTotalPizzasSold();
+                STATISTICS.displayTotalPizzasSold();
                 displayChoice();
                 break;
             case 2:
-                StatisticsUtil.displayPizzasRevenue();
+                STATISTICS.displayPizzasRevenue();
                 displayChoice();
                 break;
             case 3:
-                StatisticsUtil.displayAverageCheck();
+                STATISTICS.displayAverageCheck();
                 displayChoice();
                 break;
             case 4:
-                StatisticsUtil.displayTotalProfit();
+                STATISTICS.displayTotalProfit();
                 displayChoice();
                 break;
             case 5:
-                StatisticsUtil.displayProfitMargin();
+                STATISTICS.displayProfitMargin();
                 displayChoice();
                 break;
             case 6:
-                StatisticsUtil.displayFullStatistics();
+                STATISTICS.displayFullStatistics();
                 displayChoice();
                 break;
             case 7:
