@@ -78,7 +78,7 @@ public final class OrderPizzaUtil {
     }
 
     public static void additionalInfo() {
-        DisplayOrderInfoUtil.showOrderInfo();
+        TotalOrderCalculatorUtil.totalOrder();
         PIZZA_ORDER_VIEW.addSupplementIngredients();
         ChoiceUtil.addChoiceQuestion();
     }

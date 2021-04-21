@@ -6,7 +6,7 @@ public final class ChangeCalculatorUtil {
     }
 
     public static double getChange() {
-        return CashPaymentUtil.countChange(AmountToPayCalculatorUtil.amountToPay(OrderPizzaUtil.getPizzaOrder().
-                totalOrder() + IngredientOrderUtil.getIngredientOrder().totalOrder()));
+        return CashPaymentUtil.countChange(OrderPizzaUtil.getPizzaOrder().totalOrder() +
+                IngredientOrderUtil.getIngredientOrder().totalOrder());
     }
 }

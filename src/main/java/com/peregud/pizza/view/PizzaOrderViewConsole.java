@@ -87,32 +87,6 @@ public class PizzaOrderViewConsole implements PizzaOrderView {
     }
 
     @Override
-    public void discountFor2Pizzas(double totalOrder) {
-        System.out.println("Discount for ordering 2 pizzas: "
-                + RoundUtil.up(totalOrder -
-                DiscountUtil.discountForTwoItems(totalOrder)) + "$");
-    }
-
-    @Override
-    public void discountFor3AndMorePizzas(double totalOrder) {
-        System.out.println("Discount for ordering 3 & more pizzas: "
-                + RoundUtil.up(totalOrder -
-                DiscountUtil.discountForThreeAndMoreItems(totalOrder)) + "$");
-    }
-
-    @Override
-    public void discountForOrderOnSpecificDay(double totalOrder) {
-        System.out.println("Discount for ordering on Discount Day: "
-                + RoundUtil.up(totalOrder -
-                DiscountUtil.discountForOrderOnSpecificDay(totalOrder)) + "$");
-    }
-
-    @Override
-    public void amountToPay(double totalOrder) {
-        System.out.println("Amount to pay: " + RoundUtil.up(totalOrder) + "$");
-    }
-
-    @Override
     public void pizzaNumberException() {
         System.out.println("We don't have a pizza under entered number");
     }

@@ -34,18 +34,15 @@ public final class PaymentChoiceUtil {
             switch (PAYMENT_METHOD.get(payment)) {
                 case CASH:
                     CHECK_VIEW.displayCheck();
-                    CheckCreatorUtil.createCheck();
                     CashPaymentUtil.getFullAmount();
                     CASH_PAYMENT_VIEW.getChange();
                     break;
                 case CARD:
                     CHECK_VIEW.displayCheck();
-                    CheckCreatorUtil.createCheck();
                     CardPaymentUtil.enterPIN();
                     break;
                 case ONLINE:
                     CHECK_VIEW.displayCheck();
-                    CheckCreatorUtil.createCheck();
                     OnlinePaymentUtil.addCustomer();
                     break;
             }

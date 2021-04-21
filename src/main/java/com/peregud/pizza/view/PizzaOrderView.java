@@ -24,14 +24,6 @@ public interface PizzaOrderView {
 
     void totalOrder(double totalOrder, int size);
 
-    void discountFor2Pizzas(double totalOrder);
-
-    void discountFor3AndMorePizzas(double totalOrder);
-
-    void discountForOrderOnSpecificDay(double totalOrder);
-
-    void amountToPay(double totalOrder);
-
     void pizzaNumberException();
 
     void addSupplementIngredients();
