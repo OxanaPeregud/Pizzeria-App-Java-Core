@@ -2,7 +2,7 @@ package com.peregud.pizza.util;
 
 import com.peregud.pizza.model.Pizza;
 import com.peregud.pizza.repository.OrderRepository;
-import com.peregud.pizza.repository.OrderRepositorySQL;
+import com.peregud.pizza.repository.OrderSQLImpl;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +15,7 @@ public final class SoldPizzasUtil {
 
     static {
         SOLD_PIZZAS = new HashMap<>();
-        ORDER_REPOSITORY = new OrderRepositorySQL();
+        ORDER_REPOSITORY = new OrderSQLImpl();
         PIZZAS_PRICES = new HashMap<>();
         PIZZAS_COST = new HashMap<>();
     }

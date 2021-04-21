@@ -1,41 +1,34 @@
 package com.peregud.pizza.repository;
 
 import com.peregud.pizza.model.Order;
+import com.peregud.pizza.util.ConnectorUtil;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderRepositorySQL implements OrderRepository {
-    private static final String SQL_URL;
-
-    static {
-        SQL_URL = "jdbc:mysql://localhost:3306/orders";
-    }
+public class OrderSQLImpl implements OrderRepository {
 
     @Override
     public void orderInput(List<Order> list) {
-        Connection conn = null;
-        PreparedStatement preparedStatement = null;
+        PreparedStatement prst = null;
         try {
-            conn = DriverManager.getConnection(SQL_URL, "root", "1234");
+            Connection conn = ConnectorUtil.getConnection();
             String sql = "insert into orders.pizzas(pizza, price, order_time) " + "VALUE (?, ?, ?);";
-            preparedStatement = conn.prepareStatement(sql);
+            prst = conn.prepareStatement(sql);
             for (Order order : list) {
-                preparedStatement.setString(1, order.getPizza());
-                preparedStatement.setDouble(2, order.getPrice());
-                preparedStatement.setString(3, order.getOrderTime());
-                preparedStatement.executeUpdate();
+                prst.setString(1, order.getPizza());
+                prst.setDouble(2, order.getPrice());
+                prst.setString(3, order.getOrderTime());
+                prst.executeUpdate();
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } finally {
             try {
-                if (conn != null) {
-                    conn.close();
-                }
-                if (preparedStatement != null) {
-                    preparedStatement.close();
+                ConnectorUtil.closeConnection();
+                if (prst != null) {
+                    prst.close();
                 }
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
@@ -45,12 +38,12 @@ public class OrderRepositorySQL implements OrderRepository {
 
     @Override
     public List<Order> orderOutput() {
-        Connection conn = null;
         Statement stmt = null;
+        ResultSet rs = null;
         try {
-            conn = DriverManager.getConnection(SQL_URL, "root", "1234");
+            Connection conn = ConnectorUtil.getConnection();
             stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("select * from orders.pizzas");
+            rs = stmt.executeQuery("select * from orders.pizzas");
             List<Order> list = new ArrayList<>();
             while (rs.next()) {
                 Order order = new Order();
@@ -64,11 +57,12 @@ public class OrderRepositorySQL implements OrderRepository {
             throwables.printStackTrace();
         } finally {
             try {
-                if (conn != null) {
-                    conn.close();
-                }
+                ConnectorUtil.closeConnection();
                 if (stmt != null) {
                     stmt.close();
+                }
+                if (rs != null) {
+                    rs.close();
                 }
             } catch (SQLException throwables) {
                 throwables.printStackTrace();

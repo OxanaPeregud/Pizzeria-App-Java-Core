@@ -6,20 +6,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class CreatePizzasDatabaseUtil {
-    private static final String SQL_URL;
-
-    static {
-        SQL_URL = "jdbc:mysql://localhost:3306";
-    }
 
     private CreatePizzasDatabaseUtil() {
     }
 
     public static void createDatabase() {
-        Connection conn = null;
         Statement stmt = null;
         try {
-            conn = DriverManager.getConnection(SQL_URL, "root", "1234");
+            Connection conn = ConnectorUtil.getConnection();
             stmt = conn.createStatement();
             String sql1 = "CREATE SCHEMA IF NOT EXISTS `Orders` DEFAULT CHARACTER SET utf8;";
             String sql2 = "CREATE TABLE IF NOT EXISTS `Orders`.`Pizzas`\n" +
@@ -36,9 +30,7 @@ public class CreatePizzasDatabaseUtil {
             throwables.printStackTrace();
         } finally {
             try {
-                if (conn != null) {
-                    conn.close();
-                }
+                ConnectorUtil.closeConnection();
                 if (stmt != null) {
                     stmt.close();
                 }

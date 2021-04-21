@@ -1,7 +1,7 @@
 package com.peregud.pizza.util;
 
 import com.peregud.pizza.repository.OrderRepository;
-import com.peregud.pizza.repository.OrderRepositorySQL;
+import com.peregud.pizza.repository.OrderSQLImpl;
 import com.peregud.pizza.service.IngredientSupplementService;
 import com.peregud.pizza.service.PizzaOrderService;
 import com.peregud.pizza.view.UtilView;
@@ -19,7 +19,7 @@ public final class ChoiceUtil {
         PIZZA_ORDER = new PizzaOrderService();
         INGREDIENT_SUPPLEMENT = new IngredientSupplementService();
         UTIL_VIEW = new UtilViewConsole();
-        ORDER_REPOSITORY = new OrderRepositorySQL();
+        ORDER_REPOSITORY = new OrderSQLImpl();
     }
 
     private ChoiceUtil() {

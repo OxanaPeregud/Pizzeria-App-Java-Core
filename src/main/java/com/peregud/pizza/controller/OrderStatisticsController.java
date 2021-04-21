@@ -1,7 +1,7 @@
 package com.peregud.pizza.controller;
 
 import com.peregud.pizza.repository.OrderRepository;
-import com.peregud.pizza.repository.OrderRepositorySQL;
+import com.peregud.pizza.repository.OrderSQLImpl;
 import com.peregud.pizza.util.SoldPizzasUtil;
 import com.peregud.pizza.util.CheckScannerInputUtil;
 import com.peregud.pizza.service.StatisticsService;
@@ -19,7 +19,7 @@ public class OrderStatisticsController {
     static {
         ORDER_STATISTICS_VIEW = new OrderStatisticsViewConsole();
         SOLD_PIZZAS_VIEW = new SoldPizzasViewConsole();
-        ORDER_REPOSITORY = new OrderRepositorySQL();
+        ORDER_REPOSITORY = new OrderSQLImpl();
         STATISTICS = new StatisticsService();
     }
 

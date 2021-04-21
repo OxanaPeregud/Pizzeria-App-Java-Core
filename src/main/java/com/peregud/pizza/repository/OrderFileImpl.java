@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderRepositoryFile implements OrderRepository {
+public class OrderFileImpl implements OrderRepository {
     private static final String FILEPATH;
 
     static {
