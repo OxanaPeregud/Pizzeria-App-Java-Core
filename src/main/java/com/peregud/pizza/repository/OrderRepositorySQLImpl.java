@@ -7,28 +7,36 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderSQLImpl implements OrderRepository {
+public class OrderRepositorySQLImpl implements OrderRepository {
+    private PreparedStatement preparedStmt = null;
+    private Statement stmt = null;
+    private ResultSet rs = null;
+    private static final String SQL_SAVE;
+    private static final String SQL_GET;
+
+    static {
+        SQL_SAVE = "INSERT INTO orders.pizzas(pizza, price, order_time) " + "VALUE (?, ?, ?);";
+        SQL_GET = "SELECT * FROM orders.pizzas";
+    }
 
     @Override
-    public void orderInput(List<Order> list) {
-        PreparedStatement prst = null;
+    public void save(List<Order> list) {
         try {
             Connection conn = ConnectorUtil.getConnection();
-            String sql = "insert into orders.pizzas(pizza, price, order_time) " + "VALUE (?, ?, ?);";
-            prst = conn.prepareStatement(sql);
+            preparedStmt = conn.prepareStatement(SQL_SAVE);
             for (Order order : list) {
-                prst.setString(1, order.getPizza());
-                prst.setDouble(2, order.getPrice());
-                prst.setString(3, order.getOrderTime());
-                prst.executeUpdate();
+                preparedStmt.setString(1, order.getPizza());
+                preparedStmt.setDouble(2, order.getPrice());
+                preparedStmt.setString(3, order.getOrderTime());
+                preparedStmt.executeUpdate();
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } finally {
             try {
                 ConnectorUtil.closeConnection();
-                if (prst != null) {
-                    prst.close();
+                if (preparedStmt != null) {
+                    preparedStmt.close();
                 }
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
@@ -37,13 +45,11 @@ public class OrderSQLImpl implements OrderRepository {
     }
 
     @Override
-    public List<Order> orderOutput() {
-        Statement stmt = null;
-        ResultSet rs = null;
+    public List<Order> getAll() {
         try {
             Connection conn = ConnectorUtil.getConnection();
             stmt = conn.createStatement();
-            rs = stmt.executeQuery("select * from orders.pizzas");
+            rs = stmt.executeQuery(SQL_GET);
             List<Order> list = new ArrayList<>();
             while (rs.next()) {
                 Order order = new Order();

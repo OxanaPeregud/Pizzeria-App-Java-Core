@@ -1,13 +1,14 @@
 package com.peregud.pizza.util;
 
 import com.peregud.pizza.repository.OrderRepository;
-import com.peregud.pizza.repository.OrderSQLImpl;
+import com.peregud.pizza.repository.OrderRepositorySQLImpl;
 import com.peregud.pizza.service.IngredientSupplementService;
 import com.peregud.pizza.service.PizzaOrderService;
 import com.peregud.pizza.view.UtilView;
 import com.peregud.pizza.view.UtilViewConsole;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public final class ChoiceUtil {
     private static final PizzaOrderService PIZZA_ORDER;
@@ -19,7 +20,7 @@ public final class ChoiceUtil {
         PIZZA_ORDER = new PizzaOrderService();
         INGREDIENT_SUPPLEMENT = new IngredientSupplementService();
         UTIL_VIEW = new UtilViewConsole();
-        ORDER_REPOSITORY = new OrderSQLImpl();
+        ORDER_REPOSITORY = new OrderRepositorySQLImpl();
     }
 
     private ChoiceUtil() {
@@ -33,13 +34,13 @@ public final class ChoiceUtil {
             } else if (choice == 2) {
                 PIZZA_ORDER.choosePizza();
             } else if (choice == 3) {
-                ORDER_REPOSITORY.orderInput(OrderPizzaUtil.getOrderList());
+                ORDER_REPOSITORY.save(OrderPizzaUtil.getOrderList());
                 PaymentChoiceUtil.paymentChoice();
             } else {
                 UTIL_VIEW.choiceUtilView();
                 addChoiceQuestion();
             }
-        } catch (IOException e) {
+        } catch (IOException | SQLException e) {
             e.printStackTrace();
         }
     }

@@ -2,8 +2,9 @@ package com.peregud.pizza.util;
 
 import com.peregud.pizza.model.Pizza;
 import com.peregud.pizza.repository.OrderRepository;
-import com.peregud.pizza.repository.OrderSQLImpl;
+import com.peregud.pizza.repository.OrderRepositorySQLImpl;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,7 +16,7 @@ public final class SoldPizzasUtil {
 
     static {
         SOLD_PIZZAS = new HashMap<>();
-        ORDER_REPOSITORY = new OrderSQLImpl();
+        ORDER_REPOSITORY = new OrderRepositorySQLImpl();
         PIZZAS_PRICES = new HashMap<>();
         PIZZAS_COST = new HashMap<>();
     }
@@ -24,16 +25,20 @@ public final class SoldPizzasUtil {
     }
 
     public static void createMapOfSoldPizzas() {
-        SOLD_PIZZAS.put(1, SoldPizzasCounterUtil.soldPizzas(ORDER_REPOSITORY.orderOutput(),
-                Pizza.FOUR_CHEESE.name()).size());
-        SOLD_PIZZAS.put(2, SoldPizzasCounterUtil.soldPizzas(ORDER_REPOSITORY.orderOutput(),
-                Pizza.MARGHERITA.name()).size());
-        SOLD_PIZZAS.put(3, SoldPizzasCounterUtil.soldPizzas(ORDER_REPOSITORY.orderOutput(),
-                Pizza.MEAT_DELIGHT.name()).size());
-        SOLD_PIZZAS.put(4, SoldPizzasCounterUtil.soldPizzas(ORDER_REPOSITORY.orderOutput(),
-                Pizza.PEPPERONI.name()).size());
-        SOLD_PIZZAS.put(5, SoldPizzasCounterUtil.soldPizzas(ORDER_REPOSITORY.orderOutput(),
-                Pizza.VEGETARIAN.name()).size());
+        try {
+            SOLD_PIZZAS.put(1, SoldPizzasCounterUtil.soldPizzas(ORDER_REPOSITORY.getAll(),
+                    Pizza.FOUR_CHEESE.name()).size());
+            SOLD_PIZZAS.put(2, SoldPizzasCounterUtil.soldPizzas(ORDER_REPOSITORY.getAll(),
+                    Pizza.MARGHERITA.name()).size());
+            SOLD_PIZZAS.put(3, SoldPizzasCounterUtil.soldPizzas(ORDER_REPOSITORY.getAll(),
+                    Pizza.MEAT_DELIGHT.name()).size());
+            SOLD_PIZZAS.put(4, SoldPizzasCounterUtil.soldPizzas(ORDER_REPOSITORY.getAll(),
+                    Pizza.PEPPERONI.name()).size());
+            SOLD_PIZZAS.put(5, SoldPizzasCounterUtil.soldPizzas(ORDER_REPOSITORY.getAll(),
+                    Pizza.VEGETARIAN.name()).size());
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     public static void createMapOfPizzasPrices() {

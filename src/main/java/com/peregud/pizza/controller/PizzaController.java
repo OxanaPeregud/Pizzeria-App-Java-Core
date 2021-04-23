@@ -9,6 +9,7 @@ import com.peregud.pizza.view.StarterViewConsole;
 import com.peregud.pizza.view.StorageView;
 import com.peregud.pizza.view.StorageViewConsole;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class PizzaController {

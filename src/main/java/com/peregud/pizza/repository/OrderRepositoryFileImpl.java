@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderFileImpl implements OrderRepository {
+public class OrderRepositoryFileImpl implements OrderRepository {
     private static final String FILEPATH;
 
     static {
@@ -15,7 +15,7 @@ public class OrderFileImpl implements OrderRepository {
     }
 
     @Override
-    public void orderInput(List<Order> list) {
+    public void save(List<Order> list) {
         try (ObjectOutputStream oop = new ObjectOutputStream(new FileOutputStream(FILEPATH))) {
             for (Order order : list) {
                 oop.writeObject(order);
@@ -26,7 +26,7 @@ public class OrderFileImpl implements OrderRepository {
     }
 
     @Override
-    public List<Order> orderOutput() {
+    public List<Order> getAll() {
         List<Order> list = new ArrayList<>();
         try (FileInputStream fileInputStream = new FileInputStream(FILEPATH);
              ObjectInputStream ois = new ObjectInputStream(fileInputStream)) {
