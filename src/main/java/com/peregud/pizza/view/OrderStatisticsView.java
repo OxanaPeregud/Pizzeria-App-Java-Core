@@ -1,32 +1,24 @@
 package com.peregud.pizza.view;
 
+import com.peregud.pizza.model.Pizza;
+
+import java.util.List;
+
 public interface OrderStatisticsView {
 
-    void enterFourCheese();
+    void pizzasSold(Pizza pizza, List<Integer> soldItems, int index);
 
-    void enterMargherita();
+    void totalPizzasSold(int soldItems);
 
-    void enterMeatDelight();
+    void pizzasRevenue(Pizza pizza, List<Double> revenue, int index);
 
-    void enterPepperoni();
+    void totalRevenue(double revenue);
 
-    void enterVegetarian();
+    void averageCheck(double averageCheck);
 
-    void orderStatisticsException();
+    void totalProfit(double totalProfit);
 
-    void pizzasSold();
-
-    void totalPizzasSold();
-
-    void pizzasRevenue();
-
-    void totalRevenue();
-
-    void averageCheck();
-
-    void totalProfit();
-
-    void profitMargin();
+    void profitMargin(double profitMargin);
 
     void displayChoice();
 
