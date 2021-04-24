@@ -40,48 +40,32 @@ public class IngredientSupplementService {
             int choice = CheckScannerInputUtil.checkInt();
             switch (INGREDIENTS.get(choice)) {
                 case CHEESE:
-                    IngredientOrderUtil.getIngredientOrder().add(IngredientPriceUtil.priceCheeseIncludingVAT());
-                    CookUtil.cookIngredient(Ingredient.CHEESE);
-                    Check.add(CREATE_PIZZA_VIEW.orderCheese());
+                    IngredientOrderUtil.chooseIngredient(Ingredient.CHEESE);
                     break;
                 case MEAT:
-                    IngredientOrderUtil.getIngredientOrder().add(IngredientPriceUtil.priceMeatIncludingVAT());
-                    CookUtil.cookIngredient(Ingredient.MEAT);
-                    Check.add(CREATE_PIZZA_VIEW.orderMeat());
+                    IngredientOrderUtil.chooseIngredient(Ingredient.MEAT);
                     break;
                 case SAUSAGES:
-                    IngredientOrderUtil.getIngredientOrder().add(IngredientPriceUtil.priceSausagesIncludingVAT());
-                    CookUtil.cookIngredient(Ingredient.SAUSAGES);
-                    Check.add(CREATE_PIZZA_VIEW.orderSausages());
+                    IngredientOrderUtil.chooseIngredient(Ingredient.SAUSAGES);
                     break;
                 case OLIVES:
-                    IngredientOrderUtil.getIngredientOrder().add(IngredientPriceUtil.priceOlivesIncludingVAT());
-                    CookUtil.cookIngredient(Ingredient.OLIVES);
-                    Check.add(CREATE_PIZZA_VIEW.orderOlives());
+                    IngredientOrderUtil.chooseIngredient(Ingredient.OLIVES);
                     break;
                 case TOMATOES:
-                    IngredientOrderUtil.getIngredientOrder().add(IngredientPriceUtil.priceTomatoesIncludingVAT());
-                    CookUtil.cookIngredient(Ingredient.TOMATOES);
-                    Check.add(CREATE_PIZZA_VIEW.orderTomatoes());
+                    IngredientOrderUtil.chooseIngredient(Ingredient.TOMATOES);
                     break;
                 case PEPPER:
-                    IngredientOrderUtil.getIngredientOrder().add(IngredientPriceUtil.pricePepperIncludingVAT());
-                    CookUtil.cookIngredient(Ingredient.PEPPER);
-                    Check.add(CREATE_PIZZA_VIEW.orderPepper());
+                    IngredientOrderUtil.chooseIngredient(Ingredient.PEPPER);
                     break;
                 case OREGANO:
-                    IngredientOrderUtil.getIngredientOrder().add(IngredientPriceUtil.priceOreganoIncludingVAT());
-                    CookUtil.cookIngredient(Ingredient.OREGANO);
-                    Check.add(CREATE_PIZZA_VIEW.orderOregano());
+                    IngredientOrderUtil.chooseIngredient(Ingredient.OREGANO);
                     break;
                 case SAUCE:
-                    IngredientOrderUtil.getIngredientOrder().add(IngredientPriceUtil.priceSauceIncludingVAT());
-                    CookUtil.cookIngredient(Ingredient.SAUCE);
-                    Check.add(CREATE_PIZZA_VIEW.orderSauce());
+                    IngredientOrderUtil.chooseIngredient(Ingredient.SAUCE);
                     break;
                 case CRUST:
-                    IngredientOrderUtil.getIngredientOrder().add(IngredientPriceUtil.priceCrustIncludingVAT());
-                    Check.add(CREATE_PIZZA_VIEW.orderCrust());
+                    IngredientOrderUtil.getIngredientOrder().add(IngredientPriceUtil.priceIncludingVAT(Ingredient.CRUST));
+                    Check.add(CREATE_PIZZA_VIEW.orderIngredient(Ingredient.CRUST));
                     break;
             }
         } catch (NullPointerException e) {

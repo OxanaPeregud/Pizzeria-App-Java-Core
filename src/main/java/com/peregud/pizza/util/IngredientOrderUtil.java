@@ -20,80 +20,10 @@ public final class IngredientOrderUtil {
     private IngredientOrderUtil() {
     }
 
-    public static void orderThinDough() {
-        getIngredientOrder().add(IngredientPriceUtil.priceThinDoughIncludingVAT());
-        IngredientCaloriesCalculatorUtil.add(Ingredient.THIN_DOUGH.getCalories());
-        CookUtil.cookIngredient(Ingredient.THIN_DOUGH);
-        Check.add(CREATE_PIZZA_VIEW.orderThinDough());
-    }
-
-    public static void orderTraditionalDough() {
-        getIngredientOrder().add(IngredientPriceUtil.priceTraditionalDoughIncludingVAT());
-        IngredientCaloriesCalculatorUtil.add(Ingredient.TRADITIONAL_DOUGH.getCalories());
-        CookUtil.cookIngredient(Ingredient.TRADITIONAL_DOUGH);
-        Check.add(CREATE_PIZZA_VIEW.orderTraditionalDough());
-    }
-
-    public static void orderCheese() {
-        getIngredientOrder().add(IngredientPriceUtil.priceCheeseIncludingVAT());
-        IngredientCaloriesCalculatorUtil.add(Ingredient.CHEESE.getCalories());
-        CookUtil.cookIngredient(Ingredient.CHEESE);
-        Check.add(CREATE_PIZZA_VIEW.orderCheese());
-    }
-
-    public static void orderMeat() {
-        getIngredientOrder().add(IngredientPriceUtil.priceMeatIncludingVAT());
-        IngredientCaloriesCalculatorUtil.add(Ingredient.MEAT.getCalories());
-        CookUtil.cookIngredient(Ingredient.MEAT);
-        Check.add(CREATE_PIZZA_VIEW.orderMeat());
-    }
-
-    public static void orderSausages() {
-        getIngredientOrder().add(IngredientPriceUtil.priceSausagesIncludingVAT());
-        IngredientCaloriesCalculatorUtil.add(Ingredient.SAUSAGES.getCalories());
-        CookUtil.cookIngredient(Ingredient.SAUSAGES);
-        Check.add(CREATE_PIZZA_VIEW.orderSausages());
-    }
-
-    public static void orderOlives() {
-        getIngredientOrder().add(IngredientPriceUtil.priceOlivesIncludingVAT());
-        IngredientCaloriesCalculatorUtil.add(Ingredient.OLIVES.getCalories());
-        CookUtil.cookIngredient(Ingredient.OLIVES);
-        Check.add(CREATE_PIZZA_VIEW.orderOlives());
-    }
-
-    public static void orderTomatoes() {
-        getIngredientOrder().add(IngredientPriceUtil.priceTomatoesIncludingVAT());
-        IngredientCaloriesCalculatorUtil.add(Ingredient.TOMATOES.getCalories());
-        CookUtil.cookIngredient(Ingredient.TOMATOES);
-        Check.add(CREATE_PIZZA_VIEW.orderTomatoes());
-    }
-
-    public static void orderPepper() {
-        getIngredientOrder().add(IngredientPriceUtil.pricePepperIncludingVAT());
-        IngredientCaloriesCalculatorUtil.add(Ingredient.PEPPER.getCalories());
-        CookUtil.cookIngredient(Ingredient.PEPPER);
-        Check.add(CREATE_PIZZA_VIEW.orderPepper());
-    }
-
-    public static void orderOregano() {
-        getIngredientOrder().add(IngredientPriceUtil.priceOreganoIncludingVAT());
-        IngredientCaloriesCalculatorUtil.add(Ingredient.OREGANO.getCalories());
-        CookUtil.cookIngredient(Ingredient.OREGANO);
-        Check.add(CREATE_PIZZA_VIEW.orderOregano());
-    }
-
-    public static void orderSauce() {
-        getIngredientOrder().add(IngredientPriceUtil.priceSauceIncludingVAT());
-        IngredientCaloriesCalculatorUtil.add(Ingredient.SAUCE.getCalories());
-        CookUtil.cookIngredient(Ingredient.SAUCE);
-        Check.add(CREATE_PIZZA_VIEW.orderSauce());
-    }
-
-    public static void orderCrust() {
-        getIngredientOrder().add(IngredientPriceUtil.priceCrustIncludingVAT());
-        IngredientCaloriesCalculatorUtil.add(Ingredient.CRUST.getCalories());
-        Check.add(CREATE_PIZZA_VIEW.orderCrust());
+    public static void chooseIngredient(Ingredient ingredient) {
+        getIngredientOrder().add(IngredientPriceUtil.priceIncludingVAT(ingredient));
+        CookUtil.cookIngredient(ingredient);
+        Check.add(CREATE_PIZZA_VIEW.orderIngredient(ingredient));
     }
 
     public static IngredientOrderCalculatorService getIngredientOrder() {

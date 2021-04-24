@@ -51,7 +51,17 @@ public class CreatePizzaService {
                 chooseDough();
                 break;
             case 2:
-                CREATE_PIZZA_VIEW.displayInfoIngredients();
+                CREATE_PIZZA_VIEW.displayInfoAboutIngredient(Ingredient.CHEESE);
+                CREATE_PIZZA_VIEW.displayInfoAboutIngredient(Ingredient.CRUST);
+                CREATE_PIZZA_VIEW.displayInfoAboutIngredient(Ingredient.MEAT);
+                CREATE_PIZZA_VIEW.displayInfoAboutIngredient(Ingredient.OLIVES);
+                CREATE_PIZZA_VIEW.displayInfoAboutIngredient(Ingredient.OREGANO);
+                CREATE_PIZZA_VIEW.displayInfoAboutIngredient(Ingredient.PEPPER);
+                CREATE_PIZZA_VIEW.displayInfoAboutIngredient(Ingredient.SAUCE);
+                CREATE_PIZZA_VIEW.displayInfoAboutIngredient(Ingredient.SAUSAGES);
+                CREATE_PIZZA_VIEW.displayInfoAboutIngredient(Ingredient.THIN_DOUGH);
+                CREATE_PIZZA_VIEW.displayInfoAboutIngredient(Ingredient.TOMATOES);
+                CREATE_PIZZA_VIEW.displayInfoAboutIngredient(Ingredient.TRADITIONAL_DOUGH);
                 displayOptions();
                 break;
             case 3:
@@ -73,10 +83,10 @@ public class CreatePizzaService {
             choice = CheckScannerInputUtil.checkInt();
             switch (DOUGH.get(choice)) {
                 case THIN_DOUGH:
-                    IngredientOrderUtil.orderThinDough();
+                    chooseIngredient(Ingredient.THIN_DOUGH);
                     break;
                 case TRADITIONAL_DOUGH:
-                    IngredientOrderUtil.orderTraditionalDough();
+                    chooseIngredient(Ingredient.TRADITIONAL_DOUGH);
                     break;
             }
         } catch (NullPointerException e) {
@@ -107,31 +117,31 @@ public class CreatePizzaService {
             choice = CheckScannerInputUtil.checkInt();
             switch (INGREDIENTS.get(choice)) {
                 case CHEESE:
-                    IngredientOrderUtil.orderCheese();
+                    chooseIngredient(Ingredient.CHEESE);
                     break;
                 case MEAT:
-                    IngredientOrderUtil.orderMeat();
+                    chooseIngredient(Ingredient.MEAT);
                     break;
                 case SAUSAGES:
-                    IngredientOrderUtil.orderSausages();
+                    chooseIngredient(Ingredient.SAUSAGES);
                     break;
                 case OLIVES:
-                    IngredientOrderUtil.orderOlives();
+                    chooseIngredient(Ingredient.OLIVES);
                     break;
                 case TOMATOES:
-                    IngredientOrderUtil.orderTomatoes();
+                    chooseIngredient(Ingredient.TOMATOES);
                     break;
                 case PEPPER:
-                    IngredientOrderUtil.orderPepper();
+                    chooseIngredient(Ingredient.PEPPER);
                     break;
                 case OREGANO:
-                    IngredientOrderUtil.orderOregano();
+                    chooseIngredient(Ingredient.OREGANO);
                     break;
                 case SAUCE:
-                    IngredientOrderUtil.orderSauce();
+                    chooseIngredient(Ingredient.SAUCE);
                     break;
                 case CRUST:
-                    IngredientOrderUtil.orderCrust();
+                    chooseIngredient(Ingredient.CRUST);
                     break;
             }
         } catch (NullPointerException e) {
@@ -144,6 +154,11 @@ public class CreatePizzaService {
         }
         RoundUtil.up(IngredientOrderUtil.getIngredientOrder().totalOrder());
         CREATE_PIZZA_VIEW.totalCalories(IngredientCaloriesCalculatorUtil.countTotalCalories());
+    }
+
+    public void chooseIngredient(Ingredient ingredient) {
+        IngredientOrderUtil.chooseIngredient(ingredient);
+        IngredientCaloriesCalculatorUtil.add(ingredient.getCalories());
     }
 
     public void addIngredientsQuestion() {
