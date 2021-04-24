@@ -106,14 +106,4 @@ class IngredientPriceUtilTest {
     public void priceSauceIncludingVAT() {
         assertEquals(1.56, RoundUtil.up(IngredientPriceUtil.priceIncludingVAT(Ingredient.SAUCE)));
     }
-
-    @Test
-    public void priceCrustWithoutVAT() {
-        assertEquals(2.6, RoundUtil.up(IngredientPriceUtil.priceWithoutVAT(Ingredient.CRUST)));
-    }
-
-    @Test
-    public void priceCrustIncludingVAT() {
-        assertEquals(3.12, RoundUtil.up(IngredientPriceUtil.priceIncludingVAT(Ingredient.CRUST)));
-    }
 }

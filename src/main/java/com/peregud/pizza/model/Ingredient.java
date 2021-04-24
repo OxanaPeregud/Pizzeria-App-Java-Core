@@ -2,7 +2,6 @@ package com.peregud.pizza.model;
 
 public enum Ingredient {
     CHEESE(2.50, 360),
-    CRUST(2.00, 400),
     MEAT(5.20, 220),
     OLIVES(2.50, 115),
     OREGANO(1.10, 10),

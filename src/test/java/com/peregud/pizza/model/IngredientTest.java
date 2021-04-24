@@ -12,11 +12,6 @@ class IngredientTest {
     }
 
     @Test
-    public void getCostPerUnit_Crust() {
-        assertEquals(2, Ingredient.CRUST.getCostPerUnit());
-    }
-
-    @Test
     public void getCostPerUnit_Meat() {
         assertEquals(5.2, Ingredient.MEAT.getCostPerUnit());
     }
@@ -64,11 +59,6 @@ class IngredientTest {
     @Test
     public void getCalories_Cheese() {
         assertEquals(360, Ingredient.CHEESE.getCalories());
-    }
-
-    @Test
-    public void getCalories_Crust() {
-        assertEquals(400, Ingredient.CRUST.getCalories());
     }
 
     @Test

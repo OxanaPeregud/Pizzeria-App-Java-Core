@@ -1,9 +1,10 @@
 package com.peregud.pizza.service;
 
 import com.peregud.pizza.exceptions.IngredientNumberException;
-import com.peregud.pizza.model.Check;
 import com.peregud.pizza.model.Ingredient;
-import com.peregud.pizza.util.*;
+import com.peregud.pizza.util.CheckScannerInputUtil;
+import com.peregud.pizza.util.ChoiceUtil;
+import com.peregud.pizza.util.IngredientOrderUtil;
 import com.peregud.pizza.view.CreatePizzaView;
 import com.peregud.pizza.view.CreatePizzaViewConsole;
 import com.peregud.pizza.view.PizzaOrderView;
@@ -28,7 +29,6 @@ public class IngredientSupplementService {
         INGREDIENTS.put(6, Ingredient.PEPPER);
         INGREDIENTS.put(7, Ingredient.OREGANO);
         INGREDIENTS.put(8, Ingredient.SAUCE);
-        INGREDIENTS.put(9, Ingredient.CRUST);
 
         CREATE_PIZZA_VIEW = new CreatePizzaViewConsole();
         PIZZA_ORDER_VIEW = new PizzaOrderViewConsole();
@@ -62,10 +62,6 @@ public class IngredientSupplementService {
                     break;
                 case SAUCE:
                     IngredientOrderUtil.chooseIngredient(Ingredient.SAUCE);
-                    break;
-                case CRUST:
-                    IngredientOrderUtil.getIngredientOrder().add(IngredientPriceUtil.priceIncludingVAT(Ingredient.CRUST));
-                    Check.add(CREATE_PIZZA_VIEW.orderIngredient(Ingredient.CRUST));
                     break;
             }
         } catch (NullPointerException e) {

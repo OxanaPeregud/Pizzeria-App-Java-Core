@@ -33,7 +33,6 @@ public class CreatePizzaService {
         INGREDIENTS.put(6, Ingredient.PEPPER);
         INGREDIENTS.put(7, Ingredient.OREGANO);
         INGREDIENTS.put(8, Ingredient.SAUCE);
-        INGREDIENTS.put(9, Ingredient.CRUST);
 
         CREATE_PIZZA_VIEW = new CreatePizzaViewConsole();
         PIZZA_ORDER = new PizzaOrderService();
@@ -52,7 +51,6 @@ public class CreatePizzaService {
                 break;
             case 2:
                 CREATE_PIZZA_VIEW.displayInfoAboutIngredient(Ingredient.CHEESE);
-                CREATE_PIZZA_VIEW.displayInfoAboutIngredient(Ingredient.CRUST);
                 CREATE_PIZZA_VIEW.displayInfoAboutIngredient(Ingredient.MEAT);
                 CREATE_PIZZA_VIEW.displayInfoAboutIngredient(Ingredient.OLIVES);
                 CREATE_PIZZA_VIEW.displayInfoAboutIngredient(Ingredient.OREGANO);
@@ -139,9 +137,6 @@ public class CreatePizzaService {
                     break;
                 case SAUCE:
                     chooseIngredient(Ingredient.SAUCE);
-                    break;
-                case CRUST:
-                    chooseIngredient(Ingredient.CRUST);
                     break;
             }
         } catch (NullPointerException e) {

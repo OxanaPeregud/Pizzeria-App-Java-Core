@@ -42,8 +42,6 @@ public class CreatePizzaViewConsole implements CreatePizzaView {
                 IngredientPriceUtil.priceIncludingVAT(Ingredient.OREGANO)) + "$");
         System.out.println("8. Sauce\tPrice: " + RoundUtil.up(
                 IngredientPriceUtil.priceIncludingVAT(Ingredient.SAUCE)) + "$");
-        System.out.println("9. Cheese crust\tPrice: " + RoundUtil.up(
-                IngredientPriceUtil.priceIncludingVAT(Ingredient.CRUST)) + "$");
     }
 
     @Override
