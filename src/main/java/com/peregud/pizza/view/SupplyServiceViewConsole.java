@@ -29,107 +29,16 @@ public class SupplyServiceViewConsole implements SupplyServiceView {
     }
 
     @Override
-    public void supplier1IngredientBefore() {
-        System.out.println("SUPPLIER_1 delivered " + Supplier.SUPPLIER_1.getIngredient());
-        System.out.println("Current quantity of " + Supplier.SUPPLIER_1.getIngredient() + " in storage: "
-                + STORAGE.getIngredientQuantity(Supplier.SUPPLIER_1.getIngredient()));
+    public void supplierIngredientBefore(Supplier supplier) {
+        System.out.println(supplier + " delivered " + supplier.getIngredient());
+        System.out.println("Current quantity of " + supplier.getIngredient() + " in storage: "
+                + STORAGE.getIngredientQuantity(supplier.getIngredient()));
     }
 
     @Override
-    public void supplier1IngredientAfter() {
-        System.out.println("Quantity of " + Supplier.SUPPLIER_1.getIngredient() + " has been changed to: "
-                + STORAGE.getIngredientQuantity(Supplier.SUPPLIER_1.getIngredient()));
-    }
-
-    @Override
-    public void supplier2IngredientBefore() {
-        System.out.println("SUPPLIER_2 delivered " + Supplier.SUPPLIER_2.getIngredient());
-        System.out.println("Current quantity of " + Supplier.SUPPLIER_2.getIngredient() + " in storage: "
-                + STORAGE.getIngredientQuantity(Supplier.SUPPLIER_2.getIngredient()));
-    }
-
-    @Override
-    public void supplier2IngredientAfter() {
-        System.out.println("Quantity of " + Supplier.SUPPLIER_2.getIngredient() + " has been changed to: "
-                + STORAGE.getIngredientQuantity(Supplier.SUPPLIER_2.getIngredient()));
-    }
-
-    @Override
-    public void supplier3IngredientBefore() {
-        System.out.println("SUPPLIER_3 delivered " + Supplier.SUPPLIER_3.getIngredient());
-        System.out.println("Current quantity of " + Supplier.SUPPLIER_3.getIngredient() + " in storage: "
-                + STORAGE.getIngredientQuantity(Supplier.SUPPLIER_3.getIngredient()));
-    }
-
-    @Override
-    public void supplier3IngredientAfter() {
-        System.out.println("Quantity of " + Supplier.SUPPLIER_3.getIngredient() + " has been changed to: "
-                + STORAGE.getIngredientQuantity(Supplier.SUPPLIER_3.getIngredient()));
-    }
-
-    @Override
-    public void supplier4IngredientBefore() {
-        System.out.println("SUPPLIER_4 delivered " + Supplier.SUPPLIER_4.getIngredient());
-        System.out.println("Current quantity of " + Supplier.SUPPLIER_4.getIngredient() + " in storage: "
-                + STORAGE.getIngredientQuantity(Supplier.SUPPLIER_4.getIngredient()));
-    }
-
-    @Override
-    public void supplier4IngredientAfter() {
-        System.out.println("Quantity of " + Supplier.SUPPLIER_4.getIngredient() + " has been changed to: "
-                + STORAGE.getIngredientQuantity(Supplier.SUPPLIER_4.getIngredient()));
-    }
-
-    @Override
-    public void supplier5IngredientBefore() {
-        System.out.println("SUPPLIER_5 delivered " + Supplier.SUPPLIER_5.getIngredient());
-        System.out.println("Current quantity of " + Supplier.SUPPLIER_5.getIngredient() + " in storage: "
-                + STORAGE.getIngredientQuantity(Supplier.SUPPLIER_5.getIngredient()));
-    }
-
-    @Override
-    public void supplier5IngredientAfter() {
-        System.out.println("Quantity of " + Supplier.SUPPLIER_5.getIngredient() + " has been changed to: "
-                + STORAGE.getIngredientQuantity(Supplier.SUPPLIER_5.getIngredient()));
-    }
-
-    @Override
-    public void supplier6IngredientBefore() {
-        System.out.println("SUPPLIER_6 delivered " + Supplier.SUPPLIER_6.getIngredient());
-        System.out.println("Current quantity of " + Supplier.SUPPLIER_6.getIngredient() + " in storage: "
-                + STORAGE.getIngredientQuantity(Supplier.SUPPLIER_6.getIngredient()));
-    }
-
-    @Override
-    public void supplier6IngredientAfter() {
-        System.out.println("Quantity of " + Supplier.SUPPLIER_6.getIngredient() + " has been changed to: "
-                + STORAGE.getIngredientQuantity(Supplier.SUPPLIER_6.getIngredient()));
-    }
-
-    @Override
-    public void supplier7IngredientBefore() {
-        System.out.println("SUPPLIER_7 delivered " + Supplier.SUPPLIER_7.getIngredient());
-        System.out.println("Current quantity of " + Supplier.SUPPLIER_7.getIngredient() + " in storage: "
-                + STORAGE.getIngredientQuantity(Supplier.SUPPLIER_7.getIngredient()));
-    }
-
-    @Override
-    public void supplier7IngredientAfter() {
-        System.out.println("Quantity of " + Supplier.SUPPLIER_7.getIngredient() + " has been changed to: "
-                + STORAGE.getIngredientQuantity(Supplier.SUPPLIER_7.getIngredient()));
-    }
-
-    @Override
-    public void supplier8IngredientBefore() {
-        System.out.println("SUPPLIER_8 delivered " + Supplier.SUPPLIER_8.getIngredient());
-        System.out.println("Current quantity of " + Supplier.SUPPLIER_8.getIngredient() + " in storage: "
-                + STORAGE.getIngredientQuantity(Supplier.SUPPLIER_8.getIngredient()));
-    }
-
-    @Override
-    public void supplier8IngredientAfter() {
-        System.out.println("Quantity of " + Supplier.SUPPLIER_8.getIngredient() + " has been changed to: "
-                + STORAGE.getIngredientQuantity(Supplier.SUPPLIER_8.getIngredient()));
+    public void supplierIngredientAfter(Supplier supplier) {
+        System.out.println("Quantity of " + supplier.getIngredient() + " has been changed to: "
+                + STORAGE.getIngredientQuantity(supplier.getIngredient()));
     }
 
     @Override

@@ -37,59 +37,35 @@ public class SupplyService {
             int supplierChoice = CheckScannerInputUtil.checkInt();
             switch (SUPPLIERS.get(supplierChoice)) {
                 case SUPPLIER_1:
-                    SUPPLY_SERVICE_VIEW.supplier1IngredientBefore();
-                    SUPPLY_SERVICE_VIEW.supplierDeliveredQuantity();
-                    STORAGE.changeDeliveredIngredient(Supplier.SUPPLIER_1);
-                    SUPPLY_SERVICE_VIEW.supplier1IngredientAfter();
+                    chooseSupplier(Supplier.SUPPLIER_1);
                     addChoiceQuestion();
                     break;
                 case SUPPLIER_2:
-                    SUPPLY_SERVICE_VIEW.supplier2IngredientBefore();
-                    SUPPLY_SERVICE_VIEW.supplierDeliveredQuantity();
-                    STORAGE.changeDeliveredIngredient(Supplier.SUPPLIER_2);
-                    SUPPLY_SERVICE_VIEW.supplier2IngredientAfter();
+                    chooseSupplier(Supplier.SUPPLIER_2);
                     addChoiceQuestion();
                     break;
                 case SUPPLIER_3:
-                    SUPPLY_SERVICE_VIEW.supplier3IngredientBefore();
-                    SUPPLY_SERVICE_VIEW.supplierDeliveredQuantity();
-                    STORAGE.changeDeliveredIngredient(Supplier.SUPPLIER_3);
-                    SUPPLY_SERVICE_VIEW.supplier3IngredientAfter();
+                    chooseSupplier(Supplier.SUPPLIER_3);
                     addChoiceQuestion();
                     break;
                 case SUPPLIER_4:
-                    SUPPLY_SERVICE_VIEW.supplier4IngredientBefore();
-                    SUPPLY_SERVICE_VIEW.supplierDeliveredQuantity();
-                    STORAGE.changeDeliveredIngredient(Supplier.SUPPLIER_4);
-                    SUPPLY_SERVICE_VIEW.supplier4IngredientAfter();
+                    chooseSupplier(Supplier.SUPPLIER_4);
                     addChoiceQuestion();
                     break;
                 case SUPPLIER_5:
-                    SUPPLY_SERVICE_VIEW.supplier5IngredientBefore();
-                    SUPPLY_SERVICE_VIEW.supplierDeliveredQuantity();
-                    STORAGE.changeDeliveredIngredient(Supplier.SUPPLIER_5);
-                    SUPPLY_SERVICE_VIEW.supplier5IngredientAfter();
+                    chooseSupplier(Supplier.SUPPLIER_5);
                     addChoiceQuestion();
                     break;
                 case SUPPLIER_6:
-                    SUPPLY_SERVICE_VIEW.supplier6IngredientBefore();
-                    SUPPLY_SERVICE_VIEW.supplierDeliveredQuantity();
-                    STORAGE.changeDeliveredIngredient(Supplier.SUPPLIER_6);
-                    SUPPLY_SERVICE_VIEW.supplier6IngredientAfter();
+                    chooseSupplier(Supplier.SUPPLIER_6);
                     addChoiceQuestion();
                     break;
                 case SUPPLIER_7:
-                    SUPPLY_SERVICE_VIEW.supplier7IngredientBefore();
-                    SUPPLY_SERVICE_VIEW.supplierDeliveredQuantity();
-                    STORAGE.changeDeliveredIngredient(Supplier.SUPPLIER_7);
-                    SUPPLY_SERVICE_VIEW.supplier7IngredientAfter();
+                    chooseSupplier(Supplier.SUPPLIER_7);
                     addChoiceQuestion();
                     break;
                 case SUPPLIER_8:
-                    SUPPLY_SERVICE_VIEW.supplier8IngredientBefore();
-                    SUPPLY_SERVICE_VIEW.supplierDeliveredQuantity();
-                    STORAGE.changeDeliveredIngredient(Supplier.SUPPLIER_8);
-                    SUPPLY_SERVICE_VIEW.supplier8IngredientAfter();
+                    chooseSupplier(Supplier.SUPPLIER_8);
                     addChoiceQuestion();
                     break;
             }
@@ -102,6 +78,13 @@ public class SupplyService {
                 addChoiceQuestion();
             }
         }
+    }
+
+    public void chooseSupplier(Supplier supplier) {
+        SUPPLY_SERVICE_VIEW.supplierIngredientBefore(supplier);
+        SUPPLY_SERVICE_VIEW.supplierDeliveredQuantity();
+        STORAGE.changeDeliveredIngredient(supplier);
+        SUPPLY_SERVICE_VIEW.supplierIngredientAfter(supplier);
     }
 
     public void addChoiceQuestion() {
