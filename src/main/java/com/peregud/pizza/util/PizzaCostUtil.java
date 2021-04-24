@@ -8,47 +8,46 @@ public final class PizzaCostUtil {
     private PizzaCostUtil() {
     }
 
+    public static double fullIngredientCost(Ingredient ingredient, Pizza pizza) {
+        return ingredient.getCostPerUnit() * pizza.getIngredientQuantity(ingredient);
+    }
+
     public static double costFourCheese() {
-        return Ingredient.TRADITIONAL_DOUGH.getCostPerUnit() *
-                Pizza.FOUR_CHEESE.getIngredientQuantity(Ingredient.TRADITIONAL_DOUGH) +
-                Ingredient.SAUCE.getCostPerUnit() * Pizza.FOUR_CHEESE.getIngredientQuantity(Ingredient.SAUCE) +
-                Ingredient.CHEESE.getCostPerUnit() * Pizza.FOUR_CHEESE.getIngredientQuantity(Ingredient.CHEESE) +
-                Ingredient.OREGANO.getCostPerUnit() * Pizza.FOUR_CHEESE.getIngredientQuantity(Ingredient.OREGANO);
+        return fullIngredientCost(Ingredient.TRADITIONAL_DOUGH, Pizza.FOUR_CHEESE) +
+                fullIngredientCost(Ingredient.SAUCE, Pizza.FOUR_CHEESE) +
+                fullIngredientCost(Ingredient.CHEESE, Pizza.FOUR_CHEESE) +
+                fullIngredientCost(Ingredient.OREGANO, Pizza.FOUR_CHEESE);
     }
 
     public static double costMargherita() {
-        return Ingredient.TRADITIONAL_DOUGH.getCostPerUnit() *
-                Pizza.MARGHERITA.getIngredientQuantity(Ingredient.TRADITIONAL_DOUGH) +
-                Ingredient.SAUCE.getCostPerUnit() * Pizza.MARGHERITA.getIngredientQuantity(Ingredient.SAUCE) +
-                Ingredient.CHEESE.getCostPerUnit() * Pizza.MARGHERITA.getIngredientQuantity(Ingredient.CHEESE) +
-                Ingredient.TOMATOES.getCostPerUnit() * Pizza.MARGHERITA.getIngredientQuantity(Ingredient.TOMATOES) +
-                Ingredient.OREGANO.getCostPerUnit() * Pizza.MARGHERITA.getIngredientQuantity(Ingredient.OREGANO);
+        return fullIngredientCost(Ingredient.TRADITIONAL_DOUGH, Pizza.MARGHERITA) +
+                fullIngredientCost(Ingredient.SAUCE, Pizza.MARGHERITA) +
+                fullIngredientCost(Ingredient.CHEESE, Pizza.MARGHERITA) +
+                fullIngredientCost(Ingredient.TOMATOES, Pizza.MARGHERITA) +
+                fullIngredientCost(Ingredient.OREGANO, Pizza.MARGHERITA);
     }
 
     public static double costMeatDelight() {
-        return Ingredient.TRADITIONAL_DOUGH.getCostPerUnit() *
-                Pizza.MEAT_DELIGHT.getIngredientQuantity(Ingredient.TRADITIONAL_DOUGH) +
-                Ingredient.SAUCE.getCostPerUnit() * Pizza.MEAT_DELIGHT.getIngredientQuantity(Ingredient.SAUCE) +
-                Ingredient.CHEESE.getCostPerUnit() * Pizza.MEAT_DELIGHT.getIngredientQuantity(Ingredient.CHEESE) +
-                Ingredient.MEAT.getCostPerUnit() * Pizza.MEAT_DELIGHT.getIngredientQuantity(Ingredient.MEAT) +
-                Ingredient.SAUSAGES.getCostPerUnit() * Pizza.MEAT_DELIGHT.getIngredientQuantity(Ingredient.SAUSAGES);
+        return fullIngredientCost(Ingredient.TRADITIONAL_DOUGH, Pizza.MEAT_DELIGHT) +
+                fullIngredientCost(Ingredient.SAUCE, Pizza.MEAT_DELIGHT) +
+                fullIngredientCost(Ingredient.CHEESE, Pizza.MEAT_DELIGHT) +
+                fullIngredientCost(Ingredient.MEAT, Pizza.MEAT_DELIGHT) +
+                fullIngredientCost(Ingredient.SAUSAGES, Pizza.MEAT_DELIGHT);
     }
 
     public static double costPepperoni() {
-        return Ingredient.TRADITIONAL_DOUGH.getCostPerUnit() *
-                Pizza.PEPPERONI.getIngredientQuantity(Ingredient.TRADITIONAL_DOUGH) +
-                Ingredient.SAUCE.getCostPerUnit() * Pizza.PEPPERONI.getIngredientQuantity(Ingredient.SAUCE) +
-                Ingredient.CHEESE.getCostPerUnit() * Pizza.PEPPERONI.getIngredientQuantity(Ingredient.CHEESE) +
-                Ingredient.MEAT.getCostPerUnit() * Pizza.PEPPERONI.getIngredientQuantity(Ingredient.MEAT);
+        return fullIngredientCost(Ingredient.TRADITIONAL_DOUGH, Pizza.PEPPERONI) +
+                fullIngredientCost(Ingredient.SAUCE, Pizza.PEPPERONI) +
+                fullIngredientCost(Ingredient.CHEESE, Pizza.PEPPERONI) +
+                fullIngredientCost(Ingredient.MEAT, Pizza.PEPPERONI);
     }
 
     public static double costVegetarian() {
-        return Ingredient.TRADITIONAL_DOUGH.getCostPerUnit() *
-               Pizza.VEGETARIAN.getIngredientQuantity(Ingredient.TRADITIONAL_DOUGH) +
-               Ingredient.SAUCE.getCostPerUnit() * Pizza.VEGETARIAN.getIngredientQuantity(Ingredient.SAUCE) +
-               Ingredient.CHEESE.getCostPerUnit() * Pizza.VEGETARIAN.getIngredientQuantity(Ingredient.CHEESE) +
-               Ingredient.TOMATOES.getCostPerUnit() * Pizza.VEGETARIAN.getIngredientQuantity(Ingredient.TOMATOES) +
-               Ingredient.PEPPER.getCostPerUnit() * Pizza.VEGETARIAN.getIngredientQuantity(Ingredient.PEPPER) +
-               Ingredient.OLIVES.getCostPerUnit() * Pizza.VEGETARIAN.getIngredientQuantity(Ingredient.OLIVES);
+        return fullIngredientCost(Ingredient.TRADITIONAL_DOUGH, Pizza.VEGETARIAN) +
+                fullIngredientCost(Ingredient.SAUCE, Pizza.VEGETARIAN) +
+                fullIngredientCost(Ingredient.CHEESE, Pizza.VEGETARIAN) +
+                fullIngredientCost(Ingredient.TOMATOES, Pizza.VEGETARIAN) +
+                fullIngredientCost(Ingredient.PEPPER, Pizza.VEGETARIAN) +
+                fullIngredientCost(Ingredient.OLIVES, Pizza.VEGETARIAN);
     }
 }
