@@ -27,7 +27,8 @@ public final class OrderStatisticsUtil {
                 .values());
     }
 
-    public static List<Double> revenue(List<Integer> soldItems, List<Double> prices) {
+    public static List<Double> revenue(List<Integer> soldItems,
+                                       List<Double> prices) {
         List<Double> revenue = new ArrayList<>();
         for (int i = 0; i < soldItems.size(); i++) {
             revenue.add(soldItems.get(i) * prices.get(i));
@@ -35,7 +36,8 @@ public final class OrderStatisticsUtil {
         return new ArrayList<>(revenue);
     }
 
-    public static double totalRevenue(Map<Integer, Integer> soldItems, Map<Integer, Double> prices) {
+    public static double totalRevenue(Map<Integer, Integer> soldItems,
+                                      Map<Integer, Double> prices) {
         double sum = 0;
         for (Integer key : soldItems.keySet()) {
             double value1 = soldItems.get(key);
@@ -45,7 +47,8 @@ public final class OrderStatisticsUtil {
         return RoundUtil.up(sum);
     }
 
-    public static double averageCheck(Map<Integer, Integer> soldItems, Map<Integer, Double> prices) {
+    public static double averageCheck(Map<Integer, Integer> soldItems,
+                                      Map<Integer, Double> prices) {
         return RoundUtil.up(totalRevenue(soldItems, prices) / totalSold(soldItems));
     }
 
@@ -59,12 +62,16 @@ public final class OrderStatisticsUtil {
         return RoundUtil.up(sum);
     }
 
-    public static double totalProfit(Map<Integer, Integer> soldItems, Map<Integer, Double> prices, Map<Integer, Double> cost) {
+    public static double totalProfit(Map<Integer, Integer> soldItems,
+                                     Map<Integer, Double> prices,
+                                     Map<Integer, Double> cost) {
         return RoundUtil.up(TaxUtil.CorporateIncomeTax(totalRevenue(soldItems, prices) -
                 TaxUtil.VATonRevenue(totalRevenue(soldItems, prices)) - totalCost(soldItems, cost)));
     }
 
-    public static double profitMargin(Map<Integer, Integer> soldItems, Map<Integer, Double> prices, Map<Integer, Double> cost) {
+    public static double profitMargin(Map<Integer, Integer> soldItems,
+                                      Map<Integer, Double> prices,
+                                      Map<Integer, Double> cost) {
         return RoundUtil.up(totalProfit(soldItems, prices, cost) / totalRevenue(soldItems, prices) * 100);
     }
 }

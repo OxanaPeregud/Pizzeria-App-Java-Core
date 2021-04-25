@@ -10,15 +10,7 @@ public interface PizzaOrderView {
 
     String orderPizza(Pizza pizza, double price);
 
-    void displayInfoPizzaFourCheese();
-
-    void displayInfoPizzaMargherita();
-
-    void displayInfoPizzaMeatDelight();
-
-    void displayInfoPizzaPepperoni();
-
-    void displayInfoPizzaVegetarian();
+    void displayInfoAboutPizza(Pizza pizza);
 
     void displayInfoPizza();
 

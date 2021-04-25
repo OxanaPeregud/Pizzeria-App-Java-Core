@@ -32,53 +32,20 @@ public class PizzaOrderViewConsole implements PizzaOrderView {
                 "\t" + RoundUtil.up(price) + "$";
     }
 
-    @Override
-    public void displayInfoPizzaFourCheese() {
-        System.out.println("Pizza " + Pizza.FOUR_CHEESE + " Calories: " + PizzaCaloriesUtil.caloriesPizzaFourCheese());
-        System.out.println("Ingredients: " + Pizza.FOUR_CHEESE.getIngredients());
-        System.out.println("Price: " + RoundUtil.up(PizzaPriceUtil.pizzaPriceIncludingVAT(Pizza.FOUR_CHEESE)) + "$");
-        System.out.println();
-    }
-
-    @Override
-    public void displayInfoPizzaMargherita() {
-        System.out.println("Pizza " + Pizza.MARGHERITA + " Calories: " + PizzaCaloriesUtil.caloriesPizzaMargherita());
-        System.out.println("Ingredients: " + Pizza.MARGHERITA.getIngredients());
-        System.out.println("Price: " + RoundUtil.up(PizzaPriceUtil.pizzaPriceIncludingVAT(Pizza.MARGHERITA)) + "$");
-        System.out.println();
-    }
-
-    @Override
-    public void displayInfoPizzaMeatDelight() {
-        System.out.println("Pizza " + Pizza.MEAT_DELIGHT + " Calories: " + PizzaCaloriesUtil.caloriesPizzaMeatDelight());
-        System.out.println("Ingredients: " + Pizza.MEAT_DELIGHT.getIngredients());
-        System.out.println("Price: " + RoundUtil.up(PizzaPriceUtil.pizzaPriceIncludingVAT(Pizza.MEAT_DELIGHT)) + "$");
-        System.out.println();
-    }
-
-    @Override
-    public void displayInfoPizzaPepperoni() {
-        System.out.println("Pizza " + Pizza.PEPPERONI + " Calories: " + PizzaCaloriesUtil.caloriesPizzaPepperoni());
-        System.out.println("Ingredients: " + Pizza.PEPPERONI.getIngredients());
-        System.out.println("Price: " + RoundUtil.up(PizzaPriceUtil.pizzaPriceIncludingVAT(Pizza.PEPPERONI)) + "$");
-        System.out.println();
-    }
-
-    @Override
-    public void displayInfoPizzaVegetarian() {
-        System.out.println("Pizza " + Pizza.VEGETARIAN + " Calories: " + PizzaCaloriesUtil.caloriesPizzaVegetarian());
-        System.out.println("Ingredients: " + Pizza.VEGETARIAN.getIngredients());
-        System.out.println("Price: " + RoundUtil.up(PizzaPriceUtil.pizzaPriceIncludingVAT(Pizza.VEGETARIAN)) + "$");
+    public void displayInfoAboutPizza(Pizza pizza) {
+        System.out.println("Pizza " + pizza + " Calories: " + PizzaCaloriesUtil.pizzaCalories(pizza));
+        System.out.println("Ingredients: " + pizza.getIngredients());
+        System.out.println("Price: " + RoundUtil.up(PizzaPriceUtil.pizzaPriceIncludingVAT(pizza)) + "$");
         System.out.println();
     }
 
     @Override
     public void displayInfoPizza() {
-        displayInfoPizzaFourCheese();
-        displayInfoPizzaMargherita();
-        displayInfoPizzaMeatDelight();
-        displayInfoPizzaPepperoni();
-        displayInfoPizzaVegetarian();
+        displayInfoAboutPizza(Pizza.FOUR_CHEESE);
+        displayInfoAboutPizza(Pizza.MARGHERITA);
+        displayInfoAboutPizza(Pizza.MEAT_DELIGHT);
+        displayInfoAboutPizza(Pizza.PEPPERONI);
+        displayInfoAboutPizza(Pizza.VEGETARIAN);
     }
 
     @Override
