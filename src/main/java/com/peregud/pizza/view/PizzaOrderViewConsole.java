@@ -15,15 +15,15 @@ public class PizzaOrderViewConsole implements PizzaOrderView {
     @Override
     public void pizzaMenu() {
         System.out.println("1. Four Cheese\tPrice: " + RoundUtil.up(
-                PizzaPriceUtil.pricePizzaFourCheeseIncludingVAT()) + "$");
+                PizzaPriceUtil.pizzaPriceIncludingVAT(Pizza.FOUR_CHEESE)) + "$");
         System.out.println("2. Margherita\tPrice: " + RoundUtil.up(
-                PizzaPriceUtil.pricePizzaMargheritaIncludingVAT()) + "$");
+                PizzaPriceUtil.pizzaPriceIncludingVAT(Pizza.MARGHERITA)) + "$");
         System.out.println("3. Meat Delight\tPrice: " + RoundUtil.up(
-                PizzaPriceUtil.pricePizzaMeatDelightIncludingVAT()) + "$");
+                PizzaPriceUtil.pizzaPriceIncludingVAT(Pizza.MEAT_DELIGHT)) + "$");
         System.out.println("4. Pepperoni\tPrice: " + RoundUtil.up(
-                PizzaPriceUtil.pricePizzaPepperoniIncludingVAT()) + "$");
+                PizzaPriceUtil.pizzaPriceIncludingVAT(Pizza.PEPPERONI)) + "$");
         System.out.println("5. Vegetarian\tPrice: " + RoundUtil.up(
-                PizzaPriceUtil.pricePizzaVegetarianIncludingVAT()) + "$");
+                PizzaPriceUtil.pizzaPriceIncludingVAT(Pizza.VEGETARIAN)) + "$");
     }
 
     @Override
@@ -36,7 +36,7 @@ public class PizzaOrderViewConsole implements PizzaOrderView {
     public void displayInfoPizzaFourCheese() {
         System.out.println("Pizza " + Pizza.FOUR_CHEESE + " Calories: " + PizzaCaloriesUtil.caloriesPizzaFourCheese());
         System.out.println("Ingredients: " + Pizza.FOUR_CHEESE.getIngredients());
-        System.out.println("Price: " + RoundUtil.up(PizzaPriceUtil.pricePizzaFourCheeseIncludingVAT()) + "$");
+        System.out.println("Price: " + RoundUtil.up(PizzaPriceUtil.pizzaPriceIncludingVAT(Pizza.FOUR_CHEESE)) + "$");
         System.out.println();
     }
 
@@ -44,7 +44,7 @@ public class PizzaOrderViewConsole implements PizzaOrderView {
     public void displayInfoPizzaMargherita() {
         System.out.println("Pizza " + Pizza.MARGHERITA + " Calories: " + PizzaCaloriesUtil.caloriesPizzaMargherita());
         System.out.println("Ingredients: " + Pizza.MARGHERITA.getIngredients());
-        System.out.println("Price: " + RoundUtil.up(PizzaPriceUtil.pricePizzaMargheritaIncludingVAT()) + "$");
+        System.out.println("Price: " + RoundUtil.up(PizzaPriceUtil.pizzaPriceIncludingVAT(Pizza.MARGHERITA)) + "$");
         System.out.println();
     }
 
@@ -52,7 +52,7 @@ public class PizzaOrderViewConsole implements PizzaOrderView {
     public void displayInfoPizzaMeatDelight() {
         System.out.println("Pizza " + Pizza.MEAT_DELIGHT + " Calories: " + PizzaCaloriesUtil.caloriesPizzaMeatDelight());
         System.out.println("Ingredients: " + Pizza.MEAT_DELIGHT.getIngredients());
-        System.out.println("Price: " + RoundUtil.up(PizzaPriceUtil.pricePizzaMeatDelightIncludingVAT()) + "$");
+        System.out.println("Price: " + RoundUtil.up(PizzaPriceUtil.pizzaPriceIncludingVAT(Pizza.MEAT_DELIGHT)) + "$");
         System.out.println();
     }
 
@@ -60,7 +60,7 @@ public class PizzaOrderViewConsole implements PizzaOrderView {
     public void displayInfoPizzaPepperoni() {
         System.out.println("Pizza " + Pizza.PEPPERONI + " Calories: " + PizzaCaloriesUtil.caloriesPizzaPepperoni());
         System.out.println("Ingredients: " + Pizza.PEPPERONI.getIngredients());
-        System.out.println("Price: " + RoundUtil.up(PizzaPriceUtil.pricePizzaPepperoniIncludingVAT()) + "$");
+        System.out.println("Price: " + RoundUtil.up(PizzaPriceUtil.pizzaPriceIncludingVAT(Pizza.PEPPERONI)) + "$");
         System.out.println();
     }
 
@@ -68,7 +68,7 @@ public class PizzaOrderViewConsole implements PizzaOrderView {
     public void displayInfoPizzaVegetarian() {
         System.out.println("Pizza " + Pizza.VEGETARIAN + " Calories: " + PizzaCaloriesUtil.caloriesPizzaVegetarian());
         System.out.println("Ingredients: " + Pizza.VEGETARIAN.getIngredients());
-        System.out.println("Price: " + RoundUtil.up(PizzaPriceUtil.pricePizzaVegetarianIncludingVAT()) + "$");
+        System.out.println("Price: " + RoundUtil.up(PizzaPriceUtil.pizzaPriceIncludingVAT(Pizza.VEGETARIAN)) + "$");
         System.out.println();
     }
 

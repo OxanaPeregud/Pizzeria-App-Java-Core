@@ -1,5 +1,7 @@
 package com.peregud.pizza.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public enum Pizza {
@@ -49,5 +51,9 @@ public enum Pizza {
 
     public int getIngredientQuantity(Ingredient ingredient) {
         return ingredients.get(ingredient);
+    }
+
+    public List<Ingredient> listOfIngredients() {
+        return new ArrayList<>(ingredients.keySet());
     }
 }

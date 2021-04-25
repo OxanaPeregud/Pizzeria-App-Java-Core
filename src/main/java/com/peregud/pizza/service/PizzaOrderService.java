@@ -27,9 +27,6 @@ public class PizzaOrderService {
         CREATE_PIZZA = new CreatePizzaService();
     }
 
-    public PizzaOrderService() {
-    }
-
     public void start() {
         PIZZA_ORDER_VIEW.greeting();
     }
@@ -66,19 +63,19 @@ public class PizzaOrderService {
         try {
             switch (PIZZAS.get(choice)) {
                 case FOUR_CHEESE:
-                    OrderPizzaUtil.orderFourCheese();
+                    OrderPizzaUtil.orderPizza(Pizza.FOUR_CHEESE);
                     break;
                 case MARGHERITA:
-                    OrderPizzaUtil.orderMargherita();
+                    OrderPizzaUtil.orderPizza(Pizza.MARGHERITA);
                     break;
                 case MEAT_DELIGHT:
-                    OrderPizzaUtil.orderMeatDelight();
+                    OrderPizzaUtil.orderPizza(Pizza.MEAT_DELIGHT);
                     break;
                 case PEPPERONI:
-                    OrderPizzaUtil.orderPepperoni();
+                    OrderPizzaUtil.orderPizza(Pizza.PEPPERONI);
                     break;
                 case VEGETARIAN:
-                    OrderPizzaUtil.orderVegetarian();
+                    OrderPizzaUtil.orderPizza(Pizza.VEGETARIAN);
                     break;
             }
         } catch (NullPointerException e) {

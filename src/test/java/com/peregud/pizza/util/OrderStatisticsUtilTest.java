@@ -1,14 +1,11 @@
 package com.peregud.pizza.util;
 
-import com.peregud.pizza.util.OrderStatisticsUtil;
-import com.peregud.pizza.util.PizzaPriceUtil;
-import com.peregud.pizza.util.RoundUtil;
-import com.peregud.pizza.util.SoldPizzasUtil;
+import com.peregud.pizza.model.Pizza;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class OrderStatisticsUtilTest {
 
@@ -36,11 +33,11 @@ class OrderStatisticsUtilTest {
     public void pizzasPrices() {
         putToMap();
         SoldPizzasUtil.createMapOfPizzasPrices();
-        assertEquals(List.of(PizzaPriceUtil.pricePizzaFourCheeseIncludingVAT(),
-                PizzaPriceUtil.pricePizzaMargheritaIncludingVAT(),
-                PizzaPriceUtil.pricePizzaMeatDelightIncludingVAT(),
-                PizzaPriceUtil.pricePizzaPepperoniIncludingVAT(),
-                PizzaPriceUtil.pricePizzaVegetarianIncludingVAT()),
+        assertEquals(List.of(PizzaPriceUtil.pizzaPriceIncludingVAT(Pizza.FOUR_CHEESE),
+                PizzaPriceUtil.pizzaPriceIncludingVAT(Pizza.MARGHERITA),
+                PizzaPriceUtil.pizzaPriceIncludingVAT(Pizza.MEAT_DELIGHT),
+                PizzaPriceUtil.pizzaPriceIncludingVAT(Pizza.PEPPERONI),
+                PizzaPriceUtil.pizzaPriceIncludingVAT(Pizza.VEGETARIAN)),
                 OrderStatisticsUtil.prices(SoldPizzasUtil.getPizzasPrices()));
     }
 
@@ -48,7 +45,7 @@ class OrderStatisticsUtilTest {
     public void pizzasRevenue_FourCheese() {
         putToMap();
         SoldPizzasUtil.createMapOfPizzasPrices();
-        assertEquals(RoundUtil.up(5 * PizzaPriceUtil.pricePizzaFourCheeseIncludingVAT()),
+        assertEquals(RoundUtil.up(5 * PizzaPriceUtil.pizzaPriceIncludingVAT(Pizza.FOUR_CHEESE)),
                 RoundUtil.up(OrderStatisticsUtil.revenue(OrderStatisticsUtil.soldItems(SoldPizzasUtil.getSoldPizzas()),
                         OrderStatisticsUtil.prices(SoldPizzasUtil.getPizzasPrices())).get(0)));
     }
@@ -56,7 +53,7 @@ class OrderStatisticsUtilTest {
     @Test
     public void pizzasRevenue_Margherita() {
         putToMap();
-        assertEquals(RoundUtil.up(5 * PizzaPriceUtil.pricePizzaMargheritaIncludingVAT()),
+        assertEquals(RoundUtil.up(5 * PizzaPriceUtil.pizzaPriceIncludingVAT(Pizza.MARGHERITA)),
                 RoundUtil.up(OrderStatisticsUtil.revenue(OrderStatisticsUtil.soldItems(SoldPizzasUtil.getSoldPizzas()),
                         OrderStatisticsUtil.prices(SoldPizzasUtil.getPizzasPrices())).get(1)));
     }
@@ -65,7 +62,7 @@ class OrderStatisticsUtilTest {
     public void pizzasRevenue_MeatDelight() {
         putToMap();
         SoldPizzasUtil.createMapOfPizzasPrices();
-        assertEquals(RoundUtil.up(11 * PizzaPriceUtil.pricePizzaMeatDelightIncludingVAT()),
+        assertEquals(RoundUtil.up(11 * PizzaPriceUtil.pizzaPriceIncludingVAT(Pizza.MEAT_DELIGHT)),
                 RoundUtil.up(OrderStatisticsUtil.revenue(OrderStatisticsUtil.soldItems(SoldPizzasUtil.getSoldPizzas()),
                         OrderStatisticsUtil.prices(SoldPizzasUtil.getPizzasPrices())).get(2)));
     }
@@ -73,7 +70,7 @@ class OrderStatisticsUtilTest {
     @Test
     public void pizzasRevenue_Pepperoni() {
         putToMap();
-        assertEquals(RoundUtil.up(1 * PizzaPriceUtil.pricePizzaPepperoniIncludingVAT()),
+        assertEquals(RoundUtil.up(1 * PizzaPriceUtil.pizzaPriceIncludingVAT(Pizza.PEPPERONI)),
                 RoundUtil.up(OrderStatisticsUtil.revenue(OrderStatisticsUtil.soldItems(SoldPizzasUtil.getSoldPizzas()),
                         OrderStatisticsUtil.prices(SoldPizzasUtil.getPizzasPrices())).get(3)));
     }
@@ -82,7 +79,7 @@ class OrderStatisticsUtilTest {
     public void pizzasRevenue_Vegetarian() {
         putToMap();
         SoldPizzasUtil.createMapOfPizzasPrices();
-        assertEquals(RoundUtil.up(20 * PizzaPriceUtil.pricePizzaVegetarianIncludingVAT()),
+        assertEquals(RoundUtil.up(20 * PizzaPriceUtil.pizzaPriceIncludingVAT(Pizza.VEGETARIAN)),
                 RoundUtil.up(OrderStatisticsUtil.revenue(OrderStatisticsUtil.soldItems(SoldPizzasUtil.getSoldPizzas()),
                         OrderStatisticsUtil.prices(SoldPizzasUtil.getPizzasPrices())).get(4)));
     }

@@ -42,19 +42,19 @@ public final class SoldPizzasUtil {
     }
 
     public static void createMapOfPizzasPrices() {
-        PIZZAS_PRICES.put(1, PizzaPriceUtil.pricePizzaFourCheeseIncludingVAT());
-        PIZZAS_PRICES.put(2, PizzaPriceUtil.pricePizzaMargheritaIncludingVAT());
-        PIZZAS_PRICES.put(3, PizzaPriceUtil.pricePizzaMeatDelightIncludingVAT());
-        PIZZAS_PRICES.put(4, PizzaPriceUtil.pricePizzaPepperoniIncludingVAT());
-        PIZZAS_PRICES.put(5, PizzaPriceUtil.pricePizzaVegetarianIncludingVAT());
+        PIZZAS_PRICES.put(1, PizzaPriceUtil.pizzaPriceIncludingVAT(Pizza.FOUR_CHEESE));
+        PIZZAS_PRICES.put(2, PizzaPriceUtil.pizzaPriceIncludingVAT(Pizza.MARGHERITA));
+        PIZZAS_PRICES.put(3, PizzaPriceUtil.pizzaPriceIncludingVAT(Pizza.MEAT_DELIGHT));
+        PIZZAS_PRICES.put(4, PizzaPriceUtil.pizzaPriceIncludingVAT(Pizza.PEPPERONI));
+        PIZZAS_PRICES.put(5, PizzaPriceUtil.pizzaPriceIncludingVAT(Pizza.VEGETARIAN));
     }
 
     public static void createMapOfPizzasCost() {
-        PIZZAS_COST.put(1, PizzaCostUtil.costFourCheese());
-        PIZZAS_COST.put(2, PizzaCostUtil.costMargherita());
-        PIZZAS_COST.put(3, PizzaCostUtil.costMeatDelight());
-        PIZZAS_COST.put(4, PizzaCostUtil.costPepperoni());
-        PIZZAS_COST.put(5, PizzaCostUtil.costVegetarian());
+        PIZZAS_COST.put(1, PizzaCostUtil.pizzaCost(Pizza.FOUR_CHEESE));
+        PIZZAS_COST.put(2, PizzaCostUtil.pizzaCost(Pizza.MARGHERITA));
+        PIZZAS_COST.put(3, PizzaCostUtil.pizzaCost(Pizza.MEAT_DELIGHT));
+        PIZZAS_COST.put(4, PizzaCostUtil.pizzaCost(Pizza.PEPPERONI));
+        PIZZAS_COST.put(5, PizzaCostUtil.pizzaCost(Pizza.VEGETARIAN));
     }
 
     public static Map<Integer, Integer> getSoldPizzas() {
