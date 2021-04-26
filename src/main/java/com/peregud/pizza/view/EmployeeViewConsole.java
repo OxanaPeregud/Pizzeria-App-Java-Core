@@ -62,7 +62,7 @@ public class EmployeeViewConsole implements EmployeeView {
         System.out.println("3. Display All Information About Employees");
         System.out.println("4. Set Employee Salary to $00.00");
         System.out.println("5. Show Menu Options");
-        System.out.println("6. Exit Program");
+        System.out.println("6. Exit employee display");
     }
 
     @Override
@@ -79,11 +79,6 @@ public class EmployeeViewConsole implements EmployeeView {
     public void changeSalary() {
         System.out.println("Enter amount to adjust Employee salary: " +
                 "ex. (-100) to decrease and (100) to increase:");
-    }
-
-    @Override
-    public void exitProgram() {
-        System.out.println("Program Terminated!");
     }
 
     @Override

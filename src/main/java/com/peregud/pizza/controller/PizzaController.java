@@ -9,7 +9,6 @@ import com.peregud.pizza.view.StarterViewConsole;
 import com.peregud.pizza.view.StorageView;
 import com.peregud.pizza.view.StorageViewConsole;
 
-import java.sql.SQLException;
 import java.util.Scanner;
 
 public class PizzaController {
@@ -33,9 +32,6 @@ public class PizzaController {
         programOn = true;
     }
 
-    public PizzaController() {
-    }
-
     public void start() {
         while (programOn) {
             STARTER_VIEW.displayOperations();
@@ -51,7 +47,6 @@ public class PizzaController {
                     CREATE_PIZZA.displayOptions();
                     CREATE_PIZZA.chooseIngredients();
                     CREATE_PIZZA.addIngredientsQuestion();
-                    addChoiceQuestion();
                     break;
                 case 3:
                     ORDER_STATISTICS.displayChoice();
@@ -88,6 +83,8 @@ public class PizzaController {
             char ch = scan.next().charAt(0);
             if (ch == 'Y' || ch == 'y') {
                 start();
+            } else {
+                programOn = false;
             }
         } catch (Exception e) {
             e.printStackTrace();

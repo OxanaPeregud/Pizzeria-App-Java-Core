@@ -9,12 +9,10 @@ import java.util.Map;
 
 public final class PaymentChoiceUtil {
     private static final Map<Integer, PaymentMethod> PAYMENT_METHOD;
-    private static final CheckView CHECK_VIEW;
     private static final CashPaymentView CASH_PAYMENT_VIEW;
     private static final PaymentView PAYMENT_VIEW;
 
     static {
-        CHECK_VIEW = new CheckViewConsole();
         CASH_PAYMENT_VIEW = new CashPaymentViewConsole();
         PAYMENT_VIEW = new PaymentViewConsole();
 
@@ -33,16 +31,13 @@ public final class PaymentChoiceUtil {
             int payment = CheckScannerInputUtil.checkInt();
             switch (PAYMENT_METHOD.get(payment)) {
                 case CASH:
-                    CHECK_VIEW.displayCheck();
                     CashPaymentUtil.getFullAmount();
                     CASH_PAYMENT_VIEW.getChange();
                     break;
                 case CARD:
-                    CHECK_VIEW.displayCheck();
                     CardPaymentUtil.enterPIN();
                     break;
                 case ONLINE:
-                    CHECK_VIEW.displayCheck();
                     OnlinePaymentUtil.addCustomer();
                     break;
             }

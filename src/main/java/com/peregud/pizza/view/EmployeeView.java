@@ -32,8 +32,6 @@ public interface EmployeeView {
 
     void changeSalary();
 
-    void exitProgram();
-
     void showMenu();
 
 }

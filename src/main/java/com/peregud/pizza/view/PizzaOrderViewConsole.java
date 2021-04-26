@@ -14,6 +14,7 @@ public class PizzaOrderViewConsole implements PizzaOrderView {
 
     @Override
     public void pizzaMenu() {
+        System.out.println("\nChoose pizza from menu:");
         System.out.println("1. Four Cheese\tPrice: " + RoundUtil.up(
                 PizzaPriceUtil.pizzaPriceIncludingVAT(Pizza.FOUR_CHEESE)) + "$");
         System.out.println("2. Margherita\tPrice: " + RoundUtil.up(
@@ -50,7 +51,7 @@ public class PizzaOrderViewConsole implements PizzaOrderView {
 
     @Override
     public void totalOrder(double totalOrder, int size) {
-        System.out.println("Order is " + RoundUtil.up(totalOrder) + "$\nNumber of pizzas: " + size);
+        System.out.println("Total sum of order is " + RoundUtil.up(totalOrder) + "$\nNumber of pizzas: " + size);
     }
 
     @Override

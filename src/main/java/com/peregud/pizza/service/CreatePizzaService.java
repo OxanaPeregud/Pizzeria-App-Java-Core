@@ -63,8 +63,7 @@ public class CreatePizzaService {
                 displayOptions();
                 break;
             case 3:
-                PIZZA_ORDER.start();
-                PIZZA_ORDER.displayOptions();
+                PIZZA_ORDER.choosePizza();
                 break;
             case 4:
                 break;

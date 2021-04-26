@@ -56,7 +56,6 @@ public class EmployeeController {
                     EMPLOYEE_VIEW.operationsMenu();
                     break;
                 case 6:
-                    EMPLOYEE_VIEW.exitProgram();
                     programOn = false;
                     break;
             }

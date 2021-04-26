@@ -6,6 +6,7 @@ public class CheckViewConsole implements CheckView {
 
     @Override
     public void displayCheck() {
+        System.out.println("Your order includes:");
         Check.getCheck().forEach(System.out::println);
     }
 }

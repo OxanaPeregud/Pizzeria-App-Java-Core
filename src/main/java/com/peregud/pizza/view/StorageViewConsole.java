@@ -14,6 +14,7 @@ public class StorageViewConsole implements StorageView {
 
     @Override
     public void displayStorage() {
+        System.out.println("Ingredients in storage:");
         for (Map.Entry<Ingredient, Integer> entry : STORAGE.entrySet()) {
             System.out.println(entry.getKey() + " : " + entry.getValue());
         }
