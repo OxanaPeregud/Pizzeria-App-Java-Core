@@ -3,6 +3,7 @@ package com.peregud.pizza.repository;
 import com.peregud.pizza.model.Order;
 import com.peregud.pizza.util.ConnectorUtil;
 
+import java.io.Serializable;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +43,26 @@ public class OrderRepositorySQLImpl implements OrderRepository {
                 throwables.printStackTrace();
             }
         }
+    }
+
+    @Override
+    public void save(Order order) throws SQLException {
+
+    }
+
+    @Override
+    public Order get(Serializable id) {
+        return null;
+    }
+
+    @Override
+    public void update(Order order) {
+
+    }
+
+    @Override
+    public void delete(Serializable id) {
+
     }
 
     @Override

@@ -26,6 +26,26 @@ public class OrderRepositoryFileImpl implements OrderRepository {
     }
 
     @Override
+    public void save(Order order) {
+
+    }
+
+    @Override
+    public Order get(Serializable id) {
+        return null;
+    }
+
+    @Override
+    public void update(Order order) {
+
+    }
+
+    @Override
+    public void delete(Serializable id) {
+
+    }
+
+    @Override
     public List<Order> getAll() {
         List<Order> list = new ArrayList<>();
         try (FileInputStream fileInputStream = new FileInputStream(FILEPATH);
