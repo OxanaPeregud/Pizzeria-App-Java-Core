@@ -10,8 +10,7 @@ public class StarterViewConsole implements StarterView {
         System.out.println("3. Start 'Order Statistics'");
         System.out.println("4. Start 'Storage Utility'");
         System.out.println("5. Start 'Suppliers' Delivery'");
-        System.out.println("6. Start 'Employee Operations'");
-        System.out.println("7. Exit program");
+        System.out.println("6. Exit program");
     }
 
     @Override

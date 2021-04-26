@@ -18,7 +18,6 @@ public class PizzaController {
     private static final OrderStatisticsController ORDER_STATISTICS;
     private static final StorageView STORAGE_VIEW;
     private static final SupplyService SUPPLY;
-    private static final EmployeeController EMPLOYEE;
     private static boolean programOn;
 
     static {
@@ -28,7 +27,6 @@ public class PizzaController {
         ORDER_STATISTICS = new OrderStatisticsController();
         STORAGE_VIEW = new StorageViewConsole();
         SUPPLY = new SupplyService();
-        EMPLOYEE = new EmployeeController();
         programOn = true;
     }
 
@@ -61,10 +59,6 @@ public class PizzaController {
                     addChoiceQuestion();
                     break;
                 case 6:
-                    EMPLOYEE.start();
-                    addChoiceQuestion();
-                    break;
-                case 7:
                     STARTER_VIEW.exitProgram();
                     programOn = false;
                     break;
