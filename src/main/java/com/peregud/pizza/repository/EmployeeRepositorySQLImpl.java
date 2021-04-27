@@ -1,7 +1,6 @@
 package com.peregud.pizza.repository;
 
 import com.peregud.pizza.model.Employee;
-import com.peregud.pizza.model.Order;
 import com.peregud.pizza.util.ConnectorUtil;
 
 import java.io.Serializable;

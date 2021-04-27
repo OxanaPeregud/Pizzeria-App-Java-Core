@@ -10,11 +10,11 @@ public interface DAO<T> {
 
     void save(T t) throws SQLException;
 
-    T get(Serializable id);
+    T get(Serializable id) throws SQLException;
 
-    void update(T t);
+    void update(T t) throws SQLException;
 
-    void delete(Serializable id);
+    void delete(Serializable id) throws SQLException;
 
     List<T> getAll() throws SQLException;
 

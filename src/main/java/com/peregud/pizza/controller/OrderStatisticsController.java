@@ -24,7 +24,7 @@ public class OrderStatisticsController {
         ORDER_REPOSITORY = new OrderRepositorySQLImpl();
     }
 
-    public void displayChoice() {
+    public void start() {
         try {
             SoldPizzasUtil.createMapOfSoldPizzas();
             SoldPizzasUtil.createMapOfPizzasPrices();
@@ -34,26 +34,26 @@ public class OrderStatisticsController {
             switch (choice) {
                 case 1:
                     soldPizzasView();
-                    displayChoice();
+                    start();
                     break;
                 case 2:
                     soldPizzasRevenue();
-                    displayChoice();
+                    start();
                     break;
                 case 3:
                     ORDER_STATISTICS_VIEW.averageCheck(OrderStatisticsUtil.averageCheck(SoldPizzasUtil.getSoldPizzas(),
                             SoldPizzasUtil.getPizzasPrices()));
-                    displayChoice();
+                    start();
                     break;
                 case 4:
                     ORDER_STATISTICS_VIEW.totalProfit(OrderStatisticsUtil.totalProfit(SoldPizzasUtil.getSoldPizzas(),
                             SoldPizzasUtil.getPizzasPrices(), SoldPizzasUtil.getPizzasCost()));
-                    displayChoice();
+                    start();
                     break;
                 case 5:
                     ORDER_STATISTICS_VIEW.profitMargin(OrderStatisticsUtil.profitMargin(SoldPizzasUtil.getSoldPizzas(),
                             SoldPizzasUtil.getPizzasPrices(), SoldPizzasUtil.getPizzasCost()));
-                    displayChoice();
+                    start();
                     break;
                 case 6:
                     soldPizzasView();
@@ -64,17 +64,17 @@ public class OrderStatisticsController {
                             SoldPizzasUtil.getPizzasPrices(), SoldPizzasUtil.getPizzasCost()));
                     ORDER_STATISTICS_VIEW.profitMargin(OrderStatisticsUtil.profitMargin(SoldPizzasUtil.getSoldPizzas(),
                             SoldPizzasUtil.getPizzasPrices(), SoldPizzasUtil.getPizzasCost()));
-                    displayChoice();
+                    start();
                     break;
                 case 7:
                     SOLD_PIZZAS_VIEW.displaySoldPizzas(ORDER_REPOSITORY.getAll());
-                    displayChoice();
+                    start();
                     break;
                 case 8:
                     break;
                 default:
                     ORDER_STATISTICS_VIEW.choiceView();
-                    displayChoice();
+                    start();
                     break;
             }
         } catch (SQLException throwables) {

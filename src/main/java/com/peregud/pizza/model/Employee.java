@@ -15,13 +15,6 @@ public class Employee {
         this.salary = salary;
     }
 
-    public Employee(int id, String firstName, String lastName, double salary) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.salary = salary;
-    }
-
     public int getId() {
         return id;
     }
@@ -56,11 +49,9 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", salary=" + salary +
-                '}';
+        return "ID: " + id +
+                ", First Name: " + firstName +
+                ", Last Name: " + lastName +
+                ", Salary: " + salary + "$";
     }
 }
