@@ -61,7 +61,7 @@ public class PizzaController {
                     addChoiceQuestion();
                     break;
                 case 6:
-                    EMPLOYEE.start();
+                    EMPLOYEE.chooseOperation();
                     break;
                 case 7:
                     STARTER_VIEW.exitProgram();

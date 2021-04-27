@@ -9,7 +9,7 @@ import com.peregud.pizza.view.EmployeeViewConsole;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-public class EmployeeService {
+public class EmployeeService implements DBData {
     private static final EmployeeView EMPLOYEE_VIEW;
     private static final Scanner SCAN;
     private static final EmployeeRepository EMPLOYEE_REPOSITORY;
@@ -21,7 +21,8 @@ public class EmployeeService {
         EMPLOYEE_REPOSITORY = new EmployeeRepositorySQLImpl();
     }
 
-    public void addNewEmployee() {
+    @Override
+    public void saveNewData() {
         try {
             EMPLOYEE_VIEW.employeeFirstName();
             String firstName = SCAN.next();
@@ -35,7 +36,8 @@ public class EmployeeService {
         }
     }
 
-    public void displayEmployeeByID() {
+    @Override
+    public void getByID() {
         try {
             EMPLOYEE_VIEW.employeeID();
             int id = SCAN.nextInt();
@@ -45,7 +47,8 @@ public class EmployeeService {
         }
     }
 
-    public void changeSalary() {
+    @Override
+    public void updateData() {
         try {
             EMPLOYEE_VIEW.employeeID();
             int id = SCAN.nextInt();
@@ -62,7 +65,8 @@ public class EmployeeService {
         }
     }
 
-    public void deleteEmployee() {
+    @Override
+    public void deleteData() {
         try {
             EMPLOYEE_VIEW.employeeID();
             int id = SCAN.nextInt();
@@ -73,7 +77,8 @@ public class EmployeeService {
         }
     }
 
-    public void displayAllEmployees() {
+    @Override
+    public void displayAll() {
         try {
             EMPLOYEE_VIEW.displayAllEmployees();
         } catch (SQLException throwables) {

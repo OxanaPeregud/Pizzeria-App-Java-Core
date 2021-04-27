@@ -8,10 +8,29 @@ import com.peregud.pizza.view.EmployeeViewConsole;
 public class EmployeeController {
     private static final EmployeeView EMPLOYEE_VIEW;
     private static final EmployeeService EMPLOYEE;
+    private static final AddressController ADDRESS;
 
     static {
         EMPLOYEE_VIEW = new EmployeeViewConsole();
         EMPLOYEE = new EmployeeService();
+        ADDRESS = new AddressController();
+    }
+
+    public void chooseOperation() {
+        EMPLOYEE_VIEW.displayOperation();
+        int choice = CheckScannerInputUtil.checkInt();
+        switch (choice) {
+            case 1:
+                start();
+                break;
+            case 2:
+                ADDRESS.start();
+                break;
+            default:
+                EMPLOYEE_VIEW.operationException();
+                chooseOperation();
+                break;
+        }
     }
 
     public void start() {
@@ -19,23 +38,23 @@ public class EmployeeController {
         int choice = CheckScannerInputUtil.checkInt();
         switch (choice) {
             case 1:
-                EMPLOYEE.addNewEmployee();
+                EMPLOYEE.saveNewData();
                 start();
                 break;
             case 2:
-                EMPLOYEE.displayEmployeeByID();
+                EMPLOYEE.getByID();
                 start();
                 break;
             case 3:
-                EMPLOYEE.changeSalary();
+                EMPLOYEE.updateData();
                 start();
                 break;
             case 4:
-                EMPLOYEE.deleteEmployee();
+                EMPLOYEE.deleteData();
                 start();
                 break;
             case 5:
-                EMPLOYEE.displayAllEmployees();
+                EMPLOYEE.displayAll();
                 start();
                 break;
             case 6:

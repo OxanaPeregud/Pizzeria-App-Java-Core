@@ -22,7 +22,11 @@ public interface EmployeeView {
 
     void displayAllEmployees() throws SQLException;
 
+    void displayOperation();
+
     void displayChoice();
+
+    void operationException();
 
     void choiceException();
 

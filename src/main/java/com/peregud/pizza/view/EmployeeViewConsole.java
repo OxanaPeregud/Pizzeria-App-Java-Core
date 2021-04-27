@@ -12,22 +12,27 @@ public class EmployeeViewConsole implements EmployeeView {
         EMPLOYEE_REPOSITORY = new EmployeeRepositorySQLImpl();
     }
 
+    @Override
     public void employeeFirstName() {
         System.out.println("Enter employee First Name:");
     }
 
+    @Override
     public void employeeLastName() {
         System.out.println("Enter employee Last Name:");
     }
 
+    @Override
     public void employeeSalary() {
         System.out.println("Enter employee salary:");
     }
 
+    @Override
     public void employeeID() {
         System.out.println("Enter employee ID:");
     }
 
+    @Override
     public void displayEmployeeByID(int id) throws SQLException {
         if (EMPLOYEE_REPOSITORY.get(id) != null) {
             System.out.println(EMPLOYEE_REPOSITORY.get(id));
@@ -36,22 +41,34 @@ public class EmployeeViewConsole implements EmployeeView {
         }
     }
 
+    @Override
     public void setNewSalary() {
         System.out.println("Enter new salary:");
     }
 
+    @Override
     public void changedSalary() {
         System.out.println("Employee salary has been changed");
     }
 
+    @Override
     public void deleteEmployee() {
         System.out.println("Employee has been deleted");
     }
 
+    @Override
     public void displayAllEmployees() throws SQLException {
         EMPLOYEE_REPOSITORY.getAll().forEach(System.out::println);
     }
 
+    @Override
+    public void displayOperation() {
+        System.out.println("Choose option:");
+        System.out.println("1. Go to Employee App");
+        System.out.println("2. Go to Address App");
+    }
+
+    @Override
     public void displayChoice() {
         System.out.println("Choose option:");
         System.out.println("1. Add new Employee");
@@ -62,6 +79,12 @@ public class EmployeeViewConsole implements EmployeeView {
         System.out.println("6. Exit employee app");
     }
 
+    @Override
+    public void operationException() {
+        System.out.println("You need to enter 1 or 2");
+    }
+
+    @Override
     public void choiceException() {
         System.out.println("You need to enter a number from 1 to 6");
     }
