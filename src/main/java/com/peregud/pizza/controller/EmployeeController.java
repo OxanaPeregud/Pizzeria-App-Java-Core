@@ -9,11 +9,13 @@ public class EmployeeController {
     private static final EmployeeView EMPLOYEE_VIEW;
     private static final EmployeeService EMPLOYEE;
     private static final AddressController ADDRESS;
+    private static final EmployeeAddressController EMPLOYEE_ADDRESS;
 
     static {
         EMPLOYEE_VIEW = new EmployeeViewConsole();
         EMPLOYEE = new EmployeeService();
         ADDRESS = new AddressController();
+        EMPLOYEE_ADDRESS = new EmployeeAddressController();
     }
 
     public void chooseOperation() {
@@ -25,6 +27,9 @@ public class EmployeeController {
                 break;
             case 2:
                 ADDRESS.start();
+                break;
+            case 3:
+                EMPLOYEE_ADDRESS.start();
                 break;
             default:
                 EMPLOYEE_VIEW.operationException();

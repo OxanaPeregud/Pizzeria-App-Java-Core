@@ -1,6 +1,8 @@
 package com.peregud.pizza.service;
 
 import com.peregud.pizza.model.Employee;
+import com.peregud.pizza.repository.EmployeeAddressRepository;
+import com.peregud.pizza.repository.EmployeeAddressRepositorySQLImpl;
 import com.peregud.pizza.repository.EmployeeRepository;
 import com.peregud.pizza.repository.EmployeeRepositorySQLImpl;
 import com.peregud.pizza.view.EmployeeView;
@@ -14,11 +16,13 @@ public class EmployeeService implements DBData {
     private static final Scanner SCAN;
     private static final EmployeeRepository EMPLOYEE_REPOSITORY;
     private final Employee employee = new Employee();
+    private static final EmployeeAddressRepository EMPLOYEE_ADDRESS_REPOSITORY;
 
     static {
         EMPLOYEE_VIEW = new EmployeeViewConsole();
         SCAN = new Scanner(System.in);
         EMPLOYEE_REPOSITORY = new EmployeeRepositorySQLImpl();
+        EMPLOYEE_ADDRESS_REPOSITORY = new EmployeeAddressRepositorySQLImpl();
     }
 
     @Override
@@ -71,6 +75,7 @@ public class EmployeeService implements DBData {
             EMPLOYEE_VIEW.employeeID();
             int id = SCAN.nextInt();
             EMPLOYEE_REPOSITORY.delete(id);
+            EMPLOYEE_ADDRESS_REPOSITORY.delete(id);
             EMPLOYEE_VIEW.deleteEmployee();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
