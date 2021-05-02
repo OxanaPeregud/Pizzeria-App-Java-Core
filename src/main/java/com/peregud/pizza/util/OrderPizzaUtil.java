@@ -8,30 +8,40 @@ import com.peregud.pizza.service.PizzaOrderCalculatorService;
 import com.peregud.pizza.view.PizzaOrderView;
 import com.peregud.pizza.view.PizzaOrderViewConsole;
 import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class OrderPizzaUtil {
+    @Getter
     private static final PizzaOrderView PIZZA_ORDER_VIEW;
     private static final Order ORDER;
+    @Getter
     private static final PizzaOrderCalculatorService PIZZA_ORDER;
     private static final OrderRepository ORDER_REPOSITORY;
+    @Getter
+    private static final List<Integer> ORDER_ID;
 
     static {
         PIZZA_ORDER_VIEW = new PizzaOrderViewConsole();
         ORDER = new Order();
         PIZZA_ORDER = new PizzaOrderCalculatorService(new ArrayList<>());
         ORDER_REPOSITORY = new OrderRepositorySQLImpl();
+        ORDER_ID = new ArrayList<>();
     }
 
     public static void addToOrder(String pizzaName, double price) {
         try {
             ORDER_REPOSITORY.save(ORDER.add(pizzaName, RoundUtil.up(price),
                     DateFormatUtil.localDatePattern(LocalDateTime.now())));
+            ORDER_ID.add(ORDER_REPOSITORY.getAll().size());
+
+
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -50,13 +60,5 @@ public final class OrderPizzaUtil {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public static PizzaOrderView getPizzaOrderView() {
-        return PIZZA_ORDER_VIEW;
-    }
-
-    public static PizzaOrderCalculatorService getPizzaOrder() {
-        return PIZZA_ORDER;
     }
 }

@@ -2,7 +2,9 @@ package com.peregud.pizza.service;
 
 import com.peregud.pizza.exceptions.CardException;
 import com.peregud.pizza.model.Customer;
-import com.peregud.pizza.repository.*;
+import com.peregud.pizza.repository.CustomerRepository;
+import com.peregud.pizza.repository.CustomerRepositorySQLImpl;
+import com.peregud.pizza.util.OrderPizzaUtil;
 import com.peregud.pizza.view.CustomerView;
 import com.peregud.pizza.view.CustomerViewConsole;
 import com.peregud.pizza.view.OnlinePaymentView;
@@ -46,11 +48,14 @@ public class CustomerService implements DBData {
                 ONLINE_PAYMENT_VIEW.displayPayment();
             }
             new Customer();
-            CUSTOMER_REPOSITORY.save(Customer.builder()
-                    .firstName(firstName)
-                    .lastName(lastName)
-                    .cardNumber(cardNumber)
-                    .build());
+            for (int i = 0; i < OrderPizzaUtil.getORDER_ID().size(); i++) {
+                CUSTOMER_REPOSITORY.save(Customer.builder()
+                        .firstName(firstName)
+                        .lastName(lastName)
+                        .cardNumber(cardNumber)
+                        .orderID(OrderPizzaUtil.getORDER_ID().get(i))
+                        .build());
+            }
         } catch (InputMismatchException e) {
             try {
                 throw new CardException();

@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 public final class ChangeCalculatorUtil {
 
     public static double getChange() {
-        return CashPaymentUtil.countChange(OrderPizzaUtil.getPizzaOrder().totalOrder() +
+        return CashPaymentUtil.countChange(OrderPizzaUtil.getPIZZA_ORDER().totalOrder() +
                 IngredientOrderUtil.getIngredientOrder().totalOrder());
     }
 }
