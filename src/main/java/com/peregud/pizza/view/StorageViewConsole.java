@@ -6,11 +6,7 @@ import com.peregud.pizza.repository.StorageRepository;
 import java.util.Map;
 
 public class StorageViewConsole implements StorageView {
-    private static final StorageRepository STORAGE;
-
-    static {
-        STORAGE = new StorageRepository();
-    }
+    private static final StorageRepository STORAGE = new StorageRepository();
 
     @Override
     public void displayStorage() {

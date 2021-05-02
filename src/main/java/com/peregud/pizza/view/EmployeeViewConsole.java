@@ -6,11 +6,7 @@ import com.peregud.pizza.repository.EmployeeRepositorySQLImpl;
 import java.sql.SQLException;
 
 public class EmployeeViewConsole implements EmployeeView {
-    private static final EmployeeRepository EMPLOYEE_REPOSITORY;
-
-    static {
-        EMPLOYEE_REPOSITORY = new EmployeeRepositorySQLImpl();
-    }
+    private static final EmployeeRepository EMPLOYEE_REPOSITORY = new EmployeeRepositorySQLImpl();
 
     @Override
     public void employeeFirstName() {

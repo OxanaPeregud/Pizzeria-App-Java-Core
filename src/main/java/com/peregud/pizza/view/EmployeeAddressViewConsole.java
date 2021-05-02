@@ -8,13 +8,9 @@ import com.peregud.pizza.repository.EmployeeAddressRepositorySQLImpl;
 import java.sql.SQLException;
 
 public class EmployeeAddressViewConsole implements EmployeeAddressView {
-    private static final EmployeeAddressRepository EMPLOYEE_ADDRESS_REPOSITORY;
-    private static final AddressRepository ADDRESS;
-
-    static {
-        EMPLOYEE_ADDRESS_REPOSITORY = new EmployeeAddressRepositorySQLImpl();
-        ADDRESS = new AddressRepositorySQLImpl();
-    }
+    private static final EmployeeAddressRepository EMPLOYEE_ADDRESS_REPOSITORY =
+            new EmployeeAddressRepositorySQLImpl();
+    private static final AddressRepository ADDRESS = new AddressRepositorySQLImpl();
 
     @Override
     public void employeeAddress() {

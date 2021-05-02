@@ -41,29 +41,29 @@ public class OrderStatisticsController {
                     start();
                     break;
                 case 3:
-                    ORDER_STATISTICS_VIEW.averageCheck(OrderStatisticsUtil.averageCheck(SoldPizzasUtil.getSoldPizzas(),
-                            SoldPizzasUtil.getPizzasPrices()));
+                    ORDER_STATISTICS_VIEW.averageCheck(OrderStatisticsUtil.averageCheck(SoldPizzasUtil.getSOLD_PIZZAS(),
+                            SoldPizzasUtil.getPIZZAS_PRICES()));
                     start();
                     break;
                 case 4:
-                    ORDER_STATISTICS_VIEW.totalProfit(OrderStatisticsUtil.totalProfit(SoldPizzasUtil.getSoldPizzas(),
-                            SoldPizzasUtil.getPizzasPrices(), SoldPizzasUtil.getPizzasCost()));
+                    ORDER_STATISTICS_VIEW.totalProfit(OrderStatisticsUtil.totalProfit(SoldPizzasUtil.getSOLD_PIZZAS(),
+                            SoldPizzasUtil.getPIZZAS_PRICES(), SoldPizzasUtil.getPIZZAS_COST()));
                     start();
                     break;
                 case 5:
-                    ORDER_STATISTICS_VIEW.profitMargin(OrderStatisticsUtil.profitMargin(SoldPizzasUtil.getSoldPizzas(),
-                            SoldPizzasUtil.getPizzasPrices(), SoldPizzasUtil.getPizzasCost()));
+                    ORDER_STATISTICS_VIEW.profitMargin(OrderStatisticsUtil.profitMargin(SoldPizzasUtil.getSOLD_PIZZAS(),
+                            SoldPizzasUtil.getPIZZAS_PRICES(), SoldPizzasUtil.getPIZZAS_COST()));
                     start();
                     break;
                 case 6:
                     soldPizzasView();
                     soldPizzasRevenue();
-                    ORDER_STATISTICS_VIEW.averageCheck(OrderStatisticsUtil.averageCheck(SoldPizzasUtil.getSoldPizzas(),
-                            SoldPizzasUtil.getPizzasPrices()));
-                    ORDER_STATISTICS_VIEW.totalProfit(OrderStatisticsUtil.totalProfit(SoldPizzasUtil.getSoldPizzas(),
-                            SoldPizzasUtil.getPizzasPrices(), SoldPizzasUtil.getPizzasCost()));
-                    ORDER_STATISTICS_VIEW.profitMargin(OrderStatisticsUtil.profitMargin(SoldPizzasUtil.getSoldPizzas(),
-                            SoldPizzasUtil.getPizzasPrices(), SoldPizzasUtil.getPizzasCost()));
+                    ORDER_STATISTICS_VIEW.averageCheck(OrderStatisticsUtil.averageCheck(SoldPizzasUtil.getSOLD_PIZZAS(),
+                            SoldPizzasUtil.getPIZZAS_PRICES()));
+                    ORDER_STATISTICS_VIEW.totalProfit(OrderStatisticsUtil.totalProfit(SoldPizzasUtil.getSOLD_PIZZAS(),
+                            SoldPizzasUtil.getPIZZAS_PRICES(), SoldPizzasUtil.getPIZZAS_COST()));
+                    ORDER_STATISTICS_VIEW.profitMargin(OrderStatisticsUtil.profitMargin(SoldPizzasUtil.getSOLD_PIZZAS(),
+                            SoldPizzasUtil.getPIZZAS_PRICES(), SoldPizzasUtil.getPIZZAS_COST()));
                     start();
                     break;
                 case 7:
@@ -84,35 +84,35 @@ public class OrderStatisticsController {
 
     public void soldPizzasView() {
         ORDER_STATISTICS_VIEW.pizzasSold(Pizza.FOUR_CHEESE,
-                OrderStatisticsUtil.soldItems(SoldPizzasUtil.getSoldPizzas()), 0);
+                OrderStatisticsUtil.soldItems(SoldPizzasUtil.getSOLD_PIZZAS()), 0);
         ORDER_STATISTICS_VIEW.pizzasSold(Pizza.MARGHERITA,
-                OrderStatisticsUtil.soldItems(SoldPizzasUtil.getSoldPizzas()), 1);
+                OrderStatisticsUtil.soldItems(SoldPizzasUtil.getSOLD_PIZZAS()), 1);
         ORDER_STATISTICS_VIEW.pizzasSold(Pizza.MEAT_DELIGHT,
-                OrderStatisticsUtil.soldItems(SoldPizzasUtil.getSoldPizzas()), 2);
+                OrderStatisticsUtil.soldItems(SoldPizzasUtil.getSOLD_PIZZAS()), 2);
         ORDER_STATISTICS_VIEW.pizzasSold(Pizza.PEPPERONI,
-                OrderStatisticsUtil.soldItems(SoldPizzasUtil.getSoldPizzas()), 3);
+                OrderStatisticsUtil.soldItems(SoldPizzasUtil.getSOLD_PIZZAS()), 3);
         ORDER_STATISTICS_VIEW.pizzasSold(Pizza.VEGETARIAN,
-                OrderStatisticsUtil.soldItems(SoldPizzasUtil.getSoldPizzas()), 4);
-        ORDER_STATISTICS_VIEW.totalPizzasSold(OrderStatisticsUtil.totalSold(SoldPizzasUtil.getSoldPizzas()));
+                OrderStatisticsUtil.soldItems(SoldPizzasUtil.getSOLD_PIZZAS()), 4);
+        ORDER_STATISTICS_VIEW.totalPizzasSold(OrderStatisticsUtil.totalSold(SoldPizzasUtil.getSOLD_PIZZAS()));
     }
 
     public void soldPizzasRevenue() {
         ORDER_STATISTICS_VIEW.pizzasRevenue(Pizza.FOUR_CHEESE,
-                OrderStatisticsUtil.revenue(OrderStatisticsUtil.soldItems(SoldPizzasUtil.getSoldPizzas()),
-                        OrderStatisticsUtil.prices(SoldPizzasUtil.getPizzasPrices())), 0);
+                OrderStatisticsUtil.revenue(OrderStatisticsUtil.soldItems(SoldPizzasUtil.getSOLD_PIZZAS()),
+                        OrderStatisticsUtil.prices(SoldPizzasUtil.getPIZZAS_PRICES())), 0);
         ORDER_STATISTICS_VIEW.pizzasRevenue(Pizza.MARGHERITA,
-                OrderStatisticsUtil.revenue(OrderStatisticsUtil.soldItems(SoldPizzasUtil.getSoldPizzas()),
-                        OrderStatisticsUtil.prices(SoldPizzasUtil.getPizzasPrices())), 1);
+                OrderStatisticsUtil.revenue(OrderStatisticsUtil.soldItems(SoldPizzasUtil.getSOLD_PIZZAS()),
+                        OrderStatisticsUtil.prices(SoldPizzasUtil.getPIZZAS_PRICES())), 1);
         ORDER_STATISTICS_VIEW.pizzasRevenue(Pizza.MEAT_DELIGHT,
-                OrderStatisticsUtil.revenue(OrderStatisticsUtil.soldItems(SoldPizzasUtil.getSoldPizzas()),
-                        OrderStatisticsUtil.prices(SoldPizzasUtil.getPizzasPrices())), 2);
+                OrderStatisticsUtil.revenue(OrderStatisticsUtil.soldItems(SoldPizzasUtil.getSOLD_PIZZAS()),
+                        OrderStatisticsUtil.prices(SoldPizzasUtil.getPIZZAS_PRICES())), 2);
         ORDER_STATISTICS_VIEW.pizzasRevenue(Pizza.PEPPERONI,
-                OrderStatisticsUtil.revenue(OrderStatisticsUtil.soldItems(SoldPizzasUtil.getSoldPizzas()),
-                        OrderStatisticsUtil.prices(SoldPizzasUtil.getPizzasPrices())), 3);
+                OrderStatisticsUtil.revenue(OrderStatisticsUtil.soldItems(SoldPizzasUtil.getSOLD_PIZZAS()),
+                        OrderStatisticsUtil.prices(SoldPizzasUtil.getPIZZAS_PRICES())), 3);
         ORDER_STATISTICS_VIEW.pizzasRevenue(Pizza.VEGETARIAN,
-                OrderStatisticsUtil.revenue(OrderStatisticsUtil.soldItems(SoldPizzasUtil.getSoldPizzas()),
-                        OrderStatisticsUtil.prices(SoldPizzasUtil.getPizzasPrices())), 4);
+                OrderStatisticsUtil.revenue(OrderStatisticsUtil.soldItems(SoldPizzasUtil.getSOLD_PIZZAS()),
+                        OrderStatisticsUtil.prices(SoldPizzasUtil.getPIZZAS_PRICES())), 4);
         ORDER_STATISTICS_VIEW.totalRevenue(OrderStatisticsUtil.totalRevenue(
-                SoldPizzasUtil.getSoldPizzas(), SoldPizzasUtil.getPizzasPrices()));
+                SoldPizzasUtil.getSOLD_PIZZAS(), SoldPizzasUtil.getPIZZAS_PRICES()));
     }
 }

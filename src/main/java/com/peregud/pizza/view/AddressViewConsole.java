@@ -6,11 +6,7 @@ import com.peregud.pizza.repository.AddressRepositorySQLImpl;
 import java.sql.SQLException;
 
 public class AddressViewConsole implements AddressView {
-    private static final AddressRepository ADDRESS_REPOSITORY;
-
-    static {
-        ADDRESS_REPOSITORY = new AddressRepositorySQLImpl();
-    }
+    private static final AddressRepository ADDRESS_REPOSITORY = new AddressRepositorySQLImpl();
 
     @Override
     public void addressStreet() {

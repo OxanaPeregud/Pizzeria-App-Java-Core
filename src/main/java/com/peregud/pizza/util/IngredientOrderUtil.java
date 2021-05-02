@@ -6,18 +6,16 @@ import com.peregud.pizza.view.CreatePizzaView;
 import com.peregud.pizza.view.CreatePizzaViewConsole;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import lombok.Value;
 
 import java.util.ArrayList;
 
+@Value
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public final class IngredientOrderUtil {
-    private static final IngredientOrderCalculatorService INGREDIENT_ORDER;
-    private static final CreatePizzaView CREATE_PIZZA_VIEW;
-
-    static {
-        INGREDIENT_ORDER = new IngredientOrderCalculatorService(new ArrayList<>());
-        CREATE_PIZZA_VIEW = new CreatePizzaViewConsole();
-    }
+public class IngredientOrderUtil {
+    private static final IngredientOrderCalculatorService INGREDIENT_ORDER =
+            new IngredientOrderCalculatorService(new ArrayList<>());
+    private static final CreatePizzaView CREATE_PIZZA_VIEW = new CreatePizzaViewConsole();
 
     public static void chooseIngredient(Ingredient ingredient) {
         getIngredientOrder().add(IngredientPriceUtil.priceIncludingVAT(ingredient));

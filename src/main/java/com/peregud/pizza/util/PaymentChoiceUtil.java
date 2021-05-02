@@ -5,12 +5,14 @@ import com.peregud.pizza.model.PaymentMethod;
 import com.peregud.pizza.view.*;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import lombok.Value;
 
 import java.util.HashMap;
 import java.util.Map;
 
+@Value
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public final class PaymentChoiceUtil {
+public class PaymentChoiceUtil {
     private static final Map<Integer, PaymentMethod> PAYMENT_METHOD;
     private static final CashPaymentView CASH_PAYMENT_VIEW;
     private static final PaymentView PAYMENT_VIEW;
@@ -18,7 +20,6 @@ public final class PaymentChoiceUtil {
     static {
         CASH_PAYMENT_VIEW = new CashPaymentViewConsole();
         PAYMENT_VIEW = new PaymentViewConsole();
-
         PAYMENT_METHOD = new HashMap<>();
         PAYMENT_METHOD.put(1, PaymentMethod.CASH);
         PAYMENT_METHOD.put(2, PaymentMethod.CARD);

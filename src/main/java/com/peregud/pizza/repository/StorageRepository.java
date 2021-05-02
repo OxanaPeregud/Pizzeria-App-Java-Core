@@ -3,18 +3,19 @@ package com.peregud.pizza.repository;
 import com.peregud.pizza.model.Ingredient;
 import com.peregud.pizza.model.Pizza;
 import com.peregud.pizza.model.Supplier;
+import lombok.Getter;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
 public class StorageRepository implements IngredientStorageRepository {
+    @Getter
     private static final Map<Ingredient, Integer> STORAGE;
-    private static final Scanner SCANNER;
+    private static final Scanner SCANNER = new Scanner(System.in);
 
     static {
         STORAGE = new HashMap<>();
-        SCANNER = new Scanner(System.in);
     }
 
     public StorageRepository() {
@@ -28,11 +29,6 @@ public class StorageRepository implements IngredientStorageRepository {
         STORAGE.put(Ingredient.TOMATOES, 60);
         STORAGE.put(Ingredient.THIN_DOUGH, 11);
         STORAGE.put(Ingredient.TRADITIONAL_DOUGH, 15);
-    }
-
-    @Override
-    public Map<Ingredient, Integer> getStorage() {
-        return STORAGE;
     }
 
     @Override

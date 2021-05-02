@@ -8,8 +8,6 @@ import java.util.Map;
 
 public interface IngredientStorageRepository {
 
-    Map<Ingredient, Integer> getStorage();
-
     int getIngredientQuantity(Ingredient ingredient);
 
     void changeIngredientQuantity(Pizza pizza);

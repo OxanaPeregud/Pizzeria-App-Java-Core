@@ -4,11 +4,7 @@ import com.peregud.pizza.model.Supplier;
 import com.peregud.pizza.repository.StorageRepository;
 
 public class SupplyServiceViewConsole implements SupplyServiceView {
-    private static final StorageRepository STORAGE;
-
-    static {
-        STORAGE = new StorageRepository();
-    }
+    private static final StorageRepository STORAGE = new StorageRepository();
 
     @Override
     public void suppliersMenu() {

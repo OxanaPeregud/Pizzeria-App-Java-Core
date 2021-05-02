@@ -5,17 +5,15 @@ import com.peregud.pizza.view.CardPaymentView;
 import com.peregud.pizza.view.CardPaymentViewConsole;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import lombok.Value;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+@Value
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public final class CardPaymentUtil {
-    private static final CardPaymentView CARD_PAYMENT_VIEW;
-
-    static {
-        CARD_PAYMENT_VIEW = new CardPaymentViewConsole();
-    }
+public class CardPaymentUtil {
+    private static final CardPaymentView CARD_PAYMENT_VIEW = new CardPaymentViewConsole();
 
     public static void enterPIN() {
         try {

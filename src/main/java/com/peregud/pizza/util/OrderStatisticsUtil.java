@@ -2,13 +2,15 @@ package com.peregud.pizza.util;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import lombok.Value;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+@Value
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public final class OrderStatisticsUtil {
+public class OrderStatisticsUtil {
 
     public static List<Integer> soldItems(Map<Integer, Integer> soldItems) {
         return new ArrayList<>(soldItems

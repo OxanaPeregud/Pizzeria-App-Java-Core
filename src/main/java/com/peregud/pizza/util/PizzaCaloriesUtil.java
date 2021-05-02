@@ -4,9 +4,11 @@ import com.peregud.pizza.model.Ingredient;
 import com.peregud.pizza.model.Pizza;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import lombok.Value;
 
+@Value
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public final class PizzaCaloriesUtil {
+public class PizzaCaloriesUtil {
 
     public static int pizzaCalories(Pizza pizza) {
         int sum = 0;

@@ -3,9 +3,11 @@ package com.peregud.pizza.util;
 import com.peregud.pizza.model.Ingredient;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import lombok.Value;
 
+@Value
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public final class IngredientPriceUtil {
+public class IngredientPriceUtil {
 
     public static double priceWithoutVAT(Ingredient ingredient) {
         return ProfitUtil.profitPercentage(ingredient.getCostPerUnit());

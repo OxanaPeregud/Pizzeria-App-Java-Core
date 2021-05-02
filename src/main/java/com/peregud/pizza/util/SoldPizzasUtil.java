@@ -4,17 +4,23 @@ import com.peregud.pizza.model.Pizza;
 import com.peregud.pizza.repository.OrderRepository;
 import com.peregud.pizza.repository.OrderRepositorySQLImpl;
 import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Value;
 
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
+@Value
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public final class SoldPizzasUtil {
+public class SoldPizzasUtil {
+    @Getter
     private static final Map<Integer, Integer> SOLD_PIZZAS;
     private static final OrderRepository ORDER_REPOSITORY;
+    @Getter
     private static final Map<Integer, Double> PIZZAS_PRICES;
+    @Getter
     private static final Map<Integer, Double> PIZZAS_COST;
 
     static {
@@ -55,17 +61,5 @@ public final class SoldPizzasUtil {
         PIZZAS_COST.put(3, PizzaCostUtil.pizzaCost(Pizza.MEAT_DELIGHT));
         PIZZAS_COST.put(4, PizzaCostUtil.pizzaCost(Pizza.PEPPERONI));
         PIZZAS_COST.put(5, PizzaCostUtil.pizzaCost(Pizza.VEGETARIAN));
-    }
-
-    public static Map<Integer, Integer> getSoldPizzas() {
-        return SOLD_PIZZAS;
-    }
-
-    public static Map<Integer, Double> getPizzasPrices() {
-        return PIZZAS_PRICES;
-    }
-
-    public static Map<Integer, Double> getPizzasCost() {
-        return PIZZAS_COST;
     }
 }

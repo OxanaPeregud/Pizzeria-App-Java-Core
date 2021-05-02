@@ -10,14 +10,16 @@ import com.peregud.pizza.view.PizzaOrderViewConsole;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Value;
 
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@Value
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public final class OrderPizzaUtil {
+public class OrderPizzaUtil {
     @Getter
     private static final PizzaOrderView PIZZA_ORDER_VIEW;
     private static final Order ORDER;
@@ -40,8 +42,6 @@ public final class OrderPizzaUtil {
             ORDER_REPOSITORY.save(ORDER.add(pizzaName, RoundUtil.up(price),
                     DateFormatUtil.localDatePattern(LocalDateTime.now())));
             ORDER_ID.add(ORDER_REPOSITORY.getAll().size());
-
-
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
