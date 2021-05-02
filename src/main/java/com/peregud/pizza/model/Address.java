@@ -2,7 +2,7 @@ package com.peregud.pizza.model;
 
 import lombok.*;
 
-@Builder(access = AccessLevel.PUBLIC)
+@Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

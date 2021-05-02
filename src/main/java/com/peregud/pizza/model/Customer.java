@@ -1,13 +1,17 @@
 package com.peregud.pizza.model;
 
-public final class Customer {
-    public static String firstName;
-    public static String lastName;
-    public static long cardNumber;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-    private Customer(String firstName, String lastName, long cardNumber) {
-        Customer.firstName = firstName;
-        Customer.lastName = lastName;
-        Customer.cardNumber = cardNumber;
-    }
+@Builder
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Customer {
+    private int id;
+    private String firstName;
+    private String lastName;
+    private String cardNumber;
 }
