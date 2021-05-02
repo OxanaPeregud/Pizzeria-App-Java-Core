@@ -1,9 +1,10 @@
 package com.peregud.pizza.util;
 
-public final class ProfitUtil {
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
-    private ProfitUtil() {
-    }
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class ProfitUtil {
 
     public static double profitPercentage(double expenses) { return expenses * 1.3; }
 

@@ -3,10 +3,13 @@ package com.peregud.pizza.util;
 import com.peregud.pizza.exceptions.PaymentChoiceException;
 import com.peregud.pizza.model.PaymentMethod;
 import com.peregud.pizza.view.*;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 import java.util.HashMap;
 import java.util.Map;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class PaymentChoiceUtil {
     private static final Map<Integer, PaymentMethod> PAYMENT_METHOD;
     private static final CashPaymentView CASH_PAYMENT_VIEW;
@@ -20,9 +23,6 @@ public final class PaymentChoiceUtil {
         PAYMENT_METHOD.put(1, PaymentMethod.CASH);
         PAYMENT_METHOD.put(2, PaymentMethod.CARD);
         PAYMENT_METHOD.put(3, PaymentMethod.ONLINE);
-    }
-
-    private PaymentChoiceUtil() {
     }
 
     public static void paymentChoice() {

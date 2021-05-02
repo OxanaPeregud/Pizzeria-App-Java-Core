@@ -1,5 +1,10 @@
 package com.peregud.pizza.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@AllArgsConstructor
+@Getter
 public enum Ingredient {
     CHEESE(2.50, 360),
     MEAT(5.20, 220),
@@ -13,17 +18,4 @@ public enum Ingredient {
     TRADITIONAL_DOUGH(2.50, 250);
     private final double costPerUnit;
     private final int calories;
-
-    Ingredient(double costPerUnit, int calories) {
-        this.costPerUnit = costPerUnit;
-        this.calories = calories;
-    }
-
-    public double getCostPerUnit() {
-        return costPerUnit;
-    }
-
-    public int getCalories() {
-        return calories;
-    }
 }

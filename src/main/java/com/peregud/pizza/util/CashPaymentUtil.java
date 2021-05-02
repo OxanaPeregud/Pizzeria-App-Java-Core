@@ -3,19 +3,19 @@ package com.peregud.pizza.util;
 import com.peregud.pizza.exceptions.CashAmountException;
 import com.peregud.pizza.view.CashPaymentView;
 import com.peregud.pizza.view.CashPaymentViewConsole;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class CashPaymentUtil {
     public static double fullAmount;
     private static final CashPaymentView CASH_PAYMENT_VIEW;
 
     static {
         CASH_PAYMENT_VIEW = new CashPaymentViewConsole();
-    }
-
-    private CashPaymentUtil() {
     }
 
     public static double countChange(double amountToPay) {

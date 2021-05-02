@@ -3,15 +3,15 @@ package com.peregud.pizza.util;
 import com.peregud.pizza.model.Ingredient;
 import com.peregud.pizza.model.Pizza;
 import com.peregud.pizza.repository.StorageRepository;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class CookUtil {
     private static final StorageRepository STORAGE;
 
     static {
         STORAGE = new StorageRepository();
-    }
-
-    private CookUtil() {
     }
 
     public static void cookPizza(Pizza pizza) {

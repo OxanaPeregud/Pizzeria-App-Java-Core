@@ -1,17 +1,14 @@
-package com.peregud.pizza.model;
+package com.peregud.pizza.util;
+
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public final class Check {
-    private static final List<String> CHECK;
-
-    static {
-        CHECK = new ArrayList<>();
-    }
-
-    private Check() {
-    }
+@Data
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class CheckUtil {
+    private static List<String> CHECK = new ArrayList<>();
 
     public static void add(String item) {
         CHECK.add(item);

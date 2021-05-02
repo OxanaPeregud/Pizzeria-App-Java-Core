@@ -1,9 +1,13 @@
 package com.peregud.pizza.util;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ConnectorUtil {
     private static Connection conn;
     private static final String SQL_URL;
@@ -14,9 +18,6 @@ public final class ConnectorUtil {
         SQL_URL = "jdbc:mysql://localhost:3306";
         USER = "root";
         PASSWORD = "1234";
-    }
-
-    private ConnectorUtil() {
     }
 
     public static Connection getConnection() throws SQLException {

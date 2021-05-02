@@ -34,7 +34,12 @@ public class EmployeeService implements DBData {
             String lastName = SCAN.next();
             EMPLOYEE_VIEW.employeeSalary();
             double salary = SCAN.nextDouble();
-            EMPLOYEE_REPOSITORY.save(new Employee(firstName, lastName, salary));
+            new Employee();
+            EMPLOYEE_REPOSITORY.save(Employee.builder()
+                    .firstName(firstName)
+                    .lastName(lastName)
+                    .salary(salary)
+                    .build());
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

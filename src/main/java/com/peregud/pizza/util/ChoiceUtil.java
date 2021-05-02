@@ -8,10 +8,13 @@ import com.peregud.pizza.view.CheckView;
 import com.peregud.pizza.view.CheckViewConsole;
 import com.peregud.pizza.view.UtilView;
 import com.peregud.pizza.view.UtilViewConsole;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 import java.io.IOException;
 import java.sql.SQLException;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ChoiceUtil {
     private static final PizzaOrderService PIZZA_ORDER;
     private static final IngredientSupplementService INGREDIENT_SUPPLEMENT;
@@ -25,9 +28,6 @@ public final class ChoiceUtil {
         UTIL_VIEW = new UtilViewConsole();
         ORDER_REPOSITORY = new OrderRepositorySQLImpl();
         CHECK_VIEW = new CheckViewConsole();
-    }
-
-    private ChoiceUtil() {
     }
 
     public static void addChoiceQuestion() {

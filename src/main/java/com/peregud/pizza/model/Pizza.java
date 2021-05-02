@@ -1,9 +1,14 @@
 package com.peregud.pizza.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+@AllArgsConstructor
+@Getter
 public enum Pizza {
     FOUR_CHEESE(Map.of(
             Ingredient.TRADITIONAL_DOUGH, 1,
@@ -40,14 +45,6 @@ public enum Pizza {
             Ingredient.OLIVES, 2
     ));
     private final Map<Ingredient, Integer> ingredients;
-
-    Pizza(Map<Ingredient, Integer> ingredients) {
-        this.ingredients = ingredients;
-    }
-
-    public Map<Ingredient, Integer> getIngredients() {
-        return ingredients;
-    }
 
     public int getIngredientQuantity(Ingredient ingredient) {
         return ingredients.get(ingredient);

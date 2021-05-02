@@ -1,16 +1,18 @@
 package com.peregud.pizza.util;
 
-import com.peregud.pizza.model.Check;
 import com.peregud.pizza.model.Order;
 import com.peregud.pizza.model.Pizza;
 import com.peregud.pizza.service.PizzaOrderCalculatorService;
 import com.peregud.pizza.view.PizzaOrderView;
 import com.peregud.pizza.view.PizzaOrderViewConsole;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class OrderPizzaUtil {
     private static final PizzaOrderView PIZZA_ORDER_VIEW;
     private static final List<Order> ORDER_LIST;
@@ -24,9 +26,6 @@ public final class OrderPizzaUtil {
         PIZZA_ORDER = new PizzaOrderCalculatorService(new ArrayList<>());
     }
 
-    private OrderPizzaUtil() {
-    }
-
     public static void addToOrder(String pizzaName, double price) {
         getOrderList().add(ORDER.add(pizzaName, RoundUtil.up(price),
                 DateFormatUtil.localDatePattern(LocalDateTime.now())));
@@ -35,7 +34,7 @@ public final class OrderPizzaUtil {
     public static void orderPizza(Pizza pizza) {
         PIZZA_ORDER_VIEW.orderPizza(pizza, PizzaPriceUtil.pizzaPriceIncludingVAT(pizza));
         CookUtil.cookPizza(pizza);
-        Check.add(PIZZA_ORDER_VIEW.orderPizza(pizza, PizzaPriceUtil.pizzaPriceIncludingVAT(pizza)));
+        CheckUtil.add(PIZZA_ORDER_VIEW.orderPizza(pizza, PizzaPriceUtil.pizzaPriceIncludingVAT(pizza)));
         addToOrder(pizza.name(), PizzaPriceUtil.pizzaPriceIncludingVAT(pizza));
         PIZZA_ORDER.add(PizzaPriceUtil.pizzaPriceIncludingVAT(pizza));
         TotalOrderCalculatorUtil.totalOrderPizza();

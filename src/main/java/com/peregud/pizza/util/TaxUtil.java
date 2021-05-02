@@ -1,9 +1,10 @@
 package com.peregud.pizza.util;
 
-public final class TaxUtil {
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
-    private TaxUtil() {
-    }
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class TaxUtil {
 
     public static double VAT(double priceWithoutVAT) { return priceWithoutVAT * 0.2; }
 

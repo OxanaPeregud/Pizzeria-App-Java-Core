@@ -1,13 +1,12 @@
 package com.peregud.pizza.service;
 
+import lombok.AllArgsConstructor;
+
 import java.util.List;
 
+@AllArgsConstructor
 public class OrderCalculatorService {
     private final List<Double> order;
-
-    public OrderCalculatorService(List<Double> order) {
-        this.order = order;
-    }
 
     public void add(double price) {
         order.add(price);
@@ -23,4 +22,3 @@ public class OrderCalculatorService {
         return order.size();
     }
 }
-

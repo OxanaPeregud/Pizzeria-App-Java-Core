@@ -1,5 +1,10 @@
 package com.peregud.pizza.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@AllArgsConstructor
+@Getter
 public enum Supplier {
     SUPPLIER_1(Ingredient.CHEESE),
     SUPPLIER_2(Ingredient.MEAT),
@@ -10,12 +15,4 @@ public enum Supplier {
     SUPPLIER_7(Ingredient.SAUSAGES),
     SUPPLIER_8(Ingredient.TOMATOES);
     private final Ingredient ingredient;
-
-    Supplier(Ingredient ingredient) {
-        this.ingredient = ingredient;
-    }
-
-    public Ingredient getIngredient() {
-        return ingredient;
-    }
 }

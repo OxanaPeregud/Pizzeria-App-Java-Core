@@ -30,7 +30,12 @@ public class AddressService implements DBData {
             int house = SCAN.nextInt();
             ADDRESS_VIEW.addressApartment();
             int apartment = SCAN.nextInt();
-            ADDRESS_REPOSITORY.save(new Address(street, house, apartment));
+            new Address();
+            ADDRESS_REPOSITORY.save(Address.builder()
+                    .street(street)
+                    .house(house)
+                    .apartment(apartment)
+                    .build());
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

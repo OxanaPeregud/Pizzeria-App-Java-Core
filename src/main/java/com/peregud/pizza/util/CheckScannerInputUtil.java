@@ -2,17 +2,17 @@ package com.peregud.pizza.util;
 
 import com.peregud.pizza.view.UtilView;
 import com.peregud.pizza.view.UtilViewConsole;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 import java.util.Scanner;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class CheckScannerInputUtil {
     private static final UtilView UTIL_VIEW;
 
     static {
         UTIL_VIEW = new UtilViewConsole();
-    }
-
-    private CheckScannerInputUtil() {
     }
 
     public static int checkInt() {

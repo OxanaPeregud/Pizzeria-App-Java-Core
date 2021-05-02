@@ -1,9 +1,10 @@
 package com.peregud.pizza.util;
 
-public final class DiscountUtil {
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
-    private DiscountUtil() {
-    }
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class DiscountUtil {
 
     public static double discountForTwoItems(double totalOrder) { return totalOrder * 0.9; }
 

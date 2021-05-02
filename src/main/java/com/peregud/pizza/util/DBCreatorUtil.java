@@ -1,13 +1,14 @@
 package com.peregud.pizza.util;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class DBCreatorUtil {
-
-    private DBCreatorUtil() {
-    }
 
     public static void createPizzaDatabase() {
         Statement stmt = null;

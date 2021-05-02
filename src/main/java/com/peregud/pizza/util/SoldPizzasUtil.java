@@ -3,11 +3,14 @@ package com.peregud.pizza.util;
 import com.peregud.pizza.model.Pizza;
 import com.peregud.pizza.repository.OrderRepository;
 import com.peregud.pizza.repository.OrderRepositorySQLImpl;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class SoldPizzasUtil {
     private static final Map<Integer, Integer> SOLD_PIZZAS;
     private static final OrderRepository ORDER_REPOSITORY;
@@ -19,9 +22,6 @@ public final class SoldPizzasUtil {
         ORDER_REPOSITORY = new OrderRepositorySQLImpl();
         PIZZAS_PRICES = new HashMap<>();
         PIZZAS_COST = new HashMap<>();
-    }
-
-    private SoldPizzasUtil() {
     }
 
     public static void createMapOfSoldPizzas() {
