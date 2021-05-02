@@ -37,7 +37,7 @@ class StorageRepositoryTest {
                 Ingredient.MEAT, 15,
                 Ingredient.OREGANO, 11,
                 Ingredient.SAUCE, 19,
-                Ingredient.TOMATOES, 10), storage.getStorage());
+                Ingredient.TOMATOES, 10), StorageRepository.getSTORAGE());
     }
 
     @Test
@@ -114,7 +114,7 @@ class StorageRepositoryTest {
                 Ingredient.MEAT, 15,
                 Ingredient.OREGANO, 10,
                 Ingredient.SAUCE, 18,
-                Ingredient.TOMATOES, 10), storage.getStorage());
+                Ingredient.TOMATOES, 10), StorageRepository.getSTORAGE());
     }
 
     @Test
@@ -131,7 +131,7 @@ class StorageRepositoryTest {
                 Ingredient.MEAT, 15,
                 Ingredient.OREGANO, 10,
                 Ingredient.SAUCE, 18,
-                Ingredient.TOMATOES, 8), storage.getStorage());
+                Ingredient.TOMATOES, 8), StorageRepository.getSTORAGE());
     }
 
     @Test
@@ -148,7 +148,7 @@ class StorageRepositoryTest {
                 Ingredient.MEAT, 13,
                 Ingredient.OREGANO, 11,
                 Ingredient.SAUCE, 18,
-                Ingredient.TOMATOES, 10), storage.getStorage());
+                Ingredient.TOMATOES, 10), StorageRepository.getSTORAGE());
     }
 
     @Test
@@ -165,7 +165,7 @@ class StorageRepositoryTest {
                 Ingredient.MEAT, 12,
                 Ingredient.OREGANO, 11,
                 Ingredient.SAUCE, 18,
-                Ingredient.TOMATOES, 10), storage.getStorage());
+                Ingredient.TOMATOES, 10), StorageRepository.getSTORAGE());
     }
 
     @Test
@@ -182,7 +182,7 @@ class StorageRepositoryTest {
                 Ingredient.MEAT, 15,
                 Ingredient.OREGANO, 11,
                 Ingredient.SAUCE, 18,
-                Ingredient.TOMATOES, 8), storage.getStorage());
+                Ingredient.TOMATOES, 8), StorageRepository.getSTORAGE());
     }
 
     @Test
