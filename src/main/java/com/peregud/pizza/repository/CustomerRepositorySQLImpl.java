@@ -59,10 +59,10 @@ public class CustomerRepositorySQLImpl implements CustomerRepository {
             Connection conn = ConnectorUtil.getConnection();
             preparedStmt = conn.prepareStatement(SQL_SAVE);
             preparedStmt.setInt(1, customer.getId());
-            preparedStmt.setString(1, customer.getFirstName());
-            preparedStmt.setString(2, customer.getLastName());
-            preparedStmt.setString(3, customer.getCardNumber());
-            preparedStmt.setInt(4, customer.getOrderID());
+            preparedStmt.setString(2, customer.getFirstName());
+            preparedStmt.setString(3, customer.getLastName());
+            preparedStmt.setString(4, customer.getCardNumber());
+            preparedStmt.setInt(5, customer.getOrderID());
             preparedStmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

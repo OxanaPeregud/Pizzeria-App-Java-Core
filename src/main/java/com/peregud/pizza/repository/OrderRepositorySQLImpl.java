@@ -1,5 +1,6 @@
 package com.peregud.pizza.repository;
 
+import com.peregud.pizza.model.Customer;
 import com.peregud.pizza.model.Order;
 import com.peregud.pizza.util.ConnectorUtil;
 
@@ -15,11 +16,13 @@ public class OrderRepositorySQLImpl implements OrderRepository {
     private static final String SQL_SAVE;
     private static final String SQL_GET;
     private static final String SQL_GET_ALL;
+    private static final CustomerRepository CUSTOMER_REPOSITORY;
 
     static {
         SQL_SAVE = "INSERT INTO orders.pizzas(order_id, pizza, price, order_time) " + "VALUE (?, ?, ?, ?);";
         SQL_GET = "SELECT * FROM orders.pizzas WHERE order_id = ";
         SQL_GET_ALL = "SELECT * FROM orders.pizzas";
+        CUSTOMER_REPOSITORY = new CustomerRepositorySQLImpl();
     }
 
     @Override
@@ -50,14 +53,22 @@ public class OrderRepositorySQLImpl implements OrderRepository {
 
     @Override
     public void save(Order order) throws SQLException {
+        int lastInsertId;
         try {
             Connection conn = ConnectorUtil.getConnection();
-            preparedStmt = conn.prepareStatement(SQL_SAVE);
+            preparedStmt = conn.prepareStatement(SQL_SAVE, Statement.RETURN_GENERATED_KEYS);
             preparedStmt.setInt(1, order.getId());
             preparedStmt.setString(2, order.getPizza());
             preparedStmt.setDouble(3, order.getPrice());
             preparedStmt.setString(4, order.getOrderTime());
             preparedStmt.executeUpdate();
+            rs = preparedStmt.getGeneratedKeys();
+            if (rs.next()) {
+                lastInsertId = rs.getInt(1);
+                CUSTOMER_REPOSITORY.save(Customer.builder()
+                        .orderID(lastInsertId)
+                        .build());
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
