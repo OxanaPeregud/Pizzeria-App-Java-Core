@@ -19,10 +19,10 @@ public class EmployeeRepositorySQLImpl implements EmployeeRepository {
     private static final String SQL_GET_ALL;
 
     static {
-        SQL_SAVE = "INSERT INTO employeeDB.employee(id, first_name, last_name, salary) " + "VALUE (?, ?, ?, ?)";
-        SQL_GET = "SELECT * FROM employeeDB.employee WHERE id = ";
-        SQL_UPDATE = "UPDATE employeeDB.employee SET salary = ? WHERE id = ?";
-        SQL_DELETE = "DELETE FROM employeeDB.employee WHERE id = ";
+        SQL_SAVE = "INSERT INTO employeeDB.employee(employee_id, first_name, last_name, salary) " + "VALUE (?, ?, ?, ?)";
+        SQL_GET = "SELECT * FROM employeeDB.employee WHERE employee_id = ";
+        SQL_UPDATE = "UPDATE employeeDB.employee SET salary = ? WHERE employee_id = ?";
+        SQL_DELETE = "DELETE FROM employeeDB.employee WHERE employee_id = ";
         SQL_GET_ALL = "SELECT * FROM employeeDB.employee";
     }
 
@@ -85,7 +85,7 @@ public class EmployeeRepositorySQLImpl implements EmployeeRepository {
             rs = stmt.executeQuery(SQL_GET + id);
             while (rs.next()) {
                 employee = new Employee();
-                employee.setId(rs.getInt("id"));
+                employee.setId(rs.getInt("employee_id"));
                 employee.setFirstName(rs.getString("first_name"));
                 employee.setLastName(rs.getString("last_name"));
                 employee.setSalary(rs.getDouble("salary"));
@@ -165,7 +165,7 @@ public class EmployeeRepositorySQLImpl implements EmployeeRepository {
             List<Employee> list = new ArrayList<>();
             while (rs.next()) {
                 Employee employee = new Employee();
-                employee.setId(rs.getInt("id"));
+                employee.setId(rs.getInt("employee_id"));
                 employee.setFirstName(rs.getString("first_name"));
                 employee.setLastName(rs.getString("last_name"));
                 employee.setSalary(rs.getDouble("salary"));

@@ -14,10 +14,12 @@ public class OrderRepositorySQLImpl implements OrderRepository {
     private ResultSet rs = null;
     private static final String SQL_SAVE;
     private static final String SQL_GET;
+    private static final String SQL_GET_ALL;
 
     static {
-        SQL_SAVE = "INSERT INTO orders.pizzas(pizza, price, order_time) " + "VALUE (?, ?, ?);";
-        SQL_GET = "SELECT * FROM orders.pizzas";
+        SQL_SAVE = "INSERT INTO orders.pizzas(order_id, pizza, price, order_time) " + "VALUE (?, ?, ?, ?);";
+        SQL_GET = "SELECT * FROM orders.pizzas WHERE order_id = ";
+        SQL_GET_ALL = "SELECT * FROM orders.pizzas";
     }
 
     @Override
@@ -26,9 +28,10 @@ public class OrderRepositorySQLImpl implements OrderRepository {
             Connection conn = ConnectorUtil.getConnection();
             preparedStmt = conn.prepareStatement(SQL_SAVE);
             for (Order order : list) {
-                preparedStmt.setString(1, order.getPizza());
-                preparedStmt.setDouble(2, order.getPrice());
-                preparedStmt.setString(3, order.getOrderTime());
+                preparedStmt.setInt(1, order.getId());
+                preparedStmt.setString(2, order.getPizza());
+                preparedStmt.setDouble(3, order.getPrice());
+                preparedStmt.setString(4, order.getOrderTime());
                 preparedStmt.executeUpdate();
             }
         } catch (SQLException throwables) {
@@ -47,12 +50,61 @@ public class OrderRepositorySQLImpl implements OrderRepository {
 
     @Override
     public void save(Order order) throws SQLException {
-
+        try {
+            Connection conn = ConnectorUtil.getConnection();
+            preparedStmt = conn.prepareStatement(SQL_SAVE);
+            preparedStmt.setInt(1, order.getId());
+            preparedStmt.setString(2, order.getPizza());
+            preparedStmt.setDouble(3, order.getPrice());
+            preparedStmt.setString(4, order.getOrderTime());
+            preparedStmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                ConnectorUtil.closeConnection();
+                if (preparedStmt != null) {
+                    preparedStmt.close();
+                }
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
     }
 
     @Override
     public Order get(Serializable id) {
-        return null;
+        Order order = null;
+        try {
+            Connection conn = ConnectorUtil.getConnection();
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(SQL_GET + id);
+            while (rs.next()) {
+                order = new Order();
+                order.setId(rs.getInt("order_id"));
+                order.setPizza(rs.getString("pizza"));
+                order.setPrice(rs.getDouble("price"));
+                order.setOrderTime(rs.getString("order_time"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                ConnectorUtil.closeConnection();
+                if (preparedStmt != null) {
+                    preparedStmt.close();
+                }
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+        return order;
     }
 
     @Override
@@ -70,10 +122,11 @@ public class OrderRepositorySQLImpl implements OrderRepository {
         try {
             Connection conn = ConnectorUtil.getConnection();
             stmt = conn.createStatement();
-            rs = stmt.executeQuery(SQL_GET);
+            rs = stmt.executeQuery(SQL_GET_ALL);
             List<Order> list = new ArrayList<>();
             while (rs.next()) {
                 Order order = new Order();
+                order.setId(rs.getInt("order_id"));
                 order.setPizza(rs.getString("pizza"));
                 order.setPrice(rs.getDouble("price"));
                 order.setOrderTime(rs.getString("order_time"));

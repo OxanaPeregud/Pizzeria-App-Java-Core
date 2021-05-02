@@ -12,21 +12,18 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ChoiceUtil {
     private static final PizzaOrderService PIZZA_ORDER;
     private static final IngredientSupplementService INGREDIENT_SUPPLEMENT;
     private static final UtilView UTIL_VIEW;
-    private static final OrderRepository ORDER_REPOSITORY;
     private static final CheckView CHECK_VIEW;
 
     static {
         PIZZA_ORDER = new PizzaOrderService();
         INGREDIENT_SUPPLEMENT = new IngredientSupplementService();
         UTIL_VIEW = new UtilViewConsole();
-        ORDER_REPOSITORY = new OrderRepositorySQLImpl();
         CHECK_VIEW = new CheckViewConsole();
     }
 
@@ -38,7 +35,6 @@ public final class ChoiceUtil {
             } else if (choice == 2) {
                 PIZZA_ORDER.choosePizza();
             } else if (choice == 3) {
-                ORDER_REPOSITORY.save(OrderPizzaUtil.getOrderList());
                 CHECK_VIEW.displayCheck();
                 TotalOrderCalculatorUtil.totalOrderPizza();
                 PaymentChoiceUtil.paymentChoice();
@@ -46,7 +42,7 @@ public final class ChoiceUtil {
                 UTIL_VIEW.choiceUtilView();
                 addChoiceQuestion();
             }
-        } catch (IOException | SQLException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

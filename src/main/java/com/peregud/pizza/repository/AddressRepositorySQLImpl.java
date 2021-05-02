@@ -19,10 +19,10 @@ public class AddressRepositorySQLImpl implements AddressRepository {
     private static final String SQL_GET_ALL;
 
     static {
-        SQL_SAVE = "INSERT INTO employeeDB.address(id, street, house, apartment) " + "VALUE (?, ?, ?, ?)";
-        SQL_GET = "SELECT * FROM employeeDB.address WHERE id = ";
-        SQL_UPDATE = "UPDATE employeeDB.address SET street = ?, apartment = ?, house = ? WHERE id = ?";
-        SQL_DELETE = "DELETE FROM employeeDB.address WHERE id = ";
+        SQL_SAVE = "INSERT INTO employeeDB.address(address_id, street, house, apartment) " + "VALUE (?, ?, ?, ?)";
+        SQL_GET = "SELECT * FROM employeeDB.address WHERE address_id = ";
+        SQL_UPDATE = "UPDATE employeeDB.address SET street = ?, apartment = ?, house = ? WHERE address_id = ?";
+        SQL_DELETE = "DELETE FROM employeeDB.address WHERE address_id = ";
         SQL_GET_ALL = "SELECT * FROM employeeDB.address";
     }
 
@@ -85,7 +85,7 @@ public class AddressRepositorySQLImpl implements AddressRepository {
             rs = stmt.executeQuery(SQL_GET + id);
             while (rs.next()) {
                 address = new Address();
-                address.setId(rs.getInt("id"));
+                address.setId(rs.getInt("address_id"));
                 address.setStreet(rs.getString("street"));
                 address.setHouse(rs.getInt("house"));
                 address.setApartment(rs.getInt("apartment"));
@@ -167,7 +167,7 @@ public class AddressRepositorySQLImpl implements AddressRepository {
             List<Address> list = new ArrayList<>();
             while (rs.next()) {
                 Address address = new Address();
-                address.setId(rs.getInt("id"));
+                address.setId(rs.getInt("address_id"));
                 address.setStreet(rs.getString("street"));
                 address.setHouse(rs.getInt("house"));
                 address.setApartment(rs.getInt("apartment"));

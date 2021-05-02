@@ -19,10 +19,11 @@ public class CustomerRepositorySQLImpl implements CustomerRepository {
     private static final String SQL_GET_ALL;
 
     static {
-        SQL_SAVE = "INSERT INTO customerDB.customer(first_name, last_name, card_number) " + "VALUE (?, ?, ?)";
-        SQL_GET = "SELECT * FROM customerDB.customer WHERE id = ";
-        SQL_UPDATE = "UPDATE customerDB.customer SET card_number = ? WHERE id = ?";
-        SQL_DELETE = "DELETE FROM customerDB.customer WHERE id = ";
+        SQL_SAVE = "INSERT INTO customerDB.customer(customer_id, first_name, last_name, card_number, order_id) " +
+                "VALUE (?, ?, ?, ?, ?)";
+        SQL_GET = "SELECT * FROM customerDB.customer WHERE customer_id = ";
+        SQL_UPDATE = "UPDATE customerDB.customer SET card_number = ? WHERE customer_id = ?";
+        SQL_DELETE = "DELETE FROM customerDB.customer WHERE customer_id = ";
         SQL_GET_ALL = "SELECT * FROM customerDB.customer";
     }
 
@@ -35,6 +36,7 @@ public class CustomerRepositorySQLImpl implements CustomerRepository {
                 preparedStmt.setString(1, customer.getFirstName());
                 preparedStmt.setString(2, customer.getLastName());
                 preparedStmt.setString(3, customer.getCardNumber());
+                preparedStmt.setInt(4, customer.getOrderID());
                 preparedStmt.executeUpdate();
             }
         } catch (SQLException throwables) {
@@ -56,9 +58,11 @@ public class CustomerRepositorySQLImpl implements CustomerRepository {
         try {
             Connection conn = ConnectorUtil.getConnection();
             preparedStmt = conn.prepareStatement(SQL_SAVE);
+            preparedStmt.setInt(1, customer.getId());
             preparedStmt.setString(1, customer.getFirstName());
             preparedStmt.setString(2, customer.getLastName());
             preparedStmt.setString(3, customer.getCardNumber());
+            preparedStmt.setInt(4, customer.getOrderID());
             preparedStmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -83,10 +87,11 @@ public class CustomerRepositorySQLImpl implements CustomerRepository {
             rs = stmt.executeQuery(SQL_GET + id);
             while (rs.next()) {
                 customer = new Customer();
-                customer.setId(rs.getInt("id"));
+                customer.setId(rs.getInt("customer_id"));
                 customer.setFirstName(rs.getString("first_name"));
                 customer.setLastName(rs.getString("last_name"));
                 customer.setCardNumber(rs.getString("card_number"));
+                customer.setOrderID(rs.getInt("order_id"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -163,7 +168,7 @@ public class CustomerRepositorySQLImpl implements CustomerRepository {
             List<Customer> list = new ArrayList<>();
             while (rs.next()) {
                 Customer customer = new Customer();
-                customer.setId(rs.getInt("id"));
+                customer.setId(rs.getInt("customer_id"));
                 customer.setFirstName(rs.getString("first_name"));
                 customer.setLastName(rs.getString("last_name"));
                 customer.setCardNumber(rs.getString("card_number"));

@@ -15,17 +15,21 @@ public final class DBCreatorUtil {
         try {
             Connection conn = ConnectorUtil.getConnection();
             stmt = conn.createStatement();
-            String sql1 = "CREATE SCHEMA IF NOT EXISTS `Orders`";
-            String sql2 = "CREATE TABLE IF NOT EXISTS `Orders`.`Pizzas`\n" +
+            String sql1 = "DROP SCHEMA IF EXISTS `Orders`";
+            String sql2 = "CREATE SCHEMA IF NOT EXISTS `Orders`";
+            String sql3 = "DROP TABLE IF EXISTS `Orders`.`Pizzas`";
+            String sql4 = "CREATE TABLE IF NOT EXISTS `Orders`.`Pizzas`\n" +
                     "(\n" +
-                    "  `id`             INT             NOT NULL AUTO_INCREMENT,\n" +
+                    "  `order_id`       INT             NOT NULL AUTO_INCREMENT,\n" +
                     "  `pizza`          VARCHAR(20)     NULL,\n" +
                     "  `price`          DECIMAL         NULL,\n" +
                     "  `order_time`     CHAR(19)        NULL,\n" +
-                    "  PRIMARY KEY (`id`)\n" +
+                    "  PRIMARY KEY (`order_id`)\n" +
                     ");";
             stmt.executeUpdate(sql1);
             stmt.executeUpdate(sql2);
+            stmt.executeUpdate(sql3);
+            stmt.executeUpdate(sql4);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } finally {
@@ -117,7 +121,12 @@ public final class DBCreatorUtil {
                     "  `first_name`     VARCHAR(20)     NULL,\n" +
                     "  `last_name`      VARCHAR(20)     NULL,\n" +
                     "  `card_number`    VARCHAR(16)     NULL,\n" +
-                    "  PRIMARY KEY (`customer_id`)\n" +
+                    "  `order_id`       INT             NULL,\n" +
+                    "  PRIMARY KEY (`customer_id`),\n" +
+                    "  FOREIGN KEY (`order_id`)\n" +
+                    "  REFERENCES `Orders`.`Pizzas` (`order_id`)\n" +
+                    "  ON DELETE CASCADE\n" +
+                    "  ON UPDATE CASCADE\n" +
                     ");";
             stmt.executeUpdate(sql1);
             stmt.executeUpdate(sql2);
