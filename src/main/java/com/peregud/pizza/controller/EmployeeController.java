@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2021. Oxana Peregud.
+ * All rights reserved.
+ */
+
 package com.peregud.pizza.controller;
 
 import com.peregud.pizza.service.EmployeeService;
