@@ -5,7 +5,6 @@
 
 package com.peregud.pizza.service;
 
-import com.peregud.pizza.exceptions.SupplierNumberException;
 import com.peregud.pizza.model.Supplier;
 import com.peregud.pizza.repository.StorageRepository;
 import com.peregud.pizza.util.CheckScannerInputUtil;
@@ -18,8 +17,8 @@ import java.util.Scanner;
 
 public class SupplyService {
     private static final Map<Integer, Supplier> SUPPLIERS;
-    private static final StorageRepository STORAGE;
-    private static final SupplyServiceView SUPPLY_SERVICE_VIEW;
+    private final StorageRepository storage = new StorageRepository();
+    private final SupplyServiceView supplyServiceView = new SupplyServiceViewConsole();
 
     static {
         SUPPLIERS = new HashMap<>();
@@ -31,15 +30,12 @@ public class SupplyService {
         SUPPLIERS.put(6, Supplier.SUPPLIER_6);
         SUPPLIERS.put(7, Supplier.SUPPLIER_7);
         SUPPLIERS.put(8, Supplier.SUPPLIER_8);
-
-        STORAGE = new StorageRepository();
-        SUPPLY_SERVICE_VIEW = new SupplyServiceViewConsole();
     }
 
     public void start() {
-        SUPPLY_SERVICE_VIEW.suppliersMenu();
-        try {
-            int supplierChoice = CheckScannerInputUtil.checkInt();
+        supplyServiceView.suppliersMenu();
+        int supplierChoice = CheckScannerInputUtil.checkInt();
+        if (SUPPLIERS.get(supplierChoice) != null) {
             switch (SUPPLIERS.get(supplierChoice)) {
                 case SUPPLIER_1:
                     chooseSupplier(Supplier.SUPPLIER_1);
@@ -74,26 +70,21 @@ public class SupplyService {
                     addChoiceQuestion();
                     break;
             }
-        } catch (NullPointerException e) {
-            try {
-                throw new SupplierNumberException();
-            } catch (SupplierNumberException ex) {
-                ex.printStackTrace();
-                SUPPLY_SERVICE_VIEW.supplierNumberException();
-                addChoiceQuestion();
-            }
+        } else {
+            supplyServiceView.supplierNumberException();
+            addChoiceQuestion();
         }
     }
 
     public void chooseSupplier(Supplier supplier) {
-        SUPPLY_SERVICE_VIEW.supplierIngredientBefore(supplier);
-        SUPPLY_SERVICE_VIEW.supplierDeliveredQuantity();
-        STORAGE.changeDeliveredIngredient(supplier);
-        SUPPLY_SERVICE_VIEW.supplierIngredientAfter(supplier);
+        supplyServiceView.supplierIngredientBefore(supplier);
+        supplyServiceView.supplierDeliveredQuantity();
+        storage.changeDeliveredIngredient(supplier);
+        supplyServiceView.supplierIngredientAfter(supplier);
     }
 
     public void addChoiceQuestion() {
-        SUPPLY_SERVICE_VIEW.chooseOtherSupplier();
+        supplyServiceView.chooseOtherSupplier();
         Scanner scan = new Scanner(System.in);
         char ch = scan.next().charAt(0);
         if (ch == 'Y' || ch == 'y') {

@@ -5,7 +5,6 @@
 
 package com.peregud.pizza.service;
 
-import com.peregud.pizza.exceptions.IngredientNumberException;
 import com.peregud.pizza.model.Ingredient;
 import com.peregud.pizza.util.CheckScannerInputUtil;
 import com.peregud.pizza.util.ChoiceUtil;
@@ -20,9 +19,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class IngredientSupplementService {
-    private static final CreatePizzaView CREATE_PIZZA_VIEW;
+    private final CreatePizzaView createPizzaView = new CreatePizzaViewConsole();
+    private final PizzaOrderView pizzaOrderView = new PizzaOrderViewConsole();
     private static final Map<Integer, Ingredient> INGREDIENTS;
-    private static final PizzaOrderView PIZZA_ORDER_VIEW;
 
     static {
         INGREDIENTS = new HashMap<>();
@@ -34,15 +33,12 @@ public class IngredientSupplementService {
         INGREDIENTS.put(6, Ingredient.PEPPER);
         INGREDIENTS.put(7, Ingredient.OREGANO);
         INGREDIENTS.put(8, Ingredient.SAUCE);
-
-        CREATE_PIZZA_VIEW = new CreatePizzaViewConsole();
-        PIZZA_ORDER_VIEW = new PizzaOrderViewConsole();
     }
 
     public void chooseIngredients() throws IOException {
-        CREATE_PIZZA_VIEW.menuIngredients();
-        try {
-            int choice = CheckScannerInputUtil.checkInt();
+        createPizzaView.menuIngredients();
+        int choice = CheckScannerInputUtil.checkInt();
+        if (INGREDIENTS.get(choice) != null) {
             switch (INGREDIENTS.get(choice)) {
                 case CHEESE:
                     IngredientOrderUtil.chooseIngredient(Ingredient.CHEESE);
@@ -69,15 +65,11 @@ public class IngredientSupplementService {
                     IngredientOrderUtil.chooseIngredient(Ingredient.SAUCE);
                     break;
             }
-        } catch (NullPointerException e) {
-            try {
-                throw new IngredientNumberException();
-            } catch (IngredientNumberException ex) {
-                ex.printStackTrace();
-                CREATE_PIZZA_VIEW.ingredientNumberException();
-            }
+        } else {
+            createPizzaView.ingredientNumberException();
+            chooseIngredients();
         }
-        PIZZA_ORDER_VIEW.addSupplementIngredients();
+        pizzaOrderView.addSupplementIngredients();
         ChoiceUtil.addChoiceQuestion();
     }
 }

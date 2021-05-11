@@ -5,8 +5,6 @@
 
 package com.peregud.pizza.service;
 
-import com.peregud.pizza.exceptions.DoughException;
-import com.peregud.pizza.exceptions.IngredientNumberException;
 import com.peregud.pizza.model.Ingredient;
 import com.peregud.pizza.util.*;
 import com.peregud.pizza.view.CreatePizzaView;
@@ -17,11 +15,10 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class CreatePizzaService {
-    private static final CreatePizzaView CREATE_PIZZA_VIEW;
+    private final CreatePizzaView createPizzaView = new CreatePizzaViewConsole();
+    private final PizzaOrderService pizzaOrder = new PizzaOrderService();
     private static final Map<Integer, Ingredient> DOUGH;
     private static final Map<Integer, Ingredient> INGREDIENTS;
-    private static final PizzaOrderService PIZZA_ORDER;
-    private char ch;
     private int choice;
 
     static {
@@ -38,51 +35,48 @@ public class CreatePizzaService {
         INGREDIENTS.put(6, Ingredient.PEPPER);
         INGREDIENTS.put(7, Ingredient.OREGANO);
         INGREDIENTS.put(8, Ingredient.SAUCE);
-
-        CREATE_PIZZA_VIEW = new CreatePizzaViewConsole();
-        PIZZA_ORDER = new PizzaOrderService();
     }
 
     public void start() {
-        CREATE_PIZZA_VIEW.greeting();
+        createPizzaView.greeting();
     }
 
     public void displayOptions() {
-        CREATE_PIZZA_VIEW.displayOptions();
+        createPizzaView.displayOptions();
         int choice = CheckScannerInputUtil.checkInt();
         switch (choice) {
             case 1:
                 chooseDough();
                 break;
             case 2:
-                CREATE_PIZZA_VIEW.displayInfoAboutIngredient(Ingredient.CHEESE);
-                CREATE_PIZZA_VIEW.displayInfoAboutIngredient(Ingredient.MEAT);
-                CREATE_PIZZA_VIEW.displayInfoAboutIngredient(Ingredient.OLIVES);
-                CREATE_PIZZA_VIEW.displayInfoAboutIngredient(Ingredient.OREGANO);
-                CREATE_PIZZA_VIEW.displayInfoAboutIngredient(Ingredient.PEPPER);
-                CREATE_PIZZA_VIEW.displayInfoAboutIngredient(Ingredient.SAUCE);
-                CREATE_PIZZA_VIEW.displayInfoAboutIngredient(Ingredient.SAUSAGES);
-                CREATE_PIZZA_VIEW.displayInfoAboutIngredient(Ingredient.THIN_DOUGH);
-                CREATE_PIZZA_VIEW.displayInfoAboutIngredient(Ingredient.TOMATOES);
-                CREATE_PIZZA_VIEW.displayInfoAboutIngredient(Ingredient.TRADITIONAL_DOUGH);
+                createPizzaView.displayInfoAboutIngredient(Ingredient.CHEESE);
+                createPizzaView.displayInfoAboutIngredient(Ingredient.MEAT);
+                createPizzaView.displayInfoAboutIngredient(Ingredient.OLIVES);
+                createPizzaView.displayInfoAboutIngredient(Ingredient.OREGANO);
+                createPizzaView.displayInfoAboutIngredient(Ingredient.PEPPER);
+                createPizzaView.displayInfoAboutIngredient(Ingredient.SAUCE);
+                createPizzaView.displayInfoAboutIngredient(Ingredient.SAUSAGES);
+                createPizzaView.displayInfoAboutIngredient(Ingredient.THIN_DOUGH);
+                createPizzaView.displayInfoAboutIngredient(Ingredient.TOMATOES);
+                createPizzaView.displayInfoAboutIngredient(Ingredient.TRADITIONAL_DOUGH);
                 displayOptions();
                 break;
             case 3:
-                PIZZA_ORDER.choosePizza();
+                pizzaOrder.choosePizza();
                 break;
             case 4:
                 break;
             default:
-                CREATE_PIZZA_VIEW.choiceView();
+                createPizzaView.choiceView();
                 displayOptions();
                 break;
         }
     }
 
     public void chooseDough() {
-        CREATE_PIZZA_VIEW.menuDough();
-        try {
-            choice = CheckScannerInputUtil.checkInt();
+        createPizzaView.menuDough();
+        choice = CheckScannerInputUtil.checkInt();
+        if (DOUGH.get(choice) != null) {
             switch (DOUGH.get(choice)) {
                 case THIN_DOUGH:
                     chooseIngredient(Ingredient.THIN_DOUGH);
@@ -91,32 +85,16 @@ public class CreatePizzaService {
                     chooseIngredient(Ingredient.TRADITIONAL_DOUGH);
                     break;
             }
-        } catch (NullPointerException e) {
-            try {
-                throw new DoughException();
-            } catch (DoughException ex) {
-                ex.printStackTrace();
-                CREATE_PIZZA_VIEW.doughException();
-                addDoughQuestion();
-            }
-        }
-    }
-
-    public void addDoughQuestion() {
-        CREATE_PIZZA_VIEW.addDoughQuestion();
-        Scanner scan = new Scanner(System.in);
-        ch = scan.next().charAt(0);
-        if (ch == 'Y' || ch == 'y') {
-            chooseDough();
         } else {
-            chooseIngredients();
+            createPizzaView.doughException();
+            chooseDough();
         }
     }
 
     public void chooseIngredients() {
-        CREATE_PIZZA_VIEW.menuIngredients();
-        try {
-            choice = CheckScannerInputUtil.checkInt();
+        createPizzaView.menuIngredients();
+        choice = CheckScannerInputUtil.checkInt();
+        if (INGREDIENTS.get(choice) != null) {
             switch (INGREDIENTS.get(choice)) {
                 case CHEESE:
                     chooseIngredient(Ingredient.CHEESE);
@@ -143,16 +121,12 @@ public class CreatePizzaService {
                     chooseIngredient(Ingredient.SAUCE);
                     break;
             }
-        } catch (NullPointerException e) {
-            try {
-                throw new IngredientNumberException();
-            } catch (IngredientNumberException ex) {
-                ex.printStackTrace();
-                CREATE_PIZZA_VIEW.ingredientNumberException();
-            }
+        } else {
+            createPizzaView.ingredientNumberException();
+            chooseIngredients();
         }
         RoundUtil.up(IngredientOrderUtil.getIngredientOrder().totalOrder());
-        CREATE_PIZZA_VIEW.totalCalories(IngredientCaloriesCalculatorUtil.countTotalCalories());
+        createPizzaView.totalCalories(IngredientCaloriesCalculatorUtil.countTotalCalories());
     }
 
     public void chooseIngredient(Ingredient ingredient) {
@@ -161,9 +135,9 @@ public class CreatePizzaService {
     }
 
     public void addIngredientsQuestion() {
-        CREATE_PIZZA_VIEW.addIngredientsQuestion();
+        createPizzaView.addIngredientsQuestion();
         Scanner scan = new Scanner(System.in);
-        ch = scan.next().charAt(0);
+        char ch = scan.next().charAt(0);
         if (ch == 'Y' || ch == 'y') {
             chooseIngredients();
             addIngredientsQuestion();

@@ -5,36 +5,36 @@
 
 package com.peregud.pizza.util;
 
-import com.peregud.pizza.exceptions.PaymentChoiceException;
 import com.peregud.pizza.model.PaymentMethod;
-import com.peregud.pizza.view.*;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
-import lombok.Value;
+import com.peregud.pizza.view.CashPaymentView;
+import com.peregud.pizza.view.CashPaymentViewConsole;
+import com.peregud.pizza.view.PaymentView;
+import com.peregud.pizza.view.PaymentViewConsole;
+import lombok.experimental.UtilityClass;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@Value
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@UtilityClass
 public class PaymentChoiceUtil {
-    private static final Map<Integer, PaymentMethod> PAYMENT_METHOD;
-    private static final CashPaymentView CASH_PAYMENT_VIEW;
-    private static final PaymentView PAYMENT_VIEW;
+    private final Map<Integer, PaymentMethod> PAYMENT_METHOD;
+    private final CashPaymentView CASH_PAYMENT_VIEW;
+    private final PaymentView PAYMENT_VIEW;
 
     static {
         CASH_PAYMENT_VIEW = new CashPaymentViewConsole();
         PAYMENT_VIEW = new PaymentViewConsole();
+
         PAYMENT_METHOD = new HashMap<>();
         PAYMENT_METHOD.put(1, PaymentMethod.CASH);
         PAYMENT_METHOD.put(2, PaymentMethod.CARD);
         PAYMENT_METHOD.put(3, PaymentMethod.ONLINE);
     }
 
-    public static void paymentChoice() {
+    public void paymentChoice() {
         PAYMENT_VIEW.paymentChoice();
-        try {
-            int payment = CheckScannerInputUtil.checkInt();
+        int payment = CheckScannerInputUtil.checkInt();
+        if (PAYMENT_METHOD.get(payment) != null) {
             switch (PAYMENT_METHOD.get(payment)) {
                 case CASH:
                     CashPaymentUtil.getFullAmount();
@@ -47,14 +47,9 @@ public class PaymentChoiceUtil {
                     OnlinePaymentUtil.addCustomer();
                     break;
             }
-        } catch (NullPointerException e) {
-            try {
-                throw new PaymentChoiceException();
-            } catch (PaymentChoiceException ex) {
-                ex.printStackTrace();
-                PAYMENT_VIEW.paymentChoiceException();
-                paymentChoice();
-            }
+        } else {
+            PAYMENT_VIEW.paymentChoiceException();
+            paymentChoice();
         }
     }
 }
