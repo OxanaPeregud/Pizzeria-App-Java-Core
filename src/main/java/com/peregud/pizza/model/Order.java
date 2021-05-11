@@ -5,6 +5,7 @@
 
 package com.peregud.pizza.model;
 
+import com.peregud.pizza.annotations.DBFieldName;
 import lombok.*;
 
 import java.io.Serializable;
@@ -14,9 +15,13 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Data
 public class Order implements Serializable {
+    @DBFieldName(key = "order_id")
     private int id;
+    @DBFieldName(key = "pizza")
     private @NonNull String pizza;
+    @DBFieldName(key = "price")
     private @NonNull Double price;
+    @DBFieldName(key = "order_time")
     private @NonNull String orderTime;
 
     public Order add(String pizza, double price, String orderTime) {

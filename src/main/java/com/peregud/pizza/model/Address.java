@@ -5,6 +5,7 @@
 
 package com.peregud.pizza.model;
 
+import com.peregud.pizza.annotations.DBFieldName;
 import lombok.*;
 
 @Builder
@@ -12,8 +13,12 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Address {
+    @DBFieldName(key = "address_id")
     private int id;
+    @DBFieldName(key = "street")
     private String street;
+    @DBFieldName(key = "house")
     private int house;
+    @DBFieldName(key = "apartment")
     private int apartment;
 }

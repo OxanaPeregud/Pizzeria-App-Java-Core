@@ -7,7 +7,7 @@ package com.peregud.pizza.dao.impl;
 
 import com.peregud.pizza.dao.DAOOrder;
 import com.peregud.pizza.model.Order;
-import com.peregud.pizza.util.ConnectorUtil;
+import com.peregud.pizza.dao.util.ConnectorUtil;
 
 import java.io.Serializable;
 import java.sql.*;

@@ -3,19 +3,18 @@
  * All rights reserved.
  */
 
-package com.peregud.pizza.util;
+package com.peregud.pizza.dao.util;
 
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
+import lombok.experimental.UtilityClass;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
-public final class DBCreatorUtil {
+@UtilityClass
+public class DBCreatorUtil {
 
-    public static void createPizzaDatabase() {
+    public void createPizzaDatabase() {
         Statement stmt = null;
         try {
             Connection conn = ConnectorUtil.getConnection();
@@ -49,7 +48,7 @@ public final class DBCreatorUtil {
         }
     }
 
-    public static void createEmployeeAddressDatabase() {
+    public void createEmployeeAddressDatabase() {
         Statement stmt = null;
         try {
             Connection conn = ConnectorUtil.getConnection();
@@ -112,7 +111,7 @@ public final class DBCreatorUtil {
         }
     }
 
-    public static void createCustomerDatabase() {
+    public void createCustomerDatabase() {
         Statement stmt = null;
         try {
             Connection conn = ConnectorUtil.getConnection();
