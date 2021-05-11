@@ -3,7 +3,7 @@
  * All rights reserved.
  */
 
-package com.peregud.pizza.dao.service;
+package com.peregud.pizza.dao.controller;
 
 import com.peregud.pizza.model.Employee;
 import com.peregud.pizza.dao.DAOEmployee;
@@ -14,7 +14,7 @@ import com.peregud.pizza.view.EmployeeViewConsole;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-public class DAOEmployeeService implements DBDataService {
+public class DAOEmployeeController implements DBData {
     private final EmployeeView employeeView = new EmployeeViewConsole();
     private final Scanner scan = new Scanner(System.in);
     private final DAOEmployee daoEmployee = new DAOEmployeeSQLImpl();

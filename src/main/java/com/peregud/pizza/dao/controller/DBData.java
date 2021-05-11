@@ -3,9 +3,9 @@
  * All rights reserved.
  */
 
-package com.peregud.pizza.dao.service;
+package com.peregud.pizza.dao.controller;
 
-public interface DBDataService {
+public interface DBData {
 
     void saveNewData();
 

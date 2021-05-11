@@ -8,12 +8,15 @@ package com.peregud.pizza.dao.impl;
 import com.peregud.pizza.dao.DAOEmployee;
 import com.peregud.pizza.model.Employee;
 import com.peregud.pizza.dao.util.ConnectorUtil;
+import lombok.NoArgsConstructor;
 
+import javax.sql.DataSource;
 import java.io.Serializable;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@NoArgsConstructor
 public class DAOEmployeeSQLImpl implements DAOEmployee {
     private PreparedStatement preparedStmt = null;
     private Statement stmt = null;
@@ -23,6 +26,7 @@ public class DAOEmployeeSQLImpl implements DAOEmployee {
     private static final String SQL_UPDATE;
     private static final String SQL_DELETE;
     private static final String SQL_GET_ALL;
+    private DataSource dataSource;
 
     static {
         SQL_SAVE = "INSERT INTO employeeDB.employee(employee_id, first_name, last_name, salary) " + "VALUE (?, ?, ?, ?)";
@@ -30,6 +34,10 @@ public class DAOEmployeeSQLImpl implements DAOEmployee {
         SQL_UPDATE = "UPDATE employeeDB.employee SET salary = ? WHERE employee_id = ?";
         SQL_DELETE = "DELETE FROM employeeDB.employee WHERE employee_id = ";
         SQL_GET_ALL = "SELECT * FROM employeeDB.employee";
+    }
+
+    public DAOEmployeeSQLImpl(DataSource dataSource) {
+        this.dataSource = dataSource;
     }
 
     @Override

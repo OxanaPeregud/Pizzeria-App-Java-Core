@@ -3,7 +3,7 @@
  * All rights reserved.
  */
 
-package com.peregud.pizza.dao.service;
+package com.peregud.pizza.dao.controller;
 
 import com.peregud.pizza.model.Address;
 import com.peregud.pizza.dao.DAOAddress;
@@ -14,7 +14,7 @@ import com.peregud.pizza.view.AddressViewConsole;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-public class DAOAddressService implements DBDataService {
+public class DAOAddressController implements DBData {
     private final AddressView addressView = new AddressViewConsole();
     private final Scanner scan = new Scanner(System.in);
     private final DAOAddress daoAddress = new DAOAddressSQLImpl();

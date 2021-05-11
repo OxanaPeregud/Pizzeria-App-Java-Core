@@ -3,7 +3,7 @@
  * All rights reserved.
  */
 
-package com.peregud.pizza.dao.service;
+package com.peregud.pizza.dao.controller;
 
 import com.peregud.pizza.exceptions.CardException;
 import com.peregud.pizza.model.Customer;
@@ -19,7 +19,7 @@ import java.sql.SQLException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class DAOCustomerService implements DBDataService {
+public class DAOCustomerController implements DBData {
     private final CustomerView customerView = new CustomerViewConsole();
     private final Scanner scan = new Scanner(System.in);
     private final DAOCustomer daoCustomer = new DAOCustomerSQLImpl();

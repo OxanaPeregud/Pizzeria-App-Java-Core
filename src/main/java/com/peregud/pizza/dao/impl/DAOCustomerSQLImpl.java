@@ -8,12 +8,15 @@ package com.peregud.pizza.dao.impl;
 import com.peregud.pizza.dao.DAOCustomer;
 import com.peregud.pizza.model.Customer;
 import com.peregud.pizza.dao.util.ConnectorUtil;
+import lombok.NoArgsConstructor;
 
+import javax.sql.DataSource;
 import java.io.Serializable;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@NoArgsConstructor
 public class DAOCustomerSQLImpl implements DAOCustomer {
     private PreparedStatement preparedStmt = null;
     private Statement stmt = null;
@@ -23,6 +26,7 @@ public class DAOCustomerSQLImpl implements DAOCustomer {
     private static final String SQL_UPDATE;
     private static final String SQL_DELETE;
     private static final String SQL_GET_ALL;
+    private DataSource dataSource;
 
     static {
         SQL_SAVE = "INSERT INTO customerDB.customer(customer_id, first_name, last_name, card_number, order_id) " +
@@ -31,6 +35,10 @@ public class DAOCustomerSQLImpl implements DAOCustomer {
         SQL_UPDATE = "UPDATE customerDB.customer SET card_number = ? WHERE customer_id = ?";
         SQL_DELETE = "DELETE FROM customerDB.customer WHERE customer_id = ";
         SQL_GET_ALL = "SELECT * FROM customerDB.customer";
+    }
+
+    public DAOCustomerSQLImpl(DataSource dataSource) {
+        this.dataSource = dataSource;
     }
 
     @Override

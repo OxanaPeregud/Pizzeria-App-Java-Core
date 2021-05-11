@@ -11,18 +11,23 @@ import lombok.*;
 import java.io.Serializable;
 
 @NoArgsConstructor
-@RequiredArgsConstructor
 @AllArgsConstructor
 @Data
 public class Order implements Serializable {
     @DBFieldName(key = "order_id")
     private int id;
     @DBFieldName(key = "pizza")
-    private @NonNull String pizza;
+    private String pizza;
     @DBFieldName(key = "price")
-    private @NonNull Double price;
+    private Double price;
     @DBFieldName(key = "order_time")
-    private @NonNull String orderTime;
+    private String orderTime;
+
+    public Order(String pizza, Double price, String orderTime) {
+        this.pizza = pizza;
+        this.price = price;
+        this.orderTime = orderTime;
+    }
 
     public Order add(String pizza, double price, String orderTime) {
         return new Order(pizza, price, orderTime);

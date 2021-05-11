@@ -8,12 +8,15 @@ package com.peregud.pizza.dao.impl;
 import com.peregud.pizza.dao.DAOAddress;
 import com.peregud.pizza.model.Address;
 import com.peregud.pizza.dao.util.ConnectorUtil;
+import lombok.NoArgsConstructor;
 
+import javax.sql.DataSource;
 import java.io.Serializable;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@NoArgsConstructor
 public class DAOAddressSQLImpl implements DAOAddress {
     private PreparedStatement preparedStmt = null;
     private Statement stmt = null;
@@ -23,6 +26,7 @@ public class DAOAddressSQLImpl implements DAOAddress {
     private static final String SQL_UPDATE;
     private static final String SQL_DELETE;
     private static final String SQL_GET_ALL;
+    private DataSource dataSource;
 
     static {
         SQL_SAVE = "INSERT INTO employeeDB.address(address_id, street, house, apartment) " + "VALUE (?, ?, ?, ?)";
@@ -30,6 +34,10 @@ public class DAOAddressSQLImpl implements DAOAddress {
         SQL_UPDATE = "UPDATE employeeDB.address SET street = ?, apartment = ?, house = ? WHERE address_id = ?";
         SQL_DELETE = "DELETE FROM employeeDB.address WHERE address_id = ";
         SQL_GET_ALL = "SELECT * FROM employeeDB.address";
+    }
+
+    public DAOAddressSQLImpl(DataSource dataSource) {
+        this.dataSource = dataSource;
     }
 
     @Override

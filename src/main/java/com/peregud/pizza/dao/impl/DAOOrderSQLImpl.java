@@ -8,12 +8,15 @@ package com.peregud.pizza.dao.impl;
 import com.peregud.pizza.dao.DAOOrder;
 import com.peregud.pizza.model.Order;
 import com.peregud.pizza.dao.util.ConnectorUtil;
+import lombok.NoArgsConstructor;
 
+import javax.sql.DataSource;
 import java.io.Serializable;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@NoArgsConstructor
 public class DAOOrderSQLImpl implements DAOOrder {
     private PreparedStatement preparedStmt = null;
     private Statement stmt = null;
@@ -21,11 +24,16 @@ public class DAOOrderSQLImpl implements DAOOrder {
     private static final String SQL_SAVE;
     private static final String SQL_GET;
     private static final String SQL_GET_ALL;
+    private DataSource dataSource;
 
     static {
         SQL_SAVE = "INSERT INTO orders.pizzas(order_id, pizza, price, order_time) " + "VALUE (?, ?, ?, ?);";
         SQL_GET = "SELECT * FROM orders.pizzas WHERE order_id = ";
         SQL_GET_ALL = "SELECT * FROM orders.pizzas";
+    }
+
+    public DAOOrderSQLImpl(DataSource dataSource) {
+        this.dataSource = dataSource;
     }
 
     @Override

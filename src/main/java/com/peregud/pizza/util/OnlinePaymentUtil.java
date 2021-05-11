@@ -5,12 +5,12 @@
 
 package com.peregud.pizza.util;
 
-import com.peregud.pizza.dao.service.DAOCustomerService;
+import com.peregud.pizza.dao.controller.DAOCustomerController;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
 public class OnlinePaymentUtil {
-    private final DAOCustomerService CUSTOMER = new DAOCustomerService();
+    private final DAOCustomerController CUSTOMER = new DAOCustomerController();
 
     public void addCustomer() {
         CUSTOMER.saveNewData();
