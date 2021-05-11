@@ -7,15 +7,12 @@ package com.peregud.pizza.util;
 
 import com.peregud.pizza.model.Ingredient;
 import com.peregud.pizza.model.Pizza;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
-import lombok.Value;
+import lombok.experimental.UtilityClass;
 
-@Value
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@UtilityClass
 public class PizzaCostUtil {
 
-    public static double pizzaCost(Pizza pizza) {
+    public double pizzaCost(Pizza pizza) {
         double sum = 0;
         for (Ingredient ingredient : pizza.listOfIngredients()) {
             sum += ingredient.getCostPerUnit() * pizza.getIngredientQuantity(ingredient);

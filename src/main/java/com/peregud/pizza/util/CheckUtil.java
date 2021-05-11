@@ -5,21 +5,20 @@
 
 package com.peregud.pizza.util;
 
-import lombok.*;
+import lombok.experimental.UtilityClass;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
-public final class CheckUtil {
-    private static List<String> CHECK = new ArrayList<>();
+@UtilityClass
+public class CheckUtil {
+    private final List<String> CHECK = new ArrayList<>();
 
-    public static void add(String item) {
+    public void add(String item) {
         CHECK.add(item);
     }
 
-    public static List<String> getCheck() {
+    public List<String> getCheck() {
         return CHECK;
     }
 }

@@ -5,14 +5,12 @@
 
 package com.peregud.pizza.util;
 
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
-import lombok.Value;
+import lombok.experimental.UtilityClass;
 
-@Value
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@UtilityClass
 public class ProfitUtil {
 
-    public static double profitPercentage(double expenses) { return expenses * 1.3; }
-
+    public double profitPercentage(double expenses) {
+        return expenses * 1.3;
+    }
 }

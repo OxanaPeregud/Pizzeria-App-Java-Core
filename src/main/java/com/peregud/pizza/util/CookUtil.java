@@ -8,22 +8,17 @@ package com.peregud.pizza.util;
 import com.peregud.pizza.model.Ingredient;
 import com.peregud.pizza.model.Pizza;
 import com.peregud.pizza.repository.StorageRepository;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
+import lombok.experimental.UtilityClass;
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
-public final class CookUtil {
-    private static final StorageRepository STORAGE;
+@UtilityClass
+public class CookUtil {
+    private final StorageRepository STORAGE = new StorageRepository();
 
-    static {
-        STORAGE = new StorageRepository();
-    }
-
-    public static void cookPizza(Pizza pizza) {
+    public void cookPizza(Pizza pizza) {
         STORAGE.changeIngredientQuantity(pizza);
     }
 
-    public static void cookIngredient(Ingredient ingredient) {
+    public void cookIngredient(Ingredient ingredient) {
         STORAGE.removeOneIngredient(ingredient);
     }
 }

@@ -6,19 +6,16 @@
 package com.peregud.pizza.util;
 
 import com.peregud.pizza.model.Ingredient;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
-import lombok.Value;
+import lombok.experimental.UtilityClass;
 
-@Value
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@UtilityClass
 public class IngredientPriceUtil {
 
-    public static double priceWithoutVAT(Ingredient ingredient) {
+    public double priceWithoutVAT(Ingredient ingredient) {
         return ProfitUtil.profitPercentage(ingredient.getCostPerUnit());
     }
 
-    public static double priceIncludingVAT(Ingredient ingredient) {
+    public double priceIncludingVAT(Ingredient ingredient) {
         return priceWithoutVAT(ingredient) + TaxUtil.VAT(priceWithoutVAT(ingredient));
     }
 }
