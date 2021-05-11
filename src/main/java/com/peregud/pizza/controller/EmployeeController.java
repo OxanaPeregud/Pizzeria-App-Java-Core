@@ -11,66 +11,55 @@ import com.peregud.pizza.view.EmployeeView;
 import com.peregud.pizza.view.EmployeeViewConsole;
 
 public class EmployeeController {
-    private static final EmployeeView EMPLOYEE_VIEW;
-    private static final EmployeeService EMPLOYEE;
-    private static final AddressController ADDRESS;
-    private static final EmployeeAddressController EMPLOYEE_ADDRESS;
-
-    static {
-        EMPLOYEE_VIEW = new EmployeeViewConsole();
-        EMPLOYEE = new EmployeeService();
-        ADDRESS = new AddressController();
-        EMPLOYEE_ADDRESS = new EmployeeAddressController();
-    }
+    private final EmployeeView employeeView = new EmployeeViewConsole();
+    private final EmployeeService employee = new EmployeeService();
+    private final AddressController address = new AddressController();
 
     public void chooseOperation() {
-        EMPLOYEE_VIEW.displayOperation();
+        employeeView.displayOperation();
         int choice = CheckScannerInputUtil.checkInt();
         switch (choice) {
             case 1:
                 start();
                 break;
             case 2:
-                ADDRESS.start();
-                break;
-            case 3:
-                EMPLOYEE_ADDRESS.start();
+                address.start();
                 break;
             default:
-                EMPLOYEE_VIEW.operationException();
+                employeeView.operationException();
                 chooseOperation();
                 break;
         }
     }
 
     public void start() {
-        EMPLOYEE_VIEW.displayChoice();
+        employeeView.displayChoice();
         int choice = CheckScannerInputUtil.checkInt();
         switch (choice) {
             case 1:
-                EMPLOYEE.saveNewData();
+                employee.saveNewData();
                 start();
                 break;
             case 2:
-                EMPLOYEE.getByID();
+                employee.getByID();
                 start();
                 break;
             case 3:
-                EMPLOYEE.updateData();
+                employee.updateData();
                 start();
                 break;
             case 4:
-                EMPLOYEE.deleteData();
+                employee.deleteData();
                 start();
                 break;
             case 5:
-                EMPLOYEE.displayAll();
+                employee.displayAll();
                 start();
                 break;
             case 6:
                 break;
             default:
-                EMPLOYEE_VIEW.choiceException();
+                employeeView.choiceException();
                 start();
                 break;
         }

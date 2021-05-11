@@ -5,7 +5,6 @@
 
 package com.peregud.pizza.service;
 
-import com.peregud.pizza.exceptions.PizzaNumberException;
 import com.peregud.pizza.model.Pizza;
 import com.peregud.pizza.util.CheckScannerInputUtil;
 import com.peregud.pizza.util.OrderPizzaUtil;
@@ -65,7 +64,7 @@ public class PizzaOrderService {
     public void choosePizza() {
         PIZZA_ORDER_VIEW.pizzaMenu();
         int choice = CheckScannerInputUtil.checkInt();
-        try {
+        if (PIZZAS.get(choice) != null) {
             switch (PIZZAS.get(choice)) {
                 case FOUR_CHEESE:
                     OrderPizzaUtil.orderPizza(Pizza.FOUR_CHEESE);
@@ -83,13 +82,9 @@ public class PizzaOrderService {
                     OrderPizzaUtil.orderPizza(Pizza.VEGETARIAN);
                     break;
             }
-        } catch (NullPointerException e) {
-            try {
-                throw new PizzaNumberException();
-            } catch (PizzaNumberException ex) {
-                ex.printStackTrace();
-                PIZZA_ORDER_VIEW.pizzaNumberException();
-            }
+        } else {
+            PIZZA_ORDER_VIEW.pizzaNumberException();
+            choosePizza();
         }
     }
 }

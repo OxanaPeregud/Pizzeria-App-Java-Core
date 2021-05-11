@@ -17,63 +17,52 @@ import com.peregud.pizza.view.StorageViewConsole;
 import java.util.Scanner;
 
 public class PizzaController {
-    private static final StarterView STARTER_VIEW;
-    private static final PizzaOrderService PIZZA_ORDER;
-    private static final CreatePizzaService CREATE_PIZZA;
-    private static final OrderStatisticsController ORDER_STATISTICS;
-    private static final StorageView STORAGE_VIEW;
-    private static final SupplyService SUPPLY;
-    private static final EmployeeController EMPLOYEE;
-    private static boolean programOn;
-
-    static {
-        STARTER_VIEW = new StarterViewConsole();
-        PIZZA_ORDER = new PizzaOrderService();
-        CREATE_PIZZA = new CreatePizzaService();
-        ORDER_STATISTICS = new OrderStatisticsController();
-        STORAGE_VIEW = new StorageViewConsole();
-        SUPPLY = new SupplyService();
-        programOn = true;
-        EMPLOYEE = new EmployeeController();
-    }
+    private final StarterView starterView = new StarterViewConsole();
+    private final PizzaOrderService pizzaOrder = new PizzaOrderService();
+    private final CreatePizzaService createPizza = new CreatePizzaService();
+    private final OrderStatisticsController orderStatistics = new OrderStatisticsController();
+    private final StorageView storageView = new StorageViewConsole();
+    private final SupplyService supply = new SupplyService();
+    private final EmployeeController employee = new EmployeeController();
+    private boolean programOn = true;
 
     public void start() {
         while (programOn) {
-            STARTER_VIEW.displayOperations();
+            starterView.displayOperations();
             int operationChoice = CheckScannerInputUtil.checkInt();
             switch (operationChoice) {
                 case 1:
-                    PIZZA_ORDER.start();
-                    PIZZA_ORDER.displayOptions();
+                    pizzaOrder.start();
+                    pizzaOrder.displayOptions();
                     addChoiceQuestion();
                     break;
                 case 2:
-                    CREATE_PIZZA.start();
-                    CREATE_PIZZA.displayOptions();
-                    CREATE_PIZZA.chooseIngredients();
-                    CREATE_PIZZA.addIngredientsQuestion();
+                    createPizza.start();
+                    createPizza.displayOptions();
+                    createPizza.chooseIngredients();
+                    createPizza.addIngredientsQuestion();
                     break;
                 case 3:
-                    ORDER_STATISTICS.start();
+                    orderStatistics.start();
                     break;
                 case 4:
-                    STORAGE_VIEW.displayStorage();
-                    STORAGE_VIEW.showLackOfIngredients();
+                    storageView.displayStorage();
+                    storageView.showLackOfIngredients();
                     addChoiceQuestion();
                     break;
                 case 5:
-                    SUPPLY.start();
+                    supply.start();
                     addChoiceQuestion();
                     break;
                 case 6:
-                    EMPLOYEE.chooseOperation();
+                    employee.chooseOperation();
                     break;
                 case 7:
-                    STARTER_VIEW.exitProgram();
+                    starterView.exitProgram();
                     programOn = false;
                     break;
                 default:
-                    STARTER_VIEW.noSuchOperation();
+                    starterView.noSuchOperation();
                     start();
                     break;
             }
@@ -82,7 +71,7 @@ public class PizzaController {
 
     public void addChoiceQuestion() {
         try {
-            STARTER_VIEW.chooseOtherOperations();
+            starterView.chooseOtherOperations();
             Scanner scan = new Scanner(System.in);
             char ch = scan.next().charAt(0);
             if (ch == 'Y' || ch == 'y') {

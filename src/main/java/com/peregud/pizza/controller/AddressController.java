@@ -11,42 +11,37 @@ import com.peregud.pizza.view.AddressView;
 import com.peregud.pizza.view.AddressViewConsole;
 
 public class AddressController {
-    private static final AddressView ADDRESS_VIEW;
-    private static final AddressService ADDRESS;
-
-    static {
-        ADDRESS_VIEW = new AddressViewConsole();
-        ADDRESS = new AddressService();
-    }
+    private final AddressView addressView = new AddressViewConsole();
+    private final AddressService address = new AddressService();
 
     public void start() {
-        ADDRESS_VIEW.displayChoice();
+        addressView.displayChoice();
         int choice = CheckScannerInputUtil.checkInt();
         switch (choice) {
             case 1:
-                ADDRESS.saveNewData();
+                address.saveNewData();
                 start();
                 break;
             case 2:
-                ADDRESS.getByID();
+                address.getByID();
                 start();
                 break;
             case 3:
-                ADDRESS.updateData();
+                address.updateData();
                 start();
                 break;
             case 4:
-                ADDRESS.deleteData();
+                address.deleteData();
                 start();
                 break;
             case 5:
-                ADDRESS.displayAll();
+                address.displayAll();
                 start();
                 break;
             case 6:
                 break;
             default:
-                ADDRESS_VIEW.choiceException();
+                addressView.choiceException();
                 start();
                 break;
         }

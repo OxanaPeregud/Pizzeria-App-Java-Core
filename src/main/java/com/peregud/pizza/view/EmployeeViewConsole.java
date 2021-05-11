@@ -67,7 +67,6 @@ public class EmployeeViewConsole implements EmployeeView {
         System.out.println("Choose option:");
         System.out.println("1. Go to Employee App");
         System.out.println("2. Go to Address App");
-        System.out.println("3. Go to Employee Address App");
     }
 
     @Override
