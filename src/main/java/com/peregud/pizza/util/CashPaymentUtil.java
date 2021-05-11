@@ -8,22 +8,17 @@ package com.peregud.pizza.util;
 import com.peregud.pizza.exceptions.CashAmountException;
 import com.peregud.pizza.view.CashPaymentView;
 import com.peregud.pizza.view.CashPaymentViewConsole;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
+import lombok.experimental.UtilityClass;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
-public final class CashPaymentUtil {
-    public static double fullAmount;
-    private static final CashPaymentView CASH_PAYMENT_VIEW;
+@UtilityClass
+public class CashPaymentUtil {
+    public double fullAmount;
+    private final CashPaymentView CASH_PAYMENT_VIEW = new CashPaymentViewConsole();
 
-    static {
-        CASH_PAYMENT_VIEW = new CashPaymentViewConsole();
-    }
-
-    public static double countChange(double amountToPay) {
+    public double countChange(double amountToPay) {
         if (fullAmount < amountToPay) {
             CASH_PAYMENT_VIEW.notEnoughMoney();
             getFullAmount();
@@ -31,7 +26,7 @@ public final class CashPaymentUtil {
         return RoundUtil.up(fullAmount - amountToPay);
     }
 
-    public static void getFullAmount() {
+    public void getFullAmount() {
         try {
             CASH_PAYMENT_VIEW.fullAmountView();
             Scanner scan = new Scanner(System.in);

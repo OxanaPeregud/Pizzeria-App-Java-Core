@@ -5,13 +5,12 @@
 
 package com.peregud.pizza.util;
 
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
+import lombok.experimental.UtilityClass;
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
-public final class ChangeCalculatorUtil {
+@UtilityClass
+public class ChangeCalculatorUtil {
 
-    public static double getChange() {
+    public double getChange() {
         return CashPaymentUtil.countChange(OrderPizzaUtil.getPIZZA_ORDER().totalOrder() +
                 IngredientOrderUtil.getIngredientOrder().totalOrder());
     }

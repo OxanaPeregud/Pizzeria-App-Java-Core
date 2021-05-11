@@ -8,19 +8,16 @@ package com.peregud.pizza.util;
 import com.peregud.pizza.exceptions.PinException;
 import com.peregud.pizza.view.CardPaymentView;
 import com.peregud.pizza.view.CardPaymentViewConsole;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
-import lombok.Value;
+import lombok.experimental.UtilityClass;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-@Value
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@UtilityClass
 public class CardPaymentUtil {
-    private static final CardPaymentView CARD_PAYMENT_VIEW = new CardPaymentViewConsole();
+    private final CardPaymentView CARD_PAYMENT_VIEW = new CardPaymentViewConsole();
 
-    public static void enterPIN() {
+    public void enterPIN() {
         try {
             CARD_PAYMENT_VIEW.enterPIN();
             Scanner scan = new Scanner(System.in);

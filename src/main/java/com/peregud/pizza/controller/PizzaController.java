@@ -38,9 +38,6 @@ public class PizzaController {
                     break;
                 case 2:
                     createPizza.start();
-                    createPizza.displayOptions();
-                    createPizza.chooseIngredients();
-                    createPizza.addIngredientsQuestion();
                     break;
                 case 3:
                     orderStatistics.start();

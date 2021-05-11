@@ -7,20 +7,15 @@ package com.peregud.pizza.util;
 
 import com.peregud.pizza.view.UtilView;
 import com.peregud.pizza.view.UtilViewConsole;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
+import lombok.experimental.UtilityClass;
 
 import java.util.Scanner;
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
-public final class CheckScannerInputUtil {
-    private static final UtilView UTIL_VIEW;
+@UtilityClass
+public class CheckScannerInputUtil {
+    private final UtilView UTIL_VIEW = new UtilViewConsole();
 
-    static {
-        UTIL_VIEW = new UtilViewConsole();
-    }
-
-    public static int checkInt() {
+    public int checkInt() {
         Scanner scanner = new Scanner(System.in);
         int enteredInt;
         do {
@@ -33,7 +28,7 @@ public final class CheckScannerInputUtil {
         return enteredInt;
     }
 
-    public static double checkDouble() {
+    public double checkDouble() {
         Scanner scanner = new Scanner(System.in);
         double enteredDouble;
         while (!scanner.hasNextDouble()) {
@@ -44,7 +39,7 @@ public final class CheckScannerInputUtil {
         return enteredDouble;
     }
 
-    public static void invalidInput() {
+    public void invalidInput() {
         UTIL_VIEW.checkUtilView();
     }
 }

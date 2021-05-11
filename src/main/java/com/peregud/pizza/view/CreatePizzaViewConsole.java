@@ -70,7 +70,7 @@ public class CreatePizzaViewConsole implements CreatePizzaView {
 
     @Override
     public void totalOrder(double totalOrder) {
-        System.out.println("Total sum of order is " + RoundUtil.up(totalOrder));
+        System.out.println("Total sum of order is " + RoundUtil.up(totalOrder) + "$");
     }
 
     @Override

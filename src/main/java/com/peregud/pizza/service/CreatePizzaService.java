@@ -39,6 +39,7 @@ public class CreatePizzaService {
 
     public void start() {
         createPizzaView.greeting();
+        displayOptions();
     }
 
     public void displayOptions() {
@@ -80,9 +81,11 @@ public class CreatePizzaService {
             switch (DOUGH.get(choice)) {
                 case THIN_DOUGH:
                     chooseIngredient(Ingredient.THIN_DOUGH);
+                    chooseIngredients();
                     break;
                 case TRADITIONAL_DOUGH:
                     chooseIngredient(Ingredient.TRADITIONAL_DOUGH);
+                    chooseIngredients();
                     break;
             }
         } else {
@@ -98,27 +101,35 @@ public class CreatePizzaService {
             switch (INGREDIENTS.get(choice)) {
                 case CHEESE:
                     chooseIngredient(Ingredient.CHEESE);
+                    addIngredientsQuestion();
                     break;
                 case MEAT:
                     chooseIngredient(Ingredient.MEAT);
+                    addIngredientsQuestion();
                     break;
                 case SAUSAGES:
                     chooseIngredient(Ingredient.SAUSAGES);
+                    addIngredientsQuestion();
                     break;
                 case OLIVES:
                     chooseIngredient(Ingredient.OLIVES);
+                    addIngredientsQuestion();
                     break;
                 case TOMATOES:
                     chooseIngredient(Ingredient.TOMATOES);
+                    addIngredientsQuestion();
                     break;
                 case PEPPER:
                     chooseIngredient(Ingredient.PEPPER);
+                    addIngredientsQuestion();
                     break;
                 case OREGANO:
                     chooseIngredient(Ingredient.OREGANO);
+                    addIngredientsQuestion();
                     break;
                 case SAUCE:
                     chooseIngredient(Ingredient.SAUCE);
+                    addIngredientsQuestion();
                     break;
             }
         } else {
@@ -126,7 +137,6 @@ public class CreatePizzaService {
             chooseIngredients();
         }
         RoundUtil.up(IngredientOrderUtil.getIngredientOrder().totalOrder());
-        createPizzaView.totalCalories(IngredientCaloriesCalculatorUtil.countTotalCalories());
     }
 
     public void chooseIngredient(Ingredient ingredient) {
@@ -140,7 +150,6 @@ public class CreatePizzaService {
         char ch = scan.next().charAt(0);
         if (ch == 'Y' || ch == 'y') {
             chooseIngredients();
-            addIngredientsQuestion();
         } else {
             PaymentChoiceUtil.paymentChoice();
         }
