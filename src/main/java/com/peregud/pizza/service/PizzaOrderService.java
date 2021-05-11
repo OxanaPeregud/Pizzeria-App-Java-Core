@@ -5,7 +5,7 @@
 
 package com.peregud.pizza.service;
 
-import com.peregud.pizza.model.Pizza;
+import com.peregud.pizza.types.Pizza;
 import com.peregud.pizza.util.CheckScannerInputUtil;
 import com.peregud.pizza.util.OrderPizzaUtil;
 import com.peregud.pizza.view.PizzaOrderView;
@@ -33,6 +33,7 @@ public class PizzaOrderService {
 
     public void start() {
         PIZZA_ORDER_VIEW.greeting();
+        displayOptions();
     }
 
     public void displayOptions() {

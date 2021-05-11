@@ -5,7 +5,7 @@
 
 package com.peregud.pizza.view;
 
-import com.peregud.pizza.model.Pizza;
+import com.peregud.pizza.types.Pizza;
 
 public interface PizzaOrderView {
 

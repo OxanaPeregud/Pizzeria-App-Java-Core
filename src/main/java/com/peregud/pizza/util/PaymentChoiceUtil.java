@@ -5,7 +5,7 @@
 
 package com.peregud.pizza.util;
 
-import com.peregud.pizza.model.PaymentMethod;
+import com.peregud.pizza.types.PaymentMethod;
 import com.peregud.pizza.view.CashPaymentView;
 import com.peregud.pizza.view.CashPaymentViewConsole;
 import com.peregud.pizza.view.PaymentView;

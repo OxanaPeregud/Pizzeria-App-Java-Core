@@ -7,7 +7,7 @@ package com.peregud.pizza.util;
 
 import com.peregud.pizza.dao.DAOOrder;
 import com.peregud.pizza.dao.impl.DAOOrderSQLImpl;
-import com.peregud.pizza.model.Pizza;
+import com.peregud.pizza.types.Pizza;
 import lombok.Getter;
 import lombok.experimental.UtilityClass;
 

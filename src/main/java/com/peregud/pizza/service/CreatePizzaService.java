@@ -5,7 +5,7 @@
 
 package com.peregud.pizza.service;
 
-import com.peregud.pizza.model.Ingredient;
+import com.peregud.pizza.types.Ingredient;
 import com.peregud.pizza.util.*;
 import com.peregud.pizza.view.CreatePizzaView;
 import com.peregud.pizza.view.CreatePizzaViewConsole;

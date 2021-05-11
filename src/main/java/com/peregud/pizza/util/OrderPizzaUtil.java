@@ -8,7 +8,7 @@ package com.peregud.pizza.util;
 import com.peregud.pizza.dao.DAOOrder;
 import com.peregud.pizza.dao.impl.DAOOrderSQLImpl;
 import com.peregud.pizza.model.Order;
-import com.peregud.pizza.model.Pizza;
+import com.peregud.pizza.types.Pizza;
 import com.peregud.pizza.service.PizzaOrderCalculatorService;
 import com.peregud.pizza.view.PizzaOrderView;
 import com.peregud.pizza.view.PizzaOrderViewConsole;

@@ -5,7 +5,7 @@
 
 package com.peregud.pizza.util;
 
-import com.peregud.pizza.model.Ingredient;
+import com.peregud.pizza.types.Ingredient;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

@@ -5,7 +5,7 @@
 
 package com.peregud.pizza.util;
 
-import com.peregud.pizza.model.Ingredient;
+import com.peregud.pizza.types.Ingredient;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass

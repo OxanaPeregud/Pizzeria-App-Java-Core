@@ -33,7 +33,6 @@ public class PizzaController {
             switch (operationChoice) {
                 case 1:
                     pizzaOrder.start();
-                    pizzaOrder.displayOptions();
                     addChoiceQuestion();
                     break;
                 case 2:

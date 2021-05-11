@@ -3,11 +3,11 @@
  * All rights reserved.
  */
 
-package com.peregud.pizza.model;
+package com.peregud.pizza.types;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SupplierTest {
 

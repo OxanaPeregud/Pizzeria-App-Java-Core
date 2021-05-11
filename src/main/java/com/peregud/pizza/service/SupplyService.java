@@ -5,7 +5,7 @@
 
 package com.peregud.pizza.service;
 
-import com.peregud.pizza.model.Supplier;
+import com.peregud.pizza.types.Supplier;
 import com.peregud.pizza.repository.StorageRepository;
 import com.peregud.pizza.util.CheckScannerInputUtil;
 import com.peregud.pizza.view.SupplyServiceView;

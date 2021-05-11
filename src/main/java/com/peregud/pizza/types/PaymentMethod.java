@@ -3,7 +3,7 @@
  * All rights reserved.
  */
 
-package com.peregud.pizza.model;
+package com.peregud.pizza.types;
 
 public enum PaymentMethod {
     CASH,

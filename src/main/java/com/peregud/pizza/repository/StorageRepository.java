@@ -5,9 +5,9 @@
 
 package com.peregud.pizza.repository;
 
-import com.peregud.pizza.model.Ingredient;
-import com.peregud.pizza.model.Pizza;
-import com.peregud.pizza.model.Supplier;
+import com.peregud.pizza.types.Ingredient;
+import com.peregud.pizza.types.Pizza;
+import com.peregud.pizza.types.Supplier;
 import lombok.Getter;
 
 import java.util.HashMap;
@@ -16,12 +16,8 @@ import java.util.Scanner;
 
 public class StorageRepository implements IngredientStorageRepository {
     @Getter
-    private static final Map<Ingredient, Integer> STORAGE;
-    private static final Scanner SCANNER = new Scanner(System.in);
-
-    static {
-        STORAGE = new HashMap<>();
-    }
+    private static final Map<Ingredient, Integer> STORAGE = new HashMap<>();
+    private final Scanner scanner = new Scanner(System.in);
 
     public StorageRepository() {
         STORAGE.put(Ingredient.CHEESE, 90);
@@ -63,7 +59,7 @@ public class StorageRepository implements IngredientStorageRepository {
     @Override
     public void changeDeliveredIngredient(Supplier supplier) {
         changeIngredientQuantity(supplier.getIngredient(), getIngredientQuantity(supplier.getIngredient())
-                + SCANNER.nextInt());
+                + scanner.nextInt());
     }
 
     @Override

@@ -5,8 +5,8 @@
 
 package com.peregud.pizza.util;
 
-import com.peregud.pizza.model.Ingredient;
-import com.peregud.pizza.model.Pizza;
+import com.peregud.pizza.types.Ingredient;
+import com.peregud.pizza.types.Pizza;
 import com.peregud.pizza.repository.StorageRepository;
 import lombok.experimental.UtilityClass;
 

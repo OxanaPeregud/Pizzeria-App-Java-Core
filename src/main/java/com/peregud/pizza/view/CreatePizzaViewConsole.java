@@ -5,7 +5,7 @@
 
 package com.peregud.pizza.view;
 
-import com.peregud.pizza.model.Ingredient;
+import com.peregud.pizza.types.Ingredient;
 import com.peregud.pizza.util.DateFormatUtil;
 import com.peregud.pizza.util.IngredientPriceUtil;
 import com.peregud.pizza.util.RoundUtil;

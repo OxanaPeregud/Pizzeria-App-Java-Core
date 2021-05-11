@@ -5,7 +5,7 @@
 
 package com.peregud.pizza.view;
 
-import com.peregud.pizza.model.Supplier;
+import com.peregud.pizza.types.Supplier;
 
 public interface SupplyServiceView {
 

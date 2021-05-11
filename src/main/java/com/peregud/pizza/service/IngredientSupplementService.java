@@ -5,7 +5,7 @@
 
 package com.peregud.pizza.service;
 
-import com.peregud.pizza.model.Ingredient;
+import com.peregud.pizza.types.Ingredient;
 import com.peregud.pizza.util.CheckScannerInputUtil;
 import com.peregud.pizza.util.ChoiceUtil;
 import com.peregud.pizza.util.IngredientOrderUtil;
