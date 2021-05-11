@@ -3,9 +3,10 @@
  * All rights reserved.
  */
 
-package com.peregud.pizza.repository;
+package com.peregud.pizza.dao.impl;
 
-import com.peregud.pizza.model.Employee;
+import com.peregud.pizza.dao.DAOCustomer;
+import com.peregud.pizza.model.Customer;
 import com.peregud.pizza.util.ConnectorUtil;
 
 import java.io.Serializable;
@@ -13,7 +14,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmployeeRepositorySQLImpl implements EmployeeRepository {
+public class DAOCustomerSQLImpl implements DAOCustomer {
     private PreparedStatement preparedStmt = null;
     private Statement stmt = null;
     private ResultSet rs = null;
@@ -24,23 +25,24 @@ public class EmployeeRepositorySQLImpl implements EmployeeRepository {
     private static final String SQL_GET_ALL;
 
     static {
-        SQL_SAVE = "INSERT INTO employeeDB.employee(employee_id, first_name, last_name, salary) " + "VALUE (?, ?, ?, ?)";
-        SQL_GET = "SELECT * FROM employeeDB.employee WHERE employee_id = ";
-        SQL_UPDATE = "UPDATE employeeDB.employee SET salary = ? WHERE employee_id = ?";
-        SQL_DELETE = "DELETE FROM employeeDB.employee WHERE employee_id = ";
-        SQL_GET_ALL = "SELECT * FROM employeeDB.employee";
+        SQL_SAVE = "INSERT INTO customerDB.customer(customer_id, first_name, last_name, card_number, order_id) " +
+                "VALUE (?, ?, ?, ?, ?)";
+        SQL_GET = "SELECT * FROM customerDB.customer WHERE customer_id = ";
+        SQL_UPDATE = "UPDATE customerDB.customer SET card_number = ? WHERE customer_id = ?";
+        SQL_DELETE = "DELETE FROM customerDB.customer WHERE customer_id = ";
+        SQL_GET_ALL = "SELECT * FROM customerDB.customer";
     }
 
     @Override
-    public void save(List<Employee> list) {
+    public void save(List<Customer> list) {
         try {
             Connection conn = ConnectorUtil.getConnection();
             preparedStmt = conn.prepareStatement(SQL_SAVE);
-            for (Employee employee : list) {
-                preparedStmt.setInt(1, employee.getId());
-                preparedStmt.setString(2, employee.getFirstName());
-                preparedStmt.setString(3, employee.getLastName());
-                preparedStmt.setDouble(4, employee.getSalary());
+            for (Customer customer : list) {
+                preparedStmt.setString(1, customer.getFirstName());
+                preparedStmt.setString(2, customer.getLastName());
+                preparedStmt.setString(3, customer.getCardNumber());
+                preparedStmt.setInt(4, customer.getOrderID());
                 preparedStmt.executeUpdate();
             }
         } catch (SQLException throwables) {
@@ -58,14 +60,15 @@ public class EmployeeRepositorySQLImpl implements EmployeeRepository {
     }
 
     @Override
-    public void save(Employee employee) {
+    public void save(Customer customer) {
         try {
             Connection conn = ConnectorUtil.getConnection();
             preparedStmt = conn.prepareStatement(SQL_SAVE);
-            preparedStmt.setInt(1, employee.getId());
-            preparedStmt.setString(2, employee.getFirstName());
-            preparedStmt.setString(3, employee.getLastName());
-            preparedStmt.setDouble(4, employee.getSalary());
+            preparedStmt.setInt(1, customer.getId());
+            preparedStmt.setString(2, customer.getFirstName());
+            preparedStmt.setString(3, customer.getLastName());
+            preparedStmt.setString(4, customer.getCardNumber());
+            preparedStmt.setInt(5, customer.getOrderID());
             preparedStmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -82,18 +85,19 @@ public class EmployeeRepositorySQLImpl implements EmployeeRepository {
     }
 
     @Override
-    public Employee get(Serializable id) {
-        Employee employee = null;
+    public Customer get(Serializable id) {
+        Customer customer = null;
         try {
             Connection conn = ConnectorUtil.getConnection();
             stmt = conn.createStatement();
             rs = stmt.executeQuery(SQL_GET + id);
             while (rs.next()) {
-                employee = new Employee();
-                employee.setId(rs.getInt("employee_id"));
-                employee.setFirstName(rs.getString("first_name"));
-                employee.setLastName(rs.getString("last_name"));
-                employee.setSalary(rs.getDouble("salary"));
+                customer = new Customer();
+                customer.setId(rs.getInt("customer_id"));
+                customer.setFirstName(rs.getString("first_name"));
+                customer.setLastName(rs.getString("last_name"));
+                customer.setCardNumber(rs.getString("card_number"));
+                customer.setOrderID(rs.getInt("order_id"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -113,16 +117,16 @@ public class EmployeeRepositorySQLImpl implements EmployeeRepository {
                 throwables.printStackTrace();
             }
         }
-        return employee;
+        return customer;
     }
 
     @Override
-    public void update(Employee employee) {
+    public void update(Customer customer) {
         try {
             Connection conn = ConnectorUtil.getConnection();
             preparedStmt = conn.prepareStatement(SQL_UPDATE);
-            preparedStmt.setDouble(1, employee.getSalary());
-            preparedStmt.setInt(2, employee.getId());
+            preparedStmt.setString(1, customer.getCardNumber());
+            preparedStmt.setInt(2, customer.getId());
             preparedStmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -162,19 +166,19 @@ public class EmployeeRepositorySQLImpl implements EmployeeRepository {
     }
 
     @Override
-    public List<Employee> getAll() {
+    public List<Customer> getAll() {
         try {
             Connection conn = ConnectorUtil.getConnection();
             stmt = conn.createStatement();
             rs = stmt.executeQuery(SQL_GET_ALL);
-            List<Employee> list = new ArrayList<>();
+            List<Customer> list = new ArrayList<>();
             while (rs.next()) {
-                Employee employee = new Employee();
-                employee.setId(rs.getInt("employee_id"));
-                employee.setFirstName(rs.getString("first_name"));
-                employee.setLastName(rs.getString("last_name"));
-                employee.setSalary(rs.getDouble("salary"));
-                list.add(employee);
+                Customer customer = new Customer();
+                customer.setId(rs.getInt("customer_id"));
+                customer.setFirstName(rs.getString("first_name"));
+                customer.setLastName(rs.getString("last_name"));
+                customer.setCardNumber(rs.getString("card_number"));
+                list.add(customer);
             }
             return list;
         } catch (SQLException throwables) {

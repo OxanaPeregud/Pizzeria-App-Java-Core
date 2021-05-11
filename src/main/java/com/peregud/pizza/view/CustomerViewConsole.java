@@ -5,13 +5,13 @@
 
 package com.peregud.pizza.view;
 
-import com.peregud.pizza.repository.CustomerRepository;
-import com.peregud.pizza.repository.CustomerRepositorySQLImpl;
+import com.peregud.pizza.dao.DAOCustomer;
+import com.peregud.pizza.dao.impl.DAOCustomerSQLImpl;
 
 import java.sql.SQLException;
 
 public class CustomerViewConsole implements CustomerView {
-    private final CustomerRepository customerRepository = new CustomerRepositorySQLImpl();
+    private final DAOCustomer DAOCustomer = new DAOCustomerSQLImpl();
 
     @Override
     public void customerFirstName() {
@@ -35,8 +35,8 @@ public class CustomerViewConsole implements CustomerView {
 
     @Override
     public void displayCustomerByID(int id) throws SQLException {
-        if (customerRepository.get(id) != null) {
-            System.out.println(customerRepository.get(id));
+        if (DAOCustomer.get(id) != null) {
+            System.out.println(DAOCustomer.get(id));
         } else {
             System.out.println("There is no Customer under entered ID");
         }
@@ -59,6 +59,6 @@ public class CustomerViewConsole implements CustomerView {
 
     @Override
     public void displayAllCustomers() throws SQLException {
-        customerRepository.getAll().forEach(System.out::println);
+        DAOCustomer.getAll().forEach(System.out::println);
     }
 }

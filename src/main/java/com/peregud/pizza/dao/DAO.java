@@ -3,7 +3,7 @@
  * All rights reserved.
  */
 
-package com.peregud.pizza.repository;
+package com.peregud.pizza.dao;
 
 import java.io.Serializable;
 import java.sql.SQLException;

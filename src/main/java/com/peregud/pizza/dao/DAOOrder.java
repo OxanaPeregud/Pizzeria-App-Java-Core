@@ -3,9 +3,9 @@
  * All rights reserved.
  */
 
-package com.peregud.pizza.repository;
+package com.peregud.pizza.dao;
 
 import com.peregud.pizza.model.Order;
 
-public interface OrderRepository extends DAO<Order> {
+public interface DAOOrder extends DAO<Order> {
 }

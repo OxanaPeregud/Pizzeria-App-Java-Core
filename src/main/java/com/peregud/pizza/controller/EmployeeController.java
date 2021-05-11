@@ -5,14 +5,14 @@
 
 package com.peregud.pizza.controller;
 
-import com.peregud.pizza.service.EmployeeService;
+import com.peregud.pizza.dao.service.DAOEmployeeService;
 import com.peregud.pizza.util.CheckScannerInputUtil;
 import com.peregud.pizza.view.EmployeeView;
 import com.peregud.pizza.view.EmployeeViewConsole;
 
 public class EmployeeController {
     private final EmployeeView employeeView = new EmployeeViewConsole();
-    private final EmployeeService employee = new EmployeeService();
+    private final DAOEmployeeService employee = new DAOEmployeeService();
     private final AddressController address = new AddressController();
 
     public void chooseOperation() {

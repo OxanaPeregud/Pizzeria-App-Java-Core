@@ -3,12 +3,12 @@
  * All rights reserved.
  */
 
-package com.peregud.pizza.service;
+package com.peregud.pizza.dao.service;
 
 import com.peregud.pizza.exceptions.CardException;
 import com.peregud.pizza.model.Customer;
-import com.peregud.pizza.repository.CustomerRepository;
-import com.peregud.pizza.repository.CustomerRepositorySQLImpl;
+import com.peregud.pizza.dao.DAOCustomer;
+import com.peregud.pizza.dao.impl.DAOCustomerSQLImpl;
 import com.peregud.pizza.util.OrderPizzaUtil;
 import com.peregud.pizza.view.CustomerView;
 import com.peregud.pizza.view.CustomerViewConsole;
@@ -19,42 +19,35 @@ import java.sql.SQLException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class CustomerService implements DBData {
-    private static final CustomerView CUSTOMER_VIEW;
-    private static final Scanner SCAN;
-    private static final CustomerRepository CUSTOMER_REPOSITORY;
+public class DAOCustomerService implements DBDataService {
+    private final CustomerView customerView = new CustomerViewConsole();
+    private final Scanner scan = new Scanner(System.in);
+    private final DAOCustomer daoCustomer = new DAOCustomerSQLImpl();
     private final Customer customer = new Customer();
-    private static final OnlinePaymentView ONLINE_PAYMENT_VIEW;
-
-    static {
-        CUSTOMER_VIEW = new CustomerViewConsole();
-        SCAN = new Scanner(System.in);
-        CUSTOMER_REPOSITORY = new CustomerRepositorySQLImpl();
-        ONLINE_PAYMENT_VIEW = new OnlinePaymentViewConsole();
-    }
+    private final OnlinePaymentView onlinePaymentView = new OnlinePaymentViewConsole();
 
     @Override
     public void saveNewData() {
         try {
-            CUSTOMER_VIEW.customerFirstName();
-            String firstName = SCAN.next();
-            CUSTOMER_VIEW.customerLastName();
-            String lastName = SCAN.next();
-            CUSTOMER_VIEW.customerCard();
-            String cardNumber = SCAN.next();
+            customerView.customerFirstName();
+            String firstName = scan.next();
+            customerView.customerLastName();
+            String lastName = scan.next();
+            customerView.customerCard();
+            String cardNumber = scan.next();
             int count = 0;
             for (int i = 0; i < cardNumber.length(); i++) {
                 count++;
             }
             if (count != 16) {
-                ONLINE_PAYMENT_VIEW.invalidInput();
+                onlinePaymentView.invalidInput();
                 saveNewData();
             } else {
-                ONLINE_PAYMENT_VIEW.displayPayment();
+                onlinePaymentView.displayPayment();
             }
             new Customer();
             for (int i = 0; i < OrderPizzaUtil.getORDER_ID().size(); i++) {
-                CUSTOMER_REPOSITORY.save(Customer.builder()
+                daoCustomer.save(Customer.builder()
                         .firstName(firstName)
                         .lastName(lastName)
                         .cardNumber(cardNumber)
@@ -66,7 +59,7 @@ public class CustomerService implements DBData {
                 throw new CardException();
             } catch (CardException ex) {
                 ex.printStackTrace();
-                ONLINE_PAYMENT_VIEW.cardException();
+                onlinePaymentView.cardException();
                 saveNewData();
             }
         } catch (SQLException throwables) {
@@ -77,9 +70,9 @@ public class CustomerService implements DBData {
     @Override
     public void getByID() {
         try {
-            CUSTOMER_VIEW.customerID();
-            int id = SCAN.nextInt();
-            CUSTOMER_VIEW.displayCustomerByID(id);
+            customerView.customerID();
+            int id = scan.nextInt();
+            customerView.displayCustomerByID(id);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -88,16 +81,16 @@ public class CustomerService implements DBData {
     @Override
     public void updateData() {
         try {
-            CUSTOMER_VIEW.customerID();
-            int id = SCAN.nextInt();
-            CUSTOMER_VIEW.displayCustomerByID(id);
-            CUSTOMER_VIEW.setNewCard();
-            String card = SCAN.next();
+            customerView.customerID();
+            int id = scan.nextInt();
+            customerView.displayCustomerByID(id);
+            customerView.setNewCard();
+            String card = scan.next();
             customer.setCardNumber(card);
             customer.setId(id);
-            CUSTOMER_REPOSITORY.update(customer);
-            CUSTOMER_VIEW.changedCard();
-            CUSTOMER_VIEW.displayCustomerByID(id);
+            daoCustomer.update(customer);
+            customerView.changedCard();
+            customerView.displayCustomerByID(id);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -106,10 +99,10 @@ public class CustomerService implements DBData {
     @Override
     public void deleteData() {
         try {
-            CUSTOMER_VIEW.customerID();
-            int id = SCAN.nextInt();
-            CUSTOMER_REPOSITORY.delete(id);
-            CUSTOMER_VIEW.deleteCustomer();
+            customerView.customerID();
+            int id = scan.nextInt();
+            daoCustomer.delete(id);
+            customerView.deleteCustomer();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -118,7 +111,7 @@ public class CustomerService implements DBData {
     @Override
     public void displayAll() {
         try {
-            CUSTOMER_VIEW.displayAllCustomers();
+            customerView.displayAllCustomers();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

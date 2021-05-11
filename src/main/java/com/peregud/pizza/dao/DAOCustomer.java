@@ -3,9 +3,9 @@
  * All rights reserved.
  */
 
-package com.peregud.pizza.repository;
+package com.peregud.pizza.dao;
 
 import com.peregud.pizza.model.Customer;
 
-public interface CustomerRepository extends DAO<Customer> {
+public interface DAOCustomer extends DAO<Customer> {
 }

@@ -3,8 +3,9 @@
  * All rights reserved.
  */
 
-package com.peregud.pizza.repository;
+package com.peregud.pizza.dao.impl;
 
+import com.peregud.pizza.dao.DAOAddress;
 import com.peregud.pizza.model.Address;
 import com.peregud.pizza.util.ConnectorUtil;
 
@@ -13,7 +14,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AddressRepositorySQLImpl implements AddressRepository {
+public class DAOAddressSQLImpl implements DAOAddress {
     private PreparedStatement preparedStmt = null;
     private Statement stmt = null;
     private ResultSet rs = null;

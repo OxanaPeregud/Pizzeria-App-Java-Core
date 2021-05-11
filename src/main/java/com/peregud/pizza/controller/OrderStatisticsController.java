@@ -6,8 +6,8 @@
 package com.peregud.pizza.controller;
 
 import com.peregud.pizza.model.Pizza;
-import com.peregud.pizza.repository.OrderRepository;
-import com.peregud.pizza.repository.OrderRepositorySQLImpl;
+import com.peregud.pizza.dao.DAOOrder;
+import com.peregud.pizza.dao.impl.DAOOrderSQLImpl;
 import com.peregud.pizza.util.OrderStatisticsUtil;
 import com.peregud.pizza.util.SoldPizzasUtil;
 import com.peregud.pizza.util.CheckScannerInputUtil;
@@ -21,7 +21,7 @@ import java.sql.SQLException;
 public class OrderStatisticsController {
     private final OrderStatisticsView orderStatisticsView = new OrderStatisticsViewConsole();
     private final SoldPizzasView soldPizzasView = new SoldPizzasViewConsole();
-    private final OrderRepository orderRepository = new OrderRepositorySQLImpl();
+    private final DAOOrder DAOOrder = new DAOOrderSQLImpl();
 
     public void start() {
         try {
@@ -66,7 +66,7 @@ public class OrderStatisticsController {
                     start();
                     break;
                 case 7:
-                    soldPizzasView.displaySoldPizzas(orderRepository.getAll());
+                    soldPizzasView.displaySoldPizzas(DAOOrder.getAll());
                     start();
                     break;
                 case 8:

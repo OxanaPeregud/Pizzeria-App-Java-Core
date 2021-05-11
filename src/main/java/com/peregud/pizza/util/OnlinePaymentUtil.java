@@ -5,17 +5,14 @@
 
 package com.peregud.pizza.util;
 
-import com.peregud.pizza.service.CustomerService;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
-import lombok.Value;
+import com.peregud.pizza.dao.service.DAOCustomerService;
+import lombok.experimental.UtilityClass;
 
-@Value
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@UtilityClass
 public class OnlinePaymentUtil {
-    private static final CustomerService CUSTOMER = new CustomerService();
+    private final DAOCustomerService CUSTOMER = new DAOCustomerService();
 
-    public static void addCustomer() {
+    public void addCustomer() {
         CUSTOMER.saveNewData();
     }
 }

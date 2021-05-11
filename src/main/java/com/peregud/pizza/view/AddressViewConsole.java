@@ -5,13 +5,13 @@
 
 package com.peregud.pizza.view;
 
-import com.peregud.pizza.repository.AddressRepository;
-import com.peregud.pizza.repository.AddressRepositorySQLImpl;
+import com.peregud.pizza.dao.DAOAddress;
+import com.peregud.pizza.dao.impl.DAOAddressSQLImpl;
 
 import java.sql.SQLException;
 
 public class AddressViewConsole implements AddressView {
-    private static final AddressRepository ADDRESS_REPOSITORY = new AddressRepositorySQLImpl();
+    private final DAOAddress daoAddress = new DAOAddressSQLImpl();
 
     @Override
     public void addressStreet() {
@@ -35,8 +35,8 @@ public class AddressViewConsole implements AddressView {
 
     @Override
     public void displayAddressByID(int id) throws SQLException {
-        if (ADDRESS_REPOSITORY.get(id) != null) {
-            System.out.println(ADDRESS_REPOSITORY.get(id));
+        if (daoAddress.get(id) != null) {
+            System.out.println(daoAddress.get(id));
         } else {
             System.out.println("There is no address under entered ID");
         }
@@ -69,7 +69,7 @@ public class AddressViewConsole implements AddressView {
 
     @Override
     public void displayAllAddresses() throws SQLException {
-        ADDRESS_REPOSITORY.getAll().forEach(System.out::println);
+        daoAddress.getAll().forEach(System.out::println);
     }
 
     @Override

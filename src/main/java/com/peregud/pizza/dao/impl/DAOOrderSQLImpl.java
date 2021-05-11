@@ -3,8 +3,9 @@
  * All rights reserved.
  */
 
-package com.peregud.pizza.repository;
+package com.peregud.pizza.dao.impl;
 
+import com.peregud.pizza.dao.DAOOrder;
 import com.peregud.pizza.model.Order;
 import com.peregud.pizza.util.ConnectorUtil;
 
@@ -13,7 +14,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderRepositorySQLImpl implements OrderRepository {
+public class DAOOrderSQLImpl implements DAOOrder {
     private PreparedStatement preparedStmt = null;
     private Statement stmt = null;
     private ResultSet rs = null;
@@ -114,12 +115,10 @@ public class OrderRepositorySQLImpl implements OrderRepository {
 
     @Override
     public void update(Order order) {
-
     }
 
     @Override
     public void delete(Serializable id) {
-
     }
 
     @Override

@@ -5,34 +5,24 @@
 
 package com.peregud.pizza.util;
 
-import com.peregud.pizza.repository.OrderRepository;
-import com.peregud.pizza.repository.OrderRepositorySQLImpl;
 import com.peregud.pizza.service.IngredientSupplementService;
 import com.peregud.pizza.service.PizzaOrderService;
 import com.peregud.pizza.view.CheckView;
 import com.peregud.pizza.view.CheckViewConsole;
 import com.peregud.pizza.view.UtilView;
 import com.peregud.pizza.view.UtilViewConsole;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
+import lombok.experimental.UtilityClass;
 
 import java.io.IOException;
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
-public final class ChoiceUtil {
-    private static final PizzaOrderService PIZZA_ORDER;
-    private static final IngredientSupplementService INGREDIENT_SUPPLEMENT;
-    private static final UtilView UTIL_VIEW;
-    private static final CheckView CHECK_VIEW;
+@UtilityClass
+public class ChoiceUtil {
+    private final PizzaOrderService PIZZA_ORDER = new PizzaOrderService();
+    private final IngredientSupplementService INGREDIENT_SUPPLEMENT = new IngredientSupplementService();
+    private final UtilView UTIL_VIEW = new UtilViewConsole();
+    private final CheckView CHECK_VIEW = new CheckViewConsole();
 
-    static {
-        PIZZA_ORDER = new PizzaOrderService();
-        INGREDIENT_SUPPLEMENT = new IngredientSupplementService();
-        UTIL_VIEW = new UtilViewConsole();
-        CHECK_VIEW = new CheckViewConsole();
-    }
-
-    public static void addChoiceQuestion() {
+    public void addChoiceQuestion() {
         try {
             int choice = CheckScannerInputUtil.checkInt();
             if (choice == 1) {

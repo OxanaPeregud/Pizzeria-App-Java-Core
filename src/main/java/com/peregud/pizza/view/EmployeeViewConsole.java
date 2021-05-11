@@ -5,13 +5,13 @@
 
 package com.peregud.pizza.view;
 
-import com.peregud.pizza.repository.EmployeeRepository;
-import com.peregud.pizza.repository.EmployeeRepositorySQLImpl;
+import com.peregud.pizza.dao.DAOEmployee;
+import com.peregud.pizza.dao.impl.DAOEmployeeSQLImpl;
 
 import java.sql.SQLException;
 
 public class EmployeeViewConsole implements EmployeeView {
-    private static final EmployeeRepository EMPLOYEE_REPOSITORY = new EmployeeRepositorySQLImpl();
+    private final DAOEmployee daoEmployee = new DAOEmployeeSQLImpl();
 
     @Override
     public void employeeFirstName() {
@@ -35,8 +35,8 @@ public class EmployeeViewConsole implements EmployeeView {
 
     @Override
     public void displayEmployeeByID(int id) throws SQLException {
-        if (EMPLOYEE_REPOSITORY.get(id) != null) {
-            System.out.println(EMPLOYEE_REPOSITORY.get(id));
+        if (daoEmployee.get(id) != null) {
+            System.out.println(daoEmployee.get(id));
         } else {
             System.out.println("There is no employee under entered ID");
         }
@@ -59,7 +59,7 @@ public class EmployeeViewConsole implements EmployeeView {
 
     @Override
     public void displayAllEmployees() throws SQLException {
-        EMPLOYEE_REPOSITORY.getAll().forEach(System.out::println);
+        daoEmployee.getAll().forEach(System.out::println);
     }
 
     @Override

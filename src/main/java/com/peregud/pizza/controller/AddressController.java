@@ -5,14 +5,14 @@
 
 package com.peregud.pizza.controller;
 
-import com.peregud.pizza.service.AddressService;
+import com.peregud.pizza.dao.service.DAOAddressService;
 import com.peregud.pizza.util.CheckScannerInputUtil;
 import com.peregud.pizza.view.AddressView;
 import com.peregud.pizza.view.AddressViewConsole;
 
 public class AddressController {
     private final AddressView addressView = new AddressViewConsole();
-    private final AddressService address = new AddressService();
+    private final DAOAddressService address = new DAOAddressService();
 
     public void start() {
         addressView.displayChoice();
