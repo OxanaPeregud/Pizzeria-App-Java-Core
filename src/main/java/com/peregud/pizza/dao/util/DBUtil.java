@@ -128,8 +128,7 @@ public class DBUtil {
         }
     }
 
-    public void executeProcedure(String sql, Map<Integer, Object> paramIn,
-                                 Map<Integer, Integer> paramOut) {
+    public void executeProcedure(String sql, Map<Integer, Object> paramIn, Map<Integer, Integer> paramOut) {
         CallableStatement cs = null;
         Connection conn = null;
         try {
