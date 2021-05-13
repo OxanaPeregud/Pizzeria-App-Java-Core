@@ -19,7 +19,7 @@ public interface PizzaOrderView {
 
     void displayInfoPizza();
 
-    void totalOrder(double totalOrder, int size);
+    void totalOrder(double totalOrder);
 
     void pizzaNumberException();
 

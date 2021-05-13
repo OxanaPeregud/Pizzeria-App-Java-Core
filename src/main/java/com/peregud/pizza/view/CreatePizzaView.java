@@ -19,11 +19,7 @@ public interface CreatePizzaView {
 
     void displayInfoAboutIngredient(Ingredient ingredient);
 
-    void totalCalories(int totalCalories);
-
     void totalOrder(double totalOrder);
-
-    void addDoughQuestion();
 
     void addIngredientsQuestion();
 

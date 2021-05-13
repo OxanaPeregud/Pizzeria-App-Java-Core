@@ -48,7 +48,8 @@ public class OrderPizzaUtil {
             CheckUtil.add(PIZZA_ORDER_VIEW.orderPizza(pizza, PizzaPriceUtil.pizzaPriceIncludingVAT(pizza)));
             addToOrder(pizza.name(), PizzaPriceUtil.pizzaPriceIncludingVAT(pizza));
             PIZZA_ORDER.add(PizzaPriceUtil.pizzaPriceIncludingVAT(pizza));
-            TotalOrderCalculatorUtil.totalOrderPizza();
+            TotalOrderCalculatorUtil.totalOrder(OrderPizzaUtil.getPIZZA_ORDER().totalOrder(),
+                    IngredientOrderUtil.getIngredientOrder().totalOrder());
             PIZZA_ORDER_VIEW.addSupplementIngredients();
             ChoiceUtil.addChoiceQuestion();
         } catch (Exception e) {

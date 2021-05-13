@@ -23,7 +23,8 @@ public class IngredientOrderUtil {
         getIngredientOrder().add(IngredientPriceUtil.priceIncludingVAT(ingredient));
         CookUtil.cookIngredient(ingredient);
         CheckUtil.add(CREATE_PIZZA_VIEW.orderIngredient(ingredient));
-        TotalOrderCalculatorUtil.totalOrderIngredient();
+        TotalOrderCalculatorUtil.totalOrder(OrderPizzaUtil.getPIZZA_ORDER().totalOrder(),
+                IngredientOrderUtil.getIngredientOrder().totalOrder());
     }
 
     public IngredientOrderCalculatorService getIngredientOrder() {

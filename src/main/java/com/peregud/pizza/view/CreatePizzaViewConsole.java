@@ -64,18 +64,8 @@ public class CreatePizzaViewConsole implements CreatePizzaView {
     }
 
     @Override
-    public void totalCalories(int totalCalories) {
-        System.out.println("Total Calories of Created Pizza: " + totalCalories);
-    }
-
-    @Override
     public void totalOrder(double totalOrder) {
         System.out.println("Total sum of order is " + RoundUtil.up(totalOrder) + "$");
-    }
-
-    @Override
-    public void addDoughQuestion() {
-        System.out.println("\nDo you want to add dough? (Type y or n)");
     }
 
     @Override

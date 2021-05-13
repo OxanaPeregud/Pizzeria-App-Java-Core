@@ -55,8 +55,8 @@ public class PizzaOrderViewConsole implements PizzaOrderView {
     }
 
     @Override
-    public void totalOrder(double totalOrder, int size) {
-        System.out.println("Total sum of order is " + RoundUtil.up(totalOrder) + "$\nNumber of pizzas: " + size);
+    public void totalOrder(double totalOrder) {
+        System.out.println("Total sum of order is " + RoundUtil.up(totalOrder) + "$");
     }
 
     @Override

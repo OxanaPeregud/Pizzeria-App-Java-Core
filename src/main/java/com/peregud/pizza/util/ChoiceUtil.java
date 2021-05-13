@@ -31,7 +31,8 @@ public class ChoiceUtil {
                 PIZZA_ORDER.choosePizza();
             } else if (choice == 3) {
                 CHECK_VIEW.displayCheck();
-                TotalOrderCalculatorUtil.totalOrderPizza();
+                TotalOrderCalculatorUtil.totalOrder(OrderPizzaUtil.getPIZZA_ORDER().totalOrder(),
+                        IngredientOrderUtil.getIngredientOrder().totalOrder());
                 PaymentChoiceUtil.paymentChoice();
             } else {
                 UTIL_VIEW.choiceUtilView();
