@@ -12,28 +12,18 @@ import java.lang.reflect.Modifier;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class TaxUtilTest {
+class RoundUtilTest {
 
     @Test
-    public void VAT() {
-        assertEquals(20, TaxUtil.VAT(100));
-    }
-
-    @Test
-    public void VATonRevenue() {
-        assertEquals(20, TaxUtil.VATonRevenue(120));
-    }
-
-    @Test
-    public void CorporateIncomeTax() {
-        assertEquals(82, TaxUtil.CorporateIncomeTax(100));
+    void up() {
+        assertEquals(100.32, RoundUtil.up(100.32114));
     }
 
     @Test
     public void testPrivateConstructor() {
-        Class<TaxUtil> clazz = null;
+        Class<RoundUtil> clazz = null;
         try {
-            clazz = TaxUtil.class;
+            clazz = RoundUtil.class;
             Constructor<?>[] constructor = clazz.getDeclaredConstructors();
             constructor[0].setAccessible(true);
             constructor[0].newInstance();

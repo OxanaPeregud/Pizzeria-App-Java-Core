@@ -6,10 +6,12 @@
 package com.peregud.pizza.service;
 
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
 @AllArgsConstructor
+@EqualsAndHashCode
 public class OrderCalculatorService {
     private final List<Double> order;
 

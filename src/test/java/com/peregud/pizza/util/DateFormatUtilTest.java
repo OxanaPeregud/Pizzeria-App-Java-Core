@@ -9,31 +9,23 @@ import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Modifier;
+import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class TaxUtilTest {
+class DateFormatUtilTest {
 
     @Test
-    public void VAT() {
-        assertEquals(20, TaxUtil.VAT(100));
-    }
-
-    @Test
-    public void VATonRevenue() {
-        assertEquals(20, TaxUtil.VATonRevenue(120));
-    }
-
-    @Test
-    public void CorporateIncomeTax() {
-        assertEquals(82, TaxUtil.CorporateIncomeTax(100));
+    void localDatePattern() {
+        LocalDateTime localDate = LocalDateTime.of(2021, 5, 5, 9, 31, 15);
+        assertEquals("05/05/2021 09:31:15", DateFormatUtil.localDatePattern(localDate));
     }
 
     @Test
     public void testPrivateConstructor() {
-        Class<TaxUtil> clazz = null;
+        Class<DateFormatUtil> clazz = null;
         try {
-            clazz = TaxUtil.class;
+            clazz = DateFormatUtil.class;
             Constructor<?>[] constructor = clazz.getDeclaredConstructors();
             constructor[0].setAccessible(true);
             constructor[0].newInstance();

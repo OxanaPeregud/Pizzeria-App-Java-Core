@@ -8,9 +8,12 @@ package com.peregud.pizza.util;
 import com.peregud.pizza.types.Pizza;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Modifier;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 class OrderStatisticsUtilTest {
 
@@ -127,5 +130,19 @@ class OrderStatisticsUtilTest {
         SoldPizzasUtil.createMapOfPizzasCost();
         assertEquals(15.77, OrderStatisticsUtil.profitMargin(SoldPizzasUtil.getSOLD_PIZZAS(),
                 SoldPizzasUtil.getPIZZAS_PRICES(), SoldPizzasUtil.getPIZZAS_COST()));
+    }
+
+    @Test
+    public void testPrivateConstructor() {
+        Class<OrderStatisticsUtil> clazz = null;
+        try {
+            clazz = OrderStatisticsUtil.class;
+            Constructor<?>[] constructor = clazz.getDeclaredConstructors();
+            constructor[0].setAccessible(true);
+            constructor[0].newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        assertFalse(Modifier.isPrivate(clazz.getModifiers()));
     }
 }

@@ -5,35 +5,35 @@
 
 package com.peregud.pizza.util;
 
+import com.peregud.pizza.service.IngredientOrderCalculatorService;
+import com.peregud.pizza.types.Ingredient;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Modifier;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class TaxUtilTest {
+class IngredientOrderUtilTest {
 
     @Test
-    public void VAT() {
-        assertEquals(20, TaxUtil.VAT(100));
+    void chooseIngredient() {
+        assertEquals(3.9, IngredientOrderUtil.chooseIngredient(Ingredient.CHEESE));
     }
 
     @Test
-    public void VATonRevenue() {
-        assertEquals(20, TaxUtil.VATonRevenue(120));
-    }
-
-    @Test
-    public void CorporateIncomeTax() {
-        assertEquals(82, TaxUtil.CorporateIncomeTax(100));
+    void getIngredientOrder() {
+        List<Double> list = new ArrayList<>();
+        assertEquals(new IngredientOrderCalculatorService(list), IngredientOrderUtil.getIngredientOrder());
     }
 
     @Test
     public void testPrivateConstructor() {
-        Class<TaxUtil> clazz = null;
+        Class<IngredientOrderUtil> clazz = null;
         try {
-            clazz = TaxUtil.class;
+            clazz = IngredientOrderUtil.class;
             Constructor<?>[] constructor = clazz.getDeclaredConstructors();
             constructor[0].setAccessible(true);
             constructor[0].newInstance();

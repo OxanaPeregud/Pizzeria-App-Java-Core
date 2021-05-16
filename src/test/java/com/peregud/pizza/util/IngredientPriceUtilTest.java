@@ -8,6 +8,9 @@ package com.peregud.pizza.util;
 import com.peregud.pizza.types.Ingredient;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Modifier;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class IngredientPriceUtilTest {
@@ -110,5 +113,19 @@ class IngredientPriceUtilTest {
     @Test
     public void priceSauceIncludingVAT() {
         assertEquals(1.56, RoundUtil.up(IngredientPriceUtil.priceIncludingVAT(Ingredient.SAUCE)));
+    }
+
+    @Test
+    public void testPrivateConstructor() {
+        Class<IngredientPriceUtil> clazz = null;
+        try {
+            clazz = IngredientPriceUtil.class;
+            Constructor<?>[] constructor = clazz.getDeclaredConstructors();
+            constructor[0].setAccessible(true);
+            constructor[0].newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        assertFalse(Modifier.isPrivate(clazz.getModifiers()));
     }
 }

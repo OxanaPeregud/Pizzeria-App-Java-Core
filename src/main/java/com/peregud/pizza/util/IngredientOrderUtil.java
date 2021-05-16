@@ -19,12 +19,14 @@ public class IngredientOrderUtil {
             new IngredientOrderCalculatorService(new ArrayList<>());
     private final CreatePizzaView CREATE_PIZZA_VIEW = new CreatePizzaViewConsole();
 
-    public void chooseIngredient(Ingredient ingredient) {
-        getIngredientOrder().add(IngredientPriceUtil.priceIncludingVAT(ingredient));
+    public double chooseIngredient(Ingredient ingredient) {
+        double price = IngredientPriceUtil.priceIncludingVAT(ingredient);
+        getIngredientOrder().add(price);
         CookUtil.cookIngredient(ingredient);
         CheckUtil.add(CREATE_PIZZA_VIEW.orderIngredient(ingredient));
         TotalOrderCalculatorUtil.totalOrder(OrderPizzaUtil.getPIZZA_ORDER().totalOrder(),
                 IngredientOrderUtil.getIngredientOrder().totalOrder());
+        return price;
     }
 
     public IngredientOrderCalculatorService getIngredientOrder() {

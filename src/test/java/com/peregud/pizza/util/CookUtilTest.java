@@ -10,6 +10,9 @@ import com.peregud.pizza.types.Pizza;
 import com.peregud.pizza.repository.StorageRepository;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Modifier;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class CookUtilTest {
@@ -251,5 +254,19 @@ class CookUtilTest {
         int oldQuantity = storage.getIngredientQuantity(Ingredient.SAUCE);
         CookUtil.cookIngredient(Ingredient.SAUCE);
         assertEquals(oldQuantity - 1, storage.getIngredientQuantity(Ingredient.SAUCE));
+    }
+
+    @Test
+    public void testPrivateConstructor() {
+        Class<CookUtil> clazz = null;
+        try {
+            clazz = CookUtil.class;
+            Constructor<?>[] constructor = clazz.getDeclaredConstructors();
+            constructor[0].setAccessible(true);
+            constructor[0].newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        assertFalse(Modifier.isPrivate(clazz.getModifiers()));
     }
 }

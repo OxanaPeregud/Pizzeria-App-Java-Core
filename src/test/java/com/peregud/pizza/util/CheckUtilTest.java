@@ -9,31 +9,26 @@ import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Modifier;
+import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
-class TaxUtilTest {
-
-    @Test
-    public void VAT() {
-        assertEquals(20, TaxUtil.VAT(100));
-    }
+class CheckUtilTest {
 
     @Test
-    public void VATonRevenue() {
-        assertEquals(20, TaxUtil.VATonRevenue(120));
-    }
-
-    @Test
-    public void CorporateIncomeTax() {
-        assertEquals(82, TaxUtil.CorporateIncomeTax(100));
+    void add() {
+        String str = "pizza1";
+        CheckUtil.add(str);
+        List<String> check = List.of(str);
+        assertEquals(check, CheckUtil.getCheck());
     }
 
     @Test
     public void testPrivateConstructor() {
-        Class<TaxUtil> clazz = null;
+        Class<CheckUtil> clazz = null;
         try {
-            clazz = TaxUtil.class;
+            clazz = CheckUtil.class;
             Constructor<?>[] constructor = clazz.getDeclaredConstructors();
             constructor[0].setAccessible(true);
             constructor[0].newInstance();

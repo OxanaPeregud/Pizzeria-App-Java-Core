@@ -7,6 +7,9 @@ package com.peregud.pizza.util;
 
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Modifier;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class DiscountUtilTest {
@@ -34,5 +37,19 @@ class DiscountUtilTest {
     @Test
     public void amountToPayFor3AndMorePizzasOnSpecificDay() {
         assertEquals(65, DiscountUtil.amountToPayFor3AndMorePizzasOnSpecificDay(100));
+    }
+
+    @Test
+    public void testPrivateConstructor() {
+        Class<DiscountUtil> clazz = null;
+        try {
+            clazz = DiscountUtil.class;
+            Constructor<?>[] constructor = clazz.getDeclaredConstructors();
+            constructor[0].setAccessible(true);
+            constructor[0].newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        assertFalse(Modifier.isPrivate(clazz.getModifiers()));
     }
 }
