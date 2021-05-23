@@ -8,7 +8,7 @@ package com.peregud.pizza.view;
 import com.peregud.pizza.types.Supplier;
 import com.peregud.pizza.repository.StorageRepository;
 
-public class SupplyServiceViewConsole implements SupplyServiceView {
+public class SupplyControllerViewConsole implements SupplyControllerView {
     private final StorageRepository storage = new StorageRepository();
 
     @Override

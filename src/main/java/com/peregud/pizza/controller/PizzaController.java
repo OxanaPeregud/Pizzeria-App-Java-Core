@@ -7,7 +7,6 @@ package com.peregud.pizza.controller;
 
 import com.peregud.pizza.service.CreatePizzaService;
 import com.peregud.pizza.service.PizzaOrderService;
-import com.peregud.pizza.service.SupplyService;
 import com.peregud.pizza.util.CheckScannerInputUtil;
 import com.peregud.pizza.view.StarterView;
 import com.peregud.pizza.view.StarterViewConsole;
@@ -22,7 +21,7 @@ public class PizzaController {
     private final CreatePizzaService createPizza = new CreatePizzaService();
     private final OrderStatisticsController orderStatistics = new OrderStatisticsController();
     private final StorageView storageView = new StorageViewConsole();
-    private final SupplyService supply = new SupplyService();
+    private final SupplyController supply = new SupplyController();
     private final EmployeeController employee = new EmployeeController();
     private boolean programOn = true;
 

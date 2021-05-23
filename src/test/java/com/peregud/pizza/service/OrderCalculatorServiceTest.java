@@ -8,6 +8,7 @@ package com.peregud.pizza.service;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -30,5 +31,10 @@ class OrderCalculatorServiceTest {
     public void size_OrderRepository() {
         addToOrder();
         assertEquals(3, order.size());
+    }
+
+    @Test
+    public void testHashCode() {
+        assertEquals(60, order.hashCode());
     }
 }

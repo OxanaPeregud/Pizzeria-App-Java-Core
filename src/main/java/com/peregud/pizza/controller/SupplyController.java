@@ -3,22 +3,22 @@
  * All rights reserved.
  */
 
-package com.peregud.pizza.service;
+package com.peregud.pizza.controller;
 
 import com.peregud.pizza.types.Supplier;
 import com.peregud.pizza.repository.StorageRepository;
 import com.peregud.pizza.util.CheckScannerInputUtil;
-import com.peregud.pizza.view.SupplyServiceView;
-import com.peregud.pizza.view.SupplyServiceViewConsole;
+import com.peregud.pizza.view.SupplyControllerView;
+import com.peregud.pizza.view.SupplyControllerViewConsole;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class SupplyService {
+public class SupplyController {
     private static final Map<Integer, Supplier> SUPPLIERS;
     private final StorageRepository storage = new StorageRepository();
-    private final SupplyServiceView supplyServiceView = new SupplyServiceViewConsole();
+    private final SupplyControllerView supplyControllerView = new SupplyControllerViewConsole();
 
     static {
         SUPPLIERS = new HashMap<>();
@@ -33,7 +33,7 @@ public class SupplyService {
     }
 
     public void start() {
-        supplyServiceView.suppliersMenu();
+        supplyControllerView.suppliersMenu();
         int supplierChoice = CheckScannerInputUtil.checkInt();
         if (SUPPLIERS.get(supplierChoice) != null) {
             switch (SUPPLIERS.get(supplierChoice)) {
@@ -71,20 +71,20 @@ public class SupplyService {
                     break;
             }
         } else {
-            supplyServiceView.supplierNumberException();
+            supplyControllerView.supplierNumberException();
             addChoiceQuestion();
         }
     }
 
     public void chooseSupplier(Supplier supplier) {
-        supplyServiceView.supplierIngredientBefore(supplier);
-        supplyServiceView.supplierDeliveredQuantity();
+        supplyControllerView.supplierIngredientBefore(supplier);
+        supplyControllerView.supplierDeliveredQuantity();
         storage.changeDeliveredIngredient(supplier);
-        supplyServiceView.supplierIngredientAfter(supplier);
+        supplyControllerView.supplierIngredientAfter(supplier);
     }
 
     public void addChoiceQuestion() {
-        supplyServiceView.chooseOtherSupplier();
+        supplyControllerView.chooseOtherSupplier();
         Scanner scan = new Scanner(System.in);
         char ch = scan.next().charAt(0);
         if (ch == 'Y' || ch == 'y') {

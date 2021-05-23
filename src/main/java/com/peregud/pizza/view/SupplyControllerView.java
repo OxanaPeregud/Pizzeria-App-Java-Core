@@ -7,7 +7,7 @@ package com.peregud.pizza.view;
 
 import com.peregud.pizza.types.Supplier;
 
-public interface SupplyServiceView {
+public interface SupplyControllerView {
 
     void suppliersMenu();
 
