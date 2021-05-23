@@ -12,19 +12,13 @@ import java.lang.reflect.Modifier;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CashPaymentUtilTest {
-
-    @Test
-    public void countChange() {
-        CashPaymentUtil.fullAmount = 250;
-        assertEquals(150, CashPaymentUtil.countChange(100));
-    }
+class OnlinePaymentUtilTest {
 
     @Test
     public void testPrivateConstructor() {
-        Class<CashPaymentUtil> clazz = null;
+        Class<OnlinePaymentUtil> clazz = null;
         try {
-            clazz = CashPaymentUtil.class;
+            clazz = OnlinePaymentUtil.class;
             Constructor<?>[] constructor = clazz.getDeclaredConstructors();
             constructor[0].setAccessible(true);
             constructor[0].newInstance();

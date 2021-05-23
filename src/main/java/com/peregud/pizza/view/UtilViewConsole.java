@@ -13,7 +13,7 @@ public class UtilViewConsole implements UtilView {
     }
 
     @Override
-    public void checkUtilView() {
-        System.out.println("Your input is invalid. You must enter a digit");
+    public String checkUtilView() {
+        return "Your input is invalid. You must enter a digit";
     }
 }

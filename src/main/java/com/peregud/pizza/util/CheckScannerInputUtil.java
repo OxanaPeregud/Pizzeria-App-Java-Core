@@ -39,7 +39,7 @@ public class CheckScannerInputUtil {
         return enteredDouble;
     }
 
-    public void invalidInput() {
-        UTIL_VIEW.checkUtilView();
+    public String invalidInput() {
+        return UTIL_VIEW.checkUtilView();
     }
 }

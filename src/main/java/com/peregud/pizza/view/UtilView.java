@@ -9,6 +9,6 @@ public interface UtilView {
 
     void choiceUtilView();
 
-    void checkUtilView();
+    String checkUtilView();
 
 }

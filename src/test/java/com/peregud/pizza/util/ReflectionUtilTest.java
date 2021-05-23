@@ -5,26 +5,36 @@
 
 package com.peregud.pizza.util;
 
+import com.peregud.pizza.model.Customer;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Modifier;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
-class CashPaymentUtilTest {
+class ReflectionUtilTest {
 
     @Test
-    public void countChange() {
-        CashPaymentUtil.fullAmount = 250;
-        assertEquals(150, CashPaymentUtil.countChange(100));
+    void annotatedField() {
+        assertEquals("customer_id", ReflectionUtil.annotatedField(Customer.class, "id"));
+    }
+
+    @Test
+    void testException() {
+        try {
+            ReflectionUtil.annotatedField(Customer.class, "customer_id");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
     public void testPrivateConstructor() {
-        Class<CashPaymentUtil> clazz = null;
+        Class<ReflectionUtil> clazz = null;
         try {
-            clazz = CashPaymentUtil.class;
+            clazz = ReflectionUtil.class;
             Constructor<?>[] constructor = clazz.getDeclaredConstructors();
             constructor[0].setAccessible(true);
             constructor[0].newInstance();
